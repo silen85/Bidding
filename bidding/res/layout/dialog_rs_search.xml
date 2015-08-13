@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/MALL_C3"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingBottom="18dp"
+    android:paddingLeft="@dimen/interval_A"
+    android:paddingRight="@dimen/interval_A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&quot;" />
+
+        <TextView
+            android:id="@+id/dialog_search_txt"
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="珠江漏电开关"
+            android:textColor="@color/MALL_C1" />
+
+        <TextView
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&quot; 搜索结果" />
+
+    </LinearLayout>
+
+
+    <include layout="@layout/line" />
+
+    <ListView
+        android:id="@+id/dialog_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:cacheColorHint="@null"
+        android:divider="@null"
+        android:scrollbars="none" />
+
+</LinearLayout>

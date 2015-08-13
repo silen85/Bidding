@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/MALL_C3"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingBottom="88dp"
+    android:paddingLeft="@dimen/interval_A"
+    android:paddingRight="@dimen/interval_A">
+
+    <TextView
+        style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D"
+        android:text="@string/dialog_bottom_fapiao" />
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/interval_C"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D">
+
+        <Button
+            android:id="@+id/fapiao_zengzhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_orange"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/dialog_bottom_fapiao_A"
+            android:textColor="@color/MALL_C3"
+            android:textSize="@dimen/dialog_text_size" />
+
+        <Button
+            android:id="@+id/fapiao_putong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/interval_B"
+            android:background="@drawable/border_normal"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/dialog_bottom_fapiao_B"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+        <Button
+            android:id="@+id/fapiao_wuxu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/interval_B"
+            android:background="@drawable/border_normal"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/dialog_bottom_fapiao_C"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

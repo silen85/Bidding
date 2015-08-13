@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MALL_C3"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_login" />
+
+    <include layout="@layout/line" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_A"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/login_header_bg" />
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_C">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/interval_G"
+                android:paddingTop="@dimen/interval_F"
+                android:text="@string/text_account"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
+
+            <EditText
+                android:id="@+id/accountEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入账号"
+                android:paddingBottom="@dimen/interval_G"
+                android:paddingLeft="@dimen/interval_E"
+                android:paddingTop="@dimen/interval_F"
+                android:singleLine="true"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3"></EditText>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_delete_icon"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_B">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/interval_line_height"
+            android:text="@string/text_account"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/F3"
+            android:visibility="invisible" />
+
+        <include layout="@layout/line" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_C">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/interval_G"
+                android:paddingTop="@dimen/interval_F"
+                android:text="@string/text_password"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入密码"
+                android:paddingBottom="@dimen/interval_G"
+                android:paddingLeft="@dimen/interval_E"
+                android:paddingTop="@dimen/interval_F"
+                android:singleLine="true"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3"></EditText>
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_delete_icon"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/interval_C"
+        android:layout_marginRight="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_A"
+        android:background="@drawable/button_normal"
+        android:gravity="center"
+        android:paddingBottom="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_B"
+        android:text="@string/text_login"
+        android:textColor="@color/MALL_C4"
+        android:textSize="@dimen/F3"
+        android:textStyle="bold" />
+
+</LinearLayout>

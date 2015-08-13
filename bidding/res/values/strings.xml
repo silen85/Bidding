@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">联塑商城</string>
+
+    <string name="business_target">全国最大，最全的五金电器建材交易平台</string>
+
+    <string name="text_login">登 录</string>
+    <string name="text_account">账号 : </string>
+    <string name="text_password">密码 : </string>
+
+    <string name="text_post_need">发布需求</string>
+    <string name="text_check_order">查看订单</string>
+    <string name="text_check_news">查看消息</string>
+    <string name="text_bidding_news">竞价信息</string>
+    <string name="text_qulify_check">资质审核</string>
+    <string name="text_business_check">交易监控</string>
+
+    <string name="text_finish">完成</string>
+    <string name="text_cancel">取消</string>
+    <string name="text_save">保存</string>
+    <string name="text_save_commit">保存并提交</string>
+
+
+    <!-- dealer -->
+    <string name="bidding_add_payment">支付方式</string>
+    <string name="bidding_add_delivery">交收方式</string>
+    <string name="bidding_add_other">其他要求</string>
+    <string name="bidding_add_expdate">有效期</string>
+    <string name="bidding_add_tax">税票类型</string>
+    <string name="bidding_add_product">所需产品</string>
+    <string name="bidding_add_topic">主题</string>
+    <string name="bidding_add_certificate">保证金付款凭证</string>
+    <string name="bidding_add_rule1">我已经阅读并同意</string>
+    <string name="bidding_add_rule2">《竞价单发布规则》</string>
+
+    <!-- dialog bottom title -->
+    <string name="dialog_bottom_fapiao">税票种类</string>
+    <string name="dialog_bottom_fapiao_A">增值税发票</string>
+    <string name="dialog_bottom_fapiao_B">普通发票</string>
+    <string name="dialog_bottom_fapiao_C">无需发票</string>
+
+    <string name="dialog_bottom_zhifu">支付方式</string>
+    <string name="dialog_bottom_zhifu_A">信用支付</string>
+    <string name="dialog_bottom_zhifu_B">现金支付</string>
+    <string name="dialog_bottom_zhifu_C">汇款支付</string>
+
+    <string name="dialog_bottom_fenlei">所属分类</string>
+
+    <string name="dialog_bottom_pic">图片上传</string>
+    <string name="dialog_bottom_pic_A">拍照</string>
+    <string name="dialog_bottom_pic_B">从相册中选择</string>
+
+    <string name="dialog_bottom_receive">交收方式</string>
+    <string name="dialog_bottom_receive_A">配送</string>
+    <string name="dialog_bottom_receive_B">自提</string>
+
+    <string name="TAG_KEY_A">TAG_KEY_A</string>
+    <string name="TAG_KEY_B">TAG_KEY_B</string>
+
+</resources>
