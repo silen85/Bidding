@@ -1,19 +1,20 @@
 package com.lessomall.bidding.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.Window;
-import android.widget.RelativeLayout;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.ui.TimeChooserDialog;
 
 public abstract class BaseActivity extends FragmentActivity {
 
+    private ProgressDialog loadingDialog;
+
     protected TimeChooserDialog timerDialog;
     protected int timeType = 1;
-    protected RelativeLayout time_chooser;
     protected String sBeginDate, sEndDate;
 
     @Override
@@ -46,6 +47,29 @@ public abstract class BaseActivity extends FragmentActivity {
         timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
         timerDialog.show();
 
+    }
+
+    /**
+     * 加载对话框(显示)
+     */
+    public void loading() {
+        if (loadingDialog == null) {
+            loadingDialog = new ProgressDialog(this);
+            loadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            loadingDialog.setMessage(getString(R.string.loading));
+            loadingDialog.setIndeterminate(true);
+            loadingDialog.setCancelable(false);
+        }
+        loadingDialog.show();
+    }
+
+    /**
+     * 加载对话框(关闭)
+     */
+    public void disLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+        }
     }
 
     protected abstract void initTitle();

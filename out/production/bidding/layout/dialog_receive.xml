@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/MALL_C3"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingBottom="88dp"
+    android:paddingLeft="@dimen/interval_A"
+    android:paddingRight="@dimen/interval_A">
+
+    <TextView
+        style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D"
+        android:text="@string/dialog_bottom_receive" />
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/interval_C"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D">
+
+        <Button
+            android:id="@+id/fapiao_zengzhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_orange"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:text="@string/dialog_bottom_receive_A"
+            android:textColor="@color/MALL_C3"
+            android:textSize="@dimen/dialog_text_size" />
+
+        <Button
+            android:id="@+id/fapiao_putong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/interval_B"
+            android:background="@drawable/border_normal"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:text="@string/dialog_bottom_receive_B"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/receive_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_C"
+        android:background="@drawable/border_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingLeft="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="交收地址："
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+        <EditText
+            android:id="@+id/receive_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:singleLine="false"
+            android:textSize="@dimen/dialog_text_size" />
+
+    </LinearLayout>
+
+</LinearLayout>

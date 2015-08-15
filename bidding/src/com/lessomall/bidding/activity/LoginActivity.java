@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.activity.dealer.BiddingListActivity;
+import com.lessomall.bidding.activity.bid.BiddingListActivity;
 
 
 public class LoginActivity extends Activity implements View.OnClickListener {

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.ui.FlowLayout;
@@ -28,10 +29,11 @@ public class FenleiDialog extends Dialog {
 
     private String[] content;
 
+    private ProgressBar loading;
+
     private FlowLayout contentView;
 
-    private int screenWidth, screenHeight;
-    private float density, buttonWidth, buttonHeight;
+    private float density;
 
 
     private ClickListenerInterface clickListenerInterface;
@@ -70,19 +72,19 @@ public class FenleiDialog extends Dialog {
 
         DisplayMetrics dm = context.getApplicationContext().getResources().getDisplayMetrics();
 
-        screenWidth = dm.widthPixels;
-        screenHeight = dm.heightPixels;
-
         density = dm.density;
         int padding = (int) (8f * density);
+
+
+        loading = (ProgressBar) findViewById(R.id.loading);
 
         contentView = (FlowLayout) dialog.findViewById(R.id.contentView);
 
         ViewGroup.MarginLayoutParams mlp = new ViewGroup.MarginLayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        mlp.topMargin = (int) (12f * density);
-        mlp.bottomMargin = (int) (0f * density);
-        mlp.leftMargin = (int) (0 * density);
+        mlp.topMargin = context.getResources().getDimensionPixelSize(R.dimen.interval_C);   //(int) (12f * density);
+        mlp.bottomMargin = 0;
+        mlp.leftMargin = 0;
         mlp.rightMargin = (int) (8f * density);
 
         for (int i = 0; i < content.length; i++) {
@@ -126,6 +128,10 @@ public class FenleiDialog extends Dialog {
             contentView.addView(button, mlp);
 
         }
+
+
+        loading.setVisibility(View.GONE);
+        contentView.setVisibility(View.VISIBLE);
 
     }
 

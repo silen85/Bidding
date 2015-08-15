@@ -1,5 +1,7 @@
 package com.lessomall.bidding.common;
 
+import android.os.Environment;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -7,22 +9,26 @@ import java.text.SimpleDateFormat;
  */
 public class Constant {
 
-    protected final static String BASE_URL = "/app/";
+    public final static boolean DEVELOPER_MODE = true;
 
-    protected final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
-    protected final static String APP_KEY_IOS = "fc98141d";         //对应数据库字段DEVICETYPE = 2;
+    public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
 
-    protected final static String SECRET_KEY = "db1e358753b4fe1735dcf50dc1bf465b";
+    public final static String BASE_URL = "/app/";
 
-    protected final static int INIT_PAGENO = 1;
-    protected final static int INIT_PAGESIZE = 10;
+    public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
+    public final static String APP_KEY_IOS = "fc98141d";         //对应数据库字段DEVICETYPE = 2;
 
-    protected final static int CUSTOMER_TYPE_SUPPLIER = 1;
+    public final static String SECRET_KEY = "db1e358753b4fe1735dcf50dc1bf465b";
 
-    protected final static int CUSTOMER_TYPE_PROXIER_LEVEL1 = 2;
+    public final static int INIT_PAGENO = 1;
+    public final static int INIT_PAGESIZE = 10;
 
-    protected final static String[] IMG_SUFFIX = {".jpg", ".jpeg", ".png", ".bmp"};
-    protected final static long IMG_MAX_SIZE = 512 * 1024;  //   500k
+    public final static int CUSTOMER_TYPE_SUPPLIER = 1;
+
+    public final static int CUSTOMER_TYPE_PROXIER_LEVEL1 = 2;
+
+    public final static String[] IMG_SUFFIX = {".jpg", ".jpeg", ".png", ".bmp"};
+    public final static long IMG_MAX_SIZE = 512 * 1024;  //   500k
 
     public static final SimpleDateFormat DATE_FORMAT_1 = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -41,7 +47,7 @@ public class Constant {
     public static String[] CATEGORY_CACHE_LEVEL1;
 
     //10:保存 20:保存并提交
-    protected final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
+    public final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
 
 
     /**
@@ -52,7 +58,7 @@ public class Constant {
      * 待发货  {"40","40"}
      * 已发货  {"60","40"}
      */
-    protected final static String[][] BIDDING_SUPPLIER_ORDER_STATUS = new String[][]{{"0", "30"}, {"10", "30"}, {"20", "30"}, {"40", "40"}, {"60", "40"}};
+    public final static String[][] BIDDING_SUPPLIER_ORDER_STATUS = new String[][]{{"0", "30"}, {"10", "30"}, {"20", "30"}, {"40", "40"}, {"60", "40"}};
 
     /**
      * 经销商：
@@ -67,23 +73,23 @@ public class Constant {
      * 9买方确认收到货物
      * 10竞价交易完成归档
      */
-    protected final static int[] BIDDING_DEALER_ORDER_STATUS = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    public final static int[] BIDDING_DEALER_ORDER_STATUS = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
 
-    protected final static String RECODE_SUCCESS = "0000";
-    protected final static String RECODE_FAILED = "0001";
-    protected final static String RECODE_FAILED_NODATA = "1001";
-    protected final static String RECODE_FAILED_PARAM_WRONG = "1002";
-    protected final static String RECODE_FAILED_APPKEY_WRONG = "1003";
-    protected final static String RECODE_FAILED_TOKEN_WRONG = "1004";
-    protected final static String RECODE_FAILED_TIMESTAMP_WRONG = "1005";
+    public final static String RECODE_SUCCESS = "0000";
+    public final static String RECODE_FAILED = "0001";
+    public final static String RECODE_FAILED_NODATA = "1001";
+    public final static String RECODE_FAILED_PARAM_WRONG = "1002";
+    public final static String RECODE_FAILED_APPKEY_WRONG = "1003";
+    public final static String RECODE_FAILED_TOKEN_WRONG = "1004";
+    public final static String RECODE_FAILED_TIMESTAMP_WRONG = "1005";
 
-    protected final static String RECODE_FAILED_USER_NOTEXIST = "2002";
-    protected final static String RECODE_FAILED_PASSWORD_WRONG = "2003";
-    protected final static String RECODE_FAILED_SESSION_WRONG = "2004";
+    public final static String RECODE_FAILED_USER_NOTEXIST = "2002";
+    public final static String RECODE_FAILED_PASSWORD_WRONG = "2003";
+    public final static String RECODE_FAILED_SESSION_WRONG = "2004";
 
-    protected final static String RECODE_ERROR_SYSTEM = "9999";
-    protected final static String RECODE_ERROR_TIPS = "10000";
+    public final static String RECODE_ERROR_SYSTEM = "9999";
+    public final static String RECODE_ERROR_TIPS = "10000";
 
     public static final String FINISH_ACTION = "com.lesso.data.FINISH_ACTION";
 

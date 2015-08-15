@@ -5,13 +5,12 @@
     <file url="file://$PROJECT_DIR$/bidding/res/drawable/border_normal.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/drawable/border_orange.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/drawable/border_orange_x.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_guide_splash.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_login.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_splash.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_template.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/layout/activity_template1.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/layout/dialog_datepicker.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/layout/fragment_dealer_biddinglist.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/layout/title_level1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bidding/res/layout/fragment_biddinglist.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bidding/res/layout/fragment_splash.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/go_icon.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/license.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/license_s.png" charset="UTF-8" />
@@ -23,7 +22,7 @@
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/BaseActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/GuideSplashActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/LoginActivity.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/dealer/AddBiddingActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/CommonUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/Constant.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/DefaultExceptionHandler.java" charset="UTF-8" />

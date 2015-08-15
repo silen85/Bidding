@@ -3,6 +3,7 @@ package com.lessomall.bidding.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.common.CommonUtils;
+import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.fragment.GuideFragment;
 import com.lessomall.bidding.fragment.SplashFragment;
 
@@ -22,13 +24,22 @@ public class GuideSplashActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (Constant.DEVELOPER_MODE) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDialog()
+                    .build());
+        }
+
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.activity_template);
+        setContentView(R.layout.activity_guide_splash);
 
         SharedPreferences sp = getSharedPreferences(
                 getString(R.string.app_name), Context.MODE_PRIVATE);
@@ -36,13 +47,13 @@ public class GuideSplashActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
-        if (sp.getInt("versionCode", 0) == CommonUtils.getPackageInfo(this).versionCode) {
+        if (sp.getInt("versionCode", 0) == Tools.getPackageInfo(this).versionCode) {
             fragment = new SplashFragment();
         } else {
             fragment = new GuideFragment();
 
             SharedPreferences.Editor edit = sp.edit();
-            edit.putInt("versionCode", CommonUtils.getPackageInfo(this).versionCode);
+            edit.putInt("versionCode", Tools.getPackageInfo(this).versionCode);
             edit.commit();
         }
 

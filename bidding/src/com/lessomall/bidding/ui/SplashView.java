@@ -29,7 +29,7 @@ public class SplashView extends LinearLayout {
 	private void initView(Context context) {
 
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.activity_splash, this);
+		inflater.inflate(R.layout.fragment_splash, this);
 
 		ImageView splash_progress = (ImageView) findViewById(R.id.splash_progress);
 		Animation roteAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.roat);
