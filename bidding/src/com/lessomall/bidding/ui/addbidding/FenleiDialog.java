@@ -103,7 +103,7 @@ public class FenleiDialog extends Dialog {
 
             if (this.code != null && code.equals(this.code)) {
                 button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.button_orange));
-                button.setTextColor(context.getResources().getColor(R.color.MALL_C3));
+                button.setTextColor(context.getResources().getColor(R.color.MALL_C8));
             } else {
                 button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.border_normal));
                 button.setTextColor(context.getResources().getColor(R.color.BASE_TEXT_COLOR));
@@ -149,7 +149,7 @@ public class FenleiDialog extends Dialog {
 
     private void select(Button button) {
         button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.button_orange));
-        button.setTextColor(context.getResources().getColor(R.color.MALL_C3));
+        button.setTextColor(context.getResources().getColor(R.color.MALL_C8));
     }
 
     public void setClickListenerInterface(ClickListenerInterface clickListenerInterface) {

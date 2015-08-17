@@ -30,6 +30,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:background="@mipmap/time_chooser" />
 
         </LinearLayout>
@@ -171,7 +173,7 @@
                 android:layout_marginLeft="@dimen/interval_A"
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
-                android:background="@color/MALL_C7" />
+                android:background="@color/MALL_C6" />
 
         </LinearLayout>
 
@@ -197,7 +199,7 @@
                     android:layout_centerInParent="true"
                     android:background="@null"
                     android:calendarViewShown="false"
-                    android:headerBackground="@color/MALL_C6"
+                    android:headerBackground="@color/MALL_C8"
                     android:spinnersShown="true" />
 
             </RelativeLayout>
@@ -210,7 +212,7 @@
                 android:layout_marginLeft="@dimen/interval_A"
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
-                android:background="@color/MALL_C7" />
+                android:background="@color/MALL_C6" />
 
         </LinearLayout>
 

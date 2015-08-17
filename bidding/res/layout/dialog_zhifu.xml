@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/MALL_C3"
+    android:background="@color/MALL_C8"
     android:gravity="left"
     android:orientation="vertical"
     android:paddingBottom="88dp"
@@ -38,7 +38,7 @@
             android:padding="8dp"
             android:singleLine="true"
             android:text="@string/dialog_bottom_zhifu_A"
-            android:textColor="@color/MALL_C3"
+            android:textColor="@color/MALL_C8"
             android:textSize="@dimen/dialog_text_size" />
 
         <Button

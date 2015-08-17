@@ -14,9 +14,9 @@
         android:name=".LessoApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar">
+        android:theme="@style/APP_THEME">
         <activity
-            android:name=".activity.bid.AddBiddingActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>

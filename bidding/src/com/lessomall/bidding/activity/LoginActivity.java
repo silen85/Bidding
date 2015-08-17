@@ -64,11 +64,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 if (accountEditText.getText().toString().length() != 0
                         && passwordEditText.getText().toString().length() != 0) {
                     login.setBackgroundResource(R.drawable.button_enable);
-                    login.setTextColor(getResources().getColor(R.color.MALL_C3));
+                    login.setTextColor(getResources().getColor(R.color.MALL_C8));
                     delete.setVisibility(View.VISIBLE);
                 } else {
                     login.setBackgroundResource(R.drawable.button_normal);
-                    login.setTextColor(getResources().getColor(R.color.MALL_C4));
+                    login.setTextColor(getResources().getColor(R.color.MALL_C5));
                     delete.setVisibility(View.INVISIBLE);
                 }
             }
@@ -91,11 +91,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 if (accountEditText.getText().toString().length() != 0
                         && passwordEditText.getText().toString().length() != 0) {
                     login.setBackgroundResource(R.drawable.button_enable);
-                    login.setTextColor(getResources().getColor(R.color.MALL_C3));
+                    login.setTextColor(getResources().getColor(R.color.MALL_C8));
                     delete.setVisibility(View.VISIBLE);
                 } else {
                     login.setBackgroundResource(R.drawable.button_normal);
-                    login.setTextColor(getResources().getColor(R.color.MALL_C4));
+                    login.setTextColor(getResources().getColor(R.color.MALL_C5));
                     delete.setVisibility(View.INVISIBLE);
                 }
             }

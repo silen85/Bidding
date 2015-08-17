@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MALL_C3"
+    android:background="@color/MALL_C8"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@mipmap/arrow_back_gray"
+            android:background="@mipmap/btn_back_gray"
             android:visibility="visible" />
 
 
@@ -198,7 +198,7 @@
         android:paddingBottom="@dimen/interval_B"
         android:paddingTop="@dimen/interval_B"
         android:text="@string/text_login"
-        android:textColor="@color/MALL_C4"
+        android:textColor="@color/MALL_C5"
         android:textSize="@dimen/F3"
         android:textStyle="bold" />
 

@@ -8,21 +8,37 @@
     android:paddingRight="@dimen/interval_A">
 
     <LinearLayout
-        android:id="@+id/addbidding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/interval_C"
-        android:background="@mipmap/ic_launcher"
+        android:background="@drawable/bg_rectangle_orange"
         android:clickable="true"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/interval_D"
+            android:text="新增竞价"
+            android:textColor="@color/BIDDING_TXT_COLOR"
+            android:textSize="@dimen/F3" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/point_white" />
 
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/MALL_C3"
+        android:background="@color/MALL_C8"
         android:paddingLeft="@dimen/interval_A"
         android:paddingRight="@dimen/interval_A"
         android:scrollbars="none">
@@ -37,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/interval_C"
-                android:background="@color/MALL_C3"
+                android:background="@color/MALL_C8"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/interval_B"
                 android:paddingRight="@dimen/interval_B">
@@ -60,6 +76,8 @@
                         android:id="@+id/topic_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_note" />
 
                     <TextView
@@ -104,6 +122,8 @@
                         android:layout_gravity="top"
                         android:layout_marginBottom="@dimen/interval_D"
                         android:layout_marginTop="@dimen/interval_D"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_bag" />
 
                     <LinearLayout
@@ -159,6 +179,8 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:clickable="true"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
                                 android:src="@mipmap/search_s" />
 
 
@@ -372,6 +394,8 @@
                                 android:layout_marginBottom="@dimen/interval_D"
                                 android:layout_marginTop="@dimen/interval_D"
                                 android:clickable="true"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
                                 android:src="@mipmap/search_s" />
 
 
@@ -401,6 +425,8 @@
                         android:id="@+id/tax_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_printer" />
 
                     <TextView
@@ -432,6 +458,8 @@
                         android:id="@+id/expdate_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_date" />
 
                     <TextView
@@ -463,6 +491,8 @@
                         android:id="@+id/delivery_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_car" />
 
                     <TextView
@@ -494,6 +524,8 @@
                         android:id="@+id/payment_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_payment" />
 
                     <TextView
@@ -525,6 +557,8 @@
                         android:id="@+id/certificate_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_money" />
 
                     <TextView
@@ -568,6 +602,8 @@
                         android:id="@+id/other_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/icon_squares" />
 
                     <TextView
@@ -687,7 +723,7 @@
                         android:paddingRight="9dp"
                         android:paddingTop="8dp"
                         android:text="@string/text_save_commit"
-                        android:textColor="@color/MALL_C3"
+                        android:textColor="@color/MALL_C8"
                         android:textSize="@dimen/F5" />
 
                 </LinearLayout>

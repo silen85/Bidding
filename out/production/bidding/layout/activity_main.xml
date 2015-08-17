@@ -29,14 +29,16 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/time_chooser" />
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/date" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/title_padding_top"
+                android:layout_marginTop="@dimen/title_padding"
                 android:text="日期搜索"
-                android:textColor="@color/MALL_C3"
+                android:textColor="@color/MALL_C8"
                 android:textSize="@dimen/main_title_text_size" />
 
 
@@ -51,7 +53,7 @@
             android:layout_marginRight="8dp"
             android:layout_toLeftOf="@+id/searcher_other"
             android:layout_toRightOf="@+id/searcher_date"
-            android:background="@drawable/searcher_bg"
+            android:background="@drawable/bg_rectangle_black"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -63,8 +65,10 @@
                 android:layout_marginBottom="@dimen/title_padding_bottom"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/title_padding_top"
-                android:background="@drawable/searcher_x"
+                android:background="@mipmap/search_b"
                 android:clickable="true" />
 
             <EditText
@@ -75,7 +79,7 @@
                 android:hint="订单搜索"
                 android:inputType="text"
                 android:singleLine="true"
-                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textColor="@color/MALL_C8"
                 android:textSize="@dimen/edit_text_size"></EditText>
 
 
@@ -107,12 +111,36 @@
                 android:layout_marginLeft="@dimen/interval_A"
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
-                android:background="@mipmap/ic_launcher"
+                android:background="@drawable/bg_rectangle_orange"
                 android:clickable="true"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/interval_C">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/bidding_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/interval_C"
+                    android:text="新增竞价"
+                    android:textColor="@color/BIDDING_TXT_COLOR"
+                    android:textSize="@dimen/F2" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/point_gray" />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,18 +168,19 @@
                         android:background="@color/BIDDING_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/search_s" />
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/bidding" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
                             android:text="竞价单"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -174,12 +203,13 @@
                             android:background="@color/BIDDING_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -187,7 +217,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="待审核"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -202,12 +232,13 @@
                             android:background="@color/BIDDING_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -215,7 +246,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="竞价中"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -240,12 +271,13 @@
                             android:background="@color/BIDDING_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -253,7 +285,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="已确认报价"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -268,12 +300,13 @@
                             android:background="@color/BIDDING_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -281,7 +314,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="已发货"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -308,20 +341,22 @@
                         android:background="@color/BIDDING_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
 
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
+                            android:layout_marginBottom="@dimen/main_cell_interval_txt"
                             android:text="未提交"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -336,12 +371,13 @@
                         android:background="@color/BIDDING_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -349,7 +385,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
+                            android:layout_marginBottom="@dimen/main_cell_interval_txt"
                             android:text="已审核"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -364,12 +400,13 @@
                         android:background="@color/BIDDING_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -377,7 +414,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
+                            android:layout_marginBottom="@dimen/main_cell_interval_txt"
                             android:text="已收货"
                             android:textColor="@color/BIDDING_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -406,18 +443,19 @@
                     android:background="@color/QUOTE_BG"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/interval_D"
-                    android:paddingTop="@dimen/interval_D">
+                    android:paddingBottom="@dimen/main_cell_interval_padding"
+                    android:paddingTop="@dimen/main_cell_interval_padding">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/search_s" />
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/quote" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/main_cell_interval_s"
                         android:text="报价单"
                         android:textColor="@color/QUOTE_TXT_COLOR"
                         android:textSize="@dimen/main_text_size" />
@@ -448,12 +486,13 @@
                             android:background="@color/QUOTE_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -461,7 +500,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="待报价"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -476,12 +515,13 @@
                             android:background="@color/QUOTE_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -489,7 +529,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="已报价"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -506,12 +546,13 @@
                         android:background="@color/QUOTE_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/QUOTE_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -519,7 +560,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
+                            android:layout_marginBottom="@dimen/main_cell_interval_txt"
                             android:text="被退回"
                             android:textColor="@color/QUOTE_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -552,12 +593,13 @@
                             android:background="@color/QUOTE_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -565,7 +607,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="待发货"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -580,12 +622,13 @@
                             android:background="@color/QUOTE_BG"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="@dimen/interval_D"
-                            android:paddingTop="@dimen/interval_D">
+                            android:paddingBottom="@dimen/main_cell_interval_padding"
+                            android:paddingTop="@dimen/main_cell_interval_padding">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -593,7 +636,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/main_cell_interval_s"
+                                android:layout_marginBottom="@dimen/main_cell_interval_txt"
                                 android:text="已发货"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
                                 android:textSize="@dimen/main_text_size" />
@@ -610,12 +653,13 @@
                         android:background="@color/QUOTE_BG"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingBottom="@dimen/interval_D"
-                        android:paddingTop="@dimen/interval_D">
+                        android:paddingBottom="@dimen/main_cell_interval_padding"
+                        android:paddingTop="@dimen/main_cell_interval_padding">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/QUOTE_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />
@@ -623,7 +667,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/main_cell_interval_s"
+                            android:layout_marginBottom="@dimen/main_cell_interval_txt"
                             android:text="已确认收货"
                             android:textColor="@color/QUOTE_TXT_COLOR"
                             android:textSize="@dimen/main_text_size" />

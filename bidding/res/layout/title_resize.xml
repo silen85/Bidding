@@ -13,14 +13,16 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_squares" />
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/more" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_padding_top"
+        android:layout_marginTop="@dimen/title_padding"
         android:text="其它"
-        android:textColor="@color/MALL_C3"
+        android:textColor="@color/MALL_C8"
         android:textSize="@dimen/main_title_text_size" />
 
 

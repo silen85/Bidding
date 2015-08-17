@@ -67,11 +67,11 @@ public class TwoGridAdapter extends BaseAdapter {
         colum2.setText(map.get(colum2.getTag()));
 
         if (position % 2 == 0) {
-            colum1.setBackgroundColor(context.getResources().getColor(R.color.MALL_C6));
+            colum1.setBackgroundColor(context.getResources().getColor(R.color.MALL_C8));
             colum2.setBackgroundResource(R.drawable.two_grid_bg2);
             //amount.setBackground(activity.getResources().getDrawable(R.drawable.border_left1));
         } else {
-            colum1.setBackgroundColor(context.getResources().getColor(R.color.MALL_C5));
+            colum1.setBackgroundColor(context.getResources().getColor(R.color.MALL_C7));
             colum2.setBackgroundResource(R.drawable.two_grid_bg1);
             //amount.setBackground(activity.getResources().getDrawable(R.drawable.two_grid_bg2));
         }

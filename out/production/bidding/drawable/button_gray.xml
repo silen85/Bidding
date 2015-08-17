@@ -7,11 +7,11 @@
         android:centerX="5"
         android:type="sweep"/>   1EED6C00  -->
 
-    <solid android:color="@color/MALL_C5" />
+    <solid android:color="@color/MALL_C7" />
 
     <stroke
         android:width="0.5dp"
-        android:color="@color/MALL_C5" />
+        android:color="@color/MALL_C7" />
 
     <corners
         android:bottomLeftRadius="3dp"

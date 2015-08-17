@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/MALL_C3"
+    android:background="@color/MALL_C8"
     android:gravity="center"
     android:orientation="horizontal"
     android:weightSum="2">
@@ -12,8 +12,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_weight="1.6"
-        android:background="@color/MALL_C6"
+        android:layout_weight="1.5"
+        android:background="@color/MALL_C8"
         android:ellipsize="end"
         android:gravity="center"
         android:paddingBottom="@dimen/interval_C"
@@ -24,14 +24,14 @@
         android:tag="colum1"
         android:text="2015-08-15"
         android:textColor="@color/BASE_TEXT_COLOR"
-        android:textSize="@dimen/F5" />
+        android:textSize="@dimen/F4" />
 
     <TextView
         android:id="@+id/colum2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_weight="0.4"
+        android:layout_weight="0.5"
         android:background="@drawable/two_grid_bg2"
         android:ellipsize="end"
         android:gravity="center"
@@ -43,6 +43,6 @@
         android:tag="colum2"
         android:text="176800"
         android:textColor="@color/BASE_TEXT_COLOR"
-        android:textSize="@dimen/F5" />
+        android:textSize="@dimen/F4" />
 
 </LinearLayout>

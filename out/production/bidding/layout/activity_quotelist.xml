@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:src="@mipmap/arrow_back_gray" />
+            android:src="@mipmap/btn_back" />
 
         <TextView
             android:id="@+id/title_txt"

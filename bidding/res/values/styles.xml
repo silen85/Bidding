@@ -1,24 +1,19 @@
 <resources>
 
+    <style name="APP_THEME" parent="@android:style/Theme.Holo.Light">
+       <!-- <item name="android:datePickerMode">spinner</item>  -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="STYLE_TITLE_A">
         <item name="android:textSize">@dimen/main_title_text_size</item>
-        <item name="android:textColor">@color/MALL_C2</item>
+        <item name="android:textColor">@color/MALL_C4</item>
     </style>
 
     <style name="STYLE_TITLE_BOTTOM_DIALOG">
         <item name="android:textSize">@dimen/F3</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/MALL_C2</item>
-    </style>
-
-    <style name="STYLE_BOTTOM_TXT">
-        <item name="android:textSize">@dimen/F5</item>
-        <item name="android:textColor">@color/MALL_C2</item>
-    </style>
-
-    <style name="STYLE_BOTTOM_TXT_S">
-        <item name="android:textSize">@dimen/F5</item>
-        <item name="android:textColor">@color/MALL_C1</item>
+        <item name="android:textColor">@color/MALL_C4</item>
     </style>
 
     <style name="SwitchButtonStyle">

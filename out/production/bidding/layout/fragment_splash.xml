@@ -57,7 +57,7 @@
             android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:text="© LESSOmall.com"
-            android:textColor="@color/MALL_C2"
+            android:textColor="@color/MALL_C4"
             android:textSize="@dimen/F4" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_marginBottom="18dp"
             android:gravity="center_horizontal"
             android:text="@string/business_target"
-            android:textColor="@color/MALL_C2"
+            android:textColor="@color/MALL_C4"
             android:textSize="@dimen/F4" />
     </LinearLayout>
 

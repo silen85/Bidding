@@ -106,12 +106,12 @@ public class SearchDialog extends Dialog {
         TextView a = ((TextView) header.findViewById(R.id.colum1));
         a.setText("名称型号");
         a.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        a.setTextSize(0, context.getResources().getDimensionPixelSize(R.dimen.F4));
-        a.setBackgroundColor(context.getResources().getColor(R.color.MALL_C5));
+        a.setTextSize(0, context.getResources().getDimensionPixelSize(R.dimen.F3));
+        a.setBackgroundColor(context.getResources().getColor(R.color.MALL_C7));
         TextView b = ((TextView) header.findViewById(R.id.colum2));
         b.setText("单位");
         b.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        b.setTextSize(0, context.getResources().getDimensionPixelSize(R.dimen.F4));
+        b.setTextSize(0, context.getResources().getDimensionPixelSize(R.dimen.F3));
         b.setBackgroundResource(R.drawable.two_grid_bg1);
 
         list_content.addView(header, 0);

@@ -2,16 +2,16 @@
 
     <dimen name="interval_line_height">0.5dp</dimen>
 
-    <dimen name="F1">22sp</dimen>
-    <dimen name="F2">20sp</dimen>
+    <dimen name="F1">18sp</dimen>
+    <dimen name="F2">16sp</dimen>
     <dimen name="F3">14sp</dimen>
     <dimen name="F4">12sp</dimen>
     <dimen name="F5">10sp</dimen>
     <dimen name="F6">8sp</dimen>
 
-    <dimen name="interval_A">16dp</dimen>
+    <dimen name="interval_A">12dp</dimen>
     <!--  垂直间大间距  \\  -->
-    <dimen name="interval_B">12dp</dimen>
+    <dimen name="interval_B">8dp</dimen>
     <!--  垂直间小间距  \\  -->
     <dimen name="interval_C">12dp</dimen>
     <!--  水平间大间距  ==  -->
@@ -23,20 +23,21 @@
     <!--  EditText文字上间距  -->
     <dimen name="interval_G">8dp</dimen>
     <!--  EditText文字下间距  -->
-    <dimen name="edit_text_size">@dimen/F4</dimen>
+    <dimen name="edit_text_size">@dimen/F3</dimen>
     <!--  EditText文字大小  -->
 
-    <dimen name="dialog_text_size">@dimen/F4</dimen>
+    <dimen name="dialog_text_size">@dimen/F3</dimen>
 
-    <dimen name="title_padding">8dp</dimen>
+    <dimen name="title_padding">4dp</dimen>
     <dimen name="title_padding_left">@dimen/interval_A</dimen>
     <dimen name="title_padding_top">8dp</dimen>
     <dimen name="title_padding_right">@dimen/interval_A</dimen>
     <dimen name="title_padding_bottom">8dp</dimen>
-    <dimen name="main_title_text_size">@dimen/F4</dimen>
+    <dimen name="main_title_text_size">@dimen/F3</dimen>
     <dimen name="main_text_size">@dimen/F3</dimen>
-    <dimen name="main_cell_interval">12dp</dimen>
-    <dimen name="main_cell_interval_s">6dp</dimen>
+    <dimen name="main_cell_interval">6dp</dimen>
+    <dimen name="main_cell_interval_padding">8dp</dimen>
+    <dimen name="main_cell_interval_txt">8dp</dimen>
 
     <!--
             新增竞价的单元 cell
@@ -49,7 +50,7 @@
     <!--  每格item的padding  -->
     <dimen name="pr_bidding_add">12dp</dimen>
     <!--  每格item的padding  -->
-    <dimen name="txtsize_bidding_add">@dimen/F4</dimen>
+    <dimen name="txtsize_bidding_add">@dimen/F3</dimen>
     <!--  每格item的textsize  -->
 
 
