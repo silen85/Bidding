@@ -31,8 +31,6 @@ public class QuoteListActivity extends BaseActivity {
 
         initTitle();
 
-        initBottom();
-
         initView();
 
         initData();
@@ -70,9 +68,4 @@ public class QuoteListActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void initBottom() {
-
-
-    }
 }

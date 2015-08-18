@@ -30,8 +30,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         initView();
 
-        initBottom();
-
         initData();
 
     }
@@ -60,11 +58,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void initBottom() {
 
     }
 

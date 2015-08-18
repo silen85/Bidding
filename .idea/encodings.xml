@@ -25,7 +25,6 @@
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/DefaultExceptionHandler.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/GuideFragment.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/SplashFragment.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/ui/SplashView.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/ui/TimeChooserDialog.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/ui/addbidding/FenleiDialog.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/ui/switchbutton/AnimationController.java" charset="UTF-8" />

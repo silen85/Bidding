@@ -27,8 +27,6 @@ public class OtherActivity extends BaseActivity {
 
         initView();
 
-        initBottom();
-
         initData();
 
     }
@@ -90,11 +88,6 @@ public class OtherActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void initBottom() {
 
     }
 

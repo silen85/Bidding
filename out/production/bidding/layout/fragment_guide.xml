@@ -3,7 +3,7 @@
     android:id="@+id/layoutContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/guide_bg"
+    android:background="@mipmap/splash_guide_bg"
     android:orientation="vertical">
 
     <FrameLayout

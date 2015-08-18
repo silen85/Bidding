@@ -85,7 +85,5 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected abstract void initData();
 
-    protected abstract void initBottom();
-
 }
 

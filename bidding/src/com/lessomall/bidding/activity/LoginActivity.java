@@ -14,17 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.activity.bid.BiddingListActivity;
 
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    private static final int FRAGMENT_TYPE_DEALER = 1;
-    private static final int FRAGMENT_TYPE_SUPPLIER = 2;
-    private static final int FRAGMENT_TYPE_ADMIN = 3;
-
-    private Button btn_back;
-    private TextView main_title_txt;
+    private ImageView btn_back;
+    private TextView title_txt;
 
     private EditText accountEditText;
     private EditText passwordEditText;
@@ -120,10 +115,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     protected void initTitle() {
 
-        btn_back = (Button) findViewById(R.id.btn_back);
-        main_title_txt = (TextView) findViewById(R.id.main_title_txt);
+        btn_back = (ImageView) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(this);
 
-        main_title_txt.setText(getString(R.string.text_login));
+        title_txt = (TextView) findViewById(R.id.title_txt);
+        title_txt.setText(getString(R.string.text_login));
     }
 
     private void delete() {
@@ -148,27 +144,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         login.setBackgroundResource(R.drawable.button_selected);
 
-
         Intent it = new Intent();
-        int fragmentType = Integer.parseInt(accountEditText.getText().toString());
-        switch (fragmentType) {
-            case FRAGMENT_TYPE_DEALER:
-                it.setClass(LoginActivity.this, BiddingListActivity.class);
-                break;
-            case FRAGMENT_TYPE_SUPPLIER:
-                //it.setClass(LoginActivity.this, SupplierActivity.class);
-                break;
-            case FRAGMENT_TYPE_ADMIN:
-                //it.setClass(LoginActivity.this, AdminActivity.class);
-                break;
-            default:
-
-                break;
-        }
-
+        it.setClass(LoginActivity.this, MainActivity.class);
         startActivity(it);
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
         finish();
-        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
 
     }
 

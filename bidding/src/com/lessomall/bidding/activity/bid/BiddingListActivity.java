@@ -31,8 +31,6 @@ public class BiddingListActivity extends BaseActivity {
 
         initTitle();
 
-        initBottom();
-
         initView();
 
         initData();
@@ -70,9 +68,4 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void initBottom() {
-
-
-    }
 }

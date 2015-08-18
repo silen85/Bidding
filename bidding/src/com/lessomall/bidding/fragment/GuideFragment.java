@@ -250,6 +250,7 @@ public class GuideFragment extends Fragment implements View.OnClickListener {
             Intent it = new Intent();
             it.setClass(getActivity(), LoginActivity.class);
             startActivity(it);
+            getActivity().overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
             getActivity().finish();
         }
 

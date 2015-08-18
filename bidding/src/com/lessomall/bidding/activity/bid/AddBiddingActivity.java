@@ -39,8 +39,6 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
         initView();
 
-        initBottom();
-
         initData();
 
     }
@@ -94,11 +92,6 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void initBottom() {
 
     }
 
