@@ -12,8 +12,6 @@
     <file url="file://$PROJECT_DIR$/bidding/res/layout/fragment_biddinglist.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/layout/fragment_splash.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/go_icon.png" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/license.png" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/license_s.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/time_chooser.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/title_setting.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/values/colors.xml" charset="UTF-8" />

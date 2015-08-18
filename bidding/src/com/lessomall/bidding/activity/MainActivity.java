@@ -1,5 +1,6 @@
 package com.lessomall.bidding.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -79,7 +80,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                 break;
             case R.id.searcher_other:
-
+                Intent intent = new Intent(MainActivity.this, OtherActivity.class);
+                startActivity(intent,false);
                 break;
             default:
 

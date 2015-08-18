@@ -4,7 +4,8 @@
 
     <string name="loading">请求数据中，请稍候&#8230;</string>
 
-    <string name="business_target">全国最大，最全的五金电器建材交易平台</string>
+    <string name="app_fullname">联塑商城竞价平台</string>
+    <string name="website">www.lessomall.com</string>
 
     <string name="text_login">登 录</string>
     <string name="text_account">账号 : </string>

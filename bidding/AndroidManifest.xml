@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/APP_THEME">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.GuideSplashActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
@@ -27,6 +27,16 @@
 
         <activity
             android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+
+        <activity
+            android:name=".activity.OtherActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"></activity>
 

@@ -2,8 +2,8 @@
 
     <dimen name="interval_line_height">0.5dp</dimen>
 
-    <dimen name="F1">18sp</dimen>
-    <dimen name="F2">16sp</dimen>
+    <dimen name="F1">20sp</dimen>
+    <dimen name="F2">18sp</dimen>
     <dimen name="F3">14sp</dimen>
     <dimen name="F4">12sp</dimen>
     <dimen name="F5">10sp</dimen>

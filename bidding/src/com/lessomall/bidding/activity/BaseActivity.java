@@ -1,6 +1,7 @@
 package com.lessomall.bidding.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
@@ -47,6 +48,12 @@ public abstract class BaseActivity extends FragmentActivity {
         timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
         timerDialog.show();
 
+    }
+
+    protected void startActivity(Intent intent, boolean flag) {
+        startActivity(intent);
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+        if (flag) finish();
     }
 
     /**
