@@ -22,15 +22,6 @@ public class GuideSplashActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        /*if (Constant.DEVELOPER_MODE) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDialog()
-                    .build());
-        }*/
-
         super.onCreate(savedInstanceState);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -39,29 +30,24 @@ public class GuideSplashActivity extends FragmentActivity {
 
         setContentView(R.layout.activity_guide_splash);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SharedPreferences sp = getSharedPreferences(
-                        getString(R.string.app_name), Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences(
+                getString(R.string.app_name), Context.MODE_PRIVATE);
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment fragment = null;
-                if (sp.getInt("versionCode", 0) == Tools.getPackageInfo(GuideSplashActivity.this).versionCode) {
-                    fragment = new SplashFragment();
-                } else {
-                    fragment = new GuideFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = null;
+        if (sp.getInt("versionCode", 0) == Tools.getPackageInfo(GuideSplashActivity.this).versionCode) {
+            fragment = new SplashFragment();
+        } else {
+            fragment = new GuideFragment();
 
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putInt("versionCode", Tools.getPackageInfo(GuideSplashActivity.this).versionCode);
-                    edit.commit();
-                }
+            SharedPreferences.Editor edit = sp.edit();
+            edit.putInt("versionCode", Tools.getPackageInfo(GuideSplashActivity.this).versionCode);
+            edit.commit();
+        }
 
-                fragmentTransaction.add(R.id.main, fragment);
-                fragmentTransaction.commit();
-            }
-        }).start();
+        fragmentTransaction.add(R.id.main, fragment);
+        fragmentTransaction.commit();
 
 
     }

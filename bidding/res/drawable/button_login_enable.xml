@@ -7,12 +7,8 @@
         android:centerX="5"
         android:type="sweep"/>     -->
 
-    <solid android:color="@color/MALL_C8" />
+    <solid android:color="@color/MALL_C1" />
 
-    <corners
-        android:bottomLeftRadius="3dp"
-        android:bottomRightRadius="3dp"
-        android:topLeftRadius="3dp"
-        android:topRightRadius="3dp" />
+    <corners android:radius="@dimen/corner_small" />
 
-</shape>  
+</shape>

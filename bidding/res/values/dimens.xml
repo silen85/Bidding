@@ -26,6 +26,9 @@
     <dimen name="edit_text_size">@dimen/F3</dimen>
     <!--  EditText文字大小  -->
 
+    <dimen name="corner_big">6dp</dimen>
+    <dimen name="corner_small">3dp</dimen>
+
     <dimen name="dialog_text_size">@dimen/F3</dimen>
 
     <dimen name="title_padding">4dp</dimen>

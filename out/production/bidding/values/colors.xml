@@ -13,7 +13,7 @@
     <color name="MALL_C8">#FFFFFF</color>
 
     <!--  顶部背景   LOGIN-->
-    <color name="TOP_BG_LOGIN">@color/MALL_C7</color>
+    <color name="TOP_BG_LOGIN">@color/TOP_BG_MAIN</color>
     <!--  顶部背景   MAIN-->
     <color name="TOP_BG_MAIN">@color/MALL_C1</color>
     <!--  列表项背景   -->

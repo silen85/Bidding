@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!--  渐变色 -->
@@ -8,12 +7,8 @@
         android:centerX="5"
         android:type="sweep"/>     -->
 
-    <solid android:color="#80000000" />
+    <solid android:color="#eaaf9a" />
 
-    <corners
-        android:bottomLeftRadius="3dp"
-        android:bottomRightRadius="3dp"
-        android:topLeftRadius="3dp"
-        android:topRightRadius="3dp" />
+    <corners android:radius="@dimen/corner_small"/>
 
 </shape>  

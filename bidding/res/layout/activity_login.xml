@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MALL_C8"
+    android:background="@color/CONTENT_BG"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -15,23 +15,13 @@
         android:paddingRight="@dimen/title_padding_right"
         android:paddingTop="@dimen/title_padding_top">
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:clickable="true"
-            android:src="@mipmap/btn_back_gray" />
-
-
         <TextView
             android:id="@+id/title_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/text_login"
-            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textColor="@color/MALL_C8"
             android:textSize="@dimen/F2" />
 
         <include layout="@layout/title_resize" />
@@ -53,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/MALL_C8"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/interval_C"
         android:paddingLeft="@dimen/interval_A"
@@ -83,7 +74,7 @@
                 android:layout_toLeftOf="@+id/delete"
                 android:layout_toRightOf="@+id/account_txt"
                 android:background="@null"
-                android:hint="请输入账号"
+                android:hint="@string/text_login_tips_account"
                 android:paddingBottom="@dimen/interval_G"
                 android:paddingLeft="@dimen/interval_E"
                 android:paddingTop="@dimen/interval_F"
@@ -100,7 +91,7 @@
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:scaleType="fitXY"
-                android:src="@mipmap/login_delete_icon"
+                android:src="@drawable/login_delete_icon_x"
                 android:visibility="invisible" />
         </RelativeLayout>
 
@@ -109,16 +100,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/MALL_C8"
         android:paddingLeft="@dimen/interval_A"
         android:paddingRight="@dimen/interval_B">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/interval_line_height"
-            android:text="@string/text_account"
-            android:textColor="@color/BASE_TEXT_COLOR"
-            android:textSize="@dimen/F3"
-            android:visibility="invisible" />
 
         <include layout="@layout/line" />
 
@@ -127,6 +111,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/MALL_C8"
         android:paddingBottom="@dimen/interval_C"
         android:paddingLeft="@dimen/interval_A"
         android:paddingRight="@dimen/interval_B"
@@ -153,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入密码"
+                android:hint="@string/text_login_tips_password"
                 android:inputType="textPassword"
                 android:paddingBottom="@dimen/interval_G"
                 android:paddingLeft="@dimen/interval_E"
@@ -164,18 +149,6 @@
 
 
         </LinearLayout>
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:clickable="true"
-            android:scaleType="fitXY"
-            android:src="@mipmap/login_delete_icon"
-            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -188,12 +161,12 @@
         android:layout_marginLeft="@dimen/interval_A"
         android:layout_marginRight="@dimen/interval_A"
         android:layout_marginTop="@dimen/interval_C"
-        android:background="@drawable/button_normal"
+        android:background="@drawable/button_login_normal"
         android:gravity="center"
         android:paddingBottom="@dimen/interval_D"
         android:paddingTop="@dimen/interval_D"
         android:text="@string/text_login"
-        android:textColor="@color/MALL_C5"
+        android:textColor="@color/MALL_C8"
         android:textSize="@dimen/F3"
         android:textStyle="bold" />
 

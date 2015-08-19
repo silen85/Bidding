@@ -1,17 +1,26 @@
 package com.lessomall.bidding.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.MD5;
 import com.lessomall.bidding.ui.TimeChooserDialog;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class BaseActivity extends FragmentActivity {
 
+    private InputMethodManager mSoftManager;
     private ProgressDialog loadingDialog;
 
     protected TimeChooserDialog timerDialog;
@@ -26,6 +35,19 @@ public abstract class BaseActivity extends FragmentActivity {
         // TODO Auto-generated method stub
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        mSoftManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+    }
+
+    protected Map<String, String> generateRequestMap() {
+
+        Map<String, String> map = new HashMap<String, String>();
+
+        map.put("appkey", Constant.APP_KEY_ANDROID);
+        map.put("timestamp", (System.currentTimeMillis() / 1000) + "");
+        map.put("token", new MD5().GetMD5Code(Constant.SECRET_KEY + Constant.DATE_FORMAT_1.format(new Date())));
+
+        return map;
     }
 
     protected void showTimerDialog() {
@@ -76,6 +98,13 @@ public abstract class BaseActivity extends FragmentActivity {
     public void disLoading() {
         if (loadingDialog != null) {
             loadingDialog.dismiss();
+        }
+    }
+
+    protected void hideSoftKeybord() {
+        if (getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
+            mSoftManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 

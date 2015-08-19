@@ -4,9 +4,6 @@
 
     <solid android:color="@color/QUOTE_BG" />
 
-    <corners
-        android:radius="0dp"
-        android:topLeftRadius="6dp"
-        android:topRightRadius="6dp" />
+    <corners android:radius="@dimen/corner_big" android:bottomLeftRadius="0dp" android:bottomRightRadius="0dp" />
 
 </shape>

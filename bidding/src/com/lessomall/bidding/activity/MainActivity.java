@@ -2,12 +2,17 @@ package com.lessomall.bidding.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.bid.AddBiddingActivity;
+import com.lessomall.bidding.activity.bid.BiddingListActivity;
+import com.lessomall.bidding.activity.quote.QuoteListActivity;
+import com.lessomall.bidding.common.Constant;
 
 /**
  * Created by meisl on 2015/8/12.
@@ -21,6 +26,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (Constant.DEVELOPER_MODE) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDialog()
+                    .build());
+        }
 
         super.onCreate(savedInstanceState);
 
@@ -54,6 +67,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initView() {
 
+        LinearLayout addbidding = (LinearLayout) findViewById(R.id.addbidding);
+        addbidding.setOnClickListener(this);
+
+        LinearLayout biddinglist_all = (LinearLayout) findViewById(R.id.biddinglist_all);
+        biddinglist_all.setOnClickListener(this);
+
+
+        LinearLayout quotelist_all = (LinearLayout) findViewById(R.id.quotelist_all);
+        quotelist_all.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -73,8 +97,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                 break;
             case R.id.searcher_other:
-                Intent intent = new Intent(MainActivity.this, OtherActivity.class);
-                startActivity(intent,false);
+                startActivity(new Intent(MainActivity.this, OtherActivity.class), false);
+                break;
+            case R.id.addbidding:
+                startActivity(new Intent(MainActivity.this, AddBiddingActivity.class), false);
+                break;
+            case R.id.biddinglist_all:
+                startActivity(new Intent(MainActivity.this, BiddingListActivity.class), false);
+                break;
+
+
+            case R.id.quotelist_all:
+                startActivity(new Intent(MainActivity.this, QuoteListActivity.class), false);
                 break;
             default:
 

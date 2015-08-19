@@ -11,9 +11,13 @@ public class Constant {
 
     public final static boolean DEVELOPER_MODE = true;
 
+    public static String  LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
+    public static String  LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
+
     public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
 
-    public final static String BASE_URL = "/app/";
+    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
+    public final static String URL_LOGIN = BASE_URL + "login/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
     public final static String APP_KEY_IOS = "fc98141d";         //对应数据库字段DEVICETYPE = 2;
@@ -40,7 +44,7 @@ public class Constant {
 
     public static final SimpleDateFormat DATE_FORMAT_5 = new SimpleDateFormat("mm/dd/yyyy");
 
-    public static final int CONNECT_TIMEOUT = 18000;
+    public static final int CONNECT_TIMEOUT = 12000;
 
     public static int HTTP_STATUS_CODE_SUCCESS = 200;
 
@@ -84,6 +88,7 @@ public class Constant {
     public final static String RECODE_FAILED_TOKEN_WRONG = "1004";
     public final static String RECODE_FAILED_TIMESTAMP_WRONG = "1005";
 
+    public final static String RECODE_FAILED_USER_LOGIN = "2001";
     public final static String RECODE_FAILED_USER_NOTEXIST = "2002";
     public final static String RECODE_FAILED_PASSWORD_WRONG = "2003";
     public final static String RECODE_FAILED_SESSION_WRONG = "2004";

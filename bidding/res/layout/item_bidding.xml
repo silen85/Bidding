@@ -78,6 +78,7 @@
         android:background="@drawable/bg_rectangle_white"
         android:gravity="left|center_vertical"
         android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
         android:paddingLeft="@dimen/interval_A"
         android:paddingRight="@dimen/interval_A"
         android:paddingTop="@dimen/interval_C">

@@ -1,6 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/interval_C"
+    android:background="@null"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_blue"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/interval_D">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/interval_D"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:gravity="left|top"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="竞价截止日期："
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/deadline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2015-08-11 【还有10天】"
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="期望交货日期："
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/delivery_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2015-08-21 【还有20天】"
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="税票类型："
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="增值税发票"
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其它要求："
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="【还有10天】"
+                        android:textColor="@color/BIDDING_TXT_COLOR"
+                        android:textSize="@dimen/F3"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/biddingstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="待报价"
+                android:textColor="@color/BIDDING_TXT_COLOR"
+                android:textSize="@dimen/F3"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/point_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/MALL_C8"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_A"
+        android:paddingTop="@dimen/interval_C">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/interval_A"
+            android:gravity="left|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="要一批漏电开关"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/interval_D"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="兰博基尼牌漏电开关"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
+
+            <TextView
+                android:id="@+id/num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/interval_D"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="99999 箱"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/interval_D"
+                android:ellipsize="end"
+                android:gravity="left|center_vertical"
+                android:singleLine="true"
+                android:text="说明：无"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/MALL_C8"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_A"
+        android:paddingTop="@dimen/interval_C">
+
+        <ListView
+            android:id="@+id/pricelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:cacheColorHint="@null"
+            android:divider="@null"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_white"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_A"
+        android:paddingTop="@dimen/interval_C">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gray"
+            android:paddingBottom="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="8dp"
+            android:text="发布报价"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/F3" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
+

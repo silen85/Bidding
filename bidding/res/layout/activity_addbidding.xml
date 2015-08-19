@@ -178,8 +178,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:clickable="true"
                                 android:adjustViewBounds="true"
+                                android:clickable="true"
                                 android:scaleType="fitXY"
                                 android:src="@mipmap/search_s" />
 
@@ -393,8 +393,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/interval_D"
                                 android:layout_marginTop="@dimen/interval_D"
-                                android:clickable="true"
                                 android:adjustViewBounds="true"
+                                android:clickable="true"
                                 android:scaleType="fitXY"
                                 android:src="@mipmap/search_s" />
 
@@ -653,7 +653,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/bidding_add_rule1"
                             android:textColor="@color/BASE_TEXT_COLOR"
-                            android:textSize="@dimen/F5" />
+                            android:textSize="@dimen/F4" />
 
                         <TextView
                             android:id="@+id/rule_txt2"
@@ -661,17 +661,20 @@
                             android:layout_height="wrap_content"
                             android:text="@string/bidding_add_rule2"
                             android:textColor="@color/MALL_C1"
-                            android:textSize="@dimen/F5" />
+                            android:textSize="@dimen/F4" />
 
                     </LinearLayout>
 
-                    <com.lessomall.bidding.ui.switchbutton.SwitchButton
+                    <ImageView
                         android:id="@+id/sb_enable"
-                        style="@style/SwitchButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/agree_x"
+                        android:clickable="true"
+                        android:scaleType="fitXY" />
 
                 </RelativeLayout>
                 <!-- rule -->

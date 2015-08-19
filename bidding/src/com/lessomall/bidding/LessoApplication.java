@@ -108,71 +108,73 @@ public class LessoApplication extends Application {
 
     public class LoginUser {
 
-        private String userId = "";
-        private String userName = "";
-        private String headShip = "";
-        private String company = "";
-        private String introduce = "";
+        private String userid = "";
+        private String username = "";
+        private String sessionid = "";
+        private String type = "";
+        private String email = "";
+        private String status = "";
+        private String customName = "";
         private String address = "";
-        private String mobile = "";
-        private String msgnum = "0";
-        private String imgurl = "";
-        private String mainsort = "";
-        private String token = "";
-        private String ismember = "0";
-        private String isvalidation = "0";
-        private String mobileauth = "0";
-        private String iscertshow = "0";
-        private String accountno = "";
-        private String imPasswd = "";
-        private String companyId = "";
+        private String linkman = "";
+        private String phone = "";
+        private String lastLoginTime = "";
+        private String createTime = "";
 
-        public String getAccountno() {
-            return accountno;
+        public String getUserid() {
+            return userid;
         }
 
-        public void setAccountno(String accountno) {
-            this.accountno = accountno;
+        public void setUserid(String userid) {
+            this.userid = userid;
         }
 
-        public String getUserId() {
-            return userId;
+        public String getUsername() {
+            return username;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setUsername(String username) {
+            this.username = username;
         }
 
-        public String getUserName() {
-            return userName;
+        public String getSessionid() {
+            return sessionid;
         }
 
-        public void setUserName(String userName) {
-            this.userName = userName;
+        public void setSessionid(String sessionid) {
+            this.sessionid = sessionid;
         }
 
-        public String getHeadShip() {
-            return headShip;
+        public String getType() {
+            return type;
         }
 
-        public void setHeadShip(String headShip) {
-            this.headShip = headShip;
+        public void setType(String type) {
+            this.type = type;
         }
 
-        public String getCompany() {
-            return company;
+        public String getEmail() {
+            return email;
         }
 
-        public void setCompany(String company) {
-            this.company = company;
+        public void setEmail(String email) {
+            this.email = email;
         }
 
-        public String getIntroduce() {
-            return introduce;
+        public String getStatus() {
+            return status;
         }
 
-        public void setIntroduce(String introduce) {
-            this.introduce = introduce;
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getCustomName() {
+            return customName;
+        }
+
+        public void setCustomName(String customName) {
+            this.customName = customName;
         }
 
         public String getAddress() {
@@ -183,94 +185,37 @@ public class LessoApplication extends Application {
             this.address = address;
         }
 
-        public String getMobile() {
-            return mobile;
+        public String getLinkman() {
+            return linkman;
         }
 
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
+        public void setLinkman(String linkman) {
+            this.linkman = linkman;
         }
 
-        public String getMsgnum() {
-            return msgnum;
+        public String getPhone() {
+            return phone;
         }
 
-        public void setMsgnum(String msgnum) {
-            this.msgnum = msgnum;
+        public void setPhone(String phone) {
+            this.phone = phone;
         }
 
-        public String getImgurl() {
-            return imgurl;
+        public String getLastLoginTime() {
+            return lastLoginTime;
         }
 
-        public void setImgurl(String imgurl) {
-            this.imgurl = imgurl;
+        public void setLastLoginTime(String lastLoginTime) {
+            this.lastLoginTime = lastLoginTime;
         }
 
-        public String getMainsort() {
-            return mainsort;
+        public String getCreateTime() {
+            return createTime;
         }
 
-        public void setMainsort(String mainsort) {
-            this.mainsort = mainsort;
+        public void setCreateTime(String createTime) {
+            this.createTime = createTime;
         }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-        public String getIsmember() {
-            return ismember;
-        }
-
-        public void setIsmember(String ismember) {
-            this.ismember = ismember;
-        }
-
-        public String getIsvalidation() {
-            return isvalidation;
-        }
-
-        public void setIsvalidation(String isvalidation) {
-            this.isvalidation = isvalidation;
-        }
-
-        public String getMobileauth() {
-            return mobileauth;
-        }
-
-        public void setMobileauth(String mobileauth) {
-            this.mobileauth = mobileauth;
-        }
-
-        public String getIscertshow() {
-            return iscertshow;
-        }
-
-        public void setIscertshow(String iscertshow) {
-            this.iscertshow = iscertshow;
-        }
-
-        public String getImPasswd() {
-            return imPasswd;
-        }
-
-        public void setImPasswd(String imPasswd) {
-            this.imPasswd = imPasswd;
-        }
-
-        public String getCompanyId() {
-            return companyId;
-        }
-
-        public void setCompanyId(String companyId) {
-            this.companyId = companyId;
-        }
-
     }
 
 }
