@@ -1,7 +1,8 @@
 <resources>
 
     <style name="APP_THEME" parent="@android:style/Theme.Holo.Light">
-       <!-- <item name="android:datePickerMode">spinner</item>  -->
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:spinnersShown">true</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 

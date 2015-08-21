@@ -74,6 +74,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         accountEditText = (EditText) findViewById(R.id.accountEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
+        SharedPreferences sp = getSharedPreferences(getString(R.string.app_name), Activity.MODE_PRIVATE);
+        String username = sp.getString(Constant.LESSO_BIDDING_USERNAME, "");
+        if (username != null && !"".equals(username.trim())) {
+            accountEditText.setText(username);
+            passwordEditText.requestFocus();
+        }
+
         delete = (ImageView) findViewById(R.id.delete);
         login = (Button) findViewById(R.id.login);
 
