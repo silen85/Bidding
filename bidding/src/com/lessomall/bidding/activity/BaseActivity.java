@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
+import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.MD5;
@@ -19,6 +21,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseActivity extends FragmentActivity {
+
+    protected static final int HANDLER_DATA = 1;
+    protected static final int HANDLER_NETWORK_ERR = 2;
+
+    protected LessoApplication.LoginUser loginUser;
 
     private InputMethodManager mSoftManager;
     private ProgressDialog loadingDialog;
@@ -32,12 +39,31 @@ public abstract class BaseActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
+
+        loginUser = ((LessoApplication) getApplication()).getUser();
+        if (loginUser == null && !(this instanceof LoginActivity)) {
+            sendBroadcast(new Intent(Constant.FINISH_ACTION));
+            startActivity(new Intent(this, LoginActivity.class), true);
+        }
+
         // TODO Auto-generated method stub
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         mSoftManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        loginUser = ((LessoApplication) getApplication()).getUser();
+        if (loginUser == null && !(this instanceof LoginActivity)) {
+            sendBroadcast(new Intent(Constant.FINISH_ACTION));
+            startActivity(new Intent(this, LoginActivity.class), true);
+        }
+    }
+
 
     protected Map<String, String> generateRequestMap() {
 
@@ -76,6 +102,20 @@ public abstract class BaseActivity extends FragmentActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
         if (flag) finish();
+    }
+
+    protected void tipsOutput(String recode, String msg) {
+        if (Constant.RECODE_ERROR_TIPS.equals(recode)) {
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        } else if (Constant.RECODE_FAILED_USER_LOGIN.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
+        } else if (Constant.RECODE_FAILED_USER_NOTEXIST.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_NOTEXIST), Toast.LENGTH_SHORT).show();
+        } else if (Constant.RECODE_FAILED_PASSWORD_WRONG.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_PASSWORD_WRONG), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

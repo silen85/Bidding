@@ -9,18 +9,19 @@ import java.text.SimpleDateFormat;
  */
 public class Constant {
 
-    public final static boolean DEVELOPER_MODE = true;
+    public final static boolean DEVELOPER_MODE = false;
 
-    public static String  LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
-    public static String  LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
+    public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
+    public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
     public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
 
     public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
     public final static String URL_LOGIN = BASE_URL + "login/";
+    public final static String URL_UPDATE = BASE_URL + "androidversion/";
+    public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
-    public final static String APP_KEY_IOS = "fc98141d";         //对应数据库字段DEVICETYPE = 2;
 
     public final static String SECRET_KEY = "db1e358753b4fe1735dcf50dc1bf465b";
 
@@ -96,6 +97,6 @@ public class Constant {
     public final static String RECODE_ERROR_SYSTEM = "9999";
     public final static String RECODE_ERROR_TIPS = "10000";
 
-    public static final String FINISH_ACTION = "com.lesso.data.FINISH_ACTION";
+    public static final String FINISH_ACTION = "com.lessomall.bidding.FINISH_ACTION";
 
 }

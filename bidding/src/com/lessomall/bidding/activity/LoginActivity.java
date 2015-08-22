@@ -36,10 +36,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private String TAG = "com.lessomall.bidding.activity.LoginActivity";
 
-
-    private static final int HANDLER_DATA = 1;
-    private static final int HANDLER_NETWORK_ERR = 2;
-
     private EditText accountEditText;
     private EditText passwordEditText;
     private ImageView delete;
@@ -188,9 +184,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
-    protected void doLogin(Map<String, String> parems) {
+    protected void doLogin(Map<String, String> params) {
 
-        RequestParams requestParams = new RequestParams(parems);
+        RequestParams requestParams = new RequestParams(params);
 
         AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {
 

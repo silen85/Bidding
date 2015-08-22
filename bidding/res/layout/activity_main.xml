@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CONTENT_BG"
+    android:baselineAligned="false"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:baselineAligned="false"
             android:clickable="true"
             android:gravity="center"
             android:orientation="vertical">
@@ -100,6 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
+            android:baselineAligned="false"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -112,6 +115,7 @@
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
                 android:background="@drawable/bg_rectangle_orange_x"
+                android:baselineAligned="false"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -149,6 +153,7 @@
                 android:layout_marginLeft="@dimen/interval_A"
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
+                android:baselineAligned="false"
                 android:gravity="left|top"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -199,6 +204,7 @@
                         android:weightSum="2">
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_b2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -207,15 +213,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="2">
+
+                            <ProgressBar
+                                android:id="@+id/loading_b2"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_b2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -228,6 +245,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_b3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/main_cell_interval"
@@ -237,15 +255,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="3">
+
+                            <ProgressBar
+                                android:id="@+id/loading_b3"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_b3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -269,6 +298,7 @@
                         android:weightSum="2">
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_b5"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -277,15 +307,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="5">
+
+                            <ProgressBar
+                                android:id="@+id/loading_b5"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_b5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -298,6 +339,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_b6"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/main_cell_interval"
@@ -307,15 +349,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="6">
+
+                            <ProgressBar
+                                android:id="@+id/loading_b6"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_b6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/BIDDING_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -341,6 +394,7 @@
                     android:weightSum="3">
 
                     <LinearLayout
+                        android:id="@+id/LinearLayout_b1"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -349,15 +403,26 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/main_cell_interval_padding"
-                        android:paddingTop="@dimen/main_cell_interval_padding">
+                        android:paddingTop="@dimen/main_cell_interval_padding"
+                        android:tag="1">
+
+                        <ProgressBar
+                            android:id="@+id/loading_b1"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
+                            android:visibility="visible" />
 
                         <TextView
+                            android:id="@+id/text_b1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
-                            android:textSize="@dimen/main_text_size" />
+                            android:textSize="@dimen/main_text_size"
+                            android:visibility="gone" />
 
 
                         <TextView
@@ -371,6 +436,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/LinearLayout_b4"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="@dimen/main_cell_interval"
@@ -380,15 +446,26 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/main_cell_interval_padding"
-                        android:paddingTop="@dimen/main_cell_interval_padding">
+                        android:paddingTop="@dimen/main_cell_interval_padding"
+                        android:tag="4">
+
+                        <ProgressBar
+                            android:id="@+id/loading_b4"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
+                            android:visibility="visible" />
 
                         <TextView
+                            android:id="@+id/text_b4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
-                            android:textSize="@dimen/main_text_size" />
+                            android:textSize="@dimen/main_text_size"
+                            android:visibility="gone" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -401,6 +478,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/LinearLayout_b7"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="@dimen/main_cell_interval"
@@ -410,15 +488,26 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/main_cell_interval_padding"
-                        android:paddingTop="@dimen/main_cell_interval_padding">
+                        android:paddingTop="@dimen/main_cell_interval_padding"
+                        android:tag="7">
+
+                        <ProgressBar
+                            android:id="@+id/loading_b7"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
+                            android:visibility="visible" />
 
                         <TextView
+                            android:id="@+id/text_b7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/BIDDING_TXT_COLOR"
-                            android:textSize="@dimen/main_text_size" />
+                            android:textSize="@dimen/main_text_size"
+                            android:visibility="gone" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -441,6 +530,7 @@
                 android:layout_marginLeft="@dimen/interval_A"
                 android:layout_marginRight="@dimen/interval_A"
                 android:layout_marginTop="@dimen/interval_C"
+                android:baselineAligned="false"
                 android:gravity="left|top"
                 android:orientation="vertical"
                 android:weightSum="3">
@@ -493,6 +583,7 @@
                         android:weightSum="2">
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_q1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -501,15 +592,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="1">
+
+                            <ProgressBar
+                                android:id="@+id/loading_q1"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_q1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -522,6 +624,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_q2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/main_cell_interval"
@@ -531,15 +634,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="2">
+
+                            <ProgressBar
+                                android:id="@+id/loading_q2"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_q2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -554,6 +668,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/LinearLayout_q3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/main_cell_interval"
@@ -563,15 +678,26 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/main_cell_interval_padding"
-                        android:paddingTop="@dimen/main_cell_interval_padding">
+                        android:paddingTop="@dimen/main_cell_interval_padding"
+                        android:tag="3">
+
+                        <ProgressBar
+                            android:id="@+id/loading_q3"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
+                            android:visibility="visible" />
 
                         <TextView
+                            android:id="@+id/text_q3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/QUOTE_TXT_COLOR"
-                            android:textSize="@dimen/main_text_size" />
+                            android:textSize="@dimen/main_text_size"
+                            android:visibility="gone" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -590,6 +716,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="@dimen/main_cell_interval"
                     android:layout_weight="1"
+                    android:baselineAligned="false"
                     android:gravity="left|top"
                     android:orientation="horizontal"
                     android:weightSum="3">
@@ -603,23 +730,36 @@
                         android:weightSum="2">
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_q4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/bg_rectangle_blue_x"
+                            android:baselineAligned="false"
                             android:clickable="true"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="4">
+
+                            <ProgressBar
+                                android:id="@+id/loading_q4"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_q4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -632,6 +772,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/LinearLayout_q5"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/main_cell_interval"
@@ -641,15 +782,26 @@
                             android:gravity="center"
                             android:orientation="vertical"
                             android:paddingBottom="@dimen/main_cell_interval_padding"
-                            android:paddingTop="@dimen/main_cell_interval_padding">
+                            android:paddingTop="@dimen/main_cell_interval_padding"
+                            android:tag="5">
+
+                            <ProgressBar
+                                android:id="@+id/loading_q5"
+                                style="?android:attr/progressBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/main_cell_interval_txt"
+                                android:visibility="visible" />
 
                             <TextView
+                                android:id="@+id/text_q5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/main_cell_interval_txt"
                                 android:text="0"
                                 android:textColor="@color/QUOTE_TXT_COLOR"
-                                android:textSize="@dimen/main_text_size" />
+                                android:textSize="@dimen/main_text_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -664,6 +816,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/LinearLayout_q6"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/main_cell_interval"
@@ -673,15 +826,26 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/main_cell_interval_padding"
-                        android:paddingTop="@dimen/main_cell_interval_padding">
+                        android:paddingTop="@dimen/main_cell_interval_padding"
+                        android:tag="6">
+
+                        <ProgressBar
+                            android:id="@+id/loading_q6"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/main_cell_interval_txt"
+                            android:visibility="visible" />
 
                         <TextView
+                            android:id="@+id/text_q6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/main_cell_interval_txt"
                             android:text="0"
                             android:textColor="@color/QUOTE_TXT_COLOR"
-                            android:textSize="@dimen/main_text_size" />
+                            android:textSize="@dimen/main_text_size"
+                            android:visibility="gone" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -701,6 +865,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:paddingBottom="24dp"
                 android:paddingTop="24dp" />
