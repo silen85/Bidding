@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
@@ -52,6 +54,13 @@ public class BiddingListActivity extends BaseActivity {
     @Override
     protected void initTitle() {
 
+        ImageView btn_back = (ImageView) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

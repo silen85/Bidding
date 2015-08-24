@@ -25,7 +25,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected static final int HANDLER_DATA = 1;
     protected static final int HANDLER_NETWORK_ERR = 2;
 
-    protected LessoApplication.LoginUser loginUser;
+    public LessoApplication.LoginUser loginUser;
 
     private InputMethodManager mSoftManager;
     private ProgressDialog loadingDialog;
@@ -65,7 +65,7 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
 
-    protected Map<String, String> generateRequestMap() {
+    public Map<String, String> generateRequestMap() {
 
         Map<String, String> map = new HashMap<String, String>();
 
@@ -104,7 +104,7 @@ public abstract class BaseActivity extends FragmentActivity {
         if (flag) finish();
     }
 
-    protected void tipsOutput(String recode, String msg) {
+    public void tipsOutput(String recode, String msg) {
         if (Constant.RECODE_ERROR_TIPS.equals(recode)) {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         } else if (Constant.RECODE_FAILED_USER_LOGIN.equals(recode)) {

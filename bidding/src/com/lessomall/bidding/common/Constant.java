@@ -3,6 +3,8 @@ package com.lessomall.bidding.common;
 import android.os.Environment;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by meisl on 2015/6/25.
@@ -20,6 +22,7 @@ public class Constant {
     public final static String URL_LOGIN = BASE_URL + "login/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
     public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
+    public final static String BIDDING_LIST = BASE_URL + "biddingList/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 
@@ -54,32 +57,11 @@ public class Constant {
     //10:保存 20:保存并提交
     public final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
 
+    public final static Map<String,String> BIDDING_STATUS_MAP = new HashMap<String, String>(7);
 
-    /**
-     * 供应商：
-     * 待报价  {"0","30"}
-     * 未提交/被退回  {"10","30"}
-     * 已报价  {"20","30"}
-     * 待发货  {"40","40"}
-     * 已发货  {"60","40"}
-     */
-    public final static String[][] BIDDING_SUPPLIER_ORDER_STATUS = new String[][]{{"0", "30"}, {"10", "30"}, {"20", "30"}, {"40", "40"}, {"60", "40"}};
+    public final static Map<String,String> QUOTE_STATUS_MAP = new HashMap<String, String>(6);
 
-    /**
-     * 经销商：
-     * 1:买方填写完竞价单后暂存或被联塑退回
-     * 2买方填写完竞价单已提交等待联塑审核后发布
-     * 3联塑已审核发布竞价信息到平台等待卖方报价
-     * 4卖方已报价但被退回
-     * 5卖方已报价等待联塑审核单价后才显示给买方查看
-     * 6联塑已审核卖方报价买方可查看价格选择价格
-     * 7买方已选择合适价格等待卖方发货
-     * 8卖方已发货等待卖方确认收货
-     * 9买方确认收到货物
-     * 10竞价交易完成归档
-     */
-    public final static int[] BIDDING_DEALER_ORDER_STATUS = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
+    public final static int PAGE_SIZE = 10;
 
     public final static String RECODE_SUCCESS = "0000";
     public final static String RECODE_FAILED = "0001";
@@ -98,5 +80,24 @@ public class Constant {
     public final static String RECODE_ERROR_TIPS = "10000";
 
     public static final String FINISH_ACTION = "com.lessomall.bidding.FINISH_ACTION";
+
+    static {
+
+        BIDDING_STATUS_MAP.put("1","未提交");
+        BIDDING_STATUS_MAP.put("2","待审核");
+        BIDDING_STATUS_MAP.put("3","竞价中");
+        BIDDING_STATUS_MAP.put("4","已审核");
+        BIDDING_STATUS_MAP.put("5","已确认报价");
+        BIDDING_STATUS_MAP.put("6","已发货");
+        BIDDING_STATUS_MAP.put("7","已收货");
+
+        QUOTE_STATUS_MAP.put("1","待报价");
+        QUOTE_STATUS_MAP.put("2","已报价");
+        QUOTE_STATUS_MAP.put("3","被退回");
+        QUOTE_STATUS_MAP.put("4","竞价达成待发货");
+        QUOTE_STATUS_MAP.put("5","已收货");
+        QUOTE_STATUS_MAP.put("6","已确认收货");
+
+    }
 
 }
