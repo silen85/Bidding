@@ -3,8 +3,6 @@ package com.lessomall.bidding.common;
 import android.os.Environment;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by meisl on 2015/6/25.
@@ -18,11 +16,13 @@ public class Constant {
 
     public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
 
-    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
-    public final static String URL_LOGIN = BASE_URL + "login/";
-    public final static String URL_UPDATE = BASE_URL + "androidversion/";
-    public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
-    public final static String BIDDING_LIST = BASE_URL + "biddingList/";
+    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/";
+    public final static String APP_URL = BASE_URL + "app/";
+    public final static String PICTURE_URL = BASE_URL + "fileUp/img/?path=";
+    public final static String URL_LOGIN = APP_URL + "login/";
+    public final static String URL_UPDATE = APP_URL + "androidversion/";
+    public final static String URL_MAINCOUNT = APP_URL + "mainCount/";
+    public final static String BIDDING_LIST = APP_URL + "biddingList/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 
@@ -57,10 +57,6 @@ public class Constant {
     //10:保存 20:保存并提交
     public final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
 
-    public final static Map<String,String> BIDDING_STATUS_MAP = new HashMap<String, String>(7);
-
-    public final static Map<String,String> QUOTE_STATUS_MAP = new HashMap<String, String>(6);
-
     public final static int PAGE_SIZE = 10;
 
     public final static String RECODE_SUCCESS = "0000";
@@ -83,20 +79,6 @@ public class Constant {
 
     static {
 
-        BIDDING_STATUS_MAP.put("1","未提交");
-        BIDDING_STATUS_MAP.put("2","待审核");
-        BIDDING_STATUS_MAP.put("3","竞价中");
-        BIDDING_STATUS_MAP.put("4","已审核");
-        BIDDING_STATUS_MAP.put("5","已确认报价");
-        BIDDING_STATUS_MAP.put("6","已发货");
-        BIDDING_STATUS_MAP.put("7","已收货");
-
-        QUOTE_STATUS_MAP.put("1","待报价");
-        QUOTE_STATUS_MAP.put("2","已报价");
-        QUOTE_STATUS_MAP.put("3","被退回");
-        QUOTE_STATUS_MAP.put("4","竞价达成待发货");
-        QUOTE_STATUS_MAP.put("5","已收货");
-        QUOTE_STATUS_MAP.put("6","已确认收货");
 
     }
 

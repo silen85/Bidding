@@ -19,7 +19,6 @@ import com.lessomall.bidding.adapter.BiddingAdapter;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.model.Bidding;
-import com.lessomall.bidding.model.QuotePrice;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
@@ -84,7 +83,7 @@ public class BiddingListFragment extends Fragment {
 
     }
 
-    protected void fillData(List<Map<String, String>> data) {
+    private void fillData(List<Map> data) {
 
         if (pageno == 1) list.clear();
 
@@ -93,58 +92,7 @@ public class BiddingListFragment extends Fragment {
 
                 Bidding bidding = new Bidding();
 
-                bidding.setOrderType(data.get(i).get("OrderType"));
-                bidding.setId(data.get(i).get("Id"));
-                bidding.setBiddingCode(data.get(i).get("BiddingCode"));
-                bidding.setBiddingDeadline(data.get(i).get("BiddingDeadline"));
-                bidding.setBiddingStatus(data.get(i).get("BiddingStatus"));
-                bidding.setBiddingTitle(data.get(i).get("BiddingTitle"));
-                bidding.setConsumerCode(data.get(i).get("ConsumerCode"));
-                bidding.setCommissionRate(data.get(i).get("CommissionRate"));
-                bidding.setConsumerName(data.get(i).get("ConsumerName"));
-                bidding.setDeliveryGoodsMode(data.get(i).get("DeliveryGoodsMode"));
-                bidding.setDeliveryGoodsPlace(data.get(i).get("DeliveryGoodsPlace"));
-                bidding.setDepositPaymentVouchers(data.get(i).get("DepositPaymentVouchers"));
-                bidding.setEndInfoSubmittedTime(data.get(i).get("EndInfoSubmittedTime"));
-                bidding.setExpectDeliveryDate(data.get(i).get("ExpectDeliveryDate"));
-                bidding.setIntentPrice(data.get(i).get("IntentPrice"));
-                bidding.setMemo(data.get(i).get("Memo"));
-                bidding.setNameType(data.get(i).get("NameType"));
-                bidding.setPaymentMode(data.get(i).get("PaymentMode"));
-                bidding.setPictureURL(data.get(i).get("PictureURL"));
-                bidding.setPrice(data.get(i).get("Price"));
-                bidding.setRequiredQuantity(data.get(i).get("RequiredQuantity"));
-                bidding.setStartInfoSubmittedTime(data.get(i).get("StartInfoSubmittedTime"));
-                bidding.setTaxBillType(data.get(i).get("TaxBillType"));
-                bidding.setUnit(data.get(i).get("Unit"));
-
-                List<Map<String, String>> _data = (List<Map<String, String>>) (((Map) data.get(i)).get("datalist"));
-
-                List<QuotePrice> quotePrices = new ArrayList<QuotePrice>();
-                if (_data != null && _data.size() > 0) {
-                    for (int j = 0; j < _data.size(); j++) {
-
-                        QuotePrice quotePrice = new QuotePrice();
-
-                        quotePrice.setId(_data.get(i).get("Id"));
-                        quotePrice.setActualSupplyTotalNumber(_data.get(i).get("ActualSupplyTotalNumber"));
-                        quotePrice.setBiddingStatus(_data.get(i).get("BiddingStatus"));
-                        quotePrice.setBiddingDetailId(_data.get(i).get("BiddingDetailCountSupplierBidding"));
-                        quotePrice.setCountSupplierBidding(_data.get(i).get("CountSupplierBidding"));
-                        quotePrice.setCreateTime(_data.get(i).get("CreateTime"));
-                        quotePrice.setLastUpdated(_data.get(i).get("LastUpdated"));
-                        quotePrice.setMemo(_data.get(i).get("Memo"));
-                        quotePrice.setPrice(_data.get(i).get("Price"));
-                        quotePrice.setQuotationDate(_data.get(i).get("QuotationDate"));
-                        quotePrice.setReturnState(_data.get(i).get("ReturnState"));
-                        quotePrice.setSupplierCode(_data.get(i).get("SupplierCode"));
-                        quotePrice.setSupplierName(_data.get(i).get("SupplierName"));
-
-                        quotePrices.add(quotePrice);
-                    }
-                }
-
-                bidding.setQuotePriceList(quotePrices);
+                bidding.map2Bidding(data.get(i));
 
                 list.add(bidding);
             }
@@ -153,13 +101,13 @@ public class BiddingListFragment extends Fragment {
     }
 
 
-    protected Map<String, String> generateParam() {
+    private Map<String, String> generateParam() {
 
         Map<String, String> params = activity.generateRequestMap();
 
         params.put("sessionid", activity.loginUser.getSessionid());
         params.put("type", "1");
-        params.put("status", status + "");
+        params.put("status", getStatus() + "");
 
         params.put("pageno", pageno + "");
         params.put("pageSize", Constant.PAGE_SIZE + "");
@@ -168,7 +116,7 @@ public class BiddingListFragment extends Fragment {
 
     }
 
-    protected void sendRequest(Map<String, String> parems) {
+    private void sendRequest(Map<String, String> parems) {
 
         RequestParams requestParams = new RequestParams(parems);
 
@@ -233,7 +181,7 @@ public class BiddingListFragment extends Fragment {
 
                         if (Constant.RECODE_SUCCESS.equals(recode)) {
 
-                            List<Map<String, String>> datalist = (List<Map<String, String>>) result.get("datalist");
+                            List<Map> datalist = (List<Map>) result.get("datalist");
 
                             if (datalist != null && datalist.size() > 0) {
                                 fillData(datalist);

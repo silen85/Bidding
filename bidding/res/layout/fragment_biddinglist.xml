@@ -8,9 +8,9 @@
         android:id="@+id/biddinglist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:cacheColorHint="@null"
         android:divider="@null"
+        android:dividerHeight="@dimen/interval_C"
         android:scrollbars="none" />
 
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.lessomall.bidding.activity.bid;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -19,7 +18,7 @@ public class BiddingListActivity extends BaseActivity {
     private String TAG = "com.lessomall.bidding.activity.bid.BiddingListActivity";
 
     private FragmentManager fragmentManager;
-    private Fragment fragment;
+    private BiddingListFragment fragment;
 
 
     @Override
@@ -41,7 +40,19 @@ public class BiddingListActivity extends BaseActivity {
 
     private void initFragment() {
 
+        int _type = 0;
+        if (getIntent().getExtras() != null) {
+            String type = (String) getIntent().getExtras().get("type");
+            try {
+                _type = Integer.parseInt(type);
+            } catch (Exception e) {
+
+            }
+        }
+
         fragment = new BiddingListFragment();
+
+        fragment.setStatus(_type);
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
