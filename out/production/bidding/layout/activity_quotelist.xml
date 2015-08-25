@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:clickable="true"
-            android:src="@mipmap/btn_back" />
+            android:background="@drawable/btn_back_x"
+            android:clickable="true" />
 
         <TextView
             android:id="@+id/title_txt"
