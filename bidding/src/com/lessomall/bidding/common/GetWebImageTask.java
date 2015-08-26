@@ -1,10 +1,13 @@
 package com.lessomall.bidding.common;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.lessomall.bidding.R;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -17,9 +20,14 @@ public class GetWebImageTask extends AsyncTask<String, Void, Bitmap> {
 
     private String TAG = "com.lessomall.bidding.common.GetWebImageTask";
 
+    private Context context;
+
     private ImageView vw;
 
-    public GetWebImageTask(ImageView vw) {
+    private WebImageCacheI webImageCacheI;
+
+    public GetWebImageTask(Context context, ImageView vw) {
+        this.context = context;
         this.vw = vw;
     }
 
@@ -33,8 +41,17 @@ public class GetWebImageTask extends AsyncTask<String, Void, Bitmap> {
         super.onPostExecute(bitmap);
         if (bitmap != null) {
             vw.setImageBitmap(bitmap);
-            vw.invalidate();
+            if (webImageCacheI != null) {
+                webImageCacheI.putCache(bitmap);
+            }
+        } else {
+            vw.setImageResource(R.mipmap.pic_default);
+            if (webImageCacheI != null) {
+                webImageCacheI.putCache(BitmapFactory.decodeResource(context.getResources(), R.mipmap.pic_default));
+            }
         }
+        vw.invalidate();
+
     }
 
     @Override
@@ -61,5 +78,13 @@ public class GetWebImageTask extends AsyncTask<String, Void, Bitmap> {
 
         return bitMap;
 
+    }
+
+    public void setWebImageCacheI(WebImageCacheI webImageCacheI) {
+        this.webImageCacheI = webImageCacheI;
+    }
+
+    public interface WebImageCacheI {
+        public void putCache(Bitmap bitmap);
     }
 }

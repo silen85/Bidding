@@ -39,11 +39,9 @@ public abstract class BaseActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-
         loginUser = ((LessoApplication) getApplication()).getUser();
-        if (loginUser == null && !(this instanceof LoginActivity)) {
-            sendBroadcast(new Intent(Constant.FINISH_ACTION));
-            startActivity(new Intent(this, LoginActivity.class), true);
+        if ((loginUser == null || loginUser.getSessionid() == null || "".equals(loginUser.getSessionid().trim())) && !(this instanceof LoginActivity)) {
+            reLogin();
         }
 
         // TODO Auto-generated method stub
@@ -58,12 +56,15 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onRestart();
 
         loginUser = ((LessoApplication) getApplication()).getUser();
-        if (loginUser == null && !(this instanceof LoginActivity)) {
-            sendBroadcast(new Intent(Constant.FINISH_ACTION));
-            startActivity(new Intent(this, LoginActivity.class), true);
+        if ((loginUser == null || loginUser.getSessionid() == null || "".equals(loginUser.getSessionid().trim())) && !(this instanceof LoginActivity)) {
+            reLogin();
         }
     }
 
+    private void reLogin() {
+        sendBroadcast(new Intent(Constant.FINISH_ACTION));
+        startActivity(new Intent(this, LoginActivity.class), true);
+    }
 
     public Map<String, String> generateRequestMap() {
 
@@ -107,14 +108,20 @@ public abstract class BaseActivity extends FragmentActivity {
     public void tipsOutput(String recode, String msg) {
         if (Constant.RECODE_ERROR_TIPS.equals(recode)) {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        }else if (Constant.RECODE_FAILED_NODATA.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.no_data_tips), Toast.LENGTH_SHORT).show();
         } else if (Constant.RECODE_FAILED_USER_LOGIN.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
         } else if (Constant.RECODE_FAILED_USER_NOTEXIST.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_NOTEXIST), Toast.LENGTH_SHORT).show();
         } else if (Constant.RECODE_FAILED_PASSWORD_WRONG.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_PASSWORD_WRONG), Toast.LENGTH_SHORT).show();
+        } else if (Constant.RECODE_FAILED_SESSION_WRONG.equals(recode)) {
+            reLogin();
+        } else if (Constant.RECODE_ERROR_SYSTEM.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_ERROR_OTHERS), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
+
         }
     }
 

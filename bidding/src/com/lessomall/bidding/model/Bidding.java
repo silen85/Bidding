@@ -1,11 +1,15 @@
 package com.lessomall.bidding.model;
 
+import android.graphics.Bitmap;
+
+import com.lessomall.bidding.common.GetWebImageTask;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class Bidding {
+public class Bidding implements GetWebImageTask.WebImageCacheI {
 
     //0:竞价单；1：报价单
     private String orderType = "0";
@@ -64,6 +68,40 @@ public class Bidding {
     private String createtime;
 
     private String biddingStatusName;
+
+    public Bitmap getImageCache() {
+        return getViewHolder().getImageCache();
+    }
+
+    public void setImageCache(Bitmap imageCache) {
+        getViewHolder().setImageCache(imageCache);
+    }
+
+    private ViewHolder viewHolder;
+
+    private ViewHolder getViewHolder() {
+        if (viewHolder == null)
+            viewHolder = new ViewHolder();
+        return viewHolder;
+    }
+
+    @Override
+    public void putCache(Bitmap bitmap) {
+        setImageCache(bitmap);
+    }
+
+    private class ViewHolder {
+
+        private Bitmap imageCache;
+
+        public Bitmap getImageCache() {
+            return imageCache;
+        }
+
+        public void setImageCache(Bitmap imageCache) {
+            this.imageCache = imageCache;
+        }
+    }
 
     private String trimValue(String value) {
         return (value == null ? "" : value.trim());

@@ -18,7 +18,7 @@ public class Constant {
 
     public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/";
     public final static String APP_URL = BASE_URL + "app/";
-    public final static String PICTURE_URL = BASE_URL + "fileUp/img/?path=";
+    public final static String PICTURE_URL = "http://10.10.7.159/lots-web/" + "fileUp/img/?path=";
     public final static String URL_LOGIN = APP_URL + "login/";
     public final static String URL_UPDATE = APP_URL + "androidversion/";
     public final static String URL_MAINCOUNT = APP_URL + "mainCount/";
