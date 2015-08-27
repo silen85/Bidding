@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 
 import com.lessomall.bidding.common.DefaultExceptionHandler;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -48,26 +48,27 @@ public class LessoApplication extends Application {
      */
     public static void initImageLoader(Context context) {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                // .showImageOnLoading(R.drawable.default_head)
-                // .showImageForEmptyUri(R.drawable.default_head)
-                // .showImageOnFail(R.drawable.default_head)
-                .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true)
+                //.showImageOnLoading(R.drawable.default_head)
+                //.showImageForEmptyUri(R.mipmap.pic_default)
+                //.showImageOnFail(R.mipmap.pic_default)
+                .cacheInMemory(true).cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565).build();
 
         ImageLoaderConfiguration config;
         config = new ImageLoaderConfiguration.Builder(
                 context).defaultDisplayImageOptions(defaultOptions)
-                .memoryCache(new WeakMemoryCache())
+                .memoryCache(new LruMemoryCache(3 * 1024 * 1024))
+                .memoryCacheSize(3 * 1024 * 1024)
                 .memoryCacheExtraOptions(480, 800)
                 .threadPriority(Thread.NORM_PRIORITY)
                 .denyCacheImageMultipleSizesInMemory()
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
                 .diskCacheSize(50 * 1024 * 1024) // 50 Mb
+                .diskCacheFileCount(100)
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
-                        // .writeDebugLogs() // Remove for release app
-                .threadPoolSize(4)
+                .writeDebugLogs()
+                .threadPoolSize(3)
                 .build();
-
 
         ImageLoader.getInstance().init(config);
     }

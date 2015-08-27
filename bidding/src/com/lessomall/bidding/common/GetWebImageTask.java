@@ -85,6 +85,6 @@ public class GetWebImageTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     public interface WebImageCacheI {
-        public void putCache(Bitmap bitmap);
+        void putCache(Bitmap bitmap);
     }
 }

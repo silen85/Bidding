@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.bid.AddBiddingActivity;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
+import com.lessomall.bidding.activity.bid.TestActivity;
 import com.lessomall.bidding.activity.quote.QuoteListActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -380,7 +381,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent, false);
                 break;
             case R.id.quotelist_all:
-                startActivity(new Intent(MainActivity.this, QuoteListActivity.class), false);
+                startActivity(new Intent(MainActivity.this, TestActivity.class), false);
                 break;
             case R.id.LinearLayout_q1:
             case R.id.LinearLayout_q2:

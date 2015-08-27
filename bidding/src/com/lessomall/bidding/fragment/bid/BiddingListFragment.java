@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
+import android.text.format.DateUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.extras.listfragment.PullToRefreshListFragment;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.BiddingAdapter;
@@ -22,6 +22,8 @@ import com.lessomall.bidding.model.Bidding;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import org.apache.http.Header;
 
@@ -32,7 +34,7 @@ import java.util.Map;
 /**
  * Created by meisl on 2015/7/24.
  */
-public class BiddingListFragment extends Fragment {
+public class BiddingListFragment extends PullToRefreshListFragment {
 
     private String TAG = "com.lessomall.bidding.fragment.bid.BiddingListFragment";
 
@@ -42,26 +44,19 @@ public class BiddingListFragment extends Fragment {
 
     private int status = 0;
 
-    private LinearLayout view;
+    private List<Bidding> list = new ArrayList();
 
-    private List<Bidding> list = new ArrayList<Bidding>();
+    private PullToRefreshListView mPullRefreshListView;
+
+    private ListView biddinglist;
 
     private BiddingAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        view = (LinearLayout) inflater.inflate(R.layout.fragment_biddinglist, null);
-
-        initView();
-
-        return view;
-
-    }
-
-    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        initView();
 
         initData();
     }
@@ -69,16 +64,58 @@ public class BiddingListFragment extends Fragment {
 
     private void initView() {
 
+        mPullRefreshListView = getPullToRefreshListView();
 
-        ListView biddinglist = (ListView) view.findViewById(R.id.biddinglist);
+        mPullRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+
+        // Set a listener to be invoked when the list should be refreshed.
+        mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                String label = DateUtils.formatDateTime(activity, System.currentTimeMillis(),
+                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+                // Update the LastUpdatedLabel
+                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+                // Do work to refresh the list here.
+                pageno++;
+                sendRequest(generateParam());
+            }
+        });
+
+        mPullRefreshListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+
+            @Override
+            public void onLastItemVisible() {
+
+            }
+        });
+
+
+        biddinglist = mPullRefreshListView.getRefreshableView();
+
+        /**
+         * Add Sound Event Listener
+         */
+        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(activity);
+        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
+        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
+        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
+        mPullRefreshListView.setOnPullEventListener(soundListener);
+
+        biddinglist.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
 
         adapter = new BiddingAdapter(activity, list);
         biddinglist.setAdapter(adapter);
+
+        setListShown(true);
 
     }
 
     private void initData() {
 
+        pageno = 1;
         sendRequest(generateParam());
 
     }
@@ -97,7 +134,10 @@ public class BiddingListFragment extends Fragment {
                 list.add(bidding);
             }
         }
+
         adapter.notifyDataSetChanged();
+
+        mPullRefreshListView.onRefreshComplete();
     }
 
 
