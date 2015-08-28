@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:maxSdkVersion="22"
-        android:minSdkVersion="11"
+        android:minSdkVersion="9"
         android:targetSdkVersion="14" />
 
 

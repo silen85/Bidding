@@ -57,6 +57,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         mHandler = new Handler(this);
 
+        if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
+            loadCategory();
+        }
+
     }
 
     @Override

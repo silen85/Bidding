@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -14,13 +15,23 @@ import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.MD5;
+import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.ui.TimeChooserDialog;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+
+import org.apache.http.Header;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class BaseActivity extends FragmentActivity {
+
+    private String TAG = "com.lessomall.bidding.activity.BaseActivity";
 
     protected static final int HANDLER_DATA = 1;
     protected static final int HANDLER_NETWORK_ERR = 2;
@@ -64,6 +75,60 @@ public abstract class BaseActivity extends FragmentActivity {
     private void reLogin() {
         sendBroadcast(new Intent(Constant.FINISH_ACTION));
         startActivity(new Intent(this, LoginActivity.class), true);
+    }
+
+
+    protected void loadCategory() {
+
+        Map params = generateRequestMap();
+        params.put("sessionid", loginUser.getSessionid());
+
+        RequestParams requestParams = new RequestParams(params);
+
+        AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, throwable.getMessage(), throwable);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+
+                if (statusCode == Constant.HTTP_STATUS_CODE_SUCCESS) {
+                    try {
+                        Map result = Tools.json2Map(responseString);
+
+                        String recode = (String) result.get("recode");
+                        String msg = (String) result.get("msg");
+
+                        if (Constant.RECODE_SUCCESS.equals(recode)) {
+                            List<Map> datalist = (List<Map>) result.get("datalist");
+                            if (datalist != null && datalist.size() > 0) {
+                                Constant.CATEGORY_CACHE_LEVEL1 = new String[datalist.size()];
+                                for (int i = 0; i < datalist.size(); i++) {
+
+                                    String firstCategoryCode = (String) datalist.get(i).get("firstCategoryCode");
+                                    String firstCategoryName = (String) datalist.get(i).get("firstCategoryName");
+
+                                    Constant.CATEGORY_CACHE_LEVEL1[i] = firstCategoryCode + "-" + firstCategoryName;
+
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                    }
+                }
+            }
+
+        };
+        asyncHttpResponseHandler.setCharset("UTF-8");
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setTimeout(Constant.CONNECT_TIMEOUT);
+        client.post(this, Constant.URL_FIRST_CATEGORY, requestParams, asyncHttpResponseHandler);
+
     }
 
     public Map<String, String> generateRequestMap() {

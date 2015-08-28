@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.ImagePagerActivity;
-import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.model.Bidding;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -118,8 +117,8 @@ public class BiddingAdapter extends BaseAdapter {
 
             ImageSize imageSize = new ImageSize(viewHolder0.pictures.getWidth(), viewHolder0.pictures.getHeight());
 
-            viewHolder0.pictures.setTag(Constant.PICTURE_URL + urls[0]);
-            ImageLoader.getInstance().loadImage(Constant.PICTURE_URL + urls[0], imageSize, new ImageLoadingListener() {
+            viewHolder0.pictures.setTag(urls[0]);
+            ImageLoader.getInstance().loadImage(urls[0], imageSize, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
                     viewHolder0.pictures.setImageResource(R.mipmap.bg_gray);
@@ -149,7 +148,7 @@ public class BiddingAdapter extends BaseAdapter {
 
                                     String[] webUrl = new String[urls.length];
                                     for (int i = 0; i < urls.length; i++) {
-                                        webUrl[i] = Constant.PICTURE_URL + urls[i];
+                                        webUrl[i] = urls[i];
                                     }
 
                                     Intent intent = new Intent(context, ImagePagerActivity.class);

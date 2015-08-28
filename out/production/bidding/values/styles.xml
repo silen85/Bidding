@@ -1,9 +1,8 @@
 <resources>
 
-    <style name="APP_THEME" parent="@android:style/Theme.Holo.Light">
-        <item name="android:calendarViewShown">false</item>
-        <item name="android:spinnersShown">true</item>
+    <style name="APP_THEME" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:scrollbars">none</item>
     </style>
 
     <style name="STYLE_TITLE_A">

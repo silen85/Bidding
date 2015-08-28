@@ -16,13 +16,12 @@ public class Constant {
 
     public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
 
-    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/";
-    public final static String APP_URL = BASE_URL + "app/";
-    public final static String PICTURE_URL = "http://10.10.7.159/lots-web/" + "fileUp/img/?path=";
-    public final static String URL_LOGIN = APP_URL + "login/";
-    public final static String URL_UPDATE = APP_URL + "androidversion/";
-    public final static String URL_MAINCOUNT = APP_URL + "mainCount/";
-    public final static String BIDDING_LIST = APP_URL + "biddingList/";
+    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
+    public final static String URL_LOGIN = BASE_URL + "login/";
+    public final static String URL_UPDATE = BASE_URL + "androidversion/";
+    public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
+    public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
+    public final static String BIDDING_LIST = BASE_URL + "biddingList/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 

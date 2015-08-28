@@ -1,7 +1,7 @@
-package com.lessomall.bidding.activity.bid;
+package com.lessomall.bidding.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.lessomall.bidding.ui.addbidding.FaPiaoDialog;
 import com.lessomall.bidding.ui.addbidding.FenleiDialog;
 import com.lessomall.bidding.ui.addbidding.PicDialog;
@@ -19,89 +19,79 @@ import com.lessomall.bidding.ui.addbidding.SearchDialog;
 import com.lessomall.bidding.ui.addbidding.ZhifuDialog;
 
 /**
- * Created by meisl on 2015/8/10.
+ * Created by meisl on 2015/8/28.
  */
-public class AddBiddingActivity extends BaseActivity implements View.OnClickListener {
+public class BaseFragment extends Fragment implements View.OnClickListener {
 
-    private String TAG = "com.lessomall.bidding.activity.bid.AddBiddingActivity";
+    protected TimeChooserDialog timerDialog;
+    protected int timeType = 1;
+    protected String sBeginDate, sEndDate;
 
-    private EditText product_name_edit;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_addbidding);
-
-        Constant.CATEGORY_CACHE_LEVEL1 = new String[]{"1000000000-机械五金", "2000000000-五金工具五金五金工具五五金工具五五金工具五工具五金工具", "2000000000-五金工具", "2000000000-五金工具", "2000000000-五金工具", "2000000000-五金工具", "2000000000-五金工具"};
-
-        initTitle();
-
-        initView();
-
-        initData();
-
-        if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
-            loadCategory();
-        }
-
-    }
+    protected EditText product_name_edit;
 
     @Override
-    protected void initTitle() {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    }
-
-    @Override
-    protected void initView() {
-
-        LinearLayout topic = (LinearLayout) findViewById(R.id.topic);
+        LinearLayout topic = (LinearLayout) view.findViewById(R.id.topic);
         topic.setOnClickListener(this);
 
-        LinearLayout product = (LinearLayout) findViewById(R.id.product);
+        LinearLayout product = (LinearLayout) view.findViewById(R.id.product);
         product.setOnClickListener(this);
 
-        product_name_edit = (EditText) findViewById(R.id.product_name_edit);
+        product_name_edit = (EditText) view.findViewById(R.id.product_name_edit);
 
-        ImageView product_serach = (ImageView) findViewById(R.id.product_serach);
+        ImageView product_serach = (ImageView) view.findViewById(R.id.product_serach);
         product_serach.setOnClickListener(this);
 
-        LinearLayout product_category = (LinearLayout) findViewById(R.id.product_category);
+        LinearLayout product_category = (LinearLayout) view.findViewById(R.id.product_category);
         product_category.setOnClickListener(this);
 
-        ImageView product_pic_upload = (ImageView) findViewById(R.id.product_pic_upload);
+        ImageView product_pic_upload = (ImageView) view.findViewById(R.id.product_pic_upload);
         product_pic_upload.setOnClickListener(this);
 
-        LinearLayout tax = (LinearLayout) findViewById(R.id.tax);
+        LinearLayout tax = (LinearLayout) view.findViewById(R.id.tax);
         tax.setOnClickListener(this);
 
-        LinearLayout expdate = (LinearLayout) findViewById(R.id.expdate);
+        LinearLayout expdate = (LinearLayout) view.findViewById(R.id.expdate);
         expdate.setOnClickListener(this);
 
-        LinearLayout delivery = (LinearLayout) findViewById(R.id.delivery);
+        LinearLayout delivery = (LinearLayout) view.findViewById(R.id.delivery);
         delivery.setOnClickListener(this);
 
-        LinearLayout payment = (LinearLayout) findViewById(R.id.payment);
+        LinearLayout payment = (LinearLayout) view.findViewById(R.id.payment);
         payment.setOnClickListener(this);
 
-        LinearLayout certificate = (LinearLayout) findViewById(R.id.certificate);
+        LinearLayout certificate = (LinearLayout) view.findViewById(R.id.certificate);
         certificate.setOnClickListener(this);
 
-        LinearLayout other = (LinearLayout) findViewById(R.id.other);
+        LinearLayout other = (LinearLayout) view.findViewById(R.id.other);
         other.setOnClickListener(this);
 
-
     }
 
-    @Override
-    protected void initData() {
+    protected void showTimerDialog() {
+
+        timerDialog = new TimeChooserDialog(getActivity(), timeType, sBeginDate, sEndDate);
+        timerDialog.getWindow().setGravity(Gravity.BOTTOM);
+        timerDialog.setCanceledOnTouchOutside(true);
+        timerDialog.setClickListenerInterface(new TimeChooserDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+
+                timeType = timerDialog.getType();
+                sBeginDate = timerDialog.getsBeaginDate();
+                sEndDate = timerDialog.getsEndDate();
+            }
+        });
+        timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        timerDialog.show();
 
     }
-
 
     private void showFaPiaoDialog(int type) {
 
-        FaPiaoDialog faPiaoDialog = new FaPiaoDialog(AddBiddingActivity.this, type);
+        FaPiaoDialog faPiaoDialog = new FaPiaoDialog(getActivity(), type);
         faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
         faPiaoDialog.setCanceledOnTouchOutside(true);
         faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
@@ -117,7 +107,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showZhifuDialog(int type) {
 
-        ZhifuDialog zhifuDialog = new ZhifuDialog(AddBiddingActivity.this, type);
+        ZhifuDialog zhifuDialog = new ZhifuDialog(getActivity(), type);
         zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
         zhifuDialog.setCanceledOnTouchOutside(true);
         zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
@@ -133,7 +123,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showFenleiDialog(String code) {
 
-        FenleiDialog fenleiDialog = new FenleiDialog(AddBiddingActivity.this, code, Constant.CATEGORY_CACHE_LEVEL1);
+        FenleiDialog fenleiDialog = new FenleiDialog(getActivity(), code, Constant.CATEGORY_CACHE_LEVEL1);
         fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
         fenleiDialog.setCanceledOnTouchOutside(true);
         fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
@@ -150,7 +140,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showPicDialog(int type) {
 
-        PicDialog picDialog = new PicDialog(AddBiddingActivity.this, type);
+        PicDialog picDialog = new PicDialog(getActivity(), type);
         picDialog.getWindow().setGravity(Gravity.BOTTOM);
         picDialog.setCanceledOnTouchOutside(true);
         picDialog.setClickListenerInterface(new PicDialog.ClickListenerInterface() {
@@ -166,7 +156,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showReceiveDialog(int type) {
 
-        ReceiveDialog receiveDialog = new ReceiveDialog(AddBiddingActivity.this, type);
+        ReceiveDialog receiveDialog = new ReceiveDialog(getActivity(), type);
         receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
         receiveDialog.setCanceledOnTouchOutside(true);
         receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
@@ -182,7 +172,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showSearchDialog(String txt) {
 
-        SearchDialog searchDialog = new SearchDialog(AddBiddingActivity.this, txt);
+        SearchDialog searchDialog = new SearchDialog(getActivity(), txt);
         searchDialog.getWindow().setGravity(Gravity.BOTTOM);
         searchDialog.setCanceledOnTouchOutside(true);
         searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
@@ -196,16 +186,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-
-    }
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.topic:
 
@@ -245,5 +228,4 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
         }
     }
-
 }

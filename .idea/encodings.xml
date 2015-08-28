@@ -22,6 +22,7 @@
     <file url="file://$PROJECT_DIR$/bidding/res/values-v18" charset="GBK" />
     <file url="file://$PROJECT_DIR$/bidding/res/values-v19" charset="GBK" />
     <file url="file://$PROJECT_DIR$/bidding/res/values-v20" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/bidding/res/values-v8/styles.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/bidding/res/values/colors.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/res/values/dimens.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/LessoApplication.java" charset="UTF-8" />

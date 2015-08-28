@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.bid.AddBiddingActivity;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
-import com.lessomall.bidding.activity.bid.TestActivity;
 import com.lessomall.bidding.activity.quote.QuoteListActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -66,6 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void onCreate(Bundle savedInstanceState) {
 
         if (Constant.DEVELOPER_MODE) {
+
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
@@ -90,6 +90,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
 
         mHandler = new Handler(this);
+
+        if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
+            loadCategory();
+        }
 
         IntentFilter finishFilter = new IntentFilter(Constant.FINISH_ACTION);
         registerReceiver(finishReceiver, finishFilter);
@@ -193,7 +197,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         loadMainCount();
 
     }
-
 
     private void loadMainCount() {
 
@@ -381,7 +384,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent, false);
                 break;
             case R.id.quotelist_all:
-                startActivity(new Intent(MainActivity.this, TestActivity.class), false);
+                startActivity(new Intent(MainActivity.this, QuoteListActivity.class), false);
                 break;
             case R.id.LinearLayout_q1:
             case R.id.LinearLayout_q2:

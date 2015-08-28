@@ -6,13 +6,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.handmark.pulltorefresh.extras.listfragment.PullToRefreshListFragment;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.BiddingAdapter;
@@ -44,6 +46,8 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
     private int status = 0;
 
+    private int totalPage = 1;
+
     private List<Bidding> list = new ArrayList();
 
     private PullToRefreshListView mPullRefreshListView;
@@ -67,44 +71,56 @@ public class BiddingListFragment extends PullToRefreshListFragment {
         mPullRefreshListView = getPullToRefreshListView();
 
         mPullRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        mPullRefreshListView.setScrollAnimationInterpolator(new LinearInterpolator());
 
         // Set a listener to be invoked when the list should be refreshed.
         mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                String label = DateUtils.formatDateTime(activity, System.currentTimeMillis(),
-                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
 
-                // Update the LastUpdatedLabel
-                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+                if (pageno < totalPage) {
 
-                // Do work to refresh the list here.
-                pageno++;
-                sendRequest(generateParam());
+                    String label = DateUtils.formatDateTime(activity, System.currentTimeMillis(),
+                            DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+                    refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+                    pageno++;
+                    sendRequest(generateParam());
+                } else {
+
+                    adapter.notifyDataSetChanged();
+
+                    biddinglist.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mPullRefreshListView.onRefreshComplete();
+                            Toast.makeText(activity, getResources().getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+                        }
+                    }, 1000);
+                }
             }
         });
-
-        mPullRefreshListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
-
-            @Override
-            public void onLastItemVisible() {
-
-            }
-        });
-
 
         biddinglist = mPullRefreshListView.getRefreshableView();
 
-        /**
-         * Add Sound Event Listener
-         */
-        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(activity);
-        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
-        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
-        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
-        mPullRefreshListView.setOnPullEventListener(soundListener);
+        biddinglist.setDivider(null);
+        biddinglist.setDividerHeight(activity.getResources().getDimensionPixelSize(R.dimen.interval_C));
 
+        biddinglist.setVerticalScrollBarEnabled(false);
+        biddinglist.setHorizontalScrollBarEnabled(false);
         biddinglist.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+
+        biddinglist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Bidding bidding = list.get(position - 1);
+
+                activity.goToDetail(bidding);
+
+            }
+        });
 
         adapter = new BiddingAdapter(activity, list);
         biddinglist.setAdapter(adapter);
@@ -218,6 +234,9 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
                         String recode = (String) result.get("recode");
                         String msg = (String) result.get("msg");
+                        String totalpage = (String) result.get("totalpage");
+
+                        totalPage = Integer.parseInt(totalpage);
 
                         if (Constant.RECODE_SUCCESS.equals(recode)) {
 

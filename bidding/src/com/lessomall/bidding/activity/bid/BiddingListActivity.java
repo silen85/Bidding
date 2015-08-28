@@ -5,10 +5,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
+import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.fragment.bid.BiddingDetailFragment;
 import com.lessomall.bidding.fragment.bid.BiddingListFragment;
+import com.lessomall.bidding.model.Bidding;
 
 /**
  * Created by meisl on 2015/7/23.
@@ -20,6 +24,7 @@ public class BiddingListActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private BiddingListFragment fragment;
 
+    private RelativeLayout main_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,10 @@ public class BiddingListActivity extends BaseActivity {
         initView();
 
         initData();
+
+        if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
+            loadCategory();
+        }
 
     }
 
@@ -62,14 +71,44 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
+    public void goToDetail(Bidding bidding) {
+
+        BiddingDetailFragment fragment = new BiddingDetailFragment();
+
+        fragment.setBidding(bidding);
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        main_title.setVisibility(View.GONE);
+
+    }
+
+    public void backToList() {
+
+        main_title.setVisibility(View.VISIBLE);
+
+        fragmentManager.popBackStackImmediate();
+
+    }
+
     @Override
     protected void initTitle() {
+
+        main_title = (RelativeLayout) findViewById(R.id.main_title);
 
         ImageView btn_back = (ImageView) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                if (fragment.isVisible()) {
+                    finish();
+                } else {
+                    backToList();
+                }
             }
         });
 

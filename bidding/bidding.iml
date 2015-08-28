@@ -16,9 +16,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="PhotoView" exported="" />
-    <orderEntry type="library" exported="" name="libs" level="application" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module" module-name="PhotoView" />
+    <orderEntry type="library" name="libs" level="application" />
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/libs" />
@@ -28,7 +28,7 @@
         <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="PullToRefresh" exported="" />
+    <orderEntry type="module" module-name="PullToRefresh" />
     <orderEntry type="module" module-name="PullToRefreshListFragment" />
   </component>
 </module>

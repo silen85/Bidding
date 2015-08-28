@@ -33,7 +33,7 @@ public class SplashFragment extends Fragment {
                 getActivity().finish();
 
             }
-        }, 3000);
+        }, 1500);
 
         return view;
     }
