@@ -63,7 +63,12 @@ public class Bidding {
     //发布时间
     private String createtime;
 
+    private String biddingStatusId;
     private String biddingStatusName;
+
+    private String productCode;
+    private String productBigCategory;
+    private String productMiddleCategory;
 
     private String trimValue(String value) {
         return (value == null ? "" : value.trim());
@@ -97,8 +102,12 @@ public class Bidding {
         bidding.setRequiredQuantity(trimValue((String) map.get("RequiredQuantity")));
         bidding.setTaxBillType(trimValue((String) map.get("TaxBillType")));
         bidding.setUnit(trimValue((String) map.get("Unit")));
+        bidding.setBiddingStatusId(trimValue((String) map.get("BiddingStatusId")));
         bidding.setBiddingStatusName(trimValue((String) map.get("BiddingStatusName")));
         bidding.setCreatetime(trimValue((String) map.get("Createtime")));
+        bidding.setProductCode(trimValue((String) map.get("ProductCode")));
+        bidding.setProductBigCategory(trimValue((String) map.get("ProductBigCategory")));
+        bidding.setProductMiddleCategory(trimValue((String) map.get("ProductMiddleCategory")));
 
         List<Map<String, String>> _data = (List<Map<String, String>>) (((Map) map).get("datalist"));
 
@@ -337,6 +346,38 @@ public class Bidding {
 
     public void setBiddingStatusName(String biddingStatusName) {
         this.biddingStatusName = biddingStatusName;
+    }
+
+    public String getBiddingStatusId() {
+        return biddingStatusId;
+    }
+
+    public void setBiddingStatusId(String biddingStatusId) {
+        this.biddingStatusId = biddingStatusId;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
+    public String getProductBigCategory() {
+        return productBigCategory;
+    }
+
+    public void setProductBigCategory(String productBigCategory) {
+        this.productBigCategory = productBigCategory;
+    }
+
+    public String getProductMiddleCategory() {
+        return productMiddleCategory;
+    }
+
+    public void setProductMiddleCategory(String productMiddleCategory) {
+        this.productMiddleCategory = productMiddleCategory;
     }
 
     //明细

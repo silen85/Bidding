@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
+import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.fragment.quote.QuoteListFragment;
 
 /**
@@ -34,6 +35,10 @@ public class QuoteListActivity extends BaseActivity {
         initView();
 
         initData();
+
+        if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
+            loadCategory();
+        }
 
     }
 

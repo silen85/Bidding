@@ -32,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_topic"
+            android:text="@string/bidding_topic"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
         <EditText
             android:id="@+id/topic_edit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
             android:background="@null"
@@ -109,7 +109,7 @@
                     <EditText
                         android:id="@+id/product_name_edit"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/interval_B"
                         android:background="@null"
@@ -315,7 +315,7 @@
                 <EditText
                     android:id="@+id/product_comment_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/interval_B"
                     android:background="@null"
@@ -381,7 +381,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_tax"
+            android:text="@string/bidding_tax"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -414,7 +414,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_expdate"
+            android:text="@string/bidding_expdate"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -447,7 +447,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_delivery"
+            android:singleLine="false"
+            android:text="@string/bidding_delivery"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -480,7 +481,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_payment"
+            android:text="@string/bidding_payment"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -513,7 +514,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_certificate"
+            android:text="@string/bidding_certificate"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -558,14 +559,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_add_other"
+            android:text="@string/bidding_other"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
         <EditText
             android:id="@+id/other_edit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
             android:background="@null"
@@ -598,7 +599,9 @@
                 android:id="@+id/rule_txt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bidding_add_rule1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/bidding_rule1"
                 android:textColor="@color/BASE_TEXT_COLOR"
                 android:textSize="@dimen/F4" />
 
@@ -606,7 +609,9 @@
                 android:id="@+id/rule_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bidding_add_rule2"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/bidding_rule2"
                 android:textColor="@color/MALL_C1"
                 android:textSize="@dimen/F4" />
 

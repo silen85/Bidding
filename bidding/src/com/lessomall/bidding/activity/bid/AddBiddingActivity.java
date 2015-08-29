@@ -27,6 +27,8 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private EditText product_name_edit;
 
+    private ImageView sb_enable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         LinearLayout other = (LinearLayout) findViewById(R.id.other);
         other.setOnClickListener(this);
 
+        sb_enable = (ImageView) findViewById(R.id.sb_enable);
+        sb_enable.setSelected(true);
+        sb_enable.setOnClickListener(this);
 
     }
 
@@ -239,6 +244,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.product_pic_upload:
                 showPicDialog(0);
+                break;
+            case R.id.sb_enable:
+                sb_enable.setSelected(!sb_enable.isSelected());
                 break;
             default:
                 break;

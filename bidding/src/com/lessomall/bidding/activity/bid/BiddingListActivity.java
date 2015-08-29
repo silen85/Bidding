@@ -87,11 +87,8 @@ public class BiddingListActivity extends BaseActivity {
     }
 
     public void backToList() {
-
         main_title.setVisibility(View.VISIBLE);
-
         fragmentManager.popBackStackImmediate();
-
     }
 
     @Override
@@ -103,12 +100,7 @@ public class BiddingListActivity extends BaseActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (fragment.isVisible()) {
-                    finish();
-                } else {
-                    backToList();
-                }
+                finish();
             }
         });
 
@@ -127,4 +119,12 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (fragment.isVisible()) {
+            finish();
+        } else {
+            backToList();
+        }
+    }
 }

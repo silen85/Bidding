@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
@@ -88,21 +89,14 @@ public class BiddingListFragment extends PullToRefreshListFragment {
                     pageno++;
                     sendRequest(generateParam());
                 } else {
-
-                    adapter.notifyDataSetChanged();
-
-                    biddinglist.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mPullRefreshListView.onRefreshComplete();
-                            Toast.makeText(activity, getResources().getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
-                        }
-                    }, 1000);
+                    lastData();
                 }
             }
         });
 
         biddinglist = mPullRefreshListView.getRefreshableView();
+
+        biddinglist.setEmptyView(LayoutInflater.from(getActivity()).inflate(R.layout.empty, null));
 
         biddinglist.setDivider(null);
         biddinglist.setDividerHeight(activity.getResources().getDimensionPixelSize(R.dimen.interval_C));
@@ -154,6 +148,20 @@ public class BiddingListFragment extends PullToRefreshListFragment {
         adapter.notifyDataSetChanged();
 
         mPullRefreshListView.onRefreshComplete();
+    }
+
+    private void lastData() {
+
+        adapter.notifyDataSetChanged();
+
+        biddinglist.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPullRefreshListView.onRefreshComplete();
+                Toast.makeText(activity, getResources().getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+            }
+        }, 1000);
+
     }
 
 
@@ -245,7 +253,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
                             if (datalist != null && datalist.size() > 0) {
                                 fillData(datalist);
                             } else {
-
+                                lastData();
                             }
                         } else {
                             activity.tipsOutput(recode, msg);
