@@ -4,6 +4,7 @@
 
     <string name="loading">请求数据中，请稍候&#8230;</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
+    <string name="empty">暂无相关订单</string>
 
     <string name="app_fullname">联塑商城竞价平台</string>
     <string name="website">www.lessomall.com</string>

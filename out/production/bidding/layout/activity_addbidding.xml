@@ -54,9 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/interval_C"
                 android:background="@color/MALL_C8"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/interval_B"
-                android:paddingRight="@dimen/interval_B">
+                android:orientation="vertical">
 
                 <include layout="@layout/common_bidding" />
 

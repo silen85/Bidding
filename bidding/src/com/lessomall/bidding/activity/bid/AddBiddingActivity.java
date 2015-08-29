@@ -71,8 +71,8 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         LinearLayout product_category = (LinearLayout) findViewById(R.id.product_category);
         product_category.setOnClickListener(this);
 
-        ImageView product_pic_upload = (ImageView) findViewById(R.id.product_pic_upload);
-        product_pic_upload.setOnClickListener(this);
+        ImageView product_pic_add = (ImageView) findViewById(R.id.product_pic_add);
+        product_pic_add.setOnClickListener(this);
 
         LinearLayout tax = (LinearLayout) findViewById(R.id.tax);
         tax.setOnClickListener(this);
@@ -242,7 +242,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             case R.id.product_category:
                 showFenleiDialog("2000000000");
                 break;
-            case R.id.product_pic_upload:
+            case R.id.product_pic_add:
                 showPicDialog(0);
                 break;
             case R.id.sb_enable:

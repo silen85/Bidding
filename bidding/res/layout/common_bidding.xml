@@ -128,7 +128,7 @@
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/search_s" />
+                    android:src="@drawable/search_x" />
 
 
             </RelativeLayout>
@@ -329,21 +329,24 @@
             <include layout="@layout/line" />
 
             <LinearLayout
+                android:id="@+id/product_pic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left|center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:scrollbars="none">
 
                 <ImageView
-                    android:id="@+id/product_pic_upload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/product_pic_add"
+                    android:layout_width="@dimen/product_pic_add_width"
+                    android:layout_height="@dimen/product_pic_add_height"
                     android:layout_marginBottom="@dimen/interval_D"
+                    android:layout_marginRight="@dimen/interval_B"
                     android:layout_marginTop="@dimen/interval_D"
                     android:adjustViewBounds="true"
                     android:clickable="true"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/search_s" />
+                    android:src="@mipmap/add" />
 
 
             </LinearLayout>

@@ -60,4 +60,8 @@
     <dimen name="bidding_title_text_size">@dimen/F2</dimen>
     <dimen name="quote_title_text_size">@dimen/F2</dimen>
 
+    <dimen name="product_pic_add_width">38dp</dimen>
+    <dimen name="product_pic_add_height">38dp</dimen>
+
+
 </resources>

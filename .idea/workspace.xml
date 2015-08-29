@@ -35,31 +35,22 @@
       </layout>
     </layouts>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="570a4ac0-b7dc-44e6-91af-c924fc03a11a" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\app\workspace\Bidding\bidding\res\layout\fragment_biddinglist.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\app\workspace\Bidding\bidding\src\com\lessomall\bidding\activity\bid\TestActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\app\workspace\Bidding\bidding\src\com\lessomall\bidding\activity\bid\TestBaseActivity.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree.png" afterPath="$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree_s.png" afterPath="$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree_s.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/AndroidManifest.xml" afterPath="$PROJECT_DIR$/bidding/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/BaseActivity.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/adapter/BiddingAdapter.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/adapter/BiddingAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/Constant.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/MainActivity.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/SplashFragment.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/SplashFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml" afterPath="$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml" afterPath="$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/bidding.iml" afterPath="$PROJECT_DIR$/bidding/bidding.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/CommonBiddingFragment.java" afterPath="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/CommonBiddingFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/bidding/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/layout/common_bidding.xml" afterPath="$PROJECT_DIR$/bidding/res/layout/common_bidding.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/layout/common_quote.xml" afterPath="$PROJECT_DIR$/bidding/res/layout/common_quote.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values/dimens.xml" afterPath="$PROJECT_DIR$/bidding/res/values/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values/strings.xml" afterPath="$PROJECT_DIR$/bidding/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values/styles.xml" afterPath="$PROJECT_DIR$/bidding/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/bidding/res/values-v11/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/bidding/res/values-v14/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values-v19/styles.xml" afterPath="$PROJECT_DIR$/bidding/res/values-v19/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bidding/res/values-v20/styles.xml" afterPath="$PROJECT_DIR$/bidding/res/values-v20/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Bidding.iws" />
@@ -89,9 +80,9 @@
         <option value="AndroidManifest" />
         <option value="default" />
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
-        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -111,13 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bidding/res/values-v20/styles.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/drawable/btn_back_x.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/activity_quotelist.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/activity_other.xml" />
-        <option value="$PROJECT_DIR$/ImageDemo/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/ImageDemo/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/extra/gallery/HackyViewPager.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/extra/gallery/photoview/gestures/CupcakeGestureDetector.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/extra/gallery/photoview/gestures/EclairGestureDetector.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/extra/gallery/ImageDetailFragment.java" />
@@ -139,29 +123,36 @@
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/TestBaseActivity.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/TestActivity.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/adapter/BiddingAdapter.java" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/model/Bidding.java" />
-        <option value="$PROJECT_DIR$/bidding/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/SplashFragment.java" />
         <option value="$PROJECT_DIR$/bidding/res/layout/fragment_biddinglist.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml" />
         <option value="$PROJECT_DIR$/bidding/res/values-v14/styles.xml" />
         <option value="$PROJECT_DIR$/bidding/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/bidding/res/values-v11/styles.xml" />
         <option value="$PROJECT_DIR$/bidding/res/values-v8/styles.xml" />
         <option value="$PROJECT_DIR$/bidding/res/layout/common_quote.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/common_bidding.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/fragment_bidding_detail.xml" />
-        <option value="$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/BaseFragment.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/common/Constant.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/BaseActivity.java" />
         <option value="$PROJECT_DIR$/bidding/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java" />
-        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/quote/QuoteListActivity.java" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/fragment_bidding_detail.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/model/Bidding.java" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/BaseFragment.java" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java" />
+        <option value="$PROJECT_DIR$/bidding/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/empty.xml" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java" />
+        <option value="$PROJECT_DIR$/bidding/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/CommonBiddingFragment.java" />
+        <option value="$PROJECT_DIR$/bidding/res/drawable/search_x.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/common_bidding.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/drawable/search_x1.xml" />
+        <option value="$PROJECT_DIR$/bidding/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java" />
       </list>
     </option>
   </component>
@@ -207,7 +198,11 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,12 +234,34 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bidding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bidding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bidding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bidding" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane />
       </pane>
       <pane id="PackagesPane" />
     </panes>
@@ -284,11 +301,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\app\workspace\Bidding\bidding\res\values-v20" />
-      <recent name="D:\app\workspace\Bidding\bidding\res\values-v19" />
-      <recent name="D:\app\workspace\Bidding\bidding\res\values-v13" />
-      <recent name="D:\app\workspace\Bidding\bidding\res\values-v18" />
-      <recent name="D:\app\workspace\Bidding\bidding\res\values-v17" />
+      <recent name="D:\app\workspace\Bidding\bidding\res\mipmap-mdpi" />
+      <recent name="D:\app\workspace\Bidding\bidding\res\mipmap-hdpi" />
+      <recent name="D:\app\workspace\Bidding\bidding\res\mipmap-xhdpi" />
+      <recent name="D:\app\workspace\Bidding\bidding\res\drawable" />
+      <recent name="D:\app\workspace\Bidding\bidding\res\mipmap-xxhdpi" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.lessomall.bidding" />
@@ -538,7 +555,13 @@
       <option name="project" value="LOCAL" />
       <updated>1440474455512</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1.0">
+      <created>1440820654297</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1440820654297</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -546,25 +569,23 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7095293" sideWeight="0.49571735" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7083812" sideWeight="0.49571735" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7118255" sideWeight="0.50428265" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5683123" sideWeight="0.49571735" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5660161" sideWeight="0.49571735" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5706085" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6762342" sideWeight="0.50214136" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23715204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6107922" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20182014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.7164179" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.2835821" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.88978183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5143513" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -572,6 +593,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="850" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6107922" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -591,203 +614,43 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java</url>
+          <line>135</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/adapter/BiddingAdapter.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="41" />
+      <option name="time" value="46" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="bidding">
+        <watch expression="product_pic_add.getWidth()" language="JAVA" custom="" />
+        <watch expression="product_pic_add.getHeight()" language="JAVA" custom="" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../sdk/sources/android-22/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6236559">
-          <caret line="2871" column="28" selection-start-line="2871" selection-start-column="28" selection-end-line="2871" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/SplashFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefresh/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefreshListFragment/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1714287">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefreshListFragment/res/layout/need_this_for_maven.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2693267">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefresh/src/com/handmark/pulltorefresh/library/PullToRefreshListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6970074">
-          <caret line="79" column="35" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefreshListFragment/src/com/handmark/pulltorefresh/extras/listfragment/PullToRefreshListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61290324">
-          <caret line="37" column="82" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefreshListFragment/src/com/handmark/pulltorefresh/extras/listfragment/PullToRefreshBaseListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9032258">
-          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
-          <folding>
-            <element signature="e#2020#2021#0" expanded="false" />
-            <element signature="e#2056#2057#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/gallery.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23566085">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/ImagePagerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.516129">
-          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v16/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefresh-sample/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="35" />
-          <folding>
-            <element signature="e#433#451#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhotoView/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding>
-            <element signature="e#414#432#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PullToRefreshListFragment/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2580645">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../sdk/platforms/android-22/data/res/values/themes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33291772">
-          <caret line="540" column="39" selection-start-line="540" selection-start-column="17" selection-end-line="540" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v11/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7419355">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v14/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v13/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v21/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v20/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/values-v19/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bidding/res/values-v18/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="51" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,7 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6451613">
           <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,143 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="20" selection-start-line="21" selection-start-column="8" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/common_quote.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="627" column="15" selection-start-line="627" selection-start-column="15" selection-end-line="627" selection-end-column="15" />
-          <folding>
-            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#433#452#0" expanded="false" />
-            <element signature="e#652#675#0" expanded="false" />
-            <element signature="e#704#727#0" expanded="false" />
-            <element signature="e#757#780#0" expanded="false" />
-            <element signature="e#808#831#0" expanded="false" />
-            <element signature="e#1314#1333#0" expanded="false" />
-            <element signature="e#1359#1386#0" expanded="false" />
-            <element signature="e#1471#1499#0" expanded="false" />
-            <element signature="e#1910#1938#0" expanded="false" />
-            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#2138#2157#0" expanded="false" />
-            <element signature="e#2345#2368#0" expanded="false" />
-            <element signature="e#2397#2420#0" expanded="false" />
-            <element signature="e#2450#2473#0" expanded="false" />
-            <element signature="e#2501#2524#0" expanded="false" />
-            <element signature="e#2724#2743#0" expanded="false" />
-            <element signature="e#2781#2800#0" expanded="false" />
-            <element signature="e#3200#3219#0" expanded="false" />
-            <element signature="e#4158#4177#0" expanded="false" />
-            <element signature="e#4227#4246#0" expanded="false" />
-            <element signature="e#4399#4427#0" expanded="false" />
-            <element signature="e#4758#4777#0" expanded="false" />
-            <element signature="e#4979#5007#0" expanded="false" />
-            <element signature="e#6107#6126#0" expanded="false" />
-            <element signature="e#6172#6191#0" expanded="false" />
-            <element signature="e#6330#6358#0" expanded="false" />
-            <element signature="e#6666#6685#0" expanded="false" />
-            <element signature="e#6871#6899#0" expanded="false" />
-            <element signature="e#7456#7475#0" expanded="false" />
-            <element signature="e#7521#7540#0" expanded="false" />
-            <element signature="e#7681#7709#0" expanded="false" />
-            <element signature="e#7960#7979#0" expanded="false" />
-            <element signature="e#8026#8045#0" expanded="false" />
-            <element signature="e#8091#8110#0" expanded="false" />
-            <element signature="e#8293#8321#0" expanded="false" />
-            <element signature="e#8877#8896#0" expanded="false" />
-            <element signature="e#8942#8961#0" expanded="false" />
-            <element signature="e#9100#9128#0" expanded="false" />
-            <element signature="e#9434#9453#0" expanded="false" />
-            <element signature="e#9639#9667#0" expanded="false" />
-            <element signature="e#10224#10243#0" expanded="false" />
-            <element signature="e#10289#10308#0" expanded="false" />
-            <element signature="e#10447#10475#0" expanded="false" />
-            <element signature="e#10782#10801#0" expanded="false" />
-            <element signature="e#10987#11015#0" expanded="false" />
-            <element signature="e#11578#11597#0" expanded="false" />
-            <element signature="e#11643#11662#0" expanded="false" />
-            <element signature="e#11803#11831#0" expanded="false" />
-            <element signature="e#12144#12163#0" expanded="false" />
-            <element signature="e#12349#12377#0" expanded="false" />
-            <element signature="e#12937#12956#0" expanded="false" />
-            <element signature="e#13002#13021#0" expanded="false" />
-            <element signature="e#13160#13188#0" expanded="false" />
-            <element signature="e#13498#13517#0" expanded="false" />
-            <element signature="e#13703#13731#0" expanded="false" />
-            <element signature="e#14295#14314#0" expanded="false" />
-            <element signature="e#14360#14379#0" expanded="false" />
-            <element signature="n#LinearLayout#2;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#14871#14890#0" expanded="false" />
-            <element signature="e#15090#15113#0" expanded="false" />
-            <element signature="e#15142#15165#0" expanded="false" />
-            <element signature="e#15195#15218#0" expanded="false" />
-            <element signature="e#15246#15269#0" expanded="false" />
-            <element signature="e#15751#15770#0" expanded="false" />
-            <element signature="e#15796#15821#0" expanded="false" />
-            <element signature="e#15906#15934#0" expanded="false" />
-            <element signature="n#LinearLayout#3;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#16134#16153#0" expanded="false" />
-            <element signature="e#16353#16376#0" expanded="false" />
-            <element signature="e#16405#16428#0" expanded="false" />
-            <element signature="e#16458#16481#0" expanded="false" />
-            <element signature="e#16509#16532#0" expanded="false" />
-            <element signature="e#17019#17038#0" expanded="false" />
-            <element signature="e#17064#17093#0" expanded="false" />
-            <element signature="e#17178#17206#0" expanded="false" />
-            <element signature="n#LinearLayout#4;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#17407#17426#0" expanded="false" />
-            <element signature="e#17626#17649#0" expanded="false" />
-            <element signature="e#17678#17701#0" expanded="false" />
-            <element signature="e#17731#17754#0" expanded="false" />
-            <element signature="e#17782#17805#0" expanded="false" />
-            <element signature="e#18293#18312#0" expanded="false" />
-            <element signature="e#18338#18368#0" expanded="false" />
-            <element signature="e#18453#18481#0" expanded="false" />
-            <element signature="n#LinearLayout#5;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#18681#18700#0" expanded="false" />
-            <element signature="e#18900#18923#0" expanded="false" />
-            <element signature="e#18952#18975#0" expanded="false" />
-            <element signature="e#19005#19028#0" expanded="false" />
-            <element signature="e#19056#19079#0" expanded="false" />
-            <element signature="e#19569#19588#0" expanded="false" />
-            <element signature="e#19614#19643#0" expanded="false" />
-            <element signature="e#19728#19756#0" expanded="false" />
-            <element signature="n#LinearLayout#6;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#19960#19979#0" expanded="false" />
-            <element signature="e#20179#20202#0" expanded="false" />
-            <element signature="e#20231#20254#0" expanded="false" />
-            <element signature="e#20284#20307#0" expanded="false" />
-            <element signature="e#20335#20358#0" expanded="false" />
-            <element signature="e#20854#20873#0" expanded="false" />
-            <element signature="e#20899#20932#0" expanded="false" />
-            <element signature="e#21017#21045#0" expanded="false" />
-            <element signature="e#21462#21490#0" expanded="false" />
-            <element signature="n#LinearLayout#7;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#21689#21708#0" expanded="false" />
-            <element signature="e#21908#21931#0" expanded="false" />
-            <element signature="e#21960#21983#0" expanded="false" />
-            <element signature="e#22013#22036#0" expanded="false" />
-            <element signature="e#22064#22087#0" expanded="false" />
-            <element signature="e#22573#22592#0" expanded="false" />
-            <element signature="e#22618#22645#0" expanded="false" />
-            <element signature="e#22730#22758#0" expanded="false" />
-            <element signature="e#23169#23197#0" expanded="false" />
-            <element signature="n#RelativeLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#23365#23384#0" expanded="false" />
-            <element signature="e#23468#23491#0" expanded="false" />
-            <element signature="e#23520#23543#0" expanded="false" />
-            <element signature="e#23573#23596#0" expanded="false" />
-            <element signature="e#23624#23647#0" expanded="false" />
-            <element signature="e#24200#24227#0" expanded="false" />
-            <element signature="e#24320#24331#0" expanded="false" />
-            <element signature="e#24536#24563#0" expanded="false" />
-            <element signature="e#24648#24659#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,223 +732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="59" selection-start-line="60" selection-start-column="59" selection-end-line="60" selection-end-column="59" />
-          <folding>
-            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#553#572#0" expanded="false" />
-            <element signature="e#2233#2252#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/common_bidding.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2319202">
-          <caret line="577" column="4" selection-start-line="577" selection-start-column="4" selection-end-line="577" selection-end-column="4" />
-          <folding>
-            <element signature="e#433#452#0" expanded="false" />
-            <element signature="e#652#675#0" expanded="false" />
-            <element signature="e#704#727#0" expanded="false" />
-            <element signature="e#757#780#0" expanded="false" />
-            <element signature="e#808#831#0" expanded="false" />
-            <element signature="e#1314#1333#0" expanded="false" />
-            <element signature="e#1359#1386#0" expanded="false" />
-            <element signature="e#1471#1499#0" expanded="false" />
-            <element signature="e#1910#1938#0" expanded="false" />
-            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#433#452#0" expanded="false" />
-            <element signature="e#652#675#0" expanded="false" />
-            <element signature="e#704#727#0" expanded="false" />
-            <element signature="e#757#780#0" expanded="false" />
-            <element signature="e#808#831#0" expanded="false" />
-            <element signature="e#2724#2743#0" expanded="false" />
-            <element signature="e#1314#1333#0" expanded="false" />
-            <element signature="e#3200#3219#0" expanded="false" />
-            <element signature="e#4158#4177#0" expanded="false" />
-            <element signature="e#4227#4246#0" expanded="false" />
-            <element signature="e#4399#4427#0" expanded="false" />
-            <element signature="e#4758#4777#0" expanded="false" />
-            <element signature="e#4979#5007#0" expanded="false" />
-            <element signature="e#6107#6126#0" expanded="false" />
-            <element signature="e#6172#6191#0" expanded="false" />
-            <element signature="e#6330#6358#0" expanded="false" />
-            <element signature="e#6666#6685#0" expanded="false" />
-            <element signature="e#6871#6899#0" expanded="false" />
-            <element signature="e#7456#7475#0" expanded="false" />
-            <element signature="e#7521#7540#0" expanded="false" />
-            <element signature="e#7681#7709#0" expanded="false" />
-            <element signature="e#7960#7979#0" expanded="false" />
-            <element signature="e#8026#8045#0" expanded="false" />
-            <element signature="e#8091#8110#0" expanded="false" />
-            <element signature="e#8293#8321#0" expanded="false" />
-            <element signature="e#8877#8896#0" expanded="false" />
-            <element signature="e#8942#8961#0" expanded="false" />
-            <element signature="e#9100#9128#0" expanded="false" />
-            <element signature="e#9434#9453#0" expanded="false" />
-            <element signature="e#9639#9667#0" expanded="false" />
-            <element signature="e#10224#10243#0" expanded="false" />
-            <element signature="e#10289#10308#0" expanded="false" />
-            <element signature="e#10447#10475#0" expanded="false" />
-            <element signature="e#10782#10801#0" expanded="false" />
-            <element signature="e#10987#11015#0" expanded="false" />
-            <element signature="e#11578#11597#0" expanded="false" />
-            <element signature="e#11643#11662#0" expanded="false" />
-            <element signature="e#11803#11831#0" expanded="false" />
-            <element signature="e#12144#12163#0" expanded="false" />
-            <element signature="e#12349#12377#0" expanded="false" />
-            <element signature="e#12937#12956#0" expanded="false" />
-            <element signature="e#13002#13021#0" expanded="false" />
-            <element signature="e#13160#13188#0" expanded="false" />
-            <element signature="e#13498#13517#0" expanded="false" />
-            <element signature="e#13703#13731#0" expanded="false" />
-            <element signature="e#14295#14314#0" expanded="false" />
-            <element signature="e#14360#14379#0" expanded="false" />
-            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#2138#2157#0" expanded="false" />
-            <element signature="e#2345#2368#0" expanded="false" />
-            <element signature="e#2397#2420#0" expanded="false" />
-            <element signature="e#2450#2473#0" expanded="false" />
-            <element signature="e#2501#2524#0" expanded="false" />
-            <element signature="e#15751#15770#0" expanded="false" />
-            <element signature="e#15796#15821#0" expanded="false" />
-            <element signature="e#15906#15934#0" expanded="false" />
-            <element signature="n#LinearLayout#2;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#14871#14890#0" expanded="false" />
-            <element signature="e#15090#15113#0" expanded="false" />
-            <element signature="e#15142#15165#0" expanded="false" />
-            <element signature="e#15195#15218#0" expanded="false" />
-            <element signature="e#15246#15269#0" expanded="false" />
-            <element signature="e#15751#15770#0" expanded="false" />
-            <element signature="e#15796#15821#0" expanded="false" />
-            <element signature="e#15906#15934#0" expanded="false" />
-            <element signature="n#LinearLayout#3;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#16134#16153#0" expanded="false" />
-            <element signature="e#16353#16376#0" expanded="false" />
-            <element signature="e#16405#16428#0" expanded="false" />
-            <element signature="e#16458#16481#0" expanded="false" />
-            <element signature="e#16509#16532#0" expanded="false" />
-            <element signature="e#17019#17038#0" expanded="false" />
-            <element signature="e#17064#17093#0" expanded="false" />
-            <element signature="e#17178#17206#0" expanded="false" />
-            <element signature="n#LinearLayout#4;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#17407#17426#0" expanded="false" />
-            <element signature="e#17626#17649#0" expanded="false" />
-            <element signature="e#17678#17701#0" expanded="false" />
-            <element signature="e#17731#17754#0" expanded="false" />
-            <element signature="e#17782#17805#0" expanded="false" />
-            <element signature="e#18293#18312#0" expanded="false" />
-            <element signature="e#18338#18368#0" expanded="false" />
-            <element signature="e#18453#18481#0" expanded="false" />
-            <element signature="n#LinearLayout#5;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#18681#18700#0" expanded="false" />
-            <element signature="e#18900#18923#0" expanded="false" />
-            <element signature="e#18952#18975#0" expanded="false" />
-            <element signature="e#19005#19028#0" expanded="false" />
-            <element signature="e#19056#19079#0" expanded="false" />
-            <element signature="e#20854#20873#0" expanded="false" />
-            <element signature="e#20899#20932#0" expanded="false" />
-            <element signature="e#21017#21045#0" expanded="false" />
-            <element signature="e#19728#19756#0" expanded="false" />
-            <element signature="n#LinearLayout#6;n#LinearLayout#0;n#!!top" expanded="false" />
-            <element signature="e#19960#19979#0" expanded="false" />
-            <element signature="e#20179#20202#0" expanded="false" />
-            <element signature="e#20231#20254#0" expanded="false" />
-            <element signature="e#20284#20307#0" expanded="false" />
-            <element signature="e#20335#20358#0" expanded="false" />
-            <element signature="e#20854#20873#0" expanded="false" />
-            <element signature="e#20899#20932#0" expanded="false" />
-            <element signature="e#21017#21045#0" expanded="false" />
-            <element signature="e#21462#21490#0" expanded="false" />
-            <element signature="e#23365#23384#0" expanded="false" />
-            <element signature="e#21908#21931#0" expanded="false" />
-            <element signature="e#21960#21983#0" expanded="false" />
-            <element signature="e#22013#22036#0" expanded="false" />
-            <element signature="e#22064#22087#0" expanded="false" />
-            <element signature="e#24200#24227#0" expanded="false" />
-            <element signature="e#24320#24331#0" expanded="false" />
-            <element signature="e#24536#24563#0" expanded="false" />
-            <element signature="e#24648#24659#0" expanded="false" />
-            <element signature="e#25282#25301#0" expanded="false" />
-            <element signature="e#23624#23647#0" expanded="false" />
-            <element signature="e#25946#25957#0" expanded="false" />
-            <element signature="e#26151#26170#0" expanded="false" />
-            <element signature="e#26501#26512#0" expanded="false" />
-            <element signature="e#26706#26725#0" expanded="false" />
-            <element signature="e#27048#27059#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.857143">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/res/layout/fragment_bidding_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33665836">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-          <folding>
-            <element signature="e#341#360#0" expanded="false" />
-            <element signature="e#304#314#0" expanded="false" />
-            <element signature="e#792#811#0" expanded="false" />
-            <element signature="e#975#994#0" expanded="false" />
-            <element signature="e#1027#1046#0" expanded="false" />
-            <element signature="e#1080#1099#0" expanded="false" />
-            <element signature="e#1671#1682#0" expanded="false" />
-            <element signature="e#2065#2076#0" expanded="false" />
-            <element signature="e#2567#2578#0" expanded="false" />
-            <element signature="e#3097#3116#0" expanded="false" />
-            <element signature="e#3146#3165#0" expanded="false" />
-            <element signature="e#3671#3690#0" expanded="false" />
-            <element signature="e#3728#3747#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6260454">
-          <caret line="248" column="29" selection-start-line="242" selection-start-column="28" selection-end-line="248" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/GuideSplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.032258064">
           <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,18 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/BaseFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41935483">
-          <caret line="128" column="58" selection-start-line="128" selection-start-column="58" selection-end-line="128" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#showTimerDialog#0;class#BaseFragment#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,7 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12903225">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1290323">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1268,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16129032">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="32.258064">
           <caret line="1081" column="0" selection-start-line="1081" selection-start-column="0" selection-end-line="1081" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1296,38 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="9" selection-start-line="43" selection-start-column="7" selection-end-line="45" selection-end-column="9" />
-          <folding>
-            <element signature="method#showFaPiaoDialog#0;class#AddBiddingActivity#0" expanded="false" />
-            <element signature="method#showZhifuDialog#0;class#AddBiddingActivity#0" expanded="false" />
-            <element signature="method#showFenleiDialog#0;class#AddBiddingActivity#0" expanded="false" />
-            <element signature="method#showPicDialog#0;class#AddBiddingActivity#0" expanded="false" />
-            <element signature="method#showReceiveDialog#0;class#AddBiddingActivity#0" expanded="false" />
-            <element signature="method#showSearchDialog#0;class#AddBiddingActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="80" column="31" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="31" />
-          <folding>
-            <element signature="method#reLogin#0;class#BaseActivity#0" expanded="false" />
-            <element signature="method#showTimerDialog#0;class#BaseActivity#0" expanded="false" />
-            <element signature="method#tipsOutput#0;class#BaseActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1335,17 +801,303 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5483871">
           <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-          <folding>
-            <element signature="class#7879:9074" expanded="false" />
-            <element signature="method#handleMainCount#0;class#MainActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6391876">
-          <caret line="59" column="53" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.41338113">
+          <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/common_quote.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="627" column="15" selection-start-line="627" selection-start-column="15" selection-end-line="627" selection-end-column="15" />
+          <folding>
+            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#2;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#3;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#4;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#5;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#6;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#7;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#RelativeLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/point_gray.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/quote/QuoteListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/activity_addbidding.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+          <folding>
+            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="e#1541#1560#0" expanded="false" />
+            <element signature="e#1590#1609#0" expanded="false" />
+            <element signature="e#2021#2040#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/activity_biddinglist.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20199502">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="n#RelativeLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/android-support-v4.jar!/android/support/v4/app/FragmentTransaction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44334975">
+          <caret line="51" column="66" selection-start-line="51" selection-start-column="62" selection-end-line="51" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/BiddingListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding>
+            <element signature="e#2662#2804#0" expanded="false" />
+            <element signature="e#2803#2804#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/model/Bidding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="104" column="83" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="83" />
+          <folding>
+            <element signature="e#10001#10002#0" expanded="false" />
+            <element signature="e#10039#10040#0" expanded="false" />
+            <element signature="e#10193#10194#0" expanded="false" />
+            <element signature="e#10227#10228#0" expanded="false" />
+            <element signature="e#10281#10282#0" expanded="false" />
+            <element signature="e#10327#10328#0" expanded="false" />
+            <element signature="e#10372#10373#0" expanded="false" />
+            <element signature="e#10413#10414#0" expanded="false" />
+            <element signature="e#10589#10590#0" expanded="false" />
+            <element signature="e#10633#10634#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19950739">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/empty.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60598505">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="e#865#884#0" expanded="false" />
+            <element signature="e#910#925#0" expanded="false" />
+            <element signature="e#1010#1021#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/activity/bid/AddBiddingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="244" column="22" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7096774">
+          <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/fragment_bidding_detail.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36658356">
+          <caret line="53" column="46" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/bg_rectangle_search.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/button_login_normal.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/login_delete_icon_x.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16129032">
+          <caret line="5" column="62" selection-start-line="2" selection-start-column="4" selection-end-line="5" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/search_x.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19354838">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/common_bidding.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.571428">
+          <caret line="129" column="45" selection-start-line="129" selection-start-column="45" selection-end-line="129" selection-end-column="45" />
+          <folding>
+            <element signature="e#14258#14288#0" expanded="false" />
+            <element signature="n#LinearLayout#8;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/search_x1.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4339152">
+          <caret line="68" column="48" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+          <folding>
+            <element signature="e#2623#2652#0" expanded="false" />
+            <element signature="e#2791#2817#0" expanded="false" />
+            <element signature="n#ScrollView#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/search_b.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/search_s.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/drawable/agree_x.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree_s.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-hdpi/agree.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-mdpi/agree.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/res/mipmap-xhdpi/agree_s.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/CommonBiddingFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5178#5473#0" expanded="false" />
+            <element signature="e#5472#5473#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032258064">
+          <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/adapter/BiddingAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34767026">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding>
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
+            <element signature="method#onLoadingComplete#0;class#4218:6771" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bidding/src/com/lessomall/bidding/fragment/bid/BiddingDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19354838">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
           <folding />
         </state>
       </provider>

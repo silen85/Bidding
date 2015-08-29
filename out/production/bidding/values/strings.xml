@@ -4,6 +4,7 @@
 
     <string name="loading">请求数据中，请稍候&#8230;</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
+    <string name="empty">暂无相关订单</string>
 
     <string name="app_fullname">联塑商城竞价平台</string>
     <string name="website">www.lessomall.com</string>
@@ -34,16 +35,16 @@
 
 
     <!-- dealer -->
-    <string name="bidding_add_payment">支付方式</string>
-    <string name="bidding_add_delivery">交收方式</string>
-    <string name="bidding_add_other">其他要求</string>
-    <string name="bidding_add_expdate">有效期</string>
-    <string name="bidding_add_tax">税票类型</string>
-    <string name="bidding_add_product">所需产品</string>
-    <string name="bidding_add_topic">主题</string>
-    <string name="bidding_add_certificate">保证金付款凭证</string>
-    <string name="bidding_add_rule1">我已经阅读并同意</string>
-    <string name="bidding_add_rule2">《竞价单发布规则》</string>
+    <string name="bidding_payment">支付方式</string>
+    <string name="bidding_delivery">交收方式</string>
+    <string name="bidding_other">其他要求</string>
+    <string name="bidding_expdate">有效期</string>
+    <string name="bidding_tax">税票类型</string>
+    <string name="bidding_product">所需产品</string>
+    <string name="bidding_topic">主题</string>
+    <string name="bidding_certificate">保证金付款凭证</string>
+    <string name="bidding_rule1">我已经阅读并同意</string>
+    <string name="bidding_rule2">《竞价单发布规则》</string>
 
     <!-- dialog bottom title -->
     <string name="dialog_bottom_fapiao">税票种类</string>

@@ -33,20 +33,24 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     protected final static String STATUS_QUOTE_1 = "1", STATUS_QUOTE_2 = "2", STATUS_QUOTE_3 = "3", STATUS_QUOTE_4 = "4", STATUS_QUOTE_5 = "5",
             STATUS_QUOTE_6 = "6";
 
-    protected LinearLayout topic, product, product_category, tax, expdate, delivery, payment, certificate, other;
+    protected LinearLayout topic, product, product_category,product_pic, tax, expdate, delivery, payment, certificate, other;
 
-    protected ImageView product_serach, product_pic_upload, sb_enable;
+    protected ImageView product_serach, product_pic_add, sb_enable;
 
     protected TimeChooserDialog timerDialog;
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
 
-    protected TextView product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
+    protected TextView biddingid,biddingstatus,product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        biddingid = (TextView) view.findViewById(R.id.biddingid);
+
+        biddingstatus = (TextView) view.findViewById(R.id.biddingstatus);
 
         topic = (LinearLayout) view.findViewById(R.id.topic);
         topic.setOnClickListener(this);
@@ -73,8 +77,10 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         product_unit_price_edit = (EditText) view.findViewById(R.id.product_unit_price_edit);
         product_comment_edit = (EditText) view.findViewById(R.id.product_comment_edit);
 
-        product_pic_upload = (ImageView) view.findViewById(R.id.product_pic_upload);
-        product_pic_upload.setOnClickListener(this);
+        product_pic = (LinearLayout) view.findViewById(R.id.product_pic);
+
+        product_pic_add = (ImageView) view.findViewById(R.id.product_pic_add);
+        product_pic_add.setOnClickListener(this);
 
         tax = (LinearLayout) view.findViewById(R.id.tax);
         tax.setOnClickListener(this);
@@ -262,7 +268,7 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
             case R.id.product_category:
                 showFenleiDialog("2000000000");
                 break;
-            case R.id.product_pic_upload:
+            case R.id.product_pic_add:
                 showPicDialog(0);
                 break;
             case R.id.sb_enable:
