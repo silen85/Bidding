@@ -115,6 +115,9 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
         bid = bidding.getId();
 
+        sBeginDate = getBidding().getBiddingDeadline();
+        sEndDate = getBidding().getExpectDeliveryDate();
+
         biddingid.setText(getBidding().getBiddingCode());
         biddingstatus.setText(getBidding().getBiddingStatusName());
 
@@ -127,7 +130,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         product_unit_price_edit.setText(getBidding().getIntentPrice() + " 元");
         product_comment_edit.setText(getBidding().getMemo2());
         tax_txt.setText(getString(R.string.bidding_tax) + "：" + getBidding().getTaxBillType());
-        expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + getBidding().getBiddingDeadline());
+        expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
         delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + getBidding().getDeliveryGoodsMode() + "；地址：" + getBidding().getDeliveryGoodsPlace());
         payment_txt.setText(getString(R.string.bidding_payment) + "：" + getBidding().getPaymentMode());
         certificate_edit.setText(getBidding().getDepositPaymentVouchers());
@@ -242,6 +245,20 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
             @Override
             public void onClick(View v) {
                 activity.backToList();
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savePrice();
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitPrice();
             }
         });
 
@@ -678,6 +695,14 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         AsyncHttpClient client = new AsyncHttpClient();
         client.setTimeout(Constant.CONNECT_TIMEOUT);
         client.post(activity, Constant.DEALER_CONFIRM_PRICE, requestParams, asyncHttpResponseHandler);
+
+    }
+
+    private void savePrice() {
+
+    }
+
+    private void submitPrice() {
 
     }
 

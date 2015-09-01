@@ -133,6 +133,9 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                 timeType = timerDialog.getType();
                 sBeginDate = timerDialog.getsBeaginDate();
                 sEndDate = timerDialog.getsEndDate();
+
+                expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
+
             }
         });
         timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
