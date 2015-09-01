@@ -63,5 +63,6 @@
     <dimen name="product_pic_add_width">38dp</dimen>
     <dimen name="product_pic_add_height">38dp</dimen>
 
+    <dimen name="quote_list_item_height">128dp</dimen>
 
 </resources>

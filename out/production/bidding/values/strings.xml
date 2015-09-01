@@ -37,12 +37,12 @@
     <!-- dealer -->
     <string name="bidding_payment">支付方式</string>
     <string name="bidding_delivery">交收方式</string>
-    <string name="bidding_other">其他要求</string>
+    <string name="bidding_other">其他要求：</string>
     <string name="bidding_expdate">有效期</string>
     <string name="bidding_tax">税票类型</string>
     <string name="bidding_product">所需产品</string>
     <string name="bidding_topic">主题</string>
-    <string name="bidding_certificate">保证金付款凭证</string>
+    <string name="bidding_certificate">保证金付款凭证：</string>
     <string name="bidding_rule1">我已经阅读并同意</string>
     <string name="bidding_rule2">《竞价单发布规则》</string>
 
@@ -66,6 +66,8 @@
     <string name="dialog_bottom_receive">交收方式</string>
     <string name="dialog_bottom_receive_A">配送</string>
     <string name="dialog_bottom_receive_B">自提</string>
+
+    <string name="tips_success_receive">收货成功</string>
 
     <string name="TAG_KEY_A">TAG_KEY_A</string>
     <string name="TAG_KEY_B">TAG_KEY_B</string>

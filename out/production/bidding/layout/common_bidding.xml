@@ -127,6 +127,8 @@
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
                     android:clickable="true"
+                    android:paddingLeft="@dimen/interval_A"
+                    android:paddingRight="@dimen/interval_A"
                     android:scaleType="fitXY"
                     android:src="@drawable/search_x" />
 
@@ -224,6 +226,7 @@
                     android:layout_marginLeft="@dimen/interval_B"
                     android:background="@null"
                     android:gravity="center_vertical"
+                    android:inputType="number"
                     android:singleLine="false"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -524,9 +527,8 @@
         <EditText
             android:id="@+id/certificate_edit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
             android:background="@null"
             android:gravity="center_vertical"
             android:singleLine="false"
@@ -571,7 +573,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
             android:background="@null"
             android:gravity="center_vertical"
             android:singleLine="false"
@@ -580,6 +581,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rule_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/interval_C"
@@ -632,57 +634,5 @@
             android:scaleType="fitXY" />
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/interval_C"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:paddingBottom="28dp"
-        android:paddingTop="@dimen/pt_bidding_add">
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_gray"
-            android:paddingBottom="8dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="8dp"
-            android:text="button1"
-            android:textColor="@color/BASE_TEXT_COLOR"
-            android:textSize="@dimen/F5" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/interval_B"
-            android:background="@drawable/button_gray"
-            android:paddingBottom="8dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="8dp"
-            android:text="button2"
-            android:textColor="@color/BASE_TEXT_COLOR"
-            android:textSize="@dimen/F5" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/interval_B"
-            android:background="@drawable/button_orange"
-            android:paddingBottom="8dp"
-            android:paddingLeft="9dp"
-            android:paddingRight="9dp"
-            android:paddingTop="8dp"
-            android:text="button3"
-            android:textColor="@color/MALL_C8"
-            android:textSize="@dimen/F5" />
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -1,17 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <!--  渐变色 -->
-    <!-- <gradient
-        android:startColor="@android:color/white"
-        android:endColor="@android:color/white"
-        android:centerX="5"
-        android:type="sweep"/>   1EED6C00  -->
 
     <solid android:color="@color/MALL_C7" />
-
-    <stroke
-        android:width="0.5dp"
-        android:color="@color/MALL_C7" />
 
     <corners android:radius="@dimen/corner_small" />
 
