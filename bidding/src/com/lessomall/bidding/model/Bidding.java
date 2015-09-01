@@ -109,27 +109,29 @@ public class Bidding {
         bidding.setProductBigCategory(trimValue((String) map.get("ProductBigCategory")));
         bidding.setProductMiddleCategory(trimValue((String) map.get("ProductMiddleCategory")));
 
-        List<Map<String, String>> _data = (List<Map<String, String>>) (((Map) map).get("datalist"));
+        List<Map<String, String>> _data = (List<Map<String, String>>) (map.get("datalist"));
 
-        List<QuotePrice> quotePrices = new ArrayList<QuotePrice>();
+        List<QuotePrice> quotePrices = new ArrayList();
         if (_data != null && _data.size() > 0) {
             for (int j = 0; j < _data.size(); j++) {
 
                 QuotePrice quotePrice = new QuotePrice();
 
-                quotePrice.setId((String) map.get("Id"));
-                quotePrice.setActualSupplyTotalNumber((String) map.get("ActualSupplyTotalNumber"));
-                quotePrice.setBiddingStatus((String) map.get("BiddingStatus"));
-                quotePrice.setBiddingDetailId((String) map.get("BiddingDetailCountSupplierBidding"));
-                quotePrice.setCountSupplierBidding((String) map.get("CountSupplierBidding"));
-                quotePrice.setCreateTime((String) map.get("CreateTime"));
-                quotePrice.setLastUpdated((String) map.get("LastUpdated"));
-                quotePrice.setMemo((String) map.get("Memo"));
-                quotePrice.setPrice((String) map.get("Price"));
-                quotePrice.setQuotationDate((String) map.get("QuotationDate"));
-                quotePrice.setReturnState((String) map.get("ReturnState"));
-                quotePrice.setSupplierCode((String) map.get("SupplierCode"));
-                quotePrice.setSupplierName((String) map.get("SupplierName"));
+                Map<String, String> _map = _data.get(j);
+
+                quotePrice.setId(_map.get("Id"));
+                quotePrice.setActualSupplyTotalNumber(_map.get("ActualSupplyTotalNumber"));
+                quotePrice.setBiddingStatus(_map.get("BiddingStatus"));
+                quotePrice.setBiddingDetailId(_map.get("BiddingDetailCountSupplierBidding"));
+                quotePrice.setCountSupplierBidding(_map.get("CountSupplierBidding"));
+                quotePrice.setCreateTime(_map.get("CreateTime"));
+                quotePrice.setLastUpdated(_map.get("LastUpdated"));
+                quotePrice.setMemo(_map.get("Memo"));
+                quotePrice.setPrice(_map.get("Price"));
+                quotePrice.setQuotationDate(_map.get("QuotationDate"));
+                quotePrice.setReturnState(_map.get("ReturnState"));
+                quotePrice.setSupplierCode(_map.get("SupplierCode"));
+                quotePrice.setSupplierName(_map.get("SupplierName"));
 
                 quotePrices.add(quotePrice);
             }

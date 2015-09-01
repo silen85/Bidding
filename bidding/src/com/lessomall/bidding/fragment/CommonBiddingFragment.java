@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lessomall.bidding.R;
@@ -33,7 +34,9 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     protected final static String STATUS_QUOTE_1 = "1", STATUS_QUOTE_2 = "2", STATUS_QUOTE_3 = "3", STATUS_QUOTE_4 = "4", STATUS_QUOTE_5 = "5",
             STATUS_QUOTE_6 = "6";
 
-    protected LinearLayout topic, product, product_category,product_pic, tax, expdate, delivery, payment, certificate, other;
+    protected LinearLayout topic, product, product_category, product_pic, tax, expdate, delivery, payment, certificate, other;
+
+    protected RelativeLayout rule_layout;
 
     protected ImageView product_serach, product_pic_add, sb_enable;
 
@@ -41,7 +44,7 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
 
-    protected TextView biddingid,biddingstatus,product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
+    protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
 
     @Override
@@ -53,8 +56,6 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         biddingstatus = (TextView) view.findViewById(R.id.biddingstatus);
 
         topic = (LinearLayout) view.findViewById(R.id.topic);
-        topic.setOnClickListener(this);
-
         topic_edit = (EditText) view.findViewById(R.id.topic_edit);
 
         product = (LinearLayout) view.findViewById(R.id.product);
@@ -111,6 +112,8 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         other.setOnClickListener(this);
 
         other_edit = (EditText) view.findViewById(R.id.other_edit);
+
+        rule_layout = (RelativeLayout) view.findViewById(R.id.rule_layout);
 
         sb_enable = (ImageView) view.findViewById(R.id.sb_enable);
         sb_enable.setSelected(true);
@@ -234,13 +237,32 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     }
 
+    protected void disableInput() {
+
+        topic_edit.setFocusable(false);
+        product_name_edit.setFocusable(false);
+        product_serach.setVisibility(View.GONE);
+        product_brand_edit.setFocusable(false);
+        product_category.setOnClickListener(null);
+        product_num_edit.setFocusable(false);
+        product_unit_edit.setFocusable(false);
+        product_unit_price_edit.setFocusable(false);
+        product_comment_edit.setFocusable(false);
+        product_pic_add.setVisibility(View.GONE);
+
+        tax.setOnClickListener(null);
+        expdate.setOnClickListener(null);
+        payment.setOnClickListener(null);
+        delivery.setOnClickListener(null);
+
+        certificate_edit.setFocusable(false);
+        other_edit.setFocusable(false);
+
+    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.topic:
-
-                break;
             case R.id.product:
 
                 break;

@@ -246,6 +246,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         String email = (String) data.get("email");
         String status = (String) data.get("status");
         String customName = (String) data.get("customName");
+        String customCode = (String) data.get("customCode");
         String address = (String) data.get("address");
         String linkman = (String) data.get("linkman");
         String lastLoginTime = (String) data.get("lastLoginTime");
@@ -267,6 +268,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             loginUser.setEmail(email);
             loginUser.setStatus(status);
             loginUser.setCustomName(customName);
+            loginUser.setCustomCode(customCode);
             loginUser.setAddress(address);
             loginUser.setLinkman(linkman);
             loginUser.setLastLoginTime(lastLoginTime);

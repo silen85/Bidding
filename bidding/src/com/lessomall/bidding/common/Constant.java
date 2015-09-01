@@ -22,17 +22,12 @@ public class Constant {
     public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
     public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
     public final static String BIDDING_LIST = BASE_URL + "biddingList/";
+    public final static String DEALER_CONFIRM_PRICE = BASE_URL + "dealerConfirmPrice/";
+    public final static String DEALER_CONFIRM_STORE = BASE_URL + "dealerConfirmStore/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 
     public final static String SECRET_KEY = "db1e358753b4fe1735dcf50dc1bf465b";
-
-    public final static int INIT_PAGENO = 1;
-    public final static int INIT_PAGESIZE = 10;
-
-    public final static int CUSTOMER_TYPE_SUPPLIER = 1;
-
-    public final static int CUSTOMER_TYPE_PROXIER_LEVEL1 = 2;
 
     public final static String[] IMG_SUFFIX = {".jpg", ".jpeg", ".png", ".bmp"};
     public final static long IMG_MAX_SIZE = 512 * 1024;  //   500k
@@ -47,7 +42,7 @@ public class Constant {
 
     public static final SimpleDateFormat DATE_FORMAT_5 = new SimpleDateFormat("mm/dd/yyyy");
 
-    public static final int CONNECT_TIMEOUT = 12000;
+    public static final int CONNECT_TIMEOUT = 8000;
 
     public static int HTTP_STATUS_CODE_SUCCESS = 200;
 

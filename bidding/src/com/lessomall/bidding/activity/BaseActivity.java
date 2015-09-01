@@ -173,7 +173,7 @@ public abstract class BaseActivity extends FragmentActivity {
     public void tipsOutput(String recode, String msg) {
         if (Constant.RECODE_ERROR_TIPS.equals(recode)) {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        }else if (Constant.RECODE_FAILED_NODATA.equals(recode)) {
+        } else if (Constant.RECODE_FAILED_NODATA.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.no_data_tips), Toast.LENGTH_SHORT).show();
         } else if (Constant.RECODE_FAILED_USER_LOGIN.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
@@ -184,6 +184,8 @@ public abstract class BaseActivity extends FragmentActivity {
         } else if (Constant.RECODE_FAILED_SESSION_WRONG.equals(recode)) {
             reLogin();
         } else if (Constant.RECODE_ERROR_SYSTEM.equals(recode)) {
+            Toast.makeText(this, getResources().getString(R.string.RECODE_ERROR_OTHERS), Toast.LENGTH_SHORT).show();
+        } else if (Constant.RECODE_FAILED_PARAM_WRONG.equals(recode)) {
             Toast.makeText(this, getResources().getString(R.string.RECODE_ERROR_OTHERS), Toast.LENGTH_SHORT).show();
         } else {
 

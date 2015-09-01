@@ -116,6 +116,7 @@ public class LessoApplication extends Application {
         private String email = "";
         private String status = "";
         private String customName = "";
+        private String customCode="";
         private String address = "";
         private String linkman = "";
         private String phone = "";
@@ -176,6 +177,14 @@ public class LessoApplication extends Application {
 
         public void setCustomName(String customName) {
             this.customName = customName;
+        }
+
+        public String getCustomCode() {
+            return customCode;
+        }
+
+        public void setCustomCode(String customCode) {
+            this.customCode = customCode;
         }
 
         public String getAddress() {

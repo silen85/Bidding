@@ -96,10 +96,10 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
         biddinglist = mPullRefreshListView.getRefreshableView();
 
-        biddinglist.setEmptyView(LayoutInflater.from(getActivity()).inflate(R.layout.empty, null));
+        biddinglist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
 
         biddinglist.setDivider(null);
-        biddinglist.setDividerHeight(activity.getResources().getDimensionPixelSize(R.dimen.interval_C));
+        biddinglist.setDividerHeight(getResources().getDimensionPixelSize(R.dimen.interval_C));
 
         biddinglist.setVerticalScrollBarEnabled(false);
         biddinglist.setHorizontalScrollBarEnabled(false);
@@ -123,7 +123,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
     }
 
-    private void initData() {
+    public void initData() {
 
         pageno = 1;
         sendRequest(generateParam());
@@ -153,14 +153,16 @@ public class BiddingListFragment extends PullToRefreshListFragment {
     private void lastData() {
 
         adapter.notifyDataSetChanged();
-
         biddinglist.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mPullRefreshListView.onRefreshComplete();
-                Toast.makeText(activity, getResources().getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
             }
         }, 1000);
+
+        if (list.size() > 0) {
+            Toast.makeText(activity, getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -170,6 +172,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
         Map<String, String> params = activity.generateRequestMap();
 
         params.put("sessionid", activity.loginUser.getSessionid());
+        params.put("customCode", activity.loginUser.getCustomCode());
         params.put("type", "1");
         params.put("status", getStatus() + "");
 
@@ -260,7 +263,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
                         }
                     } catch (Exception e) {
                         Log.e(TAG, e.getMessage(), e);
-                        Toast.makeText(activity, getResources().getString(R.string.no_data_tips), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, getString(R.string.no_data_tips), Toast.LENGTH_SHORT).show();
                     }
 
                     break;

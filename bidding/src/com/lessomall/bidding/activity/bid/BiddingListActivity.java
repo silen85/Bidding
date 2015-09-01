@@ -71,6 +71,13 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
+    public void refreshList() {
+
+        if (fragment != null)
+            fragment.initData();
+
+    }
+
     public void goToDetail(Bidding bidding) {
 
         BiddingDetailFragment fragment = new BiddingDetailFragment();
