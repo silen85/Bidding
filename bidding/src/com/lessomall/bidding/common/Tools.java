@@ -46,11 +46,18 @@ import java.util.regex.Pattern;
 
 public class Tools {
 
-    /**
-     * 获取版本信息
-     *
-     * @return
-     */
+    public static Map<String, String> generateRequestMap() {
+
+        Map<String, String> map = new HashMap<String, String>();
+
+        map.put("appkey", Constant.APP_KEY_ANDROID);
+        map.put("timestamp", (System.currentTimeMillis() / 1000) + "");
+        map.put("token", new MD5().GetMD5Code(Constant.SECRET_KEY + Constant.DATE_FORMAT_1.format(new Date())));
+
+        return map;
+    }
+
+
     public static PackageInfo getPackageInfo(Context context) {
 
         PackageInfo info = null;

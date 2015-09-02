@@ -1,12 +1,13 @@
 package com.lessomall.bidding.ui.addbidding;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.common.Tools;
 
 import java.io.File;
@@ -28,15 +29,7 @@ public class PicDialog extends Dialog {
 
     private String TAG = "com.lessomall.bidding.ui.addbidding.PicDialog";
 
-    private static final int RESULT_CAPTURE_IMAGE = 1;// 照相的requestCode
-    private static final int RESULT_CROP_IMAGE = 2; // 裁剪的requestCode
-
     private Context context;
-
-    private int type = 0;       //0:拍照  1:从相册中选择
-
-    private Uri imageUri; // 拍照时的uri
-    private File imageFile;// 相册或拍照的file
 
     private ClickListenerInterface clickListenerInterface;
 
@@ -44,13 +37,11 @@ public class PicDialog extends Dialog {
         void doFinish();
     }
 
-    public PicDialog(Context context, int type) {
+    public PicDialog(Context context) {
 
         super(context);
 
         this.context = context;
-
-        this.type = type;
 
     }
 
@@ -75,17 +66,23 @@ public class PicDialog extends Dialog {
             @Override
             public void onClick(View view) {
 
-                imageUri = Uri.fromFile(getOutPutMediaFile());
-
-                if (imageUri == null) {
-                    Toast.makeText(context, "暂不能拍照，请见谅！", Toast.LENGTH_SHORT).show();
+                String sdStatus = Environment.getExternalStorageState();
+                if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
+                    Log.d(TAG, "SD card is not available right now !");
+                    Toast.makeText(context, "SD card is not available right now !", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra("return-data", false);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                ((Activity) context).startActivityForResult(intent, RESULT_CAPTURE_IMAGE);
+                File file = getOutPutMediaFile();
+
+                ((BaseActivity) context).cameraUri = Uri.fromFile(file);
+
+                Intent intent = new Intent();
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, ((BaseActivity) context).cameraUri);
+
+                ((BaseActivity) context).startActivityForResult(intent, BaseActivity.RESULT_CAPTURE_IMAGE);
+
 
             }
         });
@@ -96,6 +93,11 @@ public class PicDialog extends Dialog {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/jpeg");
+                ((BaseActivity) context).startActivityForResult(intent, BaseActivity.RESULT_GALLERY_IMAGE);
+
             }
         });
 
@@ -103,17 +105,14 @@ public class PicDialog extends Dialog {
 
     private File getOutPutMediaFile() {
 
-        String strImgPath = Constant.BASE_DIR;      // 存放照片的文件夹
+        if (!context.getExternalCacheDir().exists())
+            context.getExternalCacheDir().mkdir();
+
+        String strImgPath = context.getExternalCacheDir().getPath();      // 存放照片的文件夹
 
         String fileName = Tools.formatDate(new Date(), "yyyyMMddHHmmss") + ".jpg";// 照片命名
 
-        File out = new File(strImgPath);
-
-        if (!out.exists())
-            out.mkdirs();
-
-        imageFile = new File(strImgPath, fileName);
-        return imageFile;
+        return new File(strImgPath, fileName);
     }
 
     public void setClickListenerInterface(ClickListenerInterface clickListenerInterface) {

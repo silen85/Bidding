@@ -20,6 +20,7 @@
     <include layout="@layout/line" />
 
     <LinearLayout
+        android:id="@+id/dialog_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/interval_C"

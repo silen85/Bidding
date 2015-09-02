@@ -123,16 +123,36 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
         topic_edit.setText(getBidding().getBiddingTitle());
         product_name_edit.setText(getBidding().getNameType());
+        product_name_edit.setTag(getBidding().getProductCode());
         product_brand_edit.setText(getBidding().getBrand());
-        product_category_txt.setText(getBidding().getProductBigCategory());
+
+        for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
+            if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(getBidding().getProductBigCategory())) {
+                product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
+                product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
+                break;
+            }
+        }
         product_num_edit.setText(getBidding().getRequiredQuantity());
         product_unit_edit.setText(getBidding().getUnit());
-        product_unit_price_edit.setText(getBidding().getIntentPrice() + " 元");
+        product_unit_price_edit.setText(getBidding().getIntentPrice());
         product_comment_edit.setText(getBidding().getMemo2());
         tax_txt.setText(getString(R.string.bidding_tax) + "：" + getBidding().getTaxBillType());
+        tax_txt.setTag(getBidding().getTaxBillType());
         expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
-        delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + getBidding().getDeliveryGoodsMode() + "；地址：" + getBidding().getDeliveryGoodsPlace());
+        expdate_txt.setTag(R.string.TAG_KEY_A, sBeginDate);
+        expdate_txt.setTag(R.string.TAG_KEY_B, sEndDate);
+
+        if (getBidding().getDeliveryGoodsPlace() != null && !"".equals(getBidding().getDeliveryGoodsPlace().trim())) {
+            delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + getBidding().getDeliveryGoodsMode() + "；地址：" + getBidding().getDeliveryGoodsPlace());
+        } else {
+            delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + getBidding().getDeliveryGoodsMode());
+        }
+        delivery_txt.setTag(R.string.TAG_KEY_A, getBidding().getDeliveryGoodsMode());
+        delivery_txt.setTag(R.string.TAG_KEY_B, getBidding().getDeliveryGoodsPlace());
+
         payment_txt.setText(getString(R.string.bidding_payment) + "：" + getBidding().getPaymentMode());
+        payment_txt.setTag(getBidding().getPaymentMode());
         certificate_edit.setText(getBidding().getDepositPaymentVouchers());
         other_edit.setText(getBidding().getMemo());
 
@@ -186,7 +206,8 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
                                         Intent intent = new Intent(activity, ImagePagerActivity.class);
                                         intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, webUrl);
                                         intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, 0);
-                                        activity.startActivity(intent);
+
+                                        activity.startActivity(intent, false);
 
                                     }
                                 });
@@ -575,7 +596,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void ensureReceived() {
 
-        Map params = activity.generateRequestMap();
+        Map params = Tools.generateRequestMap();
 
         params.put("sessionid", activity.loginUser.getSessionid());
         params.put("qid", qid);
@@ -637,7 +658,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void ensurePrice() {
 
-        Map params = activity.generateRequestMap();
+        Map params = Tools.generateRequestMap();
 
         params.put("sessionid", activity.loginUser.getSessionid());
         params.put("bid", bid);

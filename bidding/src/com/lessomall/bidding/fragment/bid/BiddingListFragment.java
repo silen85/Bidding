@@ -169,7 +169,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
     private Map<String, String> generateParam() {
 
-        Map<String, String> params = activity.generateRequestMap();
+        Map<String, String> params = Tools.generateRequestMap();
 
         params.put("sessionid", activity.loginUser.getSessionid());
         params.put("customCode", activity.loginUser.getCustomCode());

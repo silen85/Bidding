@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void loadMainCount() {
 
-        Map params = generateRequestMap();
+        Map params = Tools.generateRequestMap();
 
         params.put("sessionid", loginUser.getSessionid());
 

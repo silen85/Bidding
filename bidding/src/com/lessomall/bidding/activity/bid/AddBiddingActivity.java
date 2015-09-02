@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
@@ -26,6 +27,10 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     private String TAG = "com.lessomall.bidding.activity.bid.AddBiddingActivity";
 
     private EditText product_name_edit;
+
+    protected LinearLayout topic, product, product_category, product_pic, tax, expdate, delivery, payment, certificate, other;
+
+    protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
 
     private ImageView sb_enable;
 
@@ -74,8 +79,10 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         ImageView product_pic_add = (ImageView) findViewById(R.id.product_pic_add);
         product_pic_add.setOnClickListener(this);
 
-        LinearLayout tax = (LinearLayout) findViewById(R.id.tax);
+        tax = (LinearLayout) findViewById(R.id.tax);
         tax.setOnClickListener(this);
+
+        tax_txt = (TextView) tax.findViewById(R.id.tax_txt);
 
         LinearLayout expdate = (LinearLayout) findViewById(R.id.expdate);
         expdate.setOnClickListener(this);
@@ -104,9 +111,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     }
 
 
-    private void showFaPiaoDialog(int type) {
+    private void showFaPiaoDialog() {
 
-        FaPiaoDialog faPiaoDialog = new FaPiaoDialog(AddBiddingActivity.this, type);
+        FaPiaoDialog faPiaoDialog = new FaPiaoDialog(AddBiddingActivity.this);
         faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
         faPiaoDialog.setCanceledOnTouchOutside(true);
         faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
@@ -120,9 +127,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    private void showZhifuDialog(int type) {
+    private void showZhifuDialog() {
 
-        ZhifuDialog zhifuDialog = new ZhifuDialog(AddBiddingActivity.this, type);
+        ZhifuDialog zhifuDialog = new ZhifuDialog(AddBiddingActivity.this);
         zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
         zhifuDialog.setCanceledOnTouchOutside(true);
         zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
@@ -136,9 +143,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    private void showFenleiDialog(String code) {
+    private void showFenleiDialog() {
 
-        FenleiDialog fenleiDialog = new FenleiDialog(AddBiddingActivity.this, code, Constant.CATEGORY_CACHE_LEVEL1);
+        FenleiDialog fenleiDialog = new FenleiDialog(AddBiddingActivity.this, Constant.CATEGORY_CACHE_LEVEL1);
         fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
         fenleiDialog.setCanceledOnTouchOutside(true);
         fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
@@ -153,9 +160,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    private void showPicDialog(int type) {
+    private void showPicDialog() {
 
-        PicDialog picDialog = new PicDialog(AddBiddingActivity.this, type);
+        PicDialog picDialog = new PicDialog(AddBiddingActivity.this);
         picDialog.getWindow().setGravity(Gravity.BOTTOM);
         picDialog.setCanceledOnTouchOutside(true);
         picDialog.setClickListenerInterface(new PicDialog.ClickListenerInterface() {
@@ -169,11 +176,12 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    private void showReceiveDialog(int type) {
+    private void showReceiveDialog() {
 
-        ReceiveDialog receiveDialog = new ReceiveDialog(AddBiddingActivity.this, type);
+        ReceiveDialog receiveDialog = new ReceiveDialog(AddBiddingActivity.this);
         receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
         receiveDialog.setCanceledOnTouchOutside(true);
+        receiveDialog.setOnCancelListener(receiveDialog);
         receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
             @Override
             public void doFinish() {
@@ -187,7 +195,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showSearchDialog(String txt) {
 
-        SearchDialog searchDialog = new SearchDialog(AddBiddingActivity.this, txt);
+        SearchDialog searchDialog = new SearchDialog(AddBiddingActivity.this, txt, loginUser.getSessionid());
         searchDialog.getWindow().setGravity(Gravity.BOTTOM);
         searchDialog.setCanceledOnTouchOutside(true);
         searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
@@ -222,16 +230,16 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                 showSearchDialog(product_name_edit.getText().toString());
                 break;
             case R.id.tax:
-                showFaPiaoDialog(0);
+                showFaPiaoDialog();
                 break;
             case R.id.expdate:
                 showTimerDialog();
                 break;
             case R.id.delivery:
-                showReceiveDialog(0);
+                showReceiveDialog();
                 break;
             case R.id.payment:
-                showZhifuDialog(0);
+                showZhifuDialog();
                 break;
             case R.id.certificate:
 
@@ -240,10 +248,10 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
                 break;
             case R.id.product_category:
-                showFenleiDialog("2000000000");
+                showFenleiDialog();
                 break;
             case R.id.product_pic_add:
-                showPicDialog(0);
+                showPicDialog();
                 break;
             case R.id.sb_enable:
                 sb_enable.setSelected(!sb_enable.isSelected());

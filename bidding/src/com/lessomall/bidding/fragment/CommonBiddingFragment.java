@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.lessomall.bidding.ui.addbidding.FaPiaoDialog;
@@ -19,6 +20,8 @@ import com.lessomall.bidding.ui.addbidding.PicDialog;
 import com.lessomall.bidding.ui.addbidding.ReceiveDialog;
 import com.lessomall.bidding.ui.addbidding.SearchDialog;
 import com.lessomall.bidding.ui.addbidding.ZhifuDialog;
+
+import java.io.File;
 
 /**
  * Created by meisl on 2015/8/28.
@@ -43,6 +46,13 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     protected TimeChooserDialog timerDialog;
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
+
+    private SearchDialog searchDialog;
+    private FenleiDialog fenleiDialog;
+    private PicDialog picDialog;
+    private FaPiaoDialog faPiaoDialog;
+    private ZhifuDialog zhifuDialog;
+    private ReceiveDialog receiveDialog;
 
     protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
@@ -104,13 +114,9 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         payment_txt = (TextView) view.findViewById(R.id.payment_txt);
 
         certificate = (LinearLayout) view.findViewById(R.id.certificate);
-        certificate.setOnClickListener(this);
-
         certificate_edit = (EditText) view.findViewById(R.id.certificate_edit);
 
         other = (LinearLayout) view.findViewById(R.id.other);
-        other.setOnClickListener(this);
-
         other_edit = (EditText) view.findViewById(R.id.other_edit);
 
         rule_layout = (RelativeLayout) view.findViewById(R.id.rule_layout);
@@ -118,6 +124,96 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         sb_enable = (ImageView) view.findViewById(R.id.sb_enable);
         sb_enable.setSelected(true);
         sb_enable.setOnClickListener(this);
+
+    }
+
+
+    private void showSearchDialog(String txt) {
+
+        searchDialog = new SearchDialog(getActivity(), txt, ((BaseActivity) getActivity()).loginUser.getSessionid());
+        searchDialog.getWindow().setGravity(Gravity.BOTTOM);
+        searchDialog.setCanceledOnTouchOutside(true);
+        searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+
+                product_name_edit.setTag(searchDialog.getProductCode());
+                product_name_edit.setText(searchDialog.getProductName());
+                product_unit_edit.setText(searchDialog.getBaseMeasureUnit());
+
+                for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
+                    if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(searchDialog.getFirstCategoryCode())) {
+                        product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
+                        product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
+                        break;
+                    }
+                }
+            }
+        });
+        searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        searchDialog.show();
+
+    }
+
+    private void showFenleiDialog() {
+
+        fenleiDialog = new FenleiDialog(getActivity(), (String) product_category_txt.getTag(), Constant.CATEGORY_CACHE_LEVEL1);
+        fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
+        fenleiDialog.setCanceledOnTouchOutside(true);
+        fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+
+                product_category_txt.setTag(fenleiDialog.getCode());
+                product_category_txt.setText(fenleiDialog.getName());
+
+            }
+        });
+        fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        fenleiDialog.show();
+
+
+    }
+
+    private void showPicDialog() {
+
+        ((BaseActivity)getActivity()).setCamerCallback(new BaseActivity.CamerCallback() {
+            @Override
+            public void callback(File file) {
+
+              //  Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+            }
+        });
+
+        picDialog = new PicDialog(getActivity());
+        picDialog.getWindow().setGravity(Gravity.BOTTOM);
+        picDialog.setCanceledOnTouchOutside(true);
+        picDialog.setClickListenerInterface(new PicDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+
+            }
+        });
+        picDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        picDialog.show();
+
+    }
+
+    private void showFaPiaoDialog() {
+
+        faPiaoDialog = new FaPiaoDialog(getActivity(), (String) tax_txt.getTag());
+        faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
+        faPiaoDialog.setCanceledOnTouchOutside(true);
+        faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+                tax_txt.setText(getString(R.string.bidding_tax) + "：" + faPiaoDialog.getType());
+                tax_txt.setTag(faPiaoDialog.getType());
+            }
+        });
+        faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        faPiaoDialog.show();
 
     }
 
@@ -135,6 +231,9 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                 sEndDate = timerDialog.getsEndDate();
 
                 expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
+                expdate_txt.setTag(R.string.TAG_KEY_A, sBeginDate);
+                expdate_txt.setTag(R.string.TAG_KEY_B, sEndDate);
+
 
             }
         });
@@ -143,30 +242,41 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     }
 
-    private void showFaPiaoDialog(int type) {
+    private void showReceiveDialog() {
 
-        FaPiaoDialog faPiaoDialog = new FaPiaoDialog(getActivity(), type);
-        faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
-        faPiaoDialog.setCanceledOnTouchOutside(true);
-        faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
+        receiveDialog = new ReceiveDialog(getActivity(), (String) delivery_txt.getTag(R.string.TAG_KEY_A), (String) delivery_txt.getTag(R.string.TAG_KEY_B));
+        receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
+        receiveDialog.setCanceledOnTouchOutside(true);
+        receiveDialog.setOnCancelListener(receiveDialog);
+        receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
             @Override
             public void doFinish() {
 
+                if (receiveDialog.getAddress() != null && !"".equals(receiveDialog.getAddress().trim())) {
+                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType() + "；地址：" + receiveDialog.getAddress());
+                } else {
+                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType());
+                }
+
+                delivery_txt.setTag(R.string.TAG_KEY_A, receiveDialog.getType());
+                delivery_txt.setTag(R.string.TAG_KEY_B, receiveDialog.getAddress());
             }
         });
-        faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        faPiaoDialog.show();
+        receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        receiveDialog.show();
 
     }
 
-    private void showZhifuDialog(int type) {
+    private void showZhifuDialog() {
 
-        ZhifuDialog zhifuDialog = new ZhifuDialog(getActivity(), type);
+        zhifuDialog = new ZhifuDialog(getActivity(), (String) payment_txt.getTag());
         zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
         zhifuDialog.setCanceledOnTouchOutside(true);
         zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
             @Override
             public void doFinish() {
+                payment_txt.setText(getString(R.string.bidding_payment) + "：" + zhifuDialog.getType());
+                payment_txt.setTag(zhifuDialog.getType());
 
             }
         });
@@ -175,70 +285,6 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     }
 
-    private void showFenleiDialog(String code) {
-
-        FenleiDialog fenleiDialog = new FenleiDialog(getActivity(), code, Constant.CATEGORY_CACHE_LEVEL1);
-        fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
-        fenleiDialog.setCanceledOnTouchOutside(true);
-        fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-            }
-        });
-        fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        fenleiDialog.show();
-
-
-    }
-
-    private void showPicDialog(int type) {
-
-        PicDialog picDialog = new PicDialog(getActivity(), type);
-        picDialog.getWindow().setGravity(Gravity.BOTTOM);
-        picDialog.setCanceledOnTouchOutside(true);
-        picDialog.setClickListenerInterface(new PicDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-            }
-        });
-        picDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        picDialog.show();
-
-    }
-
-    private void showReceiveDialog(int type) {
-
-        ReceiveDialog receiveDialog = new ReceiveDialog(getActivity(), type);
-        receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
-        receiveDialog.setCanceledOnTouchOutside(true);
-        receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-            }
-        });
-        receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        receiveDialog.show();
-
-    }
-
-    private void showSearchDialog(String txt) {
-
-        SearchDialog searchDialog = new SearchDialog(getActivity(), txt);
-        searchDialog.getWindow().setGravity(Gravity.BOTTOM);
-        searchDialog.setCanceledOnTouchOutside(true);
-        searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-            }
-        });
-        searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        searchDialog.show();
-
-    }
 
     protected void disableInput() {
 
@@ -273,28 +319,22 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                 showSearchDialog(product_name_edit.getText().toString());
                 break;
             case R.id.tax:
-                showFaPiaoDialog(0);
+                showFaPiaoDialog();
                 break;
             case R.id.expdate:
                 showTimerDialog();
                 break;
             case R.id.delivery:
-                showReceiveDialog(0);
+                showReceiveDialog();
                 break;
             case R.id.payment:
-                showZhifuDialog(0);
-                break;
-            case R.id.certificate:
-
-                break;
-            case R.id.other:
-
+                showZhifuDialog();
                 break;
             case R.id.product_category:
-                showFenleiDialog("2000000000");
+                showFenleiDialog();
                 break;
             case R.id.product_pic_add:
-                showPicDialog(0);
+                showPicDialog();
                 break;
             case R.id.sb_enable:
                 sb_enable.setSelected(!sb_enable.isSelected());

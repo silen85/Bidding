@@ -42,6 +42,16 @@ public class FenleiDialog extends Dialog {
         void doFinish();
     }
 
+    public FenleiDialog(Context context, String[] content) {
+
+        super(context);
+
+        this.context = context;
+
+        this.content = content;
+
+    }
+
     public FenleiDialog(Context context, String code, String[] content) {
 
         super(context);
@@ -102,10 +112,10 @@ public class FenleiDialog extends Dialog {
             button.setTextSize(context.getResources().getDimension(R.dimen.dialog_text_size) / dm.scaledDensity);
 
             if (this.code != null && code.equals(this.code)) {
-                button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.button_orange));
+                button.setBackgroundResource(R.drawable.button_orange);
                 button.setTextColor(context.getResources().getColor(R.color.MALL_C8));
             } else {
-                button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.border_normal));
+                button.setBackgroundResource(R.drawable.border_normal);
                 button.setTextColor(context.getResources().getColor(R.color.BASE_TEXT_COLOR));
             }
 
@@ -122,6 +132,9 @@ public class FenleiDialog extends Dialog {
                     clearSelect();
                     select(button);
 
+                    clickListenerInterface.doFinish();
+                    FenleiDialog.this.dismiss();
+
                 }
             });
 
@@ -136,19 +149,15 @@ public class FenleiDialog extends Dialog {
     }
 
     private void clearSelect() {
-
         for (int i = 0; i < contentView.getChildCount(); i++) {
-
             Button button = (Button) contentView.getChildAt(i);
-            button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.border_normal));
+            button.setBackgroundResource(R.drawable.border_normal);
             button.setTextColor(context.getResources().getColor(R.color.BASE_TEXT_COLOR));
-
         }
-
     }
 
     private void select(Button button) {
-        button.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.button_orange));
+        button.setBackgroundResource(R.drawable.button_orange);
         button.setTextColor(context.getResources().getColor(R.color.MALL_C8));
     }
 
@@ -160,15 +169,8 @@ public class FenleiDialog extends Dialog {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

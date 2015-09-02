@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,14 @@ import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.adapter.TwoGridAdapter;
+import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.Tools;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+
+import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +41,7 @@ public class SearchDialog extends Dialog {
     private Context context;
 
     private String txt;
+    private String sessionid;
 
     private TextView dialog_search_txt;
 
@@ -41,19 +51,28 @@ public class SearchDialog extends Dialog {
     private ListView dialog_search_list;
     private TwoGridAdapter adapter;
 
+    private List<Map<String, String>> list = new ArrayList();
+
+    private String productName = "";
+    private String productCode = "";
+    private String firstCategoryCode = "";
+    private String baseMeasureUnit = "";
+
     private ClickListenerInterface clickListenerInterface;
 
     public interface ClickListenerInterface {
         void doFinish();
     }
 
-    public SearchDialog(Context context, String txt) {
+    public SearchDialog(Context context, String txt, String sessionid) {
 
         super(context);
 
         this.context = context;
 
         this.txt = txt;
+
+        this.sessionid = sessionid;
 
     }
 
@@ -85,21 +104,21 @@ public class SearchDialog extends Dialog {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                String productName = list.get(i).get("productName");
+                String productCode = list.get(i).get("productCode");
+                String firstCategoryCode = list.get(i).get("firstCategoryCode");
+                String baseMeasureUnit = list.get(i).get("baseMeasureUnit");
+
+                SearchDialog.this.productName = productName;
+                SearchDialog.this.productCode = productCode;
+                SearchDialog.this.firstCategoryCode = firstCategoryCode;
+                SearchDialog.this.baseMeasureUnit = baseMeasureUnit;
+
+                clickListenerInterface.doFinish();
+                SearchDialog.this.dismiss();
+
             }
         });
-
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-
-        Map<String, String> map1 = new HashMap<String, String>();
-        map1.put("colum1", "1");
-        map1.put("colum2", "2");
-
-        Map<String, String> map2 = new HashMap<String, String>();
-        map2.put("colum1", "3");
-        map2.put("colum2", "4");
-
-        list.add(map1);
-        list.add(map2);
 
         LinearLayout header = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.item_2grid, null);
 
@@ -116,11 +135,75 @@ public class SearchDialog extends Dialog {
 
         list_content.addView(header, 0);
 
-        adapter = new TwoGridAdapter(this.context, list);
-        dialog_search_list.setAdapter(adapter);
+        getData();
 
-        loading.setVisibility(View.GONE);
-        list_content.setVisibility(View.VISIBLE);
+    }
+
+    private void getData() {
+
+        Map params = Tools.generateRequestMap();
+        params.put("sessionid", sessionid);
+        params.put("txt", txt);
+        params.put("pageno", "1");
+        params.put("pageSize", "5");
+
+        RequestParams requestParams = new RequestParams(params);
+
+        AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, throwable.getMessage(), throwable);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+
+                if (statusCode == Constant.HTTP_STATUS_CODE_SUCCESS) {
+                    try {
+                        Map result = Tools.json2Map(responseString);
+
+                        String recode = (String) result.get("recode");
+                        String msg = (String) result.get("msg");
+
+                        if (Constant.RECODE_SUCCESS.equals(recode)) {
+                            List<Map<String, String>> datalist = (List<Map<String, String>>) result.get("datalist");
+                            if (datalist != null && datalist.size() > 0) {
+                                for (int i = 0; i < datalist.size(); i++) {
+
+                                    Map<String, String> map = new HashMap();
+                                    map.put("colum1", datalist.get(i).get("productName"));
+                                    map.put("colum2", datalist.get(i).get("baseMeasureUnit"));
+
+                                    map.put("productName", datalist.get(i).get("productName"));
+                                    map.put("productCode", datalist.get(i).get("productCode"));
+                                    map.put("firstCategoryCode", datalist.get(i).get("firstCategoryCode"));
+                                    map.put("baseMeasureUnit", datalist.get(i).get("baseMeasureUnit"));
+
+                                    list.add(map);
+
+                                }
+
+                                adapter = new TwoGridAdapter(context, list);
+                                dialog_search_list.setAdapter(adapter);
+
+                                loading.setVisibility(View.GONE);
+                                list_content.setVisibility(View.VISIBLE);
+
+                            }
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                    }
+                }
+            }
+        };
+
+        asyncHttpResponseHandler.setCharset("UTF-8");
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setTimeout(Constant.CONNECT_TIMEOUT);
+        client.post(context, Constant.SEARCH_PRODUCT, requestParams, asyncHttpResponseHandler);
 
     }
 
@@ -129,4 +212,19 @@ public class SearchDialog extends Dialog {
         this.clickListenerInterface = clickListenerInterface;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public String getFirstCategoryCode() {
+        return firstCategoryCode;
+    }
+
+    public String getBaseMeasureUnit() {
+        return baseMeasureUnit;
+    }
 }

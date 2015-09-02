@@ -3,6 +3,9 @@ package com.lessomall.bidding.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -14,7 +17,6 @@ import android.widget.Toast;
 import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.common.Constant;
-import com.lessomall.bidding.common.MD5;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.loopj.android.http.AsyncHttpClient;
@@ -24,8 +26,11 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -33,8 +38,23 @@ public abstract class BaseActivity extends FragmentActivity {
 
     private String TAG = "com.lessomall.bidding.activity.BaseActivity";
 
-    protected static final int HANDLER_DATA = 1;
-    protected static final int HANDLER_NETWORK_ERR = 2;
+
+    public interface CamerCallback {
+        public void callback(File file);
+    }
+
+    public Uri cameraUri;
+    private CamerCallback camerCallback;
+
+    public void setCamerCallback(CamerCallback camerCallback) {
+        this.camerCallback = camerCallback;
+    }
+
+    public static final int RESULT_CAPTURE_IMAGE = 1;// 照相的requestCode
+    public static final int RESULT_GALLERY_IMAGE = 2;// 相册的requestCode
+
+    public static final int HANDLER_DATA = 1;
+    public static final int HANDLER_NETWORK_ERR = 2;
 
     public LessoApplication.LoginUser loginUser;
 
@@ -80,7 +100,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected void loadCategory() {
 
-        Map params = generateRequestMap();
+        Map params = Tools.generateRequestMap();
         params.put("sessionid", loginUser.getSessionid());
 
         RequestParams requestParams = new RequestParams(params);
@@ -131,17 +151,6 @@ public abstract class BaseActivity extends FragmentActivity {
 
     }
 
-    public Map<String, String> generateRequestMap() {
-
-        Map<String, String> map = new HashMap<String, String>();
-
-        map.put("appkey", Constant.APP_KEY_ANDROID);
-        map.put("timestamp", (System.currentTimeMillis() / 1000) + "");
-        map.put("token", new MD5().GetMD5Code(Constant.SECRET_KEY + Constant.DATE_FORMAT_1.format(new Date())));
-
-        return map;
-    }
-
     protected void showTimerDialog() {
 
         timerDialog = new TimeChooserDialog(this, timeType, sBeginDate, sEndDate);
@@ -164,7 +173,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     }
 
-    protected void startActivity(Intent intent, boolean flag) {
+    public void startActivity(Intent intent, boolean flag) {
         startActivity(intent);
         overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
         if (flag) finish();
@@ -220,6 +229,60 @@ public abstract class BaseActivity extends FragmentActivity {
             mSoftManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    private Bitmap compressImage(Bitmap image) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+        int options = 100;
+        while (baos.toByteArray().length / 1024 > 256) {    //循环判断如果压缩后图片是否大于100kb,大于继续压缩
+            baos.reset();//重置baos即清空baos
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
+            options -= 5;//每次都减少10
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
+        return bitmap;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case RESULT_CAPTURE_IMAGE:
+                    try {
+
+                        if (cameraUri != null) {
+                            File imageFile = new File(cameraUri.getPath());
+                            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+
+                            bitmap = compressImage(bitmap);
+
+                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(imageFile));
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                            bos.flush();
+                            bos.close();
+
+                            if (camerCallback != null) {
+                                camerCallback.callback(imageFile);
+                            }
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                    }
+                    break;
+                case RESULT_GALLERY_IMAGE:
+
+                    getContentResolver();
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
     protected abstract void initTitle();

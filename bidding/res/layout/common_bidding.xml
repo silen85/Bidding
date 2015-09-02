@@ -291,6 +291,7 @@
                     android:layout_marginLeft="@dimen/interval_B"
                     android:background="@null"
                     android:gravity="center_vertical"
+                    android:inputType="number"
                     android:singleLine="false"
                     android:textSize="@dimen/txtsize_bidding_add" />
 

@@ -175,7 +175,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         String username = accountEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        Map params = generateRequestMap();
+        Map params = Tools.generateRequestMap();
 
         params.put("username", username);
         params.put("password", new MD5().GetMD5Code(password));

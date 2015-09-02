@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
 import com.lessomall.bidding.model.Bidding;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -154,7 +155,8 @@ public class BiddingAdapter extends BaseAdapter {
                                     Intent intent = new Intent(context, ImagePagerActivity.class);
                                     intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, webUrl);
                                     intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, 0);
-                                    context.startActivity(intent);
+
+                                    ((BaseActivity) context).startActivity(intent, false);
 
                                 }
                             });

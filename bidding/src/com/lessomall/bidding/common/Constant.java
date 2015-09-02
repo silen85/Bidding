@@ -1,7 +1,5 @@
 package com.lessomall.bidding.common;
 
-import android.os.Environment;
-
 import java.text.SimpleDateFormat;
 
 /**
@@ -14,9 +12,7 @@ public class Constant {
     public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
     public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
-    public static String BASE_DIR = Environment.getExternalStorageDirectory().toString() + "/lessomall/";
-
-    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
+    public final static String BASE_URL = "http://10.10.7.159:8080/lots-web/app/";
     public final static String URL_LOGIN = BASE_URL + "login/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
     public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
@@ -24,6 +20,7 @@ public class Constant {
     public final static String BIDDING_LIST = BASE_URL + "biddingList/";
     public final static String DEALER_CONFIRM_PRICE = BASE_URL + "dealerConfirmPrice/";
     public final static String DEALER_CONFIRM_STORE = BASE_URL + "dealerConfirmStore/";
+    public final static String SEARCH_PRODUCT = BASE_URL + "searchProduct/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 
