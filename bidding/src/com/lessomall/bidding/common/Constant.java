@@ -12,7 +12,7 @@ public class Constant {
     public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
     public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
-    public final static String BASE_URL = "http://10.10.7.159:8080/lots-web/app/";
+    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/app/";
     public final static String URL_LOGIN = BASE_URL + "login/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
     public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
@@ -21,13 +21,14 @@ public class Constant {
     public final static String DEALER_CONFIRM_PRICE = BASE_URL + "dealerConfirmPrice/";
     public final static String DEALER_CONFIRM_STORE = BASE_URL + "dealerConfirmStore/";
     public final static String SEARCH_PRODUCT = BASE_URL + "searchProduct/";
+    public final static String DEALER_ADD_PRICE = BASE_URL + "dealerAddPrice/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 
     public final static String SECRET_KEY = "db1e358753b4fe1735dcf50dc1bf465b";
 
+    public final static int IMG_MAX_COUNT = 5;
     public final static String[] IMG_SUFFIX = {".jpg", ".jpeg", ".png", ".bmp"};
-    public final static long IMG_MAX_SIZE = 512 * 1024;  //   500k
 
     public static final SimpleDateFormat DATE_FORMAT_1 = new SimpleDateFormat("yyyy-MM-dd");
 

@@ -3,8 +3,6 @@ package com.lessomall.bidding.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -26,11 +24,6 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -38,16 +31,22 @@ public abstract class BaseActivity extends FragmentActivity {
 
     private String TAG = "com.lessomall.bidding.activity.BaseActivity";
 
+    public interface CameraCallback {
+        void callback(String file);
 
-    public interface CamerCallback {
-        public void callback(File file);
+        void callback(Uri uri);
     }
 
-    public Uri cameraUri;
-    private CamerCallback camerCallback;
+    private CameraCallback cameraCallback;
 
-    public void setCamerCallback(CamerCallback camerCallback) {
-        this.camerCallback = camerCallback;
+    public void setCameraCallback(CameraCallback cameraCallback) {
+        this.cameraCallback = cameraCallback;
+    }
+
+    private Uri imageUri;
+
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
     }
 
     public static final int RESULT_CAPTURE_IMAGE = 1;// 照相的requestCode
@@ -231,21 +230,6 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
-    private Bitmap compressImage(Bitmap image) {
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int options = 100;
-        while (baos.toByteArray().length / 1024 > 256) {    //循环判断如果压缩后图片是否大于100kb,大于继续压缩
-            baos.reset();//重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
-            options -= 5;//每次都减少10
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
-        return bitmap;
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -254,35 +238,28 @@ public abstract class BaseActivity extends FragmentActivity {
             switch (requestCode) {
                 case RESULT_CAPTURE_IMAGE:
                     try {
+                        if (cameraCallback == null || imageUri == null)
+                            return;
 
-                        if (cameraUri != null) {
-                            File imageFile = new File(cameraUri.getPath());
-                            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
-
-                            bitmap = compressImage(bitmap);
-
-                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(imageFile));
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                            bos.flush();
-                            bos.close();
-
-                            if (camerCallback != null) {
-                                camerCallback.callback(imageFile);
-                            }
-                        }
+                        cameraCallback.callback(imageUri.getPath());
                     } catch (Exception e) {
                         Log.e(TAG, e.getMessage(), e);
                     }
                     break;
                 case RESULT_GALLERY_IMAGE:
+                    try {
+                        if (cameraCallback == null || (imageUri = data.getData()) == null)
+                            return;
 
-                    getContentResolver();
+                        cameraCallback.callback(imageUri);
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                    }
                     break;
                 default:
                     break;
             }
         }
-
     }
 
     protected abstract void initTitle();

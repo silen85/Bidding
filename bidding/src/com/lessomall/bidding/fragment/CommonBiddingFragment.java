@@ -1,7 +1,16 @@
 package com.lessomall.bidding.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -12,7 +21,9 @@ import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
+import com.lessomall.bidding.activity.ImagePagerActivity;
 import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.PictureUtil;
 import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.lessomall.bidding.ui.addbidding.FaPiaoDialog;
 import com.lessomall.bidding.ui.addbidding.FenleiDialog;
@@ -21,12 +32,12 @@ import com.lessomall.bidding.ui.addbidding.ReceiveDialog;
 import com.lessomall.bidding.ui.addbidding.SearchDialog;
 import com.lessomall.bidding.ui.addbidding.ZhifuDialog;
 
-import java.io.File;
-
 /**
  * Created by meisl on 2015/8/28.
  */
 public class CommonBiddingFragment extends Fragment implements View.OnClickListener {
+
+    private String TAG = "com.lessomall.bidding.fragment.CommonBiddingFragment";
 
     //竞价单:1:未提交 2:待审核 3:竞价中 4:已审核 5:已确认报价 6:已发货 7:已收货
     //报价单:1:待报价 2:已报价 3:被退回 4:竞价达成待发货 5:已发货 6:已确认收货
@@ -47,12 +58,12 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
 
-    private SearchDialog searchDialog;
-    private FenleiDialog fenleiDialog;
-    private PicDialog picDialog;
-    private FaPiaoDialog faPiaoDialog;
-    private ZhifuDialog zhifuDialog;
-    private ReceiveDialog receiveDialog;
+    protected SearchDialog searchDialog;
+    protected FenleiDialog fenleiDialog;
+    protected PicDialog picDialog;
+    protected FaPiaoDialog faPiaoDialog;
+    protected ZhifuDialog zhifuDialog;
+    protected ReceiveDialog receiveDialog;
 
     protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
@@ -125,51 +136,87 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         sb_enable.setSelected(true);
         sb_enable.setOnClickListener(this);
 
-    }
 
-
-    private void showSearchDialog(String txt) {
-
-        searchDialog = new SearchDialog(getActivity(), txt, ((BaseActivity) getActivity()).loginUser.getSessionid());
-        searchDialog.getWindow().setGravity(Gravity.BOTTOM);
-        searchDialog.setCanceledOnTouchOutside(true);
-        searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
+        ((BaseActivity) getActivity()).setCameraCallback(new BaseActivity.CameraCallback() {
             @Override
-            public void doFinish() {
+            public void callback(String path) {
+                if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                    new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
+                }
+            }
 
-                product_name_edit.setTag(searchDialog.getProductCode());
-                product_name_edit.setText(searchDialog.getProductName());
-                product_unit_edit.setText(searchDialog.getBaseMeasureUnit());
-
-                for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
-                    if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(searchDialog.getFirstCategoryCode())) {
-                        product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
-                        product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
-                        break;
+            @Override
+            public void callback(Uri uri) {
+                if (uri != null) {
+                    String path = getRealPathFromUri(uri);
+                    if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                        new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
                     }
                 }
             }
         });
-        searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
+    }
+
+
+    public String getRealPathFromUri(Uri uri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getActivity().getContentResolver().query(uri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
+    }
+
+    private void showSearchDialog(String txt) {
+
+        if (searchDialog == null) {
+            searchDialog = new SearchDialog(getActivity(), txt, ((BaseActivity) getActivity()).loginUser.getSessionid());
+            searchDialog.getWindow().setGravity(Gravity.BOTTOM);
+            searchDialog.setCanceledOnTouchOutside(true);
+            searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
+
+                    product_name_edit.setTag(searchDialog.getProductCode());
+                    product_name_edit.setText(searchDialog.getProductName());
+                    product_unit_edit.setText(searchDialog.getBaseMeasureUnit());
+
+                    for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
+                        if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(searchDialog.getFirstCategoryCode())) {
+                            product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
+                            product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
+                            break;
+                        }
+                    }
+                }
+            });
+            searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         searchDialog.show();
 
     }
 
     private void showFenleiDialog() {
 
-        fenleiDialog = new FenleiDialog(getActivity(), (String) product_category_txt.getTag(), Constant.CATEGORY_CACHE_LEVEL1);
-        fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
-        fenleiDialog.setCanceledOnTouchOutside(true);
-        fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
+        if (fenleiDialog == null) {
+            fenleiDialog = new FenleiDialog(getActivity(), (String) product_category_txt.getTag(), Constant.CATEGORY_CACHE_LEVEL1);
+            fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
+            fenleiDialog.setCanceledOnTouchOutside(true);
+            fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
 
-                product_category_txt.setTag(fenleiDialog.getCode());
-                product_category_txt.setText(fenleiDialog.getName());
+                    product_category_txt.setTag(fenleiDialog.getCode());
+                    product_category_txt.setText(fenleiDialog.getName());
 
-            }
-        });
-        fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+                }
+            });
+            fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         fenleiDialog.show();
 
 
@@ -177,110 +224,105 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     private void showPicDialog() {
 
-        ((BaseActivity)getActivity()).setCamerCallback(new BaseActivity.CamerCallback() {
-            @Override
-            public void callback(File file) {
-
-              //  Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-
-            }
-        });
-
-        picDialog = new PicDialog(getActivity());
-        picDialog.getWindow().setGravity(Gravity.BOTTOM);
-        picDialog.setCanceledOnTouchOutside(true);
-        picDialog.setClickListenerInterface(new PicDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-            }
-        });
-        picDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        if (picDialog == null) {
+            picDialog = new PicDialog(getActivity());
+            picDialog.getWindow().setGravity(Gravity.BOTTOM);
+            picDialog.setCanceledOnTouchOutside(true);
+            picDialog.getWindow().setWindowAnimations(R.style.DIALOG);
+        }
         picDialog.show();
 
     }
 
     private void showFaPiaoDialog() {
 
-        faPiaoDialog = new FaPiaoDialog(getActivity(), (String) tax_txt.getTag());
-        faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
-        faPiaoDialog.setCanceledOnTouchOutside(true);
-        faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-                tax_txt.setText(getString(R.string.bidding_tax) + "：" + faPiaoDialog.getType());
-                tax_txt.setTag(faPiaoDialog.getType());
-            }
-        });
-        faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        if (faPiaoDialog == null) {
+            faPiaoDialog = new FaPiaoDialog(getActivity(), (String) tax_txt.getTag());
+            faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
+            faPiaoDialog.setCanceledOnTouchOutside(true);
+            faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
+                    tax_txt.setText(getString(R.string.bidding_tax) + "：" + faPiaoDialog.getType());
+                    tax_txt.setTag(faPiaoDialog.getType());
+                }
+            });
+            faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         faPiaoDialog.show();
 
     }
 
     protected void showTimerDialog() {
 
-        timerDialog = new TimeChooserDialog(getActivity(), timeType, sBeginDate, sEndDate);
-        timerDialog.getWindow().setGravity(Gravity.BOTTOM);
-        timerDialog.setCanceledOnTouchOutside(true);
-        timerDialog.setClickListenerInterface(new TimeChooserDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
+        if (timerDialog == null) {
+            timerDialog = new TimeChooserDialog(getActivity(), timeType, sBeginDate, sEndDate);
+            timerDialog.getWindow().setGravity(Gravity.BOTTOM);
+            timerDialog.setCanceledOnTouchOutside(true);
+            timerDialog.setClickListenerInterface(new TimeChooserDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
 
-                timeType = timerDialog.getType();
-                sBeginDate = timerDialog.getsBeaginDate();
-                sEndDate = timerDialog.getsEndDate();
+                    timeType = timerDialog.getType();
+                    sBeginDate = timerDialog.getsBeaginDate();
+                    sEndDate = timerDialog.getsEndDate();
 
-                expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
-                expdate_txt.setTag(R.string.TAG_KEY_A, sBeginDate);
-                expdate_txt.setTag(R.string.TAG_KEY_B, sEndDate);
+                    expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
+                    expdate_txt.setTag(R.string.TAG_KEY_A, sBeginDate);
+                    expdate_txt.setTag(R.string.TAG_KEY_B, sEndDate);
 
 
-            }
-        });
-        timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+                }
+            });
+            timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         timerDialog.show();
 
     }
 
     private void showReceiveDialog() {
 
-        receiveDialog = new ReceiveDialog(getActivity(), (String) delivery_txt.getTag(R.string.TAG_KEY_A), (String) delivery_txt.getTag(R.string.TAG_KEY_B));
-        receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
-        receiveDialog.setCanceledOnTouchOutside(true);
-        receiveDialog.setOnCancelListener(receiveDialog);
-        receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
+        if (receiveDialog == null) {
+            receiveDialog = new ReceiveDialog(getActivity(), (String) delivery_txt.getTag(R.string.TAG_KEY_A), (String) delivery_txt.getTag(R.string.TAG_KEY_B));
+            receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
+            receiveDialog.setCanceledOnTouchOutside(true);
+            receiveDialog.setOnCancelListener(receiveDialog);
+            receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
 
-                if (receiveDialog.getAddress() != null && !"".equals(receiveDialog.getAddress().trim())) {
-                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType() + "；地址：" + receiveDialog.getAddress());
-                } else {
-                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType());
+                    if (receiveDialog.getAddress() != null && !"".equals(receiveDialog.getAddress().trim())) {
+                        delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType() + "；地址：" + receiveDialog.getAddress());
+                    } else {
+                        delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType());
+                    }
+
+                    delivery_txt.setTag(R.string.TAG_KEY_A, receiveDialog.getType());
+                    delivery_txt.setTag(R.string.TAG_KEY_B, receiveDialog.getAddress());
                 }
-
-                delivery_txt.setTag(R.string.TAG_KEY_A, receiveDialog.getType());
-                delivery_txt.setTag(R.string.TAG_KEY_B, receiveDialog.getAddress());
-            }
-        });
-        receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+            });
+            receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         receiveDialog.show();
 
     }
 
     private void showZhifuDialog() {
 
-        zhifuDialog = new ZhifuDialog(getActivity(), (String) payment_txt.getTag());
-        zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
-        zhifuDialog.setCanceledOnTouchOutside(true);
-        zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-                payment_txt.setText(getString(R.string.bidding_payment) + "：" + zhifuDialog.getType());
-                payment_txt.setTag(zhifuDialog.getType());
+        if (zhifuDialog == null) {
+            zhifuDialog = new ZhifuDialog(getActivity(), (String) payment_txt.getTag());
+            zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
+            zhifuDialog.setCanceledOnTouchOutside(true);
+            zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
+                @Override
+                public void doFinish() {
+                    payment_txt.setText(getString(R.string.bidding_payment) + "：" + zhifuDialog.getType());
+                    payment_txt.setTag(zhifuDialog.getType());
 
-            }
-        });
-        zhifuDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+                }
+            });
+            zhifuDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        }
         zhifuDialog.show();
 
     }
@@ -344,4 +386,128 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
         }
     }
+
+
+    /**
+     * Created by meisl on 2015/9/4.
+     */
+    class CompressImageTask extends AsyncTask<String, Void, Bitmap> {
+
+        private String TAG = "com.lessomall.bidding.fragment.CommonBiddingFragment.CompressImageTask";
+
+        private ProgressDialog loadingDialog;
+
+        private String path;
+        private PicDialog picDialog;
+        private LinearLayout product_pic;
+        private ImageView product_pic_add;
+
+        public CompressImageTask(PicDialog picDialog, LinearLayout product_pic, ImageView product_pic_add) {
+            this.picDialog = picDialog;
+            this.product_pic = product_pic;
+            this.product_pic_add = product_pic_add;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loading();
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            path = params[0];
+
+            Bitmap bitmap = null;
+            try {
+                if (picDialog.getType() == 1) {
+                    path = PictureUtil.compressImage(path, picDialog.getOutPutMediaFile().getAbsolutePath());
+                    bitmap = BitmapFactory.decodeFile(path);
+                } else {
+                    path = PictureUtil.compressImage(path);
+                    bitmap = BitmapFactory.decodeFile(path);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage(), e);
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+
+            if (bitmap != null) {
+                picDialog.getImagePathList().add(path);
+
+                final ImageView imageView = new ImageView(getActivity());
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
+                        getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
+                layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                layoutParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.interval_B);
+                imageView.setLayoutParams(layoutParams);
+                imageView.setAdjustViewBounds(true);
+                imageView.setClickable(true);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setImageBitmap(bitmap);
+                imageView.setTag(path);
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        int index = 0;
+                        String[] pathArr = new String[picDialog.getImagePathList().size()];
+                        for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
+                            pathArr[i] = "file:///" + picDialog.getImagePathList().get(i);
+                            if (picDialog.getImagePathList().get(i).equals(imageView.getTag())) {
+                                index = i;
+                            }
+                        }
+
+                        Intent intent = new Intent(getActivity(), ImagePagerActivity.class);
+                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, pathArr);
+                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, index);
+
+                        ((BaseActivity) getActivity()).startActivity(intent, false);
+
+                    }
+                });
+
+                product_pic.addView(imageView, product_pic.getChildCount() - 1);
+
+                if (picDialog.getImagePathList().size() >= Constant.IMG_MAX_COUNT) {
+                    product_pic_add.setVisibility(View.GONE);
+                }
+            }
+            disLoading();
+        }
+
+
+        /**
+         * 加载对话框(显示)
+         */
+        public void loading() {
+            if (loadingDialog == null) {
+                loadingDialog = new ProgressDialog(getActivity());
+                loadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                loadingDialog.setMessage(getString(R.string.image_loading));
+                loadingDialog.setIndeterminate(true);
+                loadingDialog.setCancelable(false);
+            }
+            loadingDialog.show();
+        }
+
+        /**
+         * 加载对话框(关闭)
+         */
+        public void disLoading() {
+            if (loadingDialog != null) {
+                loadingDialog.dismiss();
+            }
+        }
+    }
+
 }

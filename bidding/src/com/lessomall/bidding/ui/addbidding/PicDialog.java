@@ -20,7 +20,9 @@ import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.common.Tools;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by meisl on 2015/8/12.
@@ -31,11 +33,9 @@ public class PicDialog extends Dialog {
 
     private Context context;
 
-    private ClickListenerInterface clickListenerInterface;
+    private int type = 0;   //0:相机；1:相册
 
-    public interface ClickListenerInterface {
-        void doFinish();
-    }
+    private List<String> imagePathList = new ArrayList(5);
 
     public PicDialog(Context context) {
 
@@ -66,20 +66,24 @@ public class PicDialog extends Dialog {
             @Override
             public void onClick(View view) {
 
+                type = 0;
+
+                dismiss();
+
                 String sdStatus = Environment.getExternalStorageState();
                 if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) {
-                    Log.d(TAG, "SD card is not available right now !");
-                    Toast.makeText(context, "SD card is not available right now !", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, context.getString(R.string.SD_card_error));
+                    Toast.makeText(context, context.getString(R.string.SD_card_error), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                File file = getOutPutMediaFile();
+                Uri uri = Uri.fromFile(getOutPutMediaFile());
 
-                ((BaseActivity) context).cameraUri = Uri.fromFile(file);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra("return-data", false);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 
-                Intent intent = new Intent();
-                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, ((BaseActivity) context).cameraUri);
+                ((BaseActivity) context).setImageUri(uri);
 
                 ((BaseActivity) context).startActivityForResult(intent, BaseActivity.RESULT_CAPTURE_IMAGE);
 
@@ -93,9 +97,13 @@ public class PicDialog extends Dialog {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("image/jpeg");
+                type = 1;
+
+                dismiss();
+
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+
                 ((BaseActivity) context).startActivityForResult(intent, BaseActivity.RESULT_GALLERY_IMAGE);
 
             }
@@ -103,7 +111,7 @@ public class PicDialog extends Dialog {
 
     }
 
-    private File getOutPutMediaFile() {
+    public File getOutPutMediaFile() {
 
         if (!context.getExternalCacheDir().exists())
             context.getExternalCacheDir().mkdir();
@@ -115,8 +123,11 @@ public class PicDialog extends Dialog {
         return new File(strImgPath, fileName);
     }
 
-    public void setClickListenerInterface(ClickListenerInterface clickListenerInterface) {
-        this.clickListenerInterface = clickListenerInterface;
+    public int getType() {
+        return type;
     }
 
+    public List<String> getImagePathList() {
+        return imagePathList;
+    }
 }

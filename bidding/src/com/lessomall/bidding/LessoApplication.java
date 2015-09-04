@@ -18,7 +18,6 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  */
 public class LessoApplication extends Application {
 
-    private String terminalid = "";
     private LoginUser user = null;
     private String station = "佛山";
 
@@ -82,14 +81,6 @@ public class LessoApplication extends Application {
         this.imgPath = imgPath;
     }
 
-    public String getTerminalid() {
-        return terminalid;
-    }
-
-    public void setTerminalid(String terminalid) {
-        this.terminalid = terminalid;
-    }
-
     public LoginUser getUser() {
         return user;
     }
@@ -116,7 +107,7 @@ public class LessoApplication extends Application {
         private String email = "";
         private String status = "";
         private String customName = "";
-        private String customCode="";
+        private String customCode = "";
         private String address = "";
         private String linkman = "";
         private String phone = "";

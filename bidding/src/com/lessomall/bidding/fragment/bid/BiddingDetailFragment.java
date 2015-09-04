@@ -35,6 +35,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.apache.http.Header;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -721,10 +723,176 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void savePrice() {
 
+        Map params = Tools.generateRequestMap();
+        params.put("sessionid", activity.loginUser.getSessionid());
+
+        params.put("optype", Constant.OPTERATION_TYPE[0]);
+
+        if (trimParams(params)) {
+
+
+            sendPrice(params);
+        }
+
     }
 
     private void submitPrice() {
 
+        Map params = Tools.generateRequestMap();
+        params.put("sessionid", activity.loginUser.getSessionid());
+
+        params.put("optype", Constant.OPTERATION_TYPE[1]);
+
+        if (trimParams(params)) {
+            sendPrice(params);
+        }
+    }
+
+    private void sendPrice(Map params) {
+
+        RequestParams requestParams = new RequestParams(params);
+
+        if (picDialog != null) {
+
+            if (picDialog.getImagePathList().size() > 0) {
+                File[] files = new File[picDialog.getImagePathList().size()];
+                for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
+                    files[i] = new File(picDialog.getImagePathList().get(i));
+                }
+                try {
+                    requestParams.put("UpLoadFiles", files);
+                } catch (FileNotFoundException e) {
+                    Log.e(TAG, e.getMessage(), e);
+                    Toast.makeText(activity, getString(R.string.upload_image_error), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        }
+
+        AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                activity.loading();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, throwable.getMessage(), throwable);
+                Toast.makeText(activity, getString(R.string.no_data_error), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+
+                if (statusCode == Constant.HTTP_STATUS_CODE_SUCCESS) {
+                    try {
+                        Map result = Tools.json2Map(responseString);
+
+                        String recode = (String) result.get("recode");
+                        String msg = (String) result.get("msg");
+
+                        if (Constant.RECODE_SUCCESS.equals(recode)) {
+                            Toast.makeText(activity, getString(R.string.tips_success_operate), Toast.LENGTH_SHORT).show();
+                            activity.backToList();
+                            activity.refreshList();
+                        } else {
+                            activity.tipsOutput(recode, msg);
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                        Toast.makeText(activity, getString(R.string.RECODE_ERROR_OTHERS), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                activity.disLoading();
+            }
+
+        };
+        asyncHttpResponseHandler.setCharset("UTF-8");
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setTimeout(18000);
+        client.post(activity, Constant.DEALER_ADD_PRICE, requestParams, asyncHttpResponseHandler);
+
+    }
+
+    private boolean trimParams(Map params) {
+
+        params.put("id", bid);
+        params.put("customName", activity.loginUser.getCustomName());
+        params.put("customCode", activity.loginUser.getCustomCode());
+        params.put("biddingCode", getBidding().getBiddingCode());
+        if (!validateAndPutValue(params, "biddingTitle", topic_edit.getText().toString(), "请输入主题")) {
+            return false;
+        }
+        params.put("consumerCode", getBidding().getConsumerCode());
+        params.put("consumerName", getBidding().getConsumerName());
+        if (!validateAndPutValue(params, "biddingDeadline", (String) expdate_txt.getTag(R.string.TAG_KEY_A), "请选择截止日期")) {
+            return false;
+        }
+        if (!validateAndPutValue(params, "expectDeliveryDate", (String) expdate_txt.getTag(R.string.TAG_KEY_B), "请选择交收日期")) {
+            return false;
+        }
+        if (!validateAndPutValue(params, "deliveryGoodsMode", (String) delivery_txt.getTag(R.string.TAG_KEY_A), "请选择交收方式")) {
+            return false;
+        }
+        if (!validateAndPutValue(params, "deliveryGoodsPlace", (String) delivery_txt.getTag(R.string.TAG_KEY_B), "请选择交收地址")) {
+            return false;
+        }
+        params.put("taxBillType", tax_txt.getTag().toString());
+        params.put("memo", other_edit.getText().toString());
+        params.put("commissionRate", getBidding().getCommissionRate());
+        params.put("returnState", "");
+        params.put("customerService", "");
+        if (!validateAndPutValue(params, "depositPaymentVouchers", certificate_edit.getText().toString(), "请输入保证金付款凭证")) {
+            return false;
+        }
+        params.put("productCode", product_name_edit.getTag().toString());
+        if (!validateAndPutValue(params, "nameType", product_name_edit.getText().toString(), "请输入名称型号")) {
+            return false;
+        }
+        params.put("brand", product_brand_edit.getText().toString());
+        if (!validateAndPutValue(params, "productBigCategory", (String) product_category_txt.getTag(), "请选择所属分类")) {
+            return false;
+        }
+        params.put("productMiddleCategory", "");
+        params.put("collectCategory", "");
+        if (!validateAndPutValue(params, "requiredQuantity", product_num_edit.getText().toString(), "请输入数量")) {
+            return false;
+        }
+        if (!validateAndPutValue(params, "unit", product_unit_edit.getText().toString(), "请输入单位")) {
+            return false;
+        }
+        params.put("memo2", product_comment_edit.getText().toString());
+        params.put("checkStatus", "");
+        params.put("intentPrice", product_unit_price_edit.getText().toString());
+
+        float price = 0;
+        try {
+            price = Float.parseFloat(product_num_edit.getText().toString()) * Float.parseFloat(product_unit_price_edit.getText().toString());
+        } catch (Exception e) {
+        }
+        params.put("price", price + "");
+
+        return true;
+    }
+
+    private boolean validateAndPutValue(Map params, String key, String value, String tips) {
+
+        params.put(key, value);
+
+        boolean flag = true;
+        if (value == null || "".equals(value.trim())) {
+            flag = false;
+            Toast.makeText(activity, tips, Toast.LENGTH_SHORT).show();
+        }
+        return flag;
     }
 
     @Override
