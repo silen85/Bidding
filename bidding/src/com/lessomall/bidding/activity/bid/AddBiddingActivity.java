@@ -1,6 +1,7 @@
 package com.lessomall.bidding.activity.bid;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -41,6 +42,8 @@ import org.apache.http.Header;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,6 +73,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
 
+    private List<String> imagePathList = new ArrayList(Constant.IMG_MAX_COUNT);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,7 +169,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         setCameraCallback(new BaseActivity.CameraCallback() {
             @Override
             public void callback(String path) {
-                if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                if (path != null && imagePathList.size() < Constant.IMG_MAX_COUNT) {
                     new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
                 }
             }
@@ -174,7 +178,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             public void callback(Uri uri) {
                 if (uri != null) {
                     String path = getRealPathFromUri(uri);
-                    if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                    if (path != null && imagePathList.size() < Constant.IMG_MAX_COUNT) {
                         new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
                     }
                 }
@@ -185,9 +189,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         TextView button2 = (TextView) findViewById(R.id.button2);
         TextView button3 = (TextView) findViewById(R.id.button3);
 
-        button1.setText("返回");
-        button2.setText("保存");
-        button3.setText("提交");
+        button1.setText("  取  消  ");
+        button2.setText("  保  存  ");
+        button3.setText("保存并提交");
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -389,6 +393,11 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void savePrice() {
 
+        if (!sb_enable.isSelected()) {
+            Toast.makeText(this, "请勾选《竞价单发布规则》", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map params = Tools.generateRequestMap();
         params.put("sessionid", loginUser.getSessionid());
 
@@ -404,6 +413,11 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void submitPrice() {
 
+        if (!sb_enable.isSelected()) {
+            Toast.makeText(this, "请勾选《竞价单发布规则》", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map params = Tools.generateRequestMap();
         params.put("sessionid", loginUser.getSessionid());
 
@@ -418,20 +432,17 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
         RequestParams requestParams = new RequestParams(params);
 
-        if (picDialog != null) {
-
-            if (picDialog.getImagePathList().size() > 0) {
-                File[] files = new File[picDialog.getImagePathList().size()];
-                for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
-                    files[i] = new File(picDialog.getImagePathList().get(i));
-                }
-                try {
-                    requestParams.put("UpLoadFiles", files);
-                } catch (FileNotFoundException e) {
-                    Log.e(TAG, e.getMessage(), e);
-                    Toast.makeText(this, getString(R.string.upload_image_error), Toast.LENGTH_SHORT).show();
-                    return;
-                }
+        if (imagePathList.size() > 0) {
+            File[] files = new File[imagePathList.size()];
+            for (int i = 0; i < imagePathList.size(); i++) {
+                files[i] = new File(imagePathList.get(i));
+            }
+            try {
+                requestParams.put("UpLoadFiles", files);
+            } catch (FileNotFoundException e) {
+                Log.e(TAG, e.getMessage(), e);
+                Toast.makeText(this, getString(R.string.upload_image_error), Toast.LENGTH_SHORT).show();
+                return;
             }
         }
 
@@ -510,6 +521,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             return false;
         }
         params.put("taxBillType", tax_txt.getTag().toString());
+        if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {
+            return false;
+        }
         params.put("memo", other_edit.getText().toString());
         params.put("commissionRate", "");
         params.put("returnState", "");
@@ -634,7 +648,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             Bitmap bitmap = null;
             try {
                 if (picDialog.getType() == 1) {
-                    path = PictureUtil.compressImage(path, picDialog.getOutPutMediaFile().getAbsolutePath());
+                    path = PictureUtil.compressImage(path, getOutPutMediaFile().getAbsolutePath());
                     bitmap = BitmapFactory.decodeFile(path);
                 } else {
                     path = PictureUtil.compressImage(path);
@@ -651,7 +665,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             super.onPostExecute(bitmap);
 
             if (bitmap != null) {
-                picDialog.getImagePathList().add(path);
+                imagePathList.add(path);
 
                 final ImageView imageView = new ImageView(AddBiddingActivity.this);
 
@@ -672,10 +686,10 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                     public void onClick(View v) {
 
                         int index = 0;
-                        String[] pathArr = new String[picDialog.getImagePathList().size()];
-                        for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
-                            pathArr[i] = "file:///" + picDialog.getImagePathList().get(i);
-                            if (picDialog.getImagePathList().get(i).equals(imageView.getTag())) {
+                        String[] pathArr = new String[imagePathList.size()];
+                        for (int i = 0; i < imagePathList.size(); i++) {
+                            pathArr[i] = "file:///" + imagePathList.get(i);
+                            if (imagePathList.get(i).equals(imageView.getTag())) {
                                 index = i;
                             }
                         }
@@ -689,9 +703,32 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                     }
                 });
 
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(final View v) {
+
+                        final String tag = (String) v.getTag();
+
+                        confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                imagePathList.remove(tag);
+                                product_pic.removeView(v);
+                            }
+                        }, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        return true;
+                    }
+                });
+
                 product_pic.addView(imageView, product_pic.getChildCount() - 1);
 
-                if (picDialog.getImagePathList().size() >= Constant.IMG_MAX_COUNT) {
+                if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
                     product_pic_add.setVisibility(View.GONE);
                 }
             }

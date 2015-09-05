@@ -17,12 +17,6 @@ import android.widget.Toast;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
-import com.lessomall.bidding.common.Tools;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by meisl on 2015/8/12.
@@ -34,8 +28,6 @@ public class PicDialog extends Dialog {
     private Context context;
 
     private int type = 0;   //0:相机；1:相册
-
-    private List<String> imagePathList = new ArrayList(5);
 
     public PicDialog(Context context) {
 
@@ -77,7 +69,7 @@ public class PicDialog extends Dialog {
                     return;
                 }
 
-                Uri uri = Uri.fromFile(getOutPutMediaFile());
+                Uri uri = Uri.fromFile(((BaseActivity) context).getOutPutMediaFile());
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra("return-data", false);
@@ -111,23 +103,8 @@ public class PicDialog extends Dialog {
 
     }
 
-    public File getOutPutMediaFile() {
-
-        if (!context.getExternalCacheDir().exists())
-            context.getExternalCacheDir().mkdir();
-
-        String strImgPath = context.getExternalCacheDir().getPath();      // 存放照片的文件夹
-
-        String fileName = Tools.formatDate(new Date(), "yyyyMMddHHmmss") + ".jpg";// 照片命名
-
-        return new File(strImgPath, fileName);
-    }
-
     public int getType() {
         return type;
     }
 
-    public List<String> getImagePathList() {
-        return imagePathList;
-    }
 }

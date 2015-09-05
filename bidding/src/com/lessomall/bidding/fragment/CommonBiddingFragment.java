@@ -1,6 +1,7 @@
 package com.lessomall.bidding.fragment;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -31,6 +32,9 @@ import com.lessomall.bidding.ui.addbidding.PicDialog;
 import com.lessomall.bidding.ui.addbidding.ReceiveDialog;
 import com.lessomall.bidding.ui.addbidding.SearchDialog;
 import com.lessomall.bidding.ui.addbidding.ZhifuDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by meisl on 2015/8/28.
@@ -67,6 +71,8 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
+
+    protected List<String> imagePathList = new ArrayList(Constant.IMG_MAX_COUNT);
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -140,7 +146,7 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         ((BaseActivity) getActivity()).setCameraCallback(new BaseActivity.CameraCallback() {
             @Override
             public void callback(String path) {
-                if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                if (path != null && imagePathList.size() < Constant.IMG_MAX_COUNT) {
                     new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
                 }
             }
@@ -149,7 +155,7 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
             public void callback(Uri uri) {
                 if (uri != null) {
                     String path = getRealPathFromUri(uri);
-                    if (path != null && picDialog.getImagePathList().size() < Constant.IMG_MAX_COUNT) {
+                    if (path != null && imagePathList.size() < Constant.IMG_MAX_COUNT) {
                         new CompressImageTask(picDialog, product_pic, product_pic_add).execute(path);
                     }
                 }
@@ -421,7 +427,7 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
             Bitmap bitmap = null;
             try {
                 if (picDialog.getType() == 1) {
-                    path = PictureUtil.compressImage(path, picDialog.getOutPutMediaFile().getAbsolutePath());
+                    path = PictureUtil.compressImage(path, ((BaseActivity) getActivity()).getOutPutMediaFile().getAbsolutePath());
                     bitmap = BitmapFactory.decodeFile(path);
                 } else {
                     path = PictureUtil.compressImage(path);
@@ -438,7 +444,8 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
             super.onPostExecute(bitmap);
 
             if (bitmap != null) {
-                picDialog.getImagePathList().add(path);
+
+                imagePathList.add(path);
 
                 final ImageView imageView = new ImageView(getActivity());
 
@@ -459,10 +466,14 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                     public void onClick(View v) {
 
                         int index = 0;
-                        String[] pathArr = new String[picDialog.getImagePathList().size()];
-                        for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
-                            pathArr[i] = "file:///" + picDialog.getImagePathList().get(i);
-                            if (picDialog.getImagePathList().get(i).equals(imageView.getTag())) {
+                        String[] pathArr = new String[imagePathList.size()];
+                        for (int i = 0; i < imagePathList.size(); i++) {
+                            if (imagePathList.get(i).indexOf("http") >= 0) {
+                                pathArr[i] = imagePathList.get(i);
+                            } else {
+                                pathArr[i] = "file:///" + imagePathList.get(i);
+                            }
+                            if (imagePathList.get(i).equals(imageView.getTag())) {
                                 index = i;
                             }
                         }
@@ -476,9 +487,32 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                     }
                 });
 
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(final View v) {
+
+                        final String tag = (String) v.getTag();
+
+                        ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                imagePathList.remove(tag);
+                                product_pic.removeView(v);
+                            }
+                        }, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        return true;
+                    }
+                });
+
                 product_pic.addView(imageView, product_pic.getChildCount() - 1);
 
-                if (picDialog.getImagePathList().size() >= Constant.IMG_MAX_COUNT) {
+                if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
                     product_pic_add.setVisibility(View.GONE);
                 }
             }

@@ -1,7 +1,9 @@
 package com.lessomall.bidding.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +26,8 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -200,6 +204,19 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+
+    public File getOutPutMediaFile() {
+
+        if (!getExternalCacheDir().exists())
+            getExternalCacheDir().mkdir();
+
+        String strImgPath = getExternalCacheDir().getPath();      // 存放照片的文件夹
+
+        String fileName = Tools.formatDate(new Date(), "yyyyMMddHHmmss") + ".jpg";// 照片命名
+
+        return new File(strImgPath, fileName);
+    }
+
     /**
      * 加载对话框(显示)
      */
@@ -221,6 +238,17 @@ public abstract class BaseActivity extends FragmentActivity {
         if (loadingDialog != null) {
             loadingDialog.dismiss();
         }
+    }
+
+    public void confirm(String message, DialogInterface.OnClickListener y_button,
+                        DialogInterface.OnClickListener n_button) {
+
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(getString(R.string.app_name)).setMessage(message)
+                .setPositiveButton(getString(R.string.confirm_button1), y_button)
+                .setNegativeButton(getString(R.string.confirm_button2), n_button)
+                .show();
     }
 
     protected void hideSoftKeybord() {

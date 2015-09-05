@@ -247,7 +247,8 @@ public class BiddingListFragment extends PullToRefreshListFragment {
                         String msg = (String) result.get("msg");
                         String totalpage = (String) result.get("totalpage");
 
-                        totalPage = Integer.parseInt(totalpage);
+                        if (totalpage != null && !"".equals(totalpage.trim()))
+                            totalPage = Integer.parseInt(totalpage);
 
                         if (Constant.RECODE_SUCCESS.equals(recode)) {
 

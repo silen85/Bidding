@@ -1,6 +1,7 @@
 package com.lessomall.bidding.fragment.bid;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.QuoteItemAdapter;
@@ -158,72 +160,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         certificate_edit.setText(getBidding().getDepositPaymentVouchers());
         other_edit.setText(getBidding().getMemo());
 
-        final String[] urls = getBidding().getPictureURL().split(",");
-        if (urls != null && urls.length > 0) {
-
-            for (int i = 0; i < urls.length; i++) {
-
-                if (!"".equals(urls[i].trim())) {
-
-                    ImageSize imageSize = new ImageSize(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
-                            getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
-
-                    final ImageView imageView = new ImageView(activity);
-
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
-                            getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
-
-                    layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
-                    layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
-                    layoutParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.interval_B);
-
-                    imageView.setLayoutParams(layoutParams);
-                    imageView.setAdjustViewBounds(true);
-                    imageView.setClickable(true);
-                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-
-                    ImageLoader.getInstance().loadImage(urls[i], imageSize, new ImageLoadingListener() {
-                        @Override
-                        public void onLoadingStarted(String s, View view) {
-                        }
-
-                        @Override
-                        public void onLoadingFailed(String s, View view, FailReason failReason) {
-                        }
-
-                        @Override
-                        public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                            if (bitmap != null) {
-                                product_pic.addView(imageView, 0);
-                                imageView.setImageBitmap(bitmap);
-                                imageView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        String[] webUrl = new String[urls.length];
-                                        for (int i = 0; i < urls.length; i++) {
-                                            webUrl[i] = urls[i];
-                                        }
-
-                                        Intent intent = new Intent(activity, ImagePagerActivity.class);
-                                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, webUrl);
-                                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, 0);
-
-                                        activity.startActivity(intent, false);
-
-                                    }
-                                });
-                            }
-                        }
-
-                        @Override
-                        public void onLoadingCancelled(String s, View view) {
-                        }
-                    });
-
-                }
-            }
-        }
+        initImage();
 
         //竞价单:1:未提交 2:待审核 3:竞价中 4:已审核 5:已确认报价 6:已发货 7:已收货
         switch (getBidding().getBiddingStatusId()) {
@@ -260,9 +197,9 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         TextView button2 = (TextView) view.findViewById(R.id.button2);
         TextView button3 = (TextView) view.findViewById(R.id.button3);
 
-        button1.setText("返回");
-        button2.setText("保存");
-        button3.setText("提交");
+        button1.setText(" 返 回 ");
+        button2.setText(" 保 存 ");
+        button3.setText(" 提 交 ");
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -596,6 +533,118 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     }
 
+    private void initImage() {
+
+        final String[] urls = getBidding().getPictureURL().split(",");
+        if (urls != null && urls.length > 0) {
+
+            for (int i = 0; i < urls.length; i++) {
+
+                if (!"".equals(urls[i].trim())) {
+
+                    ImageSize imageSize = new ImageSize(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
+                            getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
+
+                    ImageLoader.getInstance().loadImage(urls[i], imageSize, new ImageLoadingListener() {
+                        @Override
+                        public void onLoadingStarted(String s, View view) {
+                        }
+
+                        @Override
+                        public void onLoadingFailed(String s, View view, FailReason failReason) {
+                        }
+
+                        @Override
+                        public void onLoadingComplete(final String s, View view, Bitmap bitmap) {
+                            if (bitmap != null) {
+
+                                imagePathList.add(s);
+
+                                final ImageView imageView = new ImageView(activity);
+
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
+                                        getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
+
+                                layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                                layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                                layoutParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.interval_B);
+
+                                imageView.setLayoutParams(layoutParams);
+                                imageView.setAdjustViewBounds(true);
+                                imageView.setClickable(true);
+                                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                                imageView.setImageBitmap(bitmap);
+                                imageView.setTag(s);
+
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        int index = 0;
+                                        String[] pathArr = new String[imagePathList.size()];
+                                        for (int i = 0; i < imagePathList.size(); i++) {
+                                            if (imagePathList.get(i).indexOf("http") >= 0) {
+                                                pathArr[i] = imagePathList.get(i);
+                                            } else {
+                                                pathArr[i] = "file:///" + imagePathList.get(i);
+                                            }
+                                            if (imagePathList.get(i).equals(imageView.getTag())) {
+                                                index = i;
+                                            }
+                                        }
+
+                                        Intent intent = new Intent(activity, ImagePagerActivity.class);
+                                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, pathArr);
+                                        intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, index);
+
+                                        activity.startActivity(intent, false);
+
+                                    }
+                                });
+
+                                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                                    @Override
+                                    public boolean onLongClick(final View v) {
+
+                                        final String tag = (String) v.getTag();
+
+                                        ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                imagePathList.remove(tag);
+                                                product_pic.removeView(v);
+                                            }
+                                        }, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                            }
+                                        });
+
+                                        return true;
+                                    }
+                                });
+
+                                product_pic.addView(imageView, product_pic.getChildCount() - 1);
+
+                                if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
+                                    product_pic_add.setVisibility(View.GONE);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onLoadingCancelled(String s, View view) {
+                        }
+                    });
+
+                }
+            }
+        }
+
+
+    }
+
     private void ensureReceived() {
 
         Map params = Tools.generateRequestMap();
@@ -723,6 +772,11 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void savePrice() {
 
+        if (!sb_enable.isSelected()) {
+            Toast.makeText(getActivity(), "请勾选《竞价单发布规则》", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map params = Tools.generateRequestMap();
         params.put("sessionid", activity.loginUser.getSessionid());
 
@@ -738,6 +792,11 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void submitPrice() {
 
+        if (!sb_enable.isSelected()) {
+            Toast.makeText(getActivity(), "请勾选《竞价单发布规则》", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map params = Tools.generateRequestMap();
         params.put("sessionid", activity.loginUser.getSessionid());
 
@@ -750,22 +809,41 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void sendPrice(Map params) {
 
+        String pictureURL = "";
+        List<File> localImageList = new ArrayList();
+
         RequestParams requestParams = new RequestParams(params);
 
-        if (picDialog != null) {
+        if (imagePathList.size() > 0) {
 
-            if (picDialog.getImagePathList().size() > 0) {
-                File[] files = new File[picDialog.getImagePathList().size()];
-                for (int i = 0; i < picDialog.getImagePathList().size(); i++) {
-                    files[i] = new File(picDialog.getImagePathList().get(i));
+            for (int i = 0; i < imagePathList.size(); i++) {
+
+                if (imagePathList.get(i).indexOf("http") >= 0) {
+
+                    if (pictureURL != null && !"".equals(pictureURL.trim()))
+                        pictureURL += ",";
+
+                    pictureURL += imagePathList.get(i);
+                } else {
+                    localImageList.add(new File(imagePathList.get(i)));
                 }
-                try {
-                    requestParams.put("UpLoadFiles", files);
-                } catch (FileNotFoundException e) {
-                    Log.e(TAG, e.getMessage(), e);
-                    Toast.makeText(activity, getString(R.string.upload_image_error), Toast.LENGTH_SHORT).show();
-                    return;
+
+            }
+
+            requestParams.add("pictureURL", pictureURL);
+
+            try {
+
+                File[] files = new File[localImageList.size()];
+                for (int i = 0; i < localImageList.size(); i++) {
+                    files[i] = localImageList.get(i);
                 }
+
+                requestParams.put("UpLoadFiles", files);
+            } catch (FileNotFoundException e) {
+                Log.e(TAG, e.getMessage(), e);
+                Toast.makeText(activity, getString(R.string.upload_image_error), Toast.LENGTH_SHORT).show();
+                return;
             }
         }
 
@@ -846,6 +924,9 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
             return false;
         }
         params.put("taxBillType", tax_txt.getTag().toString());
+        if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {
+            return false;
+        }
         params.put("memo", other_edit.getText().toString());
         params.put("commissionRate", getBidding().getCommissionRate());
         params.put("returnState", "");

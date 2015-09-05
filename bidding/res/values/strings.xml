@@ -29,6 +29,8 @@
     <string name="text_qulify_check">资质审核</string>
     <string name="text_business_check">交易监控</string>
 
+    <string name="confirm_button1">确定</string>
+    <string name="confirm_button2">取消</string>
     <string name="text_finish">完成</string>
     <string name="text_cancel">取消</string>
     <string name="text_save">保存</string>
