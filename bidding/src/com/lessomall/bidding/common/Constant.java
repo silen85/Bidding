@@ -32,14 +32,6 @@ public class Constant {
 
     public static final SimpleDateFormat DATE_FORMAT_1 = new SimpleDateFormat("yyyy-MM-dd");
 
-    public static final SimpleDateFormat DATE_FORMAT_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    public static final SimpleDateFormat DATE_FORMAT_3 = new SimpleDateFormat("yyyy-MM");
-
-    public static final SimpleDateFormat DATE_FORMAT_4 = new SimpleDateFormat("HHmmss");
-
-    public static final SimpleDateFormat DATE_FORMAT_5 = new SimpleDateFormat("mm/dd/yyyy");
-
     public static final int CONNECT_TIMEOUT = 8000;
 
     public static int HTTP_STATUS_CODE_SUCCESS = 200;

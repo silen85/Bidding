@@ -1,28 +1,281 @@
 package com.lessomall.bidding.fragment.quote;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.os.Handler;
+import android.os.Message;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.view.animation.LinearInterpolator;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.handmark.pulltorefresh.extras.listfragment.PullToRefreshListFragment;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.quote.QuoteListActivity;
+import com.lessomall.bidding.adapter.BiddingAdapter;
+import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.Tools;
+import com.lessomall.bidding.model.Bidding;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+
+import org.apache.http.Header;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by meisl on 2015/8/15.
  */
-public class QuoteListFragment extends Fragment {
+public class QuoteListFragment extends PullToRefreshListFragment {
 
-    private LinearLayout view;
+    private String TAG = "com.lessomall.bidding.fragment.quote.QuoteListFragment";
+
+    private QuoteListActivity activity;
+
+    private int pageno = 1;
+
+    private int status = 0;
+
+    private int totalPage = 1;
+
+    private List<Bidding> list = new ArrayList();
+
+    private PullToRefreshListView mPullRefreshListView;
+
+    private ListView quotelist;
+
+    private BiddingAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        view = (LinearLayout) inflater.inflate(R.layout.fragment_quotelist, null);
+        initView();
 
+        initData();
+    }
 
-        return view;
+    private void initView() {
+
+        mPullRefreshListView = getPullToRefreshListView();
+
+        mPullRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        mPullRefreshListView.setScrollAnimationInterpolator(new LinearInterpolator());
+
+        // Set a listener to be invoked when the list should be refreshed.
+        mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+
+                if (pageno < totalPage) {
+
+                    String label = DateUtils.formatDateTime(activity, System.currentTimeMillis(),
+                            DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+                    refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+                    pageno++;
+                    sendRequest(generateParam());
+                } else {
+                    lastData();
+                }
+            }
+        });
+
+        quotelist = mPullRefreshListView.getRefreshableView();
+
+        quotelist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
+
+        quotelist.setDivider(null);
+        quotelist.setDividerHeight(getResources().getDimensionPixelSize(R.dimen.interval_C));
+
+        quotelist.setVerticalScrollBarEnabled(false);
+        quotelist.setHorizontalScrollBarEnabled(false);
+        quotelist.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+
+        adapter = new BiddingAdapter(activity, list);
+        quotelist.setAdapter(adapter);
+
+        setListShown(true);
 
     }
+
+    public void initData() {
+
+        pageno = 1;
+        sendRequest(generateParam());
+
+    }
+
+    private void fillData(List<Map> data) {
+
+        if (pageno == 1) list.clear();
+
+        if (data != null && data.size() > 0) {
+            for (int i = 0; i < data.size(); i++) {
+
+                Bidding bidding = new Bidding();
+
+                bidding.map2Bidding(data.get(i));
+
+                list.add(bidding);
+            }
+        }
+
+        adapter.notifyDataSetChanged();
+
+        mPullRefreshListView.onRefreshComplete();
+    }
+
+    private void lastData() {
+
+        adapter.notifyDataSetChanged();
+        quotelist.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPullRefreshListView.onRefreshComplete();
+            }
+        }, 1000);
+
+        if (list.size() > 0) {
+            Toast.makeText(activity, getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    private Map<String, String> generateParam() {
+
+        Map<String, String> params = Tools.generateRequestMap();
+
+        params.put("sessionid", activity.loginUser.getSessionid());
+        params.put("customCode", activity.loginUser.getCustomCode());
+        params.put("type", "2");
+        params.put("status", getStatus() + "");
+
+        params.put("pageno", pageno + "");
+        params.put("pageSize", Constant.PAGE_SIZE + "");
+
+        return params;
+
+    }
+
+    private void sendRequest(Map<String, String> parems) {
+
+        RequestParams requestParams = new RequestParams(parems);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setTimeout(Constant.CONNECT_TIMEOUT);
+        client.post(activity, Constant.BIDDING_LIST, requestParams, new TextHttpResponseHandler() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                activity.loading();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, throwable.getMessage(), throwable);
+                Message message = mHandler.obtainMessage();
+                message.what = HANDLER_NETWORK_ERR;
+                message.sendToTarget();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Log.d(TAG, responseString);
+
+                if (statusCode == 200) {
+                    Message message = mHandler.obtainMessage();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("json", responseString);
+                    message.what = HANDLER_DATA;
+                    message.setData(bundle);
+                    message.sendToTarget();
+                }
+
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                activity.disLoading();
+            }
+        });
+
+    }
+
+
+    private final int HANDLER_DATA = 1;
+    private final int HANDLER_NETWORK_ERR = 0;
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case HANDLER_DATA:
+
+                    String json = message.getData().getString("json");
+                    try {
+                        Map result = Tools.json2Map(json);
+
+                        String recode = (String) result.get("recode");
+                        String msg = (String) result.get("msg");
+                        String totalpage = (String) result.get("totalpage");
+
+                        if (totalpage != null && !"".equals(totalpage.trim()))
+                            totalPage = Integer.parseInt(totalpage);
+
+                        if (Constant.RECODE_SUCCESS.equals(recode)) {
+
+                            List<Map> datalist = (List<Map>) result.get("datalist");
+
+                            if (datalist != null && datalist.size() > 0) {
+                                fillData(datalist);
+                            } else {
+                                lastData();
+                            }
+                        } else {
+                            activity.tipsOutput(recode, msg);
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage(), e);
+                        Toast.makeText(activity, getString(R.string.no_data_tips), Toast.LENGTH_SHORT).show();
+                    }
+
+                    break;
+                case HANDLER_NETWORK_ERR:
+                    Toast.makeText(activity, getString(R.string.no_data_error), Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(message);
+        }
+    };
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = (QuoteListActivity) activity;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }
