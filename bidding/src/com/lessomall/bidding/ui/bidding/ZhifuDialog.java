@@ -1,4 +1,4 @@
-package com.lessomall.bidding.ui.addbidding;
+package com.lessomall.bidding.ui.bidding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,7 +17,7 @@ import com.lessomall.bidding.R;
  */
 public class ZhifuDialog extends Dialog {
 
-    private String TAG = "com.lessomall.bidding.ui.addbidding.ZhifuDialog";
+    private String TAG = "com.lessomall.bidding.ui.bidding.ZhifuDialog";
 
     private Context context;
 

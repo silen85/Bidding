@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
-import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.QuoteItemAdapter;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -50,7 +49,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private String TAG = "com.lessomall.bidding.fragment.bid.BiddingDetailFragment";
 
-    private BiddingListActivity activity;
+    private BaseActivity activity;
 
     private Bidding bidding;
 
@@ -393,7 +392,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
             list = _list;
 
-            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list);
+            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
 
             quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -404,6 +403,10 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
             quotepricelist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    if ("10".equals(list.get(position).getBiddingStatus())) {
+                        return;
+                    }
 
                     ImageView tick = (ImageView) view.findViewById(R.id.tick);
 
@@ -453,7 +456,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list);
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -486,7 +489,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list);
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -519,7 +522,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list);
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -979,7 +982,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = (BiddingListActivity) activity;
+        this.activity = (BaseActivity) activity;
     }
 
 

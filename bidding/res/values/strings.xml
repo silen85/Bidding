@@ -73,6 +73,8 @@
     <string name="dialog_bottom_receive_A">配送</string>
     <string name="dialog_bottom_receive_B">自提</string>
 
+    <string name="tips_success_baojia">报价成功</string>
+    <string name="tips_success_send">发货成功</string>
     <string name="tips_success_receive">收货成功</string>
     <string name="tips_success_operate">操作成功</string>
 

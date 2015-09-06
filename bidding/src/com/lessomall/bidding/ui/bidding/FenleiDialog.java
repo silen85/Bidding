@@ -1,4 +1,4 @@
-package com.lessomall.bidding.ui.addbidding;
+package com.lessomall.bidding.ui.bidding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -21,7 +21,7 @@ import com.lessomall.bidding.ui.FlowLayout;
  */
 public class FenleiDialog extends Dialog {
 
-    private String TAG = "com.lessomall.bidding.ui.addbidding.FenleiDialog";
+    private String TAG = "com.lessomall.bidding.ui.bidding.FenleiDialog";
 
     private Context context;
 

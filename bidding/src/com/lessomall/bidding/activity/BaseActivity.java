@@ -18,7 +18,10 @@ import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
+import com.lessomall.bidding.model.Bidding;
 import com.lessomall.bidding.ui.TimeChooserDialog;
+import com.lessomall.bidding.ui.bidding.BaojiaDialog;
+import com.lessomall.bidding.ui.bidding.FahuoDialog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -173,6 +176,56 @@ public abstract class BaseActivity extends FragmentActivity {
         });
         timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
         timerDialog.show();
+
+    }
+
+    public void refreshList() {
+
+    }
+
+    public void goToDetail(Bidding bidding) {
+
+    }
+
+    public void backToList() {
+
+    }
+
+    public void showFahuoDialog(String qid) {
+
+        if (qid == null || "".equals(qid.trim()))
+            return;
+
+        FahuoDialog fahuoDialog = new FahuoDialog(this, qid);
+        fahuoDialog.getWindow().setGravity(Gravity.BOTTOM);
+        fahuoDialog.setCanceledOnTouchOutside(true);
+        fahuoDialog.setClickListenerInterface(new FahuoDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+                refreshList();
+            }
+        });
+        fahuoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        fahuoDialog.show();
+
+    }
+
+    public void showBaojiaDialog(String biddingDetailId) {
+
+        if (biddingDetailId == null || "".equals(biddingDetailId.trim()))
+            return;
+
+        BaojiaDialog baojiaDialog = new BaojiaDialog(this, biddingDetailId);
+        baojiaDialog.getWindow().setGravity(Gravity.BOTTOM);
+        baojiaDialog.setCanceledOnTouchOutside(true);
+        baojiaDialog.setClickListenerInterface(new BaojiaDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+                refreshList();
+            }
+        });
+        baojiaDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        baojiaDialog.show();
 
     }
 

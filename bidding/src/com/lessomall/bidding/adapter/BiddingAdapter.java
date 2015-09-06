@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,6 +18,7 @@ import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.model.Bidding;
+import com.lessomall.bidding.model.QuotePrice;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
@@ -32,6 +32,12 @@ import java.util.List;
  * Created by meisl on 2015/8/24.
  */
 public class BiddingAdapter extends BaseAdapter {
+
+    private String TAG = "com.lessomall.bidding.adapter.BiddingAdapter";
+
+    //报价单:1:待报价 2:已报价 3:被退回 4:竞价达成待发货 5:已发货 6:已确认收货
+    protected final static String STATUS_QUOTE_1 = "1", STATUS_QUOTE_2 = "2", STATUS_QUOTE_3 = "3", STATUS_QUOTE_4 = "4", STATUS_QUOTE_5 = "5",
+            STATUS_QUOTE_6 = "6";
 
     private Context context;
     private LayoutInflater layoutInflater;
@@ -64,7 +70,7 @@ public class BiddingAdapter extends BaseAdapter {
         Bidding bidding = (Bidding) getItem(position);
         if ("0".equals(bidding.getOrderType())) {
             ViewHolder0 viewHolder0;
-            if (view == null) {
+            if (view == null || !(view.getTag() instanceof ViewHolder0)) {
                 viewHolder0 = new ViewHolder0();
                 view = layoutInflater.inflate(R.layout.item_bidding, null);
                 view.setTag(viewHolder0);
@@ -99,7 +105,7 @@ public class BiddingAdapter extends BaseAdapter {
 
         } else {
             ViewHolder1 viewHolder1;
-            if (view == null) {
+            if (view == null || !(view.getTag() instanceof ViewHolder1)) {
                 viewHolder1 = new ViewHolder1();
                 view = layoutInflater.inflate(R.layout.item_quote, null);
                 view.setTag(viewHolder1);
@@ -126,8 +132,11 @@ public class BiddingAdapter extends BaseAdapter {
             LinearLayout list_layout = (LinearLayout) view.findViewById(R.id.list_layout);
             ListView pricelist = (ListView) view.findViewById(R.id.pricelist);
 
+            LinearLayout foul_layout = (LinearLayout) view.findViewById(R.id.foul_layout);
+            TextView foul_txt = (TextView) view.findViewById(R.id.foul_txt);
+
             LinearLayout button_layout = (LinearLayout) view.findViewById(R.id.button_layout);
-            Button button = (Button) view.findViewById(R.id.button);
+            TextView button = (TextView) view.findViewById(R.id.button);
 
             viewHolder1.deadline = deadline;
             viewHolder1.delivery_date = delivery_date;
@@ -144,6 +153,8 @@ public class BiddingAdapter extends BaseAdapter {
             viewHolder1.comment = comment;
             viewHolder1.list_layout = list_layout;
             viewHolder1.pricelist = pricelist;
+            viewHolder1.foul_layout = foul_layout;
+            viewHolder1.foul_txt = foul_txt;
             viewHolder1.button_layout = button_layout;
             viewHolder1.button = button;
 
@@ -231,7 +242,7 @@ public class BiddingAdapter extends BaseAdapter {
 
     }
 
-    private void writeData(final ViewHolder1 viewHolder1, Bidding bidding) {
+    private void writeData(final ViewHolder1 viewHolder1, final Bidding bidding) {
 
         final String[] urls = bidding.getPictureURL().split(",");
         if (urls != null && urls.length > 0 && !"".equals(urls[0].trim())) {
@@ -301,14 +312,26 @@ public class BiddingAdapter extends BaseAdapter {
         String outputStr = "";
 
         if (bidding.getBiddingDeadline() != null && !"".equals(bidding.getBiddingDeadline().trim())) {
-            outputStr = bidding.getBiddingDeadline() + "  【 还有" + Tools.daysBetween(new Date(), Tools.parseDate(bidding.getBiddingDeadline(), "yyyy-MM-dd")) + "天 】";
+
+            int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getBiddingDeadline(), "yyyy-MM-dd"));
+            if (between > 0)
+                outputStr = bidding.getBiddingDeadline() + "  【 还有" + between + "天 】";
+            else {
+                outputStr = bidding.getBiddingDeadline();
+            }
         }
         viewHolder1.deadline.setText(outputStr);
 
         outputStr = "";
 
         if (bidding.getExpectDeliveryDate() != null && !"".equals(bidding.getExpectDeliveryDate().trim())) {
-            outputStr = bidding.getExpectDeliveryDate() + "  【 还有" + Tools.daysBetween(new Date(), Tools.parseDate(bidding.getExpectDeliveryDate(), "yyyy-MM-dd")) + "天 】";
+
+            int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getExpectDeliveryDate(), "yyyy-MM-dd"));
+            if (between > 0) {
+                outputStr = bidding.getExpectDeliveryDate() + "  【 还有" + between + "天 】";
+            } else {
+                outputStr = bidding.getExpectDeliveryDate();
+            }
         }
         viewHolder1.delivery_date.setText(outputStr);
 
@@ -320,6 +343,99 @@ public class BiddingAdapter extends BaseAdapter {
         viewHolder1.brand.setText("".equals(bidding.getBrand()) ? "" : (bidding.getBrand() + " ") + bidding.getNameType());
         viewHolder1.num.setText("".equals(bidding.getRequiredQuantity()) ? "数量未定" : (bidding.getRequiredQuantity() + " " + bidding.getUnit()));
 
+
+        String qid = "";
+        List<QuotePrice> list = bidding.getQuotePriceList();
+        if (list != null && list.size() > 0) {
+
+            QuotePrice quotePrice = null;
+            for (int i = 0; i < list.size(); i++) {
+                if (((BaseActivity) context).loginUser.getCustomCode().equals(list.get(i).getSupplierCode())) {
+                    quotePrice = list.get(i);
+                    break;
+                }
+            }
+
+            if (quotePrice != null) {
+
+                List<QuotePrice> _list = new ArrayList();
+
+                qid = quotePrice.getId();
+
+                _list.add(quotePrice);
+
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType());
+
+                viewHolder1.pricelist.setAdapter(quoteItemAdapter);
+
+                quoteItemAdapter.notifyDataSetChanged();
+
+                if ("10".equals(quotePrice.getBiddingStatus())) {
+
+                    viewHolder1.foul_txt.setText(quotePrice.getReturnState());
+
+                    viewHolder1.foul_layout.setVisibility(View.VISIBLE);
+                } else {
+                    viewHolder1.foul_layout.setVisibility(View.GONE);
+                }
+
+                viewHolder1.list_layout.setVisibility(View.VISIBLE);
+
+            }
+        }
+
+        viewHolder1.button.setTag(qid);
+
+        //报价单:1:待报价 2:已报价 3:被退回 4:竞价达成待发货 5:已发货 6:已确认收货
+        switch (bidding.getBiddingStatusId()) {
+            case STATUS_QUOTE_1:
+                viewHolder1.button.setText("发布报价");
+                viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                viewHolder1.button.setClickable(true);
+                viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ((BaseActivity) context).showBaojiaDialog(bidding.getId());
+                    }
+                });
+                break;
+            case STATUS_QUOTE_2:
+                viewHolder1.button_layout.setVisibility(View.GONE);
+                viewHolder1.button.setClickable(false);
+                break;
+            case STATUS_QUOTE_3:
+                viewHolder1.button.setText("重新报价");
+                viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                viewHolder1.button.setClickable(true);
+                viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ((BaseActivity) context).showBaojiaDialog(bidding.getId());
+                    }
+                });
+                break;
+            case STATUS_QUOTE_4:
+                viewHolder1.button.setText("确认发货");
+                viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                viewHolder1.button.setClickable(true);
+                viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ((BaseActivity) context).showFahuoDialog((String) v.getTag());
+                    }
+                });
+                break;
+            case STATUS_QUOTE_5:
+                viewHolder1.button_layout.setVisibility(View.GONE);
+                viewHolder1.button.setClickable(false);
+                break;
+            case STATUS_QUOTE_6:
+                viewHolder1.button_layout.setVisibility(View.GONE);
+                viewHolder1.button.setClickable(false);
+                break;
+            default:
+                break;
+        }
 
     }
 
@@ -359,8 +475,11 @@ public class BiddingAdapter extends BaseAdapter {
         LinearLayout list_layout;
         ListView pricelist;
 
+        LinearLayout foul_layout;
+        TextView foul_txt;
+
         LinearLayout button_layout;
-        Button button;
+        TextView button;
 
     }
 

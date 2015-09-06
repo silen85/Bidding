@@ -22,6 +22,8 @@ public class Constant {
     public final static String DEALER_CONFIRM_STORE = BASE_URL + "dealerConfirmStore/";
     public final static String SEARCH_PRODUCT = BASE_URL + "searchProduct/";
     public final static String DEALER_ADD_PRICE = BASE_URL + "dealerAddPrice/";
+    public final static String SUPPLIER_CONFIRM_STORE = BASE_URL + "confirmSend/";
+    public final static String SUPPLIER_SUBMIT_PRICE = BASE_URL + "submitPrice/";
 
     public final static String APP_KEY_ANDROID = "ba25623f";     //对应数据库字段DEVICETYPE = 1;
 

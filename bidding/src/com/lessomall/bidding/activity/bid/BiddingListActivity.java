@@ -71,15 +71,16 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
+    @Override
     public void refreshList() {
-
+        super.refreshList();
         if (fragment != null)
             fragment.initData();
-
     }
 
+    @Override
     public void goToDetail(Bidding bidding) {
-
+        super.goToDetail(bidding);
         BiddingDetailFragment fragment = new BiddingDetailFragment();
 
         fragment.setBidding(bidding);
@@ -90,10 +91,11 @@ public class BiddingListActivity extends BaseActivity {
         fragmentTransaction.commit();
 
         main_title.setVisibility(View.GONE);
-
     }
 
+    @Override
     public void backToList() {
+        super.backToList();
         main_title.setVisibility(View.VISIBLE);
         fragmentManager.popBackStackImmediate();
     }

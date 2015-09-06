@@ -26,12 +26,12 @@ import com.lessomall.bidding.activity.ImagePagerActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.PictureUtil;
 import com.lessomall.bidding.ui.TimeChooserDialog;
-import com.lessomall.bidding.ui.addbidding.FaPiaoDialog;
-import com.lessomall.bidding.ui.addbidding.FenleiDialog;
-import com.lessomall.bidding.ui.addbidding.PicDialog;
-import com.lessomall.bidding.ui.addbidding.ReceiveDialog;
-import com.lessomall.bidding.ui.addbidding.SearchDialog;
-import com.lessomall.bidding.ui.addbidding.ZhifuDialog;
+import com.lessomall.bidding.ui.bidding.FaPiaoDialog;
+import com.lessomall.bidding.ui.bidding.FenleiDialog;
+import com.lessomall.bidding.ui.bidding.PicDialog;
+import com.lessomall.bidding.ui.bidding.ReceiveDialog;
+import com.lessomall.bidding.ui.bidding.SearchDialog;
+import com.lessomall.bidding.ui.bidding.ZhifuDialog;
 
 import java.util.ArrayList;
 import java.util.List;

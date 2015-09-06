@@ -1,4 +1,4 @@
-package com.lessomall.bidding.ui.addbidding;
+package com.lessomall.bidding.ui.bidding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -23,7 +23,7 @@ import com.lessomall.bidding.activity.BaseActivity;
  */
 public class PicDialog extends Dialog {
 
-    private String TAG = "com.lessomall.bidding.ui.addbidding.PicDialog";
+    private String TAG = "com.lessomall.bidding.ui.bidding.PicDialog";
 
     private Context context;
 

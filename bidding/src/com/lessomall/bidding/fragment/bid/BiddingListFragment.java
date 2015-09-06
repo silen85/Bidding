@@ -17,7 +17,7 @@ import com.handmark.pulltorefresh.extras.listfragment.PullToRefreshListFragment;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lessomall.bidding.R;
-import com.lessomall.bidding.activity.bid.BiddingListActivity;
+import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.adapter.BiddingAdapter;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -41,7 +41,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
     private String TAG = "com.lessomall.bidding.fragment.bid.BiddingListFragment";
 
-    private BiddingListActivity activity;
+    private BaseActivity activity;
 
     private int pageno = 1;
 
@@ -281,7 +281,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = (BiddingListActivity) activity;
+        this.activity = (BaseActivity) activity;
     }
 
     public int getStatus() {

@@ -23,11 +23,15 @@ public class QuoteItemAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private List<QuotePrice> list = new ArrayList();
 
+    //0:竞价单；1：报价单
+    private String orderType = "0";
 
-    public QuoteItemAdapter(Context context, List<QuotePrice> list) {
+
+    public QuoteItemAdapter(Context context, List<QuotePrice> list, String orderType) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(this.context);
         this.list = list;
+        this.orderType = orderType;
     }
 
     @Override
@@ -75,12 +79,25 @@ public class QuoteItemAdapter extends BaseAdapter {
 
         supplier_comment.setText(quotePrice.getMemo());
 
-        if ("40".equals(quotePrice.getBiddingStatus()) ||
-                "50".equals(quotePrice.getBiddingStatus()) ||
-                "60".equals(quotePrice.getBiddingStatus())) {
-            tick.setSelected(true);
+        if ("0".equals(orderType)) {
+            if ("40".equals(quotePrice.getBiddingStatus()) ||
+                    "50".equals(quotePrice.getBiddingStatus()) ||
+                    "60".equals(quotePrice.getBiddingStatus())) {
+                tick.setBackgroundResource(R.drawable.agree_x);
+                tick.setSelected(true);
+            } else if ("10".equals(quotePrice.getBiddingStatus())) {
+                tick.setBackgroundResource(R.mipmap.disagree_s);
+            } else {
+                tick.setBackgroundResource(R.drawable.agree_x);
+                tick.setSelected(false);
+            }
         } else {
-            tick.setSelected(false);
+            if ("10".equals(quotePrice.getBiddingStatus())) {
+                tick.setBackgroundResource(R.mipmap.disagree_s);
+            } else {
+                tick.setBackgroundResource(R.drawable.agree_x);
+                tick.setSelected(true);
+            }
         }
 
         return view;

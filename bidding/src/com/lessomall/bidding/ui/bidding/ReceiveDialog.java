@@ -1,4 +1,4 @@
-package com.lessomall.bidding.ui.addbidding;
+package com.lessomall.bidding.ui.bidding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -20,7 +20,7 @@ import com.lessomall.bidding.R;
  */
 public class ReceiveDialog extends Dialog implements DialogInterface.OnCancelListener {
 
-    private String TAG = "com.lessomall.bidding.ui.addbidding.ReceiveDialog";
+    private String TAG = "com.lessomall.bidding.ui.bidding.ReceiveDialog";
 
     private int clickTimes = 0;
 

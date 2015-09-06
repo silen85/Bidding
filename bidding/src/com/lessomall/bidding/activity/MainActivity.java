@@ -53,6 +53,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private Handler mHandler;
 
+    private long mExitTime;
+
     BroadcastReceiver finishReceiver = new BroadcastReceiver() {
 
         @Override
@@ -351,6 +353,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         return true;
     }
 
+    private void search() {
+
+        Intent intent = new Intent(MainActivity.this, OrderListActivity.class);
+        intent.putExtra("txt", searcher_text.getText().toString().trim());
+        intent.putExtra("begDate", sBeginDate);
+        intent.putExtra("endDate", sEndDate);
+        startActivity(intent, false);
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -360,7 +371,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 showTimerDialog();
                 break;
             case R.id.searcher_icon:
-
+                search();
                 break;
             case R.id.searcher_other:
                 startActivity(new Intent(MainActivity.this, OtherActivity.class), false);
@@ -410,6 +421,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
+    public void onBackPressed() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            mExitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
@@ -417,6 +438,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             unregisterReceiver(finishReceiver);
         } catch (Exception e) {
         }
-
     }
 }

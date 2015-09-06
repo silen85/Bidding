@@ -1,4 +1,4 @@
-package com.lessomall.bidding.ui.addbidding;
+package com.lessomall.bidding.ui.bidding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class SearchDialog extends Dialog {
 
-    private String TAG = "com.lessomall.bidding.ui.addbidding.SearchDialog";
+    private String TAG = "com.lessomall.bidding.ui.bidding.SearchDialog";
 
     private Context context;
 
