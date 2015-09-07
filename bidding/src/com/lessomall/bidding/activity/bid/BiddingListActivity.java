@@ -73,7 +73,6 @@ public class BiddingListActivity extends BaseActivity {
 
     @Override
     public void refreshList() {
-        super.refreshList();
         if (fragment != null)
             fragment.initData();
     }

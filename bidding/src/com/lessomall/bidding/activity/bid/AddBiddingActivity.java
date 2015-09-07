@@ -575,6 +575,11 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
 
     @Override
+    public void refreshList() {
+
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }

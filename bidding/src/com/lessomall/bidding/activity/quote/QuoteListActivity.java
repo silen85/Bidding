@@ -99,7 +99,6 @@ public class QuoteListActivity extends BaseActivity {
 
     @Override
     public void refreshList() {
-        super.refreshList();
         if (fragment != null)
             fragment.initData();
     }

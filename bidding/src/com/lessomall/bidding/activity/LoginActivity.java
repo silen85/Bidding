@@ -343,6 +343,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
+    public void refreshList() {
+
+    }
+
+    @Override
     public void onBackPressed() {
         finish();
     }

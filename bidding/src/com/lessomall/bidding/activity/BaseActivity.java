@@ -179,9 +179,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     }
 
-    public void refreshList() {
-
-    }
+    public abstract void refreshList();
 
     public void goToDetail(Bidding bidding) {
 

@@ -82,6 +82,11 @@ public class OtherActivity extends BaseActivity {
 
 
     @Override
+    public void refreshList() {
+
+    }
+
+    @Override
     public void onBackPressed() {
         btn_back.performClick();
     }
