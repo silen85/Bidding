@@ -395,7 +395,7 @@ public class BiddingAdapter extends BaseAdapter {
                 viewHolder1.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ((BaseActivity) context).showBaojiaDialog(bidding.getId());
+                        ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
                     }
                 });
                 break;
@@ -410,7 +410,7 @@ public class BiddingAdapter extends BaseAdapter {
                 viewHolder1.button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ((BaseActivity) context).showBaojiaDialog(bidding.getId());
+                        ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
                     }
                 });
                 break;

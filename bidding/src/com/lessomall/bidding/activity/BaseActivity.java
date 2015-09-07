@@ -210,12 +210,12 @@ public abstract class BaseActivity extends FragmentActivity {
 
     }
 
-    public void showBaojiaDialog(String biddingDetailId) {
+    public void showBaojiaDialog(String qid, String biddingDetailId) {
 
         if (biddingDetailId == null || "".equals(biddingDetailId.trim()))
             return;
 
-        BaojiaDialog baojiaDialog = new BaojiaDialog(this, biddingDetailId);
+        BaojiaDialog baojiaDialog = new BaojiaDialog(this, qid, biddingDetailId);
         baojiaDialog.getWindow().setGravity(Gravity.BOTTOM);
         baojiaDialog.setCanceledOnTouchOutside(true);
         baojiaDialog.setClickListenerInterface(new BaojiaDialog.ClickListenerInterface() {

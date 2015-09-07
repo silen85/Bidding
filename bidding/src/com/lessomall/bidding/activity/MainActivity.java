@@ -177,9 +177,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         searcher_other.setVisibility(View.VISIBLE);
         searcher_other.setOnClickListener(this);
 
-        searcher_text.clearFocus();
-        searcher.requestFocus();
-
     }
 
     @Override
