@@ -98,7 +98,7 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
-    private void reLogin() {
+    protected void reLogin() {
         sendBroadcast(new Intent(Constant.FINISH_ACTION));
         startActivity(new Intent(this, LoginActivity.class), true);
     }

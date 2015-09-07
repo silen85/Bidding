@@ -69,18 +69,7 @@ public class OtherActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 ((LessoApplication) getApplication()).setUser(null);
-
-                /*SharedPreferences sp = getSharedPreferences(Constant.LESSOBI, Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.remove(Constant.LESSOBI_USERID);
-                editor.remove(Constant.LESSOBI_USERNAME);
-                editor.remove(Constant.LESSOBI_USERPASSWORD);
-                editor.remove(Constant.LESSOBI_USERSCRATPWD);
-                editor.commit();
-
-                Intent intent = new Intent(SetupActivity.this, SplashLoginActivity.class);
-                startActivity(intent);
-                finish();*/
+                reLogin();
             }
         });
 

@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,8 +45,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private String TAG = "com.lessomall.bidding.activity.MainActivity";
 
+    private LinearLayout searcher, searcher_date, searcher_other;
+    private ImageView searcher_icon;
     private EditText searcher_text;
-    private LinearLayout searcher_other;
 
     private LinearLayout LinearLayout_b1, LinearLayout_b2, LinearLayout_b3, LinearLayout_b4, LinearLayout_b5, LinearLayout_b6, LinearLayout_b7,
             LinearLayout_q1, LinearLayout_q2, LinearLayout_q3, LinearLayout_q4, LinearLayout_q5, LinearLayout_q6;
@@ -105,17 +110,75 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void initTitle() {
 
-        LinearLayout searcher_date = (LinearLayout) findViewById(R.id.searcher_date);
+        searcher = (LinearLayout) findViewById(R.id.searcher);
+
+        searcher_date = (LinearLayout) findViewById(R.id.searcher_date);
         searcher_date.setOnClickListener(this);
 
-        ImageView searcher_icon = (ImageView) findViewById(R.id.searcher_icon);
+        searcher_icon = (ImageView) findViewById(R.id.searcher_icon);
         searcher_icon.setOnClickListener(this);
 
         searcher_text = (EditText) findViewById(R.id.searcher_text);
+        searcher_text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    search();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        searcher_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    searcher.setBackgroundResource(R.drawable.bg_rectangle_search_s);
+                    searcher_icon.setBackgroundResource(R.drawable.search_x);
+                    searcher_text.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+                } else {
+                    searcher.setBackgroundResource(R.drawable.bg_rectangle_search);
+                    searcher_icon.setBackgroundResource(R.drawable.search_x1);
+                    searcher_text.setTextColor(getResources().getColor(R.color.MALL_C8));
+                }
+            }
+        });
+
+        searcher_text.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (searcher_text.getText().toString().length() > 0) {
+                    searcher.setBackgroundResource(R.drawable.bg_rectangle_search_s);
+                    searcher_icon.setBackgroundResource(R.drawable.search_x);
+                    searcher_text.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+                } else {
+                    searcher.setBackgroundResource(R.drawable.bg_rectangle_search);
+                    searcher_icon.setBackgroundResource(R.drawable.search_x1);
+                    searcher_text.setTextColor(getResources().getColor(R.color.MALL_C8));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         searcher_other = (LinearLayout) findViewById(R.id.searcher_other);
         searcher_other.setVisibility(View.VISIBLE);
         searcher_other.setOnClickListener(this);
+
+        searcher_text.clearFocus();
+        searcher.requestFocus();
 
     }
 
