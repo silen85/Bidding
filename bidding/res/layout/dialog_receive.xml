@@ -9,13 +9,36 @@
     android:paddingLeft="@dimen/interval_A"
     android:paddingRight="@dimen/interval_A">
 
-    <TextView
-        style="@style/STYLE_TITLE_BOTTOM_DIALOG"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/interval_D"
-        android:paddingTop="@dimen/interval_D"
-        android:text="@string/dialog_bottom_receive" />
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/dialog_bottom_receive"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/receive_finish"
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/interval_D"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A"
+            android:paddingTop="@dimen/interval_D"
+            android:text="完成"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <include layout="@layout/line" />
 

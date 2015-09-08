@@ -2,20 +2,32 @@ package com.lessomall.bidding.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.fragment.other.AboutusFragment;
+import com.lessomall.bidding.fragment.other.HelpFragment;
+import com.lessomall.bidding.fragment.other.OtherFragment;
+import com.lessomall.bidding.ui.bidding.LogoutDialog;
 
 /**
  * Created by meisl on 2015/8/18.
  */
 public class OtherActivity extends BaseActivity {
 
+    private OtherFragment otherFragment;
+    private HelpFragment helpFragment;
+    private AboutusFragment aboutusFragment;
+
     private ImageView btn_back;
-    private Button about_us, suggestion, logout;
+    private TextView title_txt;
+
+    private LogoutDialog logoutDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,40 +50,29 @@ public class OtherActivity extends BaseActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OtherActivity.this, MainActivity.class);
-                startActivity(intent, true);
+
+                if (otherFragment.isVisible()) {
+                    Intent intent = new Intent(OtherActivity.this, MainActivity.class);
+                    startActivity(intent, true);
+                } else {
+                    backToList();
+                }
+
             }
         });
+
+        title_txt = (TextView) findViewById(R.id.title_txt);
 
     }
 
     @Override
     protected void initView() {
 
-        about_us = (Button) findViewById(R.id.about_us);
-        about_us.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        suggestion = (Button) findViewById(R.id.suggestion);
-        suggestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        logout = (Button) findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((LessoApplication) getApplication()).setUser(null);
-                reLogin();
-            }
-        });
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        otherFragment = new OtherFragment();
+        fragmentTransaction.add(R.id.main, otherFragment);
+        fragmentTransaction.commit();
 
     }
 
@@ -84,6 +85,52 @@ public class OtherActivity extends BaseActivity {
     @Override
     public void refreshList() {
 
+    }
+
+    public void aboutusView() {
+
+        aboutusFragment = new AboutusFragment();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main, aboutusFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        title_txt.setText("关于我们");
+
+    }
+
+    public void helpView() {
+
+        helpFragment = new HelpFragment();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main, helpFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        title_txt.setText("联系客服");
+
+    }
+
+    public void showLogoutDialog() {
+
+        if (logoutDialog == null) {
+            logoutDialog = new LogoutDialog(this);
+            logoutDialog.getWindow().setGravity(Gravity.BOTTOM);
+            logoutDialog.setCanceledOnTouchOutside(true);
+            logoutDialog.getWindow().setWindowAnimations(R.style.DIALOG);
+        }
+        logoutDialog.show();
+
+    }
+
+    @Override
+    public void backToList() {
+        super.backToList();
+
+        title_txt.setText("其它");
+        getSupportFragmentManager().popBackStackImmediate();
     }
 
     @Override

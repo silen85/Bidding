@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
@@ -32,22 +33,13 @@ public class ReceiveDialog extends Dialog implements DialogInterface.OnCancelLis
     private String type = "配送";
     private String address = "";
 
+    private TextView receive_finish;
     private EditText receive_address;
 
     private ClickListenerInterface clickListenerInterface;
 
     public interface ClickListenerInterface {
         void doFinish();
-    }
-
-    public ReceiveDialog(Context context) {
-
-        super(context);
-
-        this.context = context;
-
-        if ("配送".equals(type)) clickTimes++;
-
     }
 
     public ReceiveDialog(Context context, String type, String address) {
@@ -82,6 +74,7 @@ public class ReceiveDialog extends Dialog implements DialogInterface.OnCancelLis
         LinearLayout dialog = (LinearLayout) inflater.inflate(R.layout.dialog_receive, null);
         dialog_content = (LinearLayout) dialog.findViewById(R.id.dialog_content);
 
+        receive_finish = (TextView) dialog.findViewById(R.id.receive_finish);
         receive_address = (EditText) dialog.findViewById(R.id.receive_address);
         receive_address.setText(address);
 
@@ -115,7 +108,7 @@ public class ReceiveDialog extends Dialog implements DialogInterface.OnCancelLis
                 select(receive_peisong);
 
                 if (clickTimes > 1) {
-                    if ("配送".equals(type) && "".equals(address.trim()))
+                    if (receive_peisong.getText().toString().equals(type) && "".equals(address.trim()))
                         Toast.makeText(context, "请填写交收地址", Toast.LENGTH_SHORT).show();
                     clickListenerInterface.doFinish();
                     dismiss();
@@ -143,6 +136,30 @@ public class ReceiveDialog extends Dialog implements DialogInterface.OnCancelLis
                         ReceiveDialog.this.dismiss();
                     }
                 }, 100);
+            }
+        });
+
+        receive_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickTimes = 0;
+
+                if (type.equals(receive_ziti.getText().toString())) {
+                    type = receive_ziti.getText().toString();
+                } else {
+                    type = receive_peisong.getText().toString();
+                }
+                address = receive_address.getText().toString();
+
+                if (receive_peisong.getText().toString().equals(type) && "".equals(address.trim())) {
+                    Toast.makeText(context, "请填写交收地址", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                clickListenerInterface.doFinish();
+                dismiss();
+
             }
         });
 

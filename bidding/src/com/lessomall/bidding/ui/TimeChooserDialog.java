@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.MainActivity;
 import com.lessomall.bidding.common.Constant;
 
 import java.text.ParseException;
@@ -107,6 +108,17 @@ public class TimeChooserDialog extends Dialog {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         final LinearLayout dialog = (LinearLayout) inflater.inflate(R.layout.dialog_datepicker, null);
+
+        TextView start_day_txt = (TextView) dialog.findViewById(R.id.start_day_txt);
+        TextView end_day_txt = (TextView) dialog.findViewById(R.id.end_day_txt);
+        if (context instanceof MainActivity) {
+            start_day_txt.setText("开始时间");
+            end_day_txt.setText("结束时间");
+        } else {
+            start_day_txt.setText("报价截止日期");
+            end_day_txt.setText("期望交收日期");
+        }
+
 
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         setContentView(dialog, params);

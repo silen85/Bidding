@@ -109,4 +109,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 允许打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
 </manifest>

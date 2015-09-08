@@ -88,6 +88,7 @@
                 android:inputType="text"
                 android:singleLine="true"
                 android:textColor="@color/MALL_C8"
+                android:textColorHint="@color/MALL_C8"
                 android:textSize="@dimen/edit_text_size"></EditText>
 
 

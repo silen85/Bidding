@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.MD5;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.model.Bidding;
 import com.lessomall.bidding.ui.TimeChooserDialog;
@@ -28,6 +30,7 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.Date;
@@ -78,7 +81,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
         loginUser = ((LessoApplication) getApplication()).getUser();
         if ((loginUser == null || loginUser.getSessionid() == null || "".equals(loginUser.getSessionid().trim())) && !(this instanceof LoginActivity)) {
-            reLogin();
+            doLogin();
         }
 
         // TODO Auto-generated method stub
@@ -94,11 +97,141 @@ public abstract class BaseActivity extends FragmentActivity {
 
         loginUser = ((LessoApplication) getApplication()).getUser();
         if ((loginUser == null || loginUser.getSessionid() == null || "".equals(loginUser.getSessionid().trim())) && !(this instanceof LoginActivity)) {
+            doLogin();
+        }
+    }
+
+    private void doLogin() {
+
+        SharedPreferences sp = getSharedPreferences(
+                getString(R.string.app_name), Context.MODE_PRIVATE);
+
+        String username = sp.getString(Constant.LESSO_BIDDING_USERNAME, "");
+        String password = sp.getString(Constant.LESSO_BIDDING_USERPASSWORD, "");
+
+        if (!"".equals(username) && !"".equals(password)) {
+
+            Map params = Tools.generateRequestMap();
+
+            params.put("username", username);
+            params.put("password", new MD5().GetMD5Code(password));
+
+            RequestParams requestParams = new RequestParams(params);
+
+            AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {
+
+                @Override
+                public void onStart() {
+                    super.onStart();
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    Log.e(TAG, throwable.getMessage(), throwable);
+                    reLogin();
+                }
+
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    Log.d(TAG, responseString);
+
+                    if (statusCode == Constant.HTTP_STATUS_CODE_SUCCESS) {
+
+                        String json = responseString;
+                        try {
+                            Map result = Tools.json2Map(json);
+
+                            String recode = (String) result.get("recode");
+                            String msg = (String) result.get("msg");
+
+                            if (Constant.RECODE_SUCCESS.equals(recode)) {
+                                JSONObject info = (JSONObject) result.get("info");
+                                if (info != null) {
+                                    handleLogin(info);
+                                } else {
+                                    reLogin();
+                                }
+                            } else {
+                                reLogin();
+                            }
+                        } catch (Exception e) {
+                            Log.e(TAG, e.getMessage(), e);
+                            reLogin();
+                        }
+                    } else {
+                        reLogin();
+                    }
+                }
+
+                @Override
+                public void onFinish() {
+                    super.onFinish();
+                }
+            };
+            asyncHttpResponseHandler.setCharset("UTF-8");
+            AsyncHttpClient client = new AsyncHttpClient();
+            client.setTimeout(Constant.CONNECT_TIMEOUT);
+            client.post(this, Constant.URL_LOGIN, requestParams, asyncHttpResponseHandler);
+        } else {
+            reLogin();
+        }
+
+    }
+
+    private void handleLogin(JSONObject data) throws Exception {
+
+        SharedPreferences sp = getSharedPreferences(
+                getString(R.string.app_name), Context.MODE_PRIVATE);
+
+        String username = sp.getString(Constant.LESSO_BIDDING_USERNAME, "");
+        String password = sp.getString(Constant.LESSO_BIDDING_USERPASSWORD, "");
+
+        String userid = (String) data.get("userid");
+        String _username = (String) data.get("username");
+        String sessionid = (String) data.get("sessionid");
+        String type = (String) data.get("type");
+        String email = (String) data.get("email");
+        String status = (String) data.get("status");
+        String customName = (String) data.get("customName");
+        String customCode = (String) data.get("customCode");
+        String address = (String) data.get("address");
+        String linkman = (String) data.get("linkman");
+        String lastLoginTime = (String) data.get("lastLoginTime");
+        String createTime = (String) data.get("createTime");
+
+        if ("".equals(status)) {
+
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString(Constant.LESSO_BIDDING_USERNAME, _username);
+            editor.putString(Constant.LESSO_BIDDING_USERPASSWORD, password);
+            editor.commit();
+
+            LessoApplication.LoginUser loginUser = ((LessoApplication) getApplication()).new LoginUser();
+            loginUser.setUserid(userid);
+            loginUser.setUsername(_username);
+            loginUser.setSessionid(sessionid);
+            loginUser.setType(type);
+            loginUser.setEmail(email);
+            loginUser.setStatus(status);
+            loginUser.setCustomName(customName);
+            loginUser.setCustomCode(customCode);
+            loginUser.setAddress(address);
+            loginUser.setLinkman(linkman);
+            loginUser.setLastLoginTime(lastLoginTime);
+            loginUser.setCreateTime(createTime);
+
+            ((LessoApplication) getApplication()).setUser(loginUser);
+
+            startActivity(new Intent(this, MainActivity.class));
+            overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+            finish();
+
+        } else {
             reLogin();
         }
     }
 
-    protected void reLogin() {
+    public void reLogin() {
         sendBroadcast(new Intent(Constant.FINISH_ACTION));
         startActivity(new Intent(this, LoginActivity.class), true);
     }
@@ -154,28 +287,6 @@ public abstract class BaseActivity extends FragmentActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         client.setTimeout(Constant.CONNECT_TIMEOUT);
         client.post(this, Constant.URL_FIRST_CATEGORY, requestParams, asyncHttpResponseHandler);
-
-    }
-
-    protected void showTimerDialog() {
-
-        timerDialog = new TimeChooserDialog(this, timeType, sBeginDate, sEndDate);
-        timerDialog.getWindow().setGravity(Gravity.BOTTOM);
-        timerDialog.setCanceledOnTouchOutside(true);
-        timerDialog.setClickListenerInterface(new TimeChooserDialog.ClickListenerInterface() {
-            @Override
-            public void doFinish() {
-
-                timeType = timerDialog.getType();
-                sBeginDate = timerDialog.getsBeaginDate();
-                sEndDate = timerDialog.getsEndDate();
-
-                initData();
-
-            }
-        });
-        timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        timerDialog.show();
 
     }
 

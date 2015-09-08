@@ -63,12 +63,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
 
-    protected SearchDialog searchDialog;
-    protected FenleiDialog fenleiDialog;
     protected PicDialog picDialog;
-    protected FaPiaoDialog faPiaoDialog;
-    protected ZhifuDialog zhifuDialog;
-    protected ReceiveDialog receiveDialog;
 
     protected TextView biddingid, biddingstatus, product_category_txt, tax_txt, expdate_txt, delivery_txt, payment_txt;
     protected EditText topic_edit, product_brand_edit, product_name_edit, product_num_edit, product_unit_edit, product_unit_price_edit, product_comment_edit, certificate_edit, other_edit;
@@ -237,50 +232,49 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showSearchDialog(String txt) {
 
-        if (searchDialog == null) {
-            searchDialog = new SearchDialog(this, txt, loginUser.getSessionid());
-            searchDialog.getWindow().setGravity(Gravity.BOTTOM);
-            searchDialog.setCanceledOnTouchOutside(true);
-            searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
-                @Override
-                public void doFinish() {
+        final SearchDialog searchDialog = new SearchDialog(this, txt, loginUser.getSessionid());
+        searchDialog.getWindow().setGravity(Gravity.BOTTOM);
+        searchDialog.setCanceledOnTouchOutside(true);
+        searchDialog.setClickListenerInterface(new SearchDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
 
-                    product_name_edit.setTag(searchDialog.getProductCode());
-                    product_name_edit.setText(searchDialog.getProductName());
-                    product_unit_edit.setText(searchDialog.getBaseMeasureUnit());
+                product_name_edit.setTag(searchDialog.getProductCode());
+                product_name_edit.setText(searchDialog.getProductName());
+                product_unit_edit.setText(searchDialog.getBaseMeasureUnit());
 
-                    for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
-                        if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(searchDialog.getFirstCategoryCode())) {
-                            product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
-                            product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
-                            break;
-                        }
+                for (int i = 0; i < Constant.CATEGORY_CACHE_LEVEL1.length; i++) {
+                    if (Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0].equals(searchDialog.getFirstCategoryCode())) {
+                        product_category_txt.setTag(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[0]);
+                        product_category_txt.setText(Constant.CATEGORY_CACHE_LEVEL1[i].split("-")[1]);
+                        break;
                     }
                 }
-            });
-            searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        }
+            }
+        });
+        searchDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
         searchDialog.show();
 
     }
 
     private void showFenleiDialog() {
 
-        if (fenleiDialog == null) {
-            fenleiDialog = new FenleiDialog(this, Constant.CATEGORY_CACHE_LEVEL1);
-            fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
-            fenleiDialog.setCanceledOnTouchOutside(true);
-            fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
-                @Override
-                public void doFinish() {
 
-                    product_category_txt.setTag(fenleiDialog.getCode());
-                    product_category_txt.setText(fenleiDialog.getName());
+        final FenleiDialog fenleiDialog = new FenleiDialog(this, Constant.CATEGORY_CACHE_LEVEL1);
+        fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
+        fenleiDialog.setCanceledOnTouchOutside(true);
+        fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
 
-                }
-            });
-            fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        }
+                product_category_txt.setTag(fenleiDialog.getCode());
+                product_category_txt.setText(fenleiDialog.getName());
+
+            }
+        });
+        fenleiDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
         fenleiDialog.show();
 
 
@@ -300,24 +294,24 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showFaPiaoDialog() {
 
-        if (faPiaoDialog == null) {
-            faPiaoDialog = new FaPiaoDialog(this);
-            faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
-            faPiaoDialog.setCanceledOnTouchOutside(true);
-            faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
-                @Override
-                public void doFinish() {
-                    tax_txt.setText(getString(R.string.bidding_tax) + "：" + faPiaoDialog.getType());
-                    tax_txt.setTag(faPiaoDialog.getType());
-                }
-            });
-            faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        }
+
+        final FaPiaoDialog faPiaoDialog = new FaPiaoDialog(this);
+        faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
+        faPiaoDialog.setCanceledOnTouchOutside(true);
+        faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+                tax_txt.setText(getString(R.string.bidding_tax) + "：" + faPiaoDialog.getType());
+                tax_txt.setTag(faPiaoDialog.getType());
+            }
+        });
+        faPiaoDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
         faPiaoDialog.show();
 
     }
 
-    protected void showTimerDialog() {
+    private void showTimerDialog() {
 
         if (timerDialog == null) {
             timerDialog = new TimeChooserDialog(this, timeType, sBeginDate, sEndDate);
@@ -346,47 +340,47 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
     private void showReceiveDialog() {
 
-        if (receiveDialog == null) {
-            receiveDialog = new ReceiveDialog(this);
-            receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
-            receiveDialog.setCanceledOnTouchOutside(true);
-            receiveDialog.setOnCancelListener(receiveDialog);
-            receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
-                @Override
-                public void doFinish() {
 
-                    if (receiveDialog.getAddress() != null && !"".equals(receiveDialog.getAddress().trim())) {
-                        delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType() + "；地址：" + receiveDialog.getAddress());
-                    } else {
-                        delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType());
-                    }
+        final ReceiveDialog receiveDialog = new ReceiveDialog(this, (String) delivery_txt.getTag(R.string.TAG_KEY_A), (String) delivery_txt.getTag(R.string.TAG_KEY_B));
+        receiveDialog.getWindow().setGravity(Gravity.BOTTOM);
+        receiveDialog.setCanceledOnTouchOutside(true);
+        receiveDialog.setOnCancelListener(receiveDialog);
+        receiveDialog.setClickListenerInterface(new ReceiveDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
 
-                    delivery_txt.setTag(R.string.TAG_KEY_A, receiveDialog.getType());
-                    delivery_txt.setTag(R.string.TAG_KEY_B, receiveDialog.getAddress());
+                if (receiveDialog.getAddress() != null && !"".equals(receiveDialog.getAddress().trim())) {
+                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType() + "；地址：" + receiveDialog.getAddress());
+                } else {
+                    delivery_txt.setText(getString(R.string.bidding_delivery) + "：" + receiveDialog.getType());
                 }
-            });
-            receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        }
+
+                delivery_txt.setTag(R.string.TAG_KEY_A, receiveDialog.getType());
+                delivery_txt.setTag(R.string.TAG_KEY_B, receiveDialog.getAddress());
+            }
+        });
+        receiveDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
         receiveDialog.show();
 
     }
 
     private void showZhifuDialog() {
 
-        if (zhifuDialog == null) {
-            zhifuDialog = new ZhifuDialog(this);
-            zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
-            zhifuDialog.setCanceledOnTouchOutside(true);
-            zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
-                @Override
-                public void doFinish() {
-                    payment_txt.setText(getString(R.string.bidding_payment) + "：" + zhifuDialog.getType());
-                    payment_txt.setTag(zhifuDialog.getType());
 
-                }
-            });
-            zhifuDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
-        }
+        final ZhifuDialog zhifuDialog = new ZhifuDialog(this);
+        zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
+        zhifuDialog.setCanceledOnTouchOutside(true);
+        zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+                payment_txt.setText(getString(R.string.bidding_payment) + "：" + zhifuDialog.getType());
+                payment_txt.setTag(zhifuDialog.getType());
+
+            }
+        });
+        zhifuDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+
         zhifuDialog.show();
 
     }

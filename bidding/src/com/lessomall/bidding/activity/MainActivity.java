@@ -11,6 +11,7 @@ import android.os.StrictMode;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -28,6 +29,7 @@ import com.lessomall.bidding.activity.quote.QuoteListActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.common.UpdateManager;
+import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -124,6 +126,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+
+                    sBeginDate = null;
+                    sEndDate = null;
                     search();
                     return true;
                 }
@@ -257,6 +262,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void initData() {
 
         loadMainCount();
+
+    }
+
+    private void showTimerDialog() {
+
+        timerDialog = new TimeChooserDialog(this, timeType, sBeginDate, sEndDate);
+        timerDialog.getWindow().setGravity(Gravity.BOTTOM);
+        timerDialog.setCanceledOnTouchOutside(true);
+        timerDialog.setClickListenerInterface(new TimeChooserDialog.ClickListenerInterface() {
+            @Override
+            public void doFinish() {
+
+                timeType = timerDialog.getType();
+                sBeginDate = timerDialog.getsBeaginDate();
+                sEndDate = timerDialog.getsEndDate();
+
+                search();
+
+            }
+        });
+        timerDialog.getWindow().setWindowAnimations(R.style.DIALOG);  //添加动画
+        timerDialog.show();
 
     }
 
@@ -413,7 +440,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         return true;
     }
 
-    private void search() {
+    public void search() {
 
         Intent intent = new Intent(MainActivity.this, OrderListActivity.class);
         intent.putExtra("txt", searcher_text.getText().toString().trim());
@@ -436,6 +463,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 showTimerDialog();
                 break;
             case R.id.searcher_icon:
+                sBeginDate = null;
+                sEndDate = null;
                 search();
                 break;
             case R.id.searcher_other:
