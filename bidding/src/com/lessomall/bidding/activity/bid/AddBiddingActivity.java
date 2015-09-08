@@ -157,7 +157,6 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         rule_layout = (RelativeLayout) findViewById(R.id.rule_layout);
 
         sb_enable = (ImageView) findViewById(R.id.sb_enable);
-        sb_enable.setSelected(true);
         sb_enable.setOnClickListener(this);
 
 
