@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.fragment.GuideFragment;
 import com.lessomall.bidding.fragment.other.AboutusFragment;
 import com.lessomall.bidding.fragment.other.HelpFragment;
 import com.lessomall.bidding.fragment.other.OtherFragment;
@@ -23,6 +25,9 @@ public class OtherActivity extends BaseActivity {
     private OtherFragment otherFragment;
     private HelpFragment helpFragment;
     private AboutusFragment aboutusFragment;
+    private GuideFragment guideFragment;
+
+    private RelativeLayout main_title;
 
     private ImageView btn_back;
     private TextView title_txt;
@@ -45,6 +50,8 @@ public class OtherActivity extends BaseActivity {
 
     @Override
     protected void initTitle() {
+
+        main_title = (RelativeLayout) findViewById(R.id.main_title);
 
         btn_back = (ImageView) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +120,19 @@ public class OtherActivity extends BaseActivity {
 
     }
 
+    public void introduceView() {
+
+        main_title.setVisibility(View.GONE);
+
+        guideFragment = new GuideFragment();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main, guideFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
+
     public void showLogoutDialog() {
 
         if (logoutDialog == null) {
@@ -129,6 +149,7 @@ public class OtherActivity extends BaseActivity {
     public void backToList() {
         super.backToList();
 
+        main_title.setVisibility(View.VISIBLE);
         title_txt.setText("其它");
         getSupportFragmentManager().popBackStackImmediate();
     }

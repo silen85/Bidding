@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.LoginActivity;
+import com.lessomall.bidding.activity.OtherActivity;
 
 /**
  * Created by meisl on 2015/6/9.
@@ -247,11 +248,15 @@ public class GuideFragment extends Fragment implements View.OnClickListener {
 
         if (v.getId() == R.id.btn_title4) {
 
-            Intent it = new Intent();
-            it.setClass(getActivity(), LoginActivity.class);
-            startActivity(it);
-            getActivity().overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
-            getActivity().finish();
+            if (getActivity() instanceof OtherActivity) {
+                ((OtherActivity) getActivity()).backToList();
+            } else {
+                Intent it = new Intent();
+                it.setClass(getActivity(), LoginActivity.class);
+                startActivity(it);
+                getActivity().overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+                getActivity().finish();
+            }
         }
 
     }
