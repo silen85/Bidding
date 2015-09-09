@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.LoginActivity;
@@ -32,7 +33,7 @@ public class GuideFragment extends Fragment implements View.OnClickListener {
     private int minVelocity = 0;
     private GestureDetector mGestureDetector;
 
-    private LinearLayout layoutContent;
+    private RelativeLayout layoutContent;
 
     private ImageView content_no1;
     private ImageView content_no2;
@@ -81,7 +82,7 @@ public class GuideFragment extends Fragment implements View.OnClickListener {
 
     private void initView() {
 
-        layoutContent = (LinearLayout) view.findViewById(R.id.layoutContent);
+        layoutContent = (RelativeLayout) view.findViewById(R.id.layoutContent);
 
         content_no1 = (ImageView) view.findViewById(R.id.content_no1);
         content_no2 = (ImageView) view.findViewById(R.id.content_no2);

@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/splash_guide_bg"
-    android:backgroundTintMode="screen">
+    android:background="@mipmap/splash_guide_bg">
 
     <ImageView
         android:id="@+id/splash_top_logo"
@@ -17,7 +16,6 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:src="@mipmap/splash_top_logo" />
-
 
     <LinearLayout
         android:id="@+id/bottom"

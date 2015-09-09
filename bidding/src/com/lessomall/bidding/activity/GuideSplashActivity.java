@@ -75,7 +75,7 @@ public class GuideSplashActivity extends FragmentActivity {
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment fragment = null;
+            Fragment fragment;
             if (sp.getInt("versionCode", 0) == Tools.getPackageInfo(GuideSplashActivity.this).versionCode) {
                 fragment = new SplashFragment();
             } else {
