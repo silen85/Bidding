@@ -3,6 +3,7 @@
     <string name="app_name">联塑商城</string>
 
     <string name="loading">请求数据中，请稍候&#8230;</string>
+    <string name="image_loading">图片处理中，请稍候&#8230;</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
     <string name="empty">暂无相关订单</string>
 
@@ -28,6 +29,8 @@
     <string name="text_qulify_check">资质审核</string>
     <string name="text_business_check">交易监控</string>
 
+    <string name="confirm_button1">确定</string>
+    <string name="confirm_button2">取消</string>
     <string name="text_finish">完成</string>
     <string name="text_cancel">取消</string>
     <string name="text_save">保存</string>
@@ -37,8 +40,11 @@
     <!-- dealer -->
     <string name="bidding_payment">支付方式</string>
     <string name="bidding_delivery">交收方式</string>
+    <string name="bidding_delivery_address">交收地址</string>
     <string name="bidding_other">其他要求：</string>
     <string name="bidding_expdate">有效期</string>
+    <string name="bidding_deadline">截止日期</string>
+    <string name="bidding_deliverydate">交收日期</string>
     <string name="bidding_tax">税票类型</string>
     <string name="bidding_product">所需产品</string>
     <string name="bidding_topic">主题</string>
@@ -67,7 +73,10 @@
     <string name="dialog_bottom_receive_A">配送</string>
     <string name="dialog_bottom_receive_B">自提</string>
 
+    <string name="tips_success_baojia">报价成功</string>
+    <string name="tips_success_send">发货成功</string>
     <string name="tips_success_receive">收货成功</string>
+    <string name="tips_success_operate">操作成功</string>
 
     <string name="TAG_KEY_A">TAG_KEY_A</string>
     <string name="TAG_KEY_B">TAG_KEY_B</string>
@@ -76,5 +85,7 @@
     <string name="no_data_tips">查询不到数据</string>
     <string name="no_data_error">连接不到服务器</string>
     <string name="last_data_tips">这是最后的一页了</string>
+    <string name="SD_card_error">SD卡状态异常</string>
+    <string name="upload_image_error">上传图片失败</string>
 
 </resources>

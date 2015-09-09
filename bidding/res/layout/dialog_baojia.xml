@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/MALL_C8"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/interval_C"
+    android:paddingLeft="@dimen/interval_A"
+    android:paddingRight="@dimen/interval_A">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="发布报价"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/baojia_finish"
+            style="@style/STYLE_TITLE_BOTTOM_DIALOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/interval_D"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A"
+            android:paddingTop="@dimen/interval_D"
+            android:text="完成"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_C"
+        android:background="@drawable/border_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingLeft="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="单价："
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/baojia_intentPrice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:text=""
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_C"
+        android:background="@drawable/border_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingLeft="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="实际供货量："
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/baojia_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:singleLine="true"
+            android:text=""
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_C"
+        android:background="@drawable/border_normal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingLeft="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="报价说明："
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/baojia_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:singleLine="false"
+            android:text=""
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/interval_C"
+        android:layout_marginTop="@dimen/interval_C"
+        android:background="@drawable/bg_rectangle_orange2"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_D"
+        android:paddingLeft="@dimen/interval_B"
+        android:paddingTop="@dimen/interval_D">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="实际供货合计："
+            android:textColor="@color/MALL_C8"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/baojia_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text=""
+            android:textColor="@color/MALL_C8"
+            android:textSize="@dimen/dialog_text_size"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+</LinearLayout>

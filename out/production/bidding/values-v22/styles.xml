@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="APP_THEME" parent="@android:style/Theme.Material.Light">
+    <style name="APP_THEME" parent="@android:style/Theme.Material.Light.NoActionBar">
         <item name="android:calendarViewShown">false</item>
         <item name="android:spinnersShown">true</item>
         <item name="android:datePickerMode">spinner</item>

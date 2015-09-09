@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/MALL_C8"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:paddingBottom="68dp"
+    android:paddingLeft="@dimen/interval_A"
+    android:paddingRight="@dimen/interval_A"
+    android:paddingTop="@dimen/interval_C">
+
+    <LinearLayout
+        android:id="@+id/logout_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingTop="@dimen/interval_C">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出登录"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+    </LinearLayout>
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:id="@+id/cancel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingTop="@dimen/interval_C">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/dialog_text_size" />
+
+    </LinearLayout>
+
+    <include layout="@layout/line" />
+
+</LinearLayout>

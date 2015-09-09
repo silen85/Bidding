@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/interval_C"
+        android:paddingLeft="@dimen/interval_A"
+        android:paddingRight="@dimen/interval_A"
+        android:paddingTop="@dimen/interval_C">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    广东联塑五金电气建材商城有限公司(简称联塑商城) ，是中国联塑集团控股有限公司旗下控股子公司，主要从事五金交电，仪器仪表，电气设备，电动工具，五金制品，给排水材料设备等商品及商品 元配件的批发、进出口业务，以及物流配送、上门安装和调试服务。联塑五金电气建材内部交易展，2-3次/年，328个展位，近20万种五金电气建材产品。26层高的LESSO联塑五金电气建材商城信息 中心大楼计划于2017年建成。1-5层6万平方米为五金电气建材展示厅，6-26层11万平方米为电商信息交易中心。打造全年365天，全天24小时运营，永不落幕的展示馆。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/interval_C"
+            android:layout_marginTop="@dimen/interval_C"
+            android:gravity="left"
+            android:singleLine="false"
+            android:text="    入驻联塑商城标准"
+            android:textColor="@color/BASE_TEXT_COLOR"
+            android:textSize="@dimen/F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    1. 联塑商城入驻申请流程及相关的收费说明均以商城开放平台官方招商页面为准。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    2. 联塑商城开放平台有权根据包括限于品牌需求、公司经营状况、服务水平等其他因素退回卖家申请。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    3. 联塑商城开放平台有权在申请入驻及后续经营阶段要求卖家提供其他资质。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    4. 联塑商城开放平台将结合各行业发展动态、国家相关规定及消费者购买需求，不定期更新招商标准。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/interval_C"
+            android:singleLine="false"
+            android:text="    5. 卖家必须如实提供资料和信息： 请务必确保申请入驻及后续经营阶段提供的相关资质和信息的真实性、完整性、有效性（若卖家提供的相关资质为第三方提供， 包括但不限于商标注册证、 授权书等， 请务必先行核实文件的真实有效完整性），一旦发现虚假资质或信息的联塑商城将不再与卖家进行合作并有权根据联塑商城规则及与卖家签署的相关协议之约定进行处理。"
+            android:textColor="@color/MALL_C5"
+            android:textSize="@dimen/F4" />
+
+    </LinearLayout>
+
+</ScrollView>
+

@@ -44,7 +44,6 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/interval_A"
         android:layout_marginRight="@dimen/interval_A"
-        android:layout_marginTop="@dimen/interval_C"
         android:gravity="center_horizontal|top"
         android:orientation="vertical" />
 

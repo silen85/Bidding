@@ -17,7 +17,6 @@
         android:scaleType="fitXY"
         android:src="@mipmap/splash_top_logo" />
 
-
     <LinearLayout
         android:id="@+id/bottom"
         android:layout_width="match_parent"
