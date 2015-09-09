@@ -125,6 +125,7 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
     public void initData() {
 
+        list.clear();
         pageno = 1;
         sendRequest(generateParam());
 

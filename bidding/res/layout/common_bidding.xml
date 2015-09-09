@@ -113,9 +113,9 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/interval_B"
                         android:background="@null"
-                        android:tag=""
                         android:gravity="center_vertical"
                         android:singleLine="false"
+                        android:tag=""
                         android:textSize="@dimen/txtsize_bidding_add" />
 
                 </LinearLayout>
@@ -292,7 +292,7 @@
                     android:layout_marginLeft="@dimen/interval_B"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:singleLine="false"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -394,8 +394,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_tax"
             android:tag=""
+            android:text="@string/bidding_tax"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 

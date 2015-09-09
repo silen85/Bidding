@@ -746,7 +746,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
                         String msg = (String) result.get("msg");
 
                         if (Constant.RECODE_SUCCESS.equals(recode)) {
-                            Toast.makeText(activity, getString(R.string.tips_success_receive), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(activity, getString(R.string.tips_success_operate), Toast.LENGTH_SHORT).show();
                             activity.backToList();
                             activity.refreshList();
                         } else {
