@@ -42,16 +42,6 @@ public class FenleiDialog extends Dialog {
         void doFinish();
     }
 
-    public FenleiDialog(Context context, String[] content) {
-
-        super(context);
-
-        this.context = context;
-
-        this.content = content;
-
-    }
-
     public FenleiDialog(Context context, String code, String[] content) {
 
         super(context);

@@ -260,7 +260,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     private void showFenleiDialog() {
 
 
-        final FenleiDialog fenleiDialog = new FenleiDialog(this, Constant.CATEGORY_CACHE_LEVEL1);
+        final FenleiDialog fenleiDialog = new FenleiDialog(this, (String) product_category_txt.getTag(), Constant.CATEGORY_CACHE_LEVEL1);
         fenleiDialog.getWindow().setGravity(Gravity.BOTTOM);
         fenleiDialog.setCanceledOnTouchOutside(true);
         fenleiDialog.setClickListenerInterface(new FenleiDialog.ClickListenerInterface() {
@@ -294,7 +294,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     private void showFaPiaoDialog() {
 
 
-        final FaPiaoDialog faPiaoDialog = new FaPiaoDialog(this);
+        final FaPiaoDialog faPiaoDialog = new FaPiaoDialog(this, (String) tax_txt.getTag());
         faPiaoDialog.getWindow().setGravity(Gravity.BOTTOM);
         faPiaoDialog.setCanceledOnTouchOutside(true);
         faPiaoDialog.setClickListenerInterface(new FaPiaoDialog.ClickListenerInterface() {
@@ -367,7 +367,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     private void showZhifuDialog() {
 
 
-        final ZhifuDialog zhifuDialog = new ZhifuDialog(this);
+        final ZhifuDialog zhifuDialog = new ZhifuDialog(this, (String) payment_txt.getTag());
         zhifuDialog.getWindow().setGravity(Gravity.BOTTOM);
         zhifuDialog.setCanceledOnTouchOutside(true);
         zhifuDialog.setClickListenerInterface(new ZhifuDialog.ClickListenerInterface() {

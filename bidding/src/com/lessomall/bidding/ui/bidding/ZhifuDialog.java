@@ -32,14 +32,6 @@ public class ZhifuDialog extends Dialog {
         void doFinish();
     }
 
-    public ZhifuDialog(Context context) {
-
-        super(context);
-
-        this.context = context;
-
-    }
-
     public ZhifuDialog(Context context, String type) {
 
         super(context);

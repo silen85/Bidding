@@ -145,7 +145,7 @@ public class SearchDialog extends Dialog {
         params.put("sessionid", sessionid);
         params.put("txt", txt);
         params.put("pageno", "1");
-        params.put("pageSize", "5");
+        params.put("pageSize", "50");
 
         RequestParams requestParams = new RequestParams(params);
 

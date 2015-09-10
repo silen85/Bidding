@@ -32,14 +32,6 @@ public class FaPiaoDialog extends Dialog {
         void doFinish();
     }
 
-    public FaPiaoDialog(Context context) {
-
-        super(context);
-
-        this.context = context;
-
-    }
-
     public FaPiaoDialog(Context context, String type) {
 
         super(context);
@@ -52,7 +44,6 @@ public class FaPiaoDialog extends Dialog {
                 break;
             }
         }
-
     }
 
     @Override

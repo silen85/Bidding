@@ -22,9 +22,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal|bottom"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/rights" />
+
+        <!--
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +51,8 @@
             android:text="@string/website"
             android:textColor="@color/MALL_C8"
             android:textSize="@dimen/F3" />
+        -->
+
     </LinearLayout>
 
 </RelativeLayout>
