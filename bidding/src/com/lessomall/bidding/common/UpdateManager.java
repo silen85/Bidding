@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -131,7 +129,7 @@ public class UpdateManager {
     // 外部接口让主Activity调用
     private void checkUpdateInfo(String json) {
 
-        final int oldVersionCode = getVersionInfo().versionCode;
+        int oldVersionCode = Tools.getPackageInfo(mContext).versionCode;
 
         if (json != null) {
             Map versionMap = Tools.json2Map(json);
@@ -248,45 +246,32 @@ public class UpdateManager {
      */
     private void installApk() {
 
-        final File apkfile = new File(saveFileName);
+        File apkfile = new File(saveFileName);
         if (!apkfile.exists()) {
             return;
         }
 
         if (downloadDialog != null) downloadDialog.cancel();
 
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
+        /*
+        Intent i = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.setData(Uri.fromFile(apkfile));
+        i.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        i.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        i.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
+        i.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, getVersionInfo().packageName);
 
-                Intent i = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-                i.setData(Uri.fromFile(apkfile));
-                i.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-                i.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-                i.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-                i.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, getVersionInfo().packageName);
+        mContext.startActivity(i);
+        ((Activity) mContext).finish();
+        * */
 
-                mContext.startActivity(i);
-                ((Activity) mContext).finish();
-            }
-        });
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.setDataAndType(Uri.fromFile(apkfile), "application/vnd.android.package-archive");
 
-    }
+        mContext.startActivity(i);
+        ((Activity) mContext).finish();
 
-    /**
-     * 获取版本信息
-     * dd
-     *
-     * @return
-     */
-    private PackageInfo getVersionInfo() {
-
-        PackageInfo info = null;
-        try {
-            info = mContext.getPackageManager().getPackageInfo(
-                    mContext.getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        return info;
     }
 }

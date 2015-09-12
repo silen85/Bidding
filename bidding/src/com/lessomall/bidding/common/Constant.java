@@ -49,9 +49,6 @@ public class Constant {
     public final static String RECODE_FAILED = "0001";
     public final static String RECODE_FAILED_NODATA = "1001";
     public final static String RECODE_FAILED_PARAM_WRONG = "1002";
-    public final static String RECODE_FAILED_APPKEY_WRONG = "1003";
-    public final static String RECODE_FAILED_TOKEN_WRONG = "1004";
-    public final static String RECODE_FAILED_TIMESTAMP_WRONG = "1005";
 
     public final static String RECODE_FAILED_USER_LOGIN = "2001";
     public final static String RECODE_FAILED_USER_NOTEXIST = "2002";

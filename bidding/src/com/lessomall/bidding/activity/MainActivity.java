@@ -62,11 +62,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private long mExitTime;
 
-    BroadcastReceiver finishReceiver = new BroadcastReceiver() {
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            MainActivity.this.finish();
+
+            switch (intent.getAction()) {
+                case Constant.FINISH_ACTION:
+                    MainActivity.this.finish();
+                    break;
+                default:
+                    break;
+            }
         }
     };
 
@@ -93,8 +100,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         initData();
 
         try {
+
+            /*NotifyUpdate notifyUpdate = new NotifyUpdate(this);
+            notifyUpdate.sendUpdateRequest();*/
+
             UpdateManager mUpdateManager = new UpdateManager(this);
             mUpdateManager.sendUpdateRequest();
+
         } catch (Exception e) {
         }
 
@@ -105,7 +117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
 
         IntentFilter finishFilter = new IntentFilter(Constant.FINISH_ACTION);
-        registerReceiver(finishReceiver, finishFilter);
+        registerReceiver(broadcastReceiver, finishFilter);
 
     }
 
@@ -529,7 +541,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onDestroy();
 
         try {
-            unregisterReceiver(finishReceiver);
+            unregisterReceiver(broadcastReceiver);
         } catch (Exception e) {
         }
     }
