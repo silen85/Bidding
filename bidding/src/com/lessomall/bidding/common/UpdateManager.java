@@ -62,6 +62,7 @@ public class UpdateManager {
                     mProgress.setProgress(progress);
                     break;
                 case DOWN_OVER:
+                    if (downloadDialog != null) downloadDialog.cancel();
                     installApk();
                     break;
                 case HANDLER_DATA:
@@ -250,8 +251,6 @@ public class UpdateManager {
         if (!apkfile.exists()) {
             return;
         }
-
-        if (downloadDialog != null) downloadDialog.cancel();
 
         /*
         Intent i = new Intent(Intent.ACTION_INSTALL_PACKAGE);

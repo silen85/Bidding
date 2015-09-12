@@ -27,8 +27,8 @@ import com.lessomall.bidding.activity.bid.AddBiddingActivity;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.activity.quote.QuoteListActivity;
 import com.lessomall.bidding.common.Constant;
+import com.lessomall.bidding.common.NotifyUpdate;
 import com.lessomall.bidding.common.Tools;
-import com.lessomall.bidding.common.UpdateManager;
 import com.lessomall.bidding.ui.TimeChooserDialog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -101,11 +101,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         try {
 
-            /*NotifyUpdate notifyUpdate = new NotifyUpdate(this);
-            notifyUpdate.sendUpdateRequest();*/
+            NotifyUpdate notifyUpdate = new NotifyUpdate(this);
+            notifyUpdate.sendUpdateRequest();
 
-            UpdateManager mUpdateManager = new UpdateManager(this);
-            mUpdateManager.sendUpdateRequest();
+            /*UpdateManager mUpdateManager = new UpdateManager(this);
+            mUpdateManager.sendUpdateRequest();*/
 
         } catch (Exception e) {
         }
