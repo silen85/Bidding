@@ -87,5 +87,6 @@
     <string name="last_data_tips">这是最后的一页了</string>
     <string name="SD_card_error">SD卡状态异常</string>
     <string name="upload_image_error">上传图片失败</string>
+    <string name="photo_finish_tips">长按图片即可删除</string>
 
 </resources>

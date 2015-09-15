@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
@@ -509,6 +510,8 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                 if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
                     product_pic_add.setVisibility(View.GONE);
                 }
+
+                Toast.makeText(getActivity(), getString(R.string.photo_finish_tips), Toast.LENGTH_SHORT).show();
             }
             disLoading();
         }

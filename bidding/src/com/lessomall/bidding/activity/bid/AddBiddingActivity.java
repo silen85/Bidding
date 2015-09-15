@@ -729,6 +729,9 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                 if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
                     product_pic_add.setVisibility(View.GONE);
                 }
+
+                Toast.makeText(AddBiddingActivity.this, getString(R.string.photo_finish_tips), Toast.LENGTH_SHORT).show();
+
             }
             disLoading();
         }
