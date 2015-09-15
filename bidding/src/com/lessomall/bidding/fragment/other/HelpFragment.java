@@ -1,13 +1,16 @@
 package com.lessomall.bidding.fragment.other;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.lessomall.bidding.R;
 
@@ -29,11 +32,16 @@ public class HelpFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                Uri data = Uri.parse("tel:400-930-2128");
-                intent.setData(data);
-                startActivity(intent);
-
+                TelephonyManager telephony = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+                int type = telephony.getPhoneType();
+                if (type == TelephonyManager.PHONE_TYPE_NONE) {
+                    Toast.makeText(getActivity(), "该设备不支持通话功能", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri data = Uri.parse("tel:400-930-2128");
+                    intent.setData(data);
+                    startActivity(intent);
+                }
             }
         });
 
