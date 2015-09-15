@@ -605,34 +605,45 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
                                     }
                                 });
 
-                                imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                                    @Override
-                                    public boolean onLongClick(final View v) {
+                                if (STATUS_BIDDING_1.equals(getBidding().getBiddingStatusId())) {
 
-                                        final String tag = (String) v.getTag();
+                                    imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                                        @Override
+                                        public boolean onLongClick(final View v) {
 
-                                        ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                imagePathList.remove(tag);
-                                                product_pic.removeView(v);
-                                            }
-                                        }, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
+                                            final String tag = (String) v.getTag();
 
-                                            }
-                                        });
+                                            ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
 
-                                        return true;
-                                    }
-                                });
+                                                    imagePathList.remove(tag);
+                                                    product_pic.removeView(v);
+
+                                                    if (imagePathList.size() < Constant.IMG_MAX_COUNT) {
+                                                        product_pic_add.setVisibility(View.VISIBLE);
+                                                    }
+
+                                                }
+                                            }, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            });
+
+                                            return true;
+                                        }
+                                    });
+
+                                }
 
                                 product_pic.addView(imageView, product_pic.getChildCount() - 1);
 
                                 if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
                                     product_pic_add.setVisibility(View.GONE);
                                 }
+
                             }
                         }
 

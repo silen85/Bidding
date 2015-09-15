@@ -491,8 +491,14 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
                         ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
                                 imagePathList.remove(tag);
                                 product_pic.removeView(v);
+
+                                if (imagePathList.size() < Constant.IMG_MAX_COUNT) {
+                                    product_pic_add.setVisibility(View.VISIBLE);
+                                }
+
                             }
                         }, new DialogInterface.OnClickListener() {
                             @Override
