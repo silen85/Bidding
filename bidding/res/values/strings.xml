@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">联塑商城</string>
+    <string name="app_name">联塑竞价</string>
 
     <string name="loading">请求数据中，请稍候&#8230;</string>
     <string name="image_loading">图片处理中，请稍候&#8230;</string>

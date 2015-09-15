@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             NotifyUpdate notifyUpdate = new NotifyUpdate(this);
             notifyUpdate.sendUpdateRequest();
 
-            /*UpdateManager mUpdateManager = new UpdateManager(this);
+         /*   UpdateManager mUpdateManager = new UpdateManager(this);
             mUpdateManager.sendUpdateRequest();*/
 
         } catch (Exception e) {
