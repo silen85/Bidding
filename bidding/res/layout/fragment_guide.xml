@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp">
+        android:layout_marginTop="88dp">
 
 
         <ImageView
@@ -127,6 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0"
+                android:background="@mipmap/guide_no4_title_bg"
                 android:gravity="center"
                 android:visibility="invisible">
 
@@ -135,8 +136,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:adjustViewBounds="true"
                     android:alpha="0"
-                    android:background="@drawable/guide_no4_title_x" />
+                    android:background="@drawable/guide_no4_title_x"
+                    android:scaleType="fitXY" />
 
             </LinearLayout>
 
@@ -148,8 +151,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="18dp"
-            android:paddingTop="18dp">
+            android:paddingBottom="28dp"
+            android:paddingTop="28dp">
 
             <ImageView
                 android:id="@+id/dot1"
