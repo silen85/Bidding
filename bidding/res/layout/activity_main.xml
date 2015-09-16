@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/title_padding"
-                android:text="日期搜索"
+                android:text="日期"
                 android:textColor="@color/MALL_C8"
                 android:textSize="@dimen/main_title_text_size" />
 

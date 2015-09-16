@@ -42,12 +42,12 @@
     <string name="bidding_delivery">交收方式</string>
     <string name="bidding_delivery_address">交收地址</string>
     <string name="bidding_other">其他要求：</string>
-    <string name="bidding_expdate">有效期</string>
+    <string name="bidding_expdate">有&#160;&#160;效&#160;&#160;期</string>
     <string name="bidding_deadline">截止日期</string>
     <string name="bidding_deliverydate">交收日期</string>
     <string name="bidding_tax">税票类型</string>
     <string name="bidding_product">所需产品</string>
-    <string name="bidding_topic">主题</string>
+    <string name="bidding_topic">主&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;题</string>
     <string name="bidding_certificate">保证金付款凭证：</string>
     <string name="bidding_rule1">我已经阅读并同意</string>
     <string name="bidding_rule2">《竞价单发布规则》</string>

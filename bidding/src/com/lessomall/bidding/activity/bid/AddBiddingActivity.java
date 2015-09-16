@@ -49,7 +49,7 @@ import java.util.Map;
 /**
  * Created by meisl on 2015/8/10.
  */
-public class AddBiddingActivity extends BaseActivity implements View.OnClickListener {
+public class AddBiddingActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
     private String TAG = "com.lessomall.bidding.activity.bid.AddBiddingActivity";
 
@@ -102,16 +102,19 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
         topic = (LinearLayout) findViewById(R.id.topic);
         topic_edit = (EditText) findViewById(R.id.topic_edit);
+        topic_edit.setOnFocusChangeListener(this);
 
         product = (LinearLayout) findViewById(R.id.product);
         product.setOnClickListener(this);
 
         product_name_edit = (EditText) findViewById(R.id.product_name_edit);
+        product_name_edit.setOnFocusChangeListener(this);
 
         product_serach = (ImageView) findViewById(R.id.product_serach);
         product_serach.setOnClickListener(this);
 
         product_brand_edit = (EditText) findViewById(R.id.product_brand_edit);
+        product_brand_edit.setOnFocusChangeListener(this);
 
         product_category = (LinearLayout) findViewById(R.id.product_category);
         product_category.setOnClickListener(this);
@@ -122,6 +125,11 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         product_unit_edit = (EditText) findViewById(R.id.product_unit_edit);
         product_unit_price_edit = (EditText) findViewById(R.id.product_unit_price_edit);
         product_comment_edit = (EditText) findViewById(R.id.product_comment_edit);
+
+        product_num_edit.setOnFocusChangeListener(this);
+        product_unit_edit.setOnFocusChangeListener(this);
+        product_unit_price_edit.setOnFocusChangeListener(this);
+        product_comment_edit.setOnFocusChangeListener(this);
 
         product_pic = (LinearLayout) findViewById(R.id.product_pic);
 
@@ -150,9 +158,11 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
 
         certificate = (LinearLayout) findViewById(R.id.certificate);
         certificate_edit = (EditText) findViewById(R.id.certificate_edit);
+        certificate_edit.setOnFocusChangeListener(this);
 
         other = (LinearLayout) findViewById(R.id.other);
         other_edit = (EditText) findViewById(R.id.other_edit);
+        other_edit.setOnFocusChangeListener(this);
 
         rule_layout = (RelativeLayout) findViewById(R.id.rule_layout);
 
@@ -581,35 +591,67 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.product:
-
+                product.setSelected(true);
                 break;
             case R.id.product_serach:
+                product.setSelected(true);
                 showSearchDialog(product_name_edit.getText().toString());
                 break;
             case R.id.tax:
+                product.setSelected(false);
                 showFaPiaoDialog();
                 break;
             case R.id.expdate:
+                product.setSelected(false);
                 showTimerDialog();
                 break;
             case R.id.delivery:
+                product.setSelected(false);
                 showReceiveDialog();
                 break;
             case R.id.payment:
+                product.setSelected(false);
                 showZhifuDialog();
                 break;
             case R.id.product_category:
+                product.setSelected(true);
                 showFenleiDialog();
                 break;
             case R.id.product_pic_add:
+                product.setSelected(true);
                 showPicDialog();
                 break;
             case R.id.sb_enable:
+                product.setSelected(false);
                 sb_enable.setSelected(!sb_enable.isSelected());
                 break;
             default:
                 break;
 
+        }
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+
+        switch (v.getId()) {
+            case R.id.product_name_edit:
+            case R.id.product_brand_edit:
+            case R.id.product_num_edit:
+            case R.id.product_unit_edit:
+            case R.id.product_unit_price_edit:
+            case R.id.product_comment_edit:
+                if (hasFocus)
+                    product.setSelected(true);
+                break;
+            case R.id.topic_edit:
+            case R.id.certificate_edit:
+            case R.id.other_edit:
+                if (hasFocus)
+                    product.setSelected(false);
+                break;
+            default:
+                break;
         }
     }
 

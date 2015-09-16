@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/interval_C"
-        android:background="@drawable/border_orange"
+        android:background="@drawable/border_orange_x"
         android:clickable="true"
         android:gravity="top"
         android:orientation="horizontal"
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/interval_D"
                     android:layout_marginTop="@dimen/interval_D"
-                    android:text="品牌"
+                    android:text="品&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;牌"
                     android:textColor="@color/BASE_TEXT_COLOR"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/interval_D"
                     android:layout_marginTop="@dimen/interval_D"
-                    android:text="数量"
+                    android:text="数&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;量"
                     android:textColor="@color/BASE_TEXT_COLOR"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/interval_D"
                     android:layout_marginTop="@dimen/interval_D"
-                    android:text="单位"
+                    android:text="单&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;位"
                     android:textColor="@color/BASE_TEXT_COLOR"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -313,7 +313,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/interval_D"
                     android:layout_marginTop="@dimen/interval_D"
-                    android:text="备注"
+                    android:text="备&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;注"
                     android:textColor="@color/BASE_TEXT_COLOR"
                     android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -395,7 +395,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
             android:tag=""
-            android:text="@string/bidding_tax"
+            android:text="税票类型"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
@@ -428,7 +428,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/interval_B"
-            android:text="@string/bidding_expdate"
+            android:text="有  效  期"
             android:textColor="@color/BASE_TEXT_COLOR"
             android:textSize="@dimen/txtsize_bidding_add" />
 
