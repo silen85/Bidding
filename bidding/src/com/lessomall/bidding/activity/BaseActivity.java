@@ -406,7 +406,7 @@ public abstract class BaseActivity extends FragmentActivity {
                         DialogInterface.OnClickListener n_button) {
 
         new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(android.R.drawable.ic_menu_info_details)
                 .setTitle(getString(R.string.app_name)).setMessage(message)
                 .setPositiveButton(getString(R.string.confirm_button1), y_button)
                 .setNegativeButton(getString(R.string.confirm_button2), n_button)

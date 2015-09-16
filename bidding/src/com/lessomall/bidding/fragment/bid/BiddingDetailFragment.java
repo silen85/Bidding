@@ -545,39 +545,82 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 if (!"".equals(urls[i].trim())) {
 
+                    imagePathList.add(urls[i]);
+
+                    final ImageView imageView = new ImageView(activity);
+
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
+                            getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
+
+                    layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                    layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
+                    layoutParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.interval_B);
+
+                    imageView.setLayoutParams(layoutParams);
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setClickable(true);
+                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    imageView.setTag(urls[i]);
+
+                    if (STATUS_BIDDING_1.equals(getBidding().getBiddingStatusId())) {
+
+                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(final View v) {
+
+                                final String tag = (String) v.getTag();
+
+                                ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        imagePathList.remove(tag);
+                                        product_pic.removeView(v);
+
+                                        if (imagePathList.size() < Constant.IMG_MAX_COUNT) {
+                                            product_pic_add.setVisibility(View.VISIBLE);
+                                        }
+
+                                    }
+                                }, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                });
+
+                                return true;
+                            }
+                        });
+
+                    }
+
+                    product_pic.addView(imageView, product_pic.getChildCount() - 1);
+
+                    if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
+                        product_pic_add.setVisibility(View.GONE);
+                    }
+
                     ImageSize imageSize = new ImageSize(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
                             getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
 
                     ImageLoader.getInstance().loadImage(urls[i], imageSize, new ImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String s, View view) {
+                            imageView.setImageResource(R.mipmap.bg_gray);
                         }
 
                         @Override
                         public void onLoadingFailed(String s, View view, FailReason failReason) {
+                            imageView.setImageResource(R.mipmap.pic_default);
                         }
 
                         @Override
                         public void onLoadingComplete(final String s, View view, Bitmap bitmap) {
-                            if (bitmap != null) {
-
-                                imagePathList.add(s);
-
-                                final ImageView imageView = new ImageView(activity);
-
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(R.dimen.product_pic_add_width),
-                                        getResources().getDimensionPixelSize(R.dimen.product_pic_add_height));
-
-                                layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
-                                layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.interval_D);
-                                layoutParams.rightMargin = getResources().getDimensionPixelSize(R.dimen.interval_B);
-
-                                imageView.setLayoutParams(layoutParams);
-                                imageView.setAdjustViewBounds(true);
-                                imageView.setClickable(true);
-                                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                            if (bitmap == null) {
+                                imageView.setImageResource(R.mipmap.pic_default);
+                            } else {
                                 imageView.setImageBitmap(bitmap);
-                                imageView.setTag(s);
 
                                 imageView.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -604,45 +647,6 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                                     }
                                 });
-
-                                if (STATUS_BIDDING_1.equals(getBidding().getBiddingStatusId())) {
-
-                                    imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                                        @Override
-                                        public boolean onLongClick(final View v) {
-
-                                            final String tag = (String) v.getTag();
-
-                                            ((BaseActivity) getActivity()).confirm("确定删除这张图片？", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-
-                                                    imagePathList.remove(tag);
-                                                    product_pic.removeView(v);
-
-                                                    if (imagePathList.size() < Constant.IMG_MAX_COUNT) {
-                                                        product_pic_add.setVisibility(View.VISIBLE);
-                                                    }
-
-                                                }
-                                            }, new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-
-                                                }
-                                            });
-
-                                            return true;
-                                        }
-                                    });
-
-                                }
-
-                                product_pic.addView(imageView, product_pic.getChildCount() - 1);
-
-                                if (imagePathList.size() >= Constant.IMG_MAX_COUNT) {
-                                    product_pic_add.setVisibility(View.GONE);
-                                }
 
                             }
                         }
@@ -797,8 +801,6 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         params.put("optype", Constant.OPTERATION_TYPE[0]);
 
         if (trimParams(params)) {
-
-
             sendPrice(params);
         }
 
