@@ -36,7 +36,7 @@ public class TimeChooserDialog extends Dialog {
     private int dateType = 1;   //1:开始时间  2:结束时间
 
     private Calendar calendar = Calendar.getInstance();
-    private String sBeaginDate = "";
+    private String sBeginDate = "";
     private String sEndDate = "";
     private Date tempBeginDate;
     private Date tempEndDate;
@@ -51,28 +51,42 @@ public class TimeChooserDialog extends Dialog {
 
     private ClickListenerInterface clickListenerInterface;
 
-    public TimeChooserDialog(Context context, int type, String sBeaginDate, String sEndDate) {
+    public TimeChooserDialog(Context context, int type, String sBeginDate, String sEndDate) {
         super(context);
         this.context = context;
 
         this.type = type;
 
-        if (sBeaginDate != null && !"".equals(sBeaginDate.trim()))
-            this.sBeaginDate = sBeaginDate;
+        if (sBeginDate != null && !"".equals(sBeginDate.trim()))
+            this.sBeginDate = sBeginDate;
 
         if (sEndDate != null && !"".equals(sEndDate.trim()))
             this.sEndDate = sEndDate;
 
 
         try {
-            if (sBeaginDate != null && !"".equals(sBeaginDate.trim())) {
-                tempBeginDate = Constant.DATE_FORMAT_1.parse(sBeaginDate);
+            if (sBeginDate != null && !"".equals(sBeginDate.trim())) {
+                tempBeginDate = Constant.DATE_FORMAT_1.parse(sBeginDate);
             } else {
-                tempBeginDate = new Date();
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(new Date());
+                calendar.add(Calendar.MONTH, -1);
+                tempBeginDate = calendar.getTime();
+
+                this.sBeginDate = Constant.DATE_FORMAT_1.format(tempBeginDate);
+
             }
         } catch (ParseException e) {
             Log.e(TAG, e.getMessage(), e);
-            tempBeginDate = new Date();
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            calendar.add(Calendar.MONTH, -1);
+            tempBeginDate = calendar.getTime();
+
+            this.sBeginDate = Constant.DATE_FORMAT_1.format(tempBeginDate);
+
         }
 
         try {
@@ -199,11 +213,11 @@ public class TimeChooserDialog extends Dialog {
 
                     }
 
-                    sBeaginDate = Constant.DATE_FORMAT_1.format(tempBeginDate);
+                    sBeginDate = Constant.DATE_FORMAT_1.format(tempBeginDate);
                     sEndDate = Constant.DATE_FORMAT_1.format(tempEndDate);
 
-                    if (sEndDate.compareTo(sBeaginDate) >= 0) {
-                        //Toast.makeText(context, sBeaginDate + "-" + sEndDate, Toast.LENGTH_SHORT).show();
+                    if (sEndDate.compareTo(sBeginDate) >= 0) {
+                        //Toast.makeText(context, sBeginDate + "-" + sEndDate, Toast.LENGTH_SHORT).show();
                         clickListenerInterface.doFinish();
                         TimeChooserDialog.this.dismiss();
                     } else {
@@ -326,7 +340,7 @@ public class TimeChooserDialog extends Dialog {
         /**
          * 初始化datepicker控件
          */
-        String date = (dateType == 2 ? sEndDate : sBeaginDate);
+        String date = (dateType == 2 ? sEndDate : sBeginDate);
         Date _date;
         try {
             if (date != null && !"".equals(date.trim())) {
@@ -392,8 +406,8 @@ public class TimeChooserDialog extends Dialog {
         return type;
     }
 
-    public String getsBeaginDate() {
-        return sBeaginDate;
+    public String getsBeginDate() {
+        return sBeginDate;
     }
 
     public String getsEndDate() {

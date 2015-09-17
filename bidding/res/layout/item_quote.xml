@@ -122,6 +122,7 @@
                         android:id="@+id/other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:singleLine="false"
                         android:text="【还有10天】"
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
@@ -168,12 +169,14 @@
             android:id="@+id/frame_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:clickable="true">
 
             <ImageView
                 android:id="@+id/pictures"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_gravity="center_vertical"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY" />
 
@@ -181,6 +184,7 @@
                 android:id="@+id/bg_pictures"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_gravity="center_vertical"
                 android:background="@mipmap/pic_num"
                 android:gravity="bottom|right"
                 android:orientation="vertical"
@@ -197,6 +201,7 @@
                     android:textSize="@dimen/F5" />
 
             </LinearLayout>
+
         </FrameLayout>
 
         <LinearLayout
@@ -210,9 +215,8 @@
                 android:id="@+id/topic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:gravity="left|center_vertical"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:text="要一批漏电开关"
                 android:textColor="@color/BASE_TEXT_COLOR"
                 android:textSize="@dimen/F3"
@@ -223,9 +227,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/interval_D"
-                android:ellipsize="end"
                 android:gravity="left|center_vertical"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:text="兰博基尼牌漏电开关"
                 android:textColor="@color/BASE_TEXT_COLOR"
                 android:textSize="@dimen/F3" />
@@ -247,9 +250,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/interval_D"
-                android:ellipsize="end"
                 android:gravity="left|center_vertical"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:text="说明：无"
                 android:textColor="@color/BASE_TEXT_COLOR"
                 android:textSize="@dimen/F3" />

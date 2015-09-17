@@ -287,7 +287,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             public void doFinish() {
 
                 timeType = timerDialog.getType();
-                sBeginDate = timerDialog.getsBeaginDate();
+                sBeginDate = timerDialog.getsBeginDate();
                 sEndDate = timerDialog.getsEndDate();
 
                 search();

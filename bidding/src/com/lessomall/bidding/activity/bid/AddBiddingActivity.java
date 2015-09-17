@@ -331,7 +331,7 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
                 public void doFinish() {
 
                     timeType = timerDialog.getType();
-                    sBeginDate = timerDialog.getsBeaginDate();
+                    sBeginDate = timerDialog.getsBeginDate();
                     sEndDate = timerDialog.getsEndDate();
 
                     expdate_txt.setText(getString(R.string.bidding_expdate) + "：" + sBeginDate + "  -  " + sEndDate);
