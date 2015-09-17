@@ -128,10 +128,12 @@
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
                     android:clickable="true"
+                    android:focusable="false"
                     android:paddingLeft="@dimen/interval_A"
                     android:paddingRight="@dimen/interval_A"
                     android:scaleType="fitXY"
-                    android:src="@drawable/search_x" />
+                    android:src="@mipmap/search_s"
+                    android:visibility="visible" />
 
 
             </RelativeLayout>
