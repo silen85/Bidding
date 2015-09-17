@@ -40,6 +40,10 @@ public class Constant {
 
     public static String[] CATEGORY_CACHE_LEVEL1;
 
+    public final static int APP_BIDDING_STATUS_1= 1,APP_BIDDING_STATUS_2= 2,APP_BIDDING_STATUS_3= 3,APP_BIDDING_STATUS_4= 4,APP_BIDDING_STATUS_5= 5,APP_BIDDING_STATUS_6= 6,APP_BIDDING_STATUS_7= 7;
+
+    public final static int APP_QUOTE_STATUS_1 = 1,APP_QUOTE_STATUS_2 = 2,APP_QUOTE_STATUS_3 = 3,APP_QUOTE_STATUS_4 = 4,APP_QUOTE_STATUS_5 = 5,APP_QUOTE_STATUS_6 = 6;
+
     //10:保存 20:保存并提交
     public final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
 

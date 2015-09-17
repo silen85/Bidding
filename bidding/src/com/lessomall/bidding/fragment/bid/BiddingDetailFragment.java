@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
+import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.QuoteItemAdapter;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -59,7 +60,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private List<QuotePrice> list = new ArrayList();
 
-    private String bid, qid;
+    private String bid, qid, buttonFlag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -210,6 +211,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonFlag = Constant.OPTERATION_TYPE[0];
                 savePrice();
             }
         });
@@ -217,6 +219,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonFlag = Constant.OPTERATION_TYPE[1];
                 submitPrice();
             }
         });
@@ -821,6 +824,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         if (trimParams(params)) {
             sendPrice(params);
         }
+
     }
 
     private void sendPrice(Map params) {
@@ -891,6 +895,11 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
                         if (Constant.RECODE_SUCCESS.equals(recode)) {
                             Toast.makeText(activity, getString(R.string.tips_success_operate), Toast.LENGTH_SHORT).show();
                             activity.backToList();
+
+                            if (Constant.OPTERATION_TYPE[1].equals(buttonFlag)) {
+                                ((BiddingListActivity) activity).set_type(Constant.APP_BIDDING_STATUS_2);
+                            }
+
                             activity.refreshList();
                         } else {
                             activity.tipsOutput(recode, msg);
@@ -935,9 +944,12 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         }
         if (!validateAndPutValue(params, "deliveryGoodsMode", (String) delivery_txt.getTag(R.string.TAG_KEY_A), "请选择交收方式")) {
             return false;
-        }
-        if (!validateAndPutValue(params, "deliveryGoodsPlace", (String) delivery_txt.getTag(R.string.TAG_KEY_B), "请选择交收地址")) {
-            return false;
+        } else {
+            if (delivery_txt.getTag(R.string.TAG_KEY_A) != null && "配送".equals(delivery_txt.getTag(R.string.TAG_KEY_A).toString())) {
+                if (!validateAndPutValue(params, "deliveryGoodsPlace", (String) delivery_txt.getTag(R.string.TAG_KEY_B), "请选择交收地址")) {
+                    return false;
+                }
+            }
         }
         params.put("taxBillType", tax_txt.getTag().toString());
         if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {

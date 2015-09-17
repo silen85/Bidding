@@ -65,7 +65,10 @@ public class QuoteItemAdapter extends BaseAdapter {
         ImageView tick = (ImageView) view.findViewById(R.id.tick);
 
         QuotePrice quotePrice = (QuotePrice) getItem(position);
-        supplier_name.setText(quotePrice.getSupplierName());
+        //    supplier_name.setText(quotePrice.getSupplierName());
+
+        supplier_name.setText("报价" + (position + 1));
+
         actual_num.setText(quotePrice.getActualSupplyTotalNumber());
         supplier_price.setText(quotePrice.getPrice());
 

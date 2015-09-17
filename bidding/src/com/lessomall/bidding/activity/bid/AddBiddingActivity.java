@@ -519,9 +519,12 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         }
         if (!validateAndPutValue(params, "deliveryGoodsMode", (String) delivery_txt.getTag(R.string.TAG_KEY_A), "请选择交收方式")) {
             return false;
-        }
-        if (!validateAndPutValue(params, "deliveryGoodsPlace", (String) delivery_txt.getTag(R.string.TAG_KEY_B), "请选择交收地址")) {
-            return false;
+        } else {
+            if (delivery_txt.getTag(R.string.TAG_KEY_A) != null && "配送".equals(delivery_txt.getTag(R.string.TAG_KEY_A).toString())) {
+                if (!validateAndPutValue(params, "deliveryGoodsPlace", (String) delivery_txt.getTag(R.string.TAG_KEY_B), "请选择交收地址")) {
+                    return false;
+                }
+            }
         }
         params.put("taxBillType", tax_txt.getTag().toString());
         if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {

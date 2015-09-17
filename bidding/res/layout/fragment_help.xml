@@ -23,9 +23,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/interval_D"
             android:gravity="center"
-            android:text="联塑商城客服上班时间"
+            android:text="联塑商城客服上班时间：08:00 - 17:45"
             android:textColor="@color/MALL_C5"
             android:textSize="@dimen/F4" />
+
+        <!--
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,6 +38,8 @@
             android:text="周一至周六，08:00 - 17:45"
             android:textColor="@color/MALL_C5"
             android:textSize="@dimen/F4" />
+
+         -->
 
     </LinearLayout>
 

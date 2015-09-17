@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/interval_D"
+            android:gravity="center"
             android:singleLine="false"
             android:text=""
             android:textColor="@color/MALL_C8"

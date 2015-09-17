@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
@@ -24,7 +25,10 @@ public class BiddingListActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private BiddingListFragment fragment;
 
+    private int _type = 0;
+
     private RelativeLayout main_title;
+    private TextView title_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,15 @@ public class BiddingListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_biddinglist);
+
+        if (getIntent().getExtras() != null) {
+            String type = (String) getIntent().getExtras().get("type");
+            try {
+                _type = Integer.parseInt(type);
+            } catch (Exception e) {
+
+            }
+        }
 
         fragmentManager = getSupportFragmentManager();
 
@@ -49,16 +62,6 @@ public class BiddingListActivity extends BaseActivity {
 
     private void initFragment() {
 
-        int _type = 0;
-        if (getIntent().getExtras() != null) {
-            String type = (String) getIntent().getExtras().get("type");
-            try {
-                _type = Integer.parseInt(type);
-            } catch (Exception e) {
-
-            }
-        }
-
         fragment = new BiddingListFragment();
 
         fragment.setStatus(_type);
@@ -73,13 +76,19 @@ public class BiddingListActivity extends BaseActivity {
 
     @Override
     public void refreshList() {
-        if (fragment != null)
+
+        setTitleTxt();
+
+        if (fragment != null) {
+            fragment.setStatus(_type);
             fragment.initData();
+        }
     }
 
     @Override
     public void goToDetail(Bidding bidding) {
         super.goToDetail(bidding);
+
         BiddingDetailFragment fragment = new BiddingDetailFragment();
 
         fragment.setBidding(bidding);
@@ -103,6 +112,7 @@ public class BiddingListActivity extends BaseActivity {
     protected void initTitle() {
 
         main_title = (RelativeLayout) findViewById(R.id.main_title);
+        title_txt = (TextView) main_title.findViewById(R.id.title_txt);
 
         ImageView btn_back = (ImageView) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +121,8 @@ public class BiddingListActivity extends BaseActivity {
                 finish();
             }
         });
+
+        setTitleTxt();
 
     }
 
@@ -127,6 +139,36 @@ public class BiddingListActivity extends BaseActivity {
 
     }
 
+    private void setTitleTxt() {
+
+        switch (_type) {
+            case Constant.APP_BIDDING_STATUS_1:
+                title_txt.setText("未提交");
+                break;
+            case Constant.APP_BIDDING_STATUS_2:
+                title_txt.setText("待审核");
+                break;
+            case Constant.APP_BIDDING_STATUS_3:
+                title_txt.setText("竞价中");
+                break;
+            case Constant.APP_BIDDING_STATUS_4:
+                title_txt.setText("已审核");
+                break;
+            case Constant.APP_BIDDING_STATUS_5:
+                title_txt.setText("已确认报价");
+                break;
+            case Constant.APP_BIDDING_STATUS_6:
+                title_txt.setText("已发货");
+                break;
+            case Constant.APP_BIDDING_STATUS_7:
+                title_txt.setText("已收货");
+                break;
+            default:
+                break;
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
         if (fragment.isVisible()) {
@@ -134,5 +176,9 @@ public class BiddingListActivity extends BaseActivity {
         } else {
             backToList();
         }
+    }
+
+    public void set_type(int _type) {
+        this._type = _type;
     }
 }

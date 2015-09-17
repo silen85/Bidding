@@ -47,8 +47,8 @@
     <string name="bidding_deliverydate">交收日期</string>
     <string name="bidding_tax">税票类型</string>
     <string name="bidding_product">所需产品</string>
-    <string name="bidding_topic">主&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;题</string>
-    <string name="bidding_certificate">保证金付款凭证：</string>
+    <string name="bidding_topic">标&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;题</string>
+    <string name="bidding_certificate">付款凭证：</string>
     <string name="bidding_rule1">我已经阅读并同意</string>
     <string name="bidding_rule2">《竞价单发布规则》</string>
 
