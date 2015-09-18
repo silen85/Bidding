@@ -43,6 +43,8 @@ public class TimeChooserDialog extends Dialog {
 
     private DatePicker datePicker;
 
+    private TextView start_day_txt, end_day_txt;
+
     private LinearLayout sdate_layout, datepicker_layout, edate_layout;
 
     private TextView byday, bymonth, datepicker_bdate, datepicker_edate, datepicker_finish;
@@ -123,8 +125,8 @@ public class TimeChooserDialog extends Dialog {
         LayoutInflater inflater = LayoutInflater.from(context);
         final LinearLayout dialog = (LinearLayout) inflater.inflate(R.layout.dialog_datepicker, null);
 
-        TextView start_day_txt = (TextView) dialog.findViewById(R.id.start_day_txt);
-        TextView end_day_txt = (TextView) dialog.findViewById(R.id.end_day_txt);
+        start_day_txt = (TextView) dialog.findViewById(R.id.start_day_txt);
+        end_day_txt = (TextView) dialog.findViewById(R.id.end_day_txt);
         if (context instanceof MainActivity) {
             start_day_txt.setText("开始时间");
             end_day_txt.setText("结束时间");
@@ -193,9 +195,9 @@ public class TimeChooserDialog extends Dialog {
             public void onClick(View view) {
 
                 if (tempBeginDate == null) {
-                    Toast.makeText(context, "请输入开始日期", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "请输入" + start_day_txt.getText().toString(), Toast.LENGTH_SHORT).show();
                 } else if (tempEndDate == null) {
-                    Toast.makeText(context, "请输入结束日期", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "请输入" + end_day_txt.getText().toString(), Toast.LENGTH_SHORT).show();
                 } else {
 
 
@@ -221,7 +223,7 @@ public class TimeChooserDialog extends Dialog {
                         clickListenerInterface.doFinish();
                         TimeChooserDialog.this.dismiss();
                     } else {
-                        Toast.makeText(context, "结束时间不能早于开始时间", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, end_day_txt.getText().toString() + "不能早于" + start_day_txt.getText().toString(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -308,6 +310,20 @@ public class TimeChooserDialog extends Dialog {
         });
 
         datepicker_edate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edate_layout.performClick();
+            }
+        });
+
+        start_day_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sdate_layout.performClick();
+            }
+        });
+
+        end_day_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 edate_layout.performClick();

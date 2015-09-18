@@ -35,6 +35,8 @@ import com.lessomall.bidding.ui.bidding.SearchDialog;
 import com.lessomall.bidding.ui.bidding.ZhifuDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -265,6 +267,23 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
     }
 
     protected void showTimerDialog() {
+
+        if (sBeginDate == null || "".equals(sBeginDate.trim()) || sEndDate == null || "".equals(sEndDate.trim())) {
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+
+            if (sBeginDate == null || "".equals(sBeginDate.trim())) {
+                calendar.add(Calendar.DAY_OF_MONTH, 15);
+                sBeginDate = Constant.DATE_FORMAT_1.format(calendar.getTime());
+            }
+
+            if (sEndDate == null || "".equals(sEndDate.trim())) {
+                calendar.add(Calendar.DAY_OF_MONTH, 30);
+                sEndDate = Constant.DATE_FORMAT_1.format(calendar.getTime());
+            }
+
+        }
 
         if (timerDialog == null) {
             timerDialog = new TimeChooserDialog(getActivity(), timeType, sBeginDate, sEndDate);

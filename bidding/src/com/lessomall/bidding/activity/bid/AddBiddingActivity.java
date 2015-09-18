@@ -43,6 +43,8 @@ import org.apache.http.Header;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -321,6 +323,23 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
     }
 
     private void showTimerDialog() {
+
+        if (sBeginDate == null || "".equals(sBeginDate.trim()) || sEndDate == null || "".equals(sEndDate.trim())) {
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+
+            if (sBeginDate == null || "".equals(sBeginDate.trim())) {
+                calendar.add(Calendar.DAY_OF_MONTH, 15);
+                sBeginDate = Constant.DATE_FORMAT_1.format(calendar.getTime());
+            }
+
+            if (sEndDate == null || "".equals(sEndDate.trim())) {
+                calendar.add(Calendar.DAY_OF_MONTH, 30);
+                sEndDate = Constant.DATE_FORMAT_1.format(calendar.getTime());
+            }
+
+        }
 
         if (timerDialog == null) {
             timerDialog = new TimeChooserDialog(this, timeType, sBeginDate, sEndDate);
