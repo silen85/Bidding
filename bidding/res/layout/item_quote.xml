@@ -38,7 +38,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="竞价截止日期："
+                        android:text="竞价截止日期:"
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -47,7 +47,7 @@
                         android:id="@+id/deadline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2015-08-11 【还有10天】"
+                        android:text=""
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -63,7 +63,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="期望交货日期："
+                        android:text="期望交货日期:"
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -72,7 +72,7 @@
                         android:id="@+id/delivery_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2015-08-21 【还有20天】"
+                        android:text=""
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -88,7 +88,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="税票类型："
+                        android:text="税票类型:"
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -97,7 +97,7 @@
                         android:id="@+id/tax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="增值税发票"
+                        android:text=""
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -113,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="其它要求："
+                        android:text="其它要求:"
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="false"
-                        android:text="【还有10天】"
+                        android:text=""
                         android:textColor="@color/BIDDING_TXT_COLOR"
                         android:textSize="@dimen/F3"
                         android:textStyle="bold" />

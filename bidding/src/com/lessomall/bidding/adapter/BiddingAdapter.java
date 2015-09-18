@@ -315,7 +315,7 @@ public class BiddingAdapter extends BaseAdapter {
 
             int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getBiddingDeadline(), "yyyy-MM-dd"));
             if (between > 0)
-                outputStr = bidding.getBiddingDeadline() + "  【 还有" + between + "天 】";
+                outputStr = bidding.getBiddingDeadline() + "【 还有" + between + "天 】";
             else {
                 outputStr = bidding.getBiddingDeadline();
             }
@@ -328,7 +328,7 @@ public class BiddingAdapter extends BaseAdapter {
 
             int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getExpectDeliveryDate(), "yyyy-MM-dd"));
             if (between > 0) {
-                outputStr = bidding.getExpectDeliveryDate() + "  【 还有" + between + "天 】";
+                outputStr = bidding.getExpectDeliveryDate() + "【 还有" + between + "天 】";
             } else {
                 outputStr = bidding.getExpectDeliveryDate();
             }
