@@ -74,8 +74,6 @@ public class QuoteItemAdapter extends BaseAdapter {
         QuotePrice quotePrice = (QuotePrice) getItem(position);
         //    supplier_name.setText(quotePrice.getSupplierName());
 
-        supplier_name.setText("报价" + (position + 1));
-
         actual_num.setText(quotePrice.getActualSupplyTotalNumber());
         supplier_price.setText(quotePrice.getPrice());
 
@@ -91,6 +89,9 @@ public class QuoteItemAdapter extends BaseAdapter {
         supplier_comment.setText(quotePrice.getMemo());
 
         if ("0".equals(orderType)) {
+
+            supplier_name.setText("报价" + (position + 1));
+
             if ("40".equals(quotePrice.getBiddingStatus()) ||
                     "50".equals(quotePrice.getBiddingStatus()) ||
                     "60".equals(quotePrice.getBiddingStatus())) {
@@ -103,6 +104,9 @@ public class QuoteItemAdapter extends BaseAdapter {
                 tick.setSelected(false);
             }
         } else {
+
+            supplier_name.setText("我的报价");
+
             if ("10".equals(quotePrice.getBiddingStatus())) {
                 tick.setBackgroundResource(R.mipmap.disagree_s);
             } else {
