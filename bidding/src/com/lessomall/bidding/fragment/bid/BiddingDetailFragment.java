@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
-import com.lessomall.bidding.activity.bid.BiddingListActivity;
 import com.lessomall.bidding.adapter.QuoteItemAdapter;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
@@ -54,7 +53,9 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private Bidding bidding;
 
-    private LinearLayout view;
+    private LinearLayout view, returnState;
+
+    private TextView returnState_txt;
 
     private ListView quotepricelist;
 
@@ -123,7 +124,12 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         sEndDate = getBidding().getExpectDeliveryDate();
 
         biddingid.setText(getBidding().getBiddingCode());
-        biddingstatus.setText(getBidding().getBiddingStatusName());
+
+        if (bidding.getBiddingStatusId().equals(Constant.APP_BIDDING_STATUS_1 + "") && bidding.getReturnState() != null && !"".equals(bidding.getReturnState().trim())) {
+            biddingstatus.setText("被退回");
+        } else {
+            biddingstatus.setText(getBidding().getBiddingStatusName());
+        }
 
         topic_edit.setText(getBidding().getBiddingTitle());
         product_name_edit.setText(getBidding().getNameType());
@@ -193,36 +199,103 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
     private void initView1() {
 
-        TextView button1 = (TextView) view.findViewById(R.id.button1);
-        TextView button2 = (TextView) view.findViewById(R.id.button2);
-        TextView button3 = (TextView) view.findViewById(R.id.button3);
+        returnState = (LinearLayout) view.findViewById(R.id.returnState);
 
-        button1.setText(" 返 回 ");
-        button2.setText(" 保 存 ");
-        button3.setText(" 提 交 ");
+        returnState_txt = (TextView) view.findViewById(R.id.returnState_txt);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.backToList();
-            }
-        });
+        final TextView button1 = (TextView) view.findViewById(R.id.button1);
+        final TextView button2 = (TextView) view.findViewById(R.id.button2);
+        final TextView button3 = (TextView) view.findViewById(R.id.button3);
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonFlag = Constant.OPTERATION_TYPE[0];
-                savePrice();
-            }
-        });
+        if (bidding.getBiddingStatusId().equals(Constant.APP_BIDDING_STATUS_1 + "") && bidding.getReturnState() != null && !"".equals(bidding.getReturnState().trim())) {
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonFlag = Constant.OPTERATION_TYPE[1];
-                submitPrice();
-            }
-        });
+            disableInput();
+
+            returnState.setVisibility(View.VISIBLE);
+
+            returnState_txt.setText(bidding.getReturnState());
+
+            button1.setVisibility(View.GONE);
+            button2.setText("返回");
+            button3.setText("重新编辑");
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.backToList();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    enableInput();
+
+                    returnState.setVisibility(View.GONE);
+
+                    button1.setText(" 返 回 ");
+                    button2.setText(" 保 存 ");
+                    button3.setText(" 提 交 ");
+
+                    button1.setVisibility(View.VISIBLE);
+
+                    button1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            activity.backToList();
+                        }
+                    });
+
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            buttonFlag = Constant.OPTERATION_TYPE[0];
+                            savePrice();
+                        }
+                    });
+
+                    button3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            buttonFlag = Constant.OPTERATION_TYPE[1];
+                            submitPrice();
+                        }
+                    });
+
+                }
+            });
+
+        } else {
+
+            button1.setText(" 返 回 ");
+            button2.setText(" 保 存 ");
+            button3.setText(" 提 交 ");
+
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.backToList();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    buttonFlag = Constant.OPTERATION_TYPE[0];
+                    savePrice();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    buttonFlag = Constant.OPTERATION_TYPE[1];
+                    submitPrice();
+                }
+            });
+        }
+
 
     }
 
@@ -395,7 +468,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
             list = _list;
 
-            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
+            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType(), bidding.getCommissionRate());
 
             quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -459,7 +532,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType(), bidding.getCommissionRate());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -492,7 +565,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType(), bidding.getCommissionRate());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -525,7 +598,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
 
                 list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType());
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(getActivity(), list, getBidding().getOrderType(), bidding.getCommissionRate());
 
                 quotepricelist.setAdapter(quoteItemAdapter);
 
@@ -897,7 +970,7 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
                             activity.backToList();
 
                             if (Constant.OPTERATION_TYPE[1].equals(buttonFlag)) {
-                                ((BiddingListActivity) activity).set_type(Constant.APP_BIDDING_STATUS_2);
+                                activity.setType(Constant.APP_BIDDING_STATUS_2);
                             }
 
                             activity.refreshList();

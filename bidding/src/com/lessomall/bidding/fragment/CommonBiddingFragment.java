@@ -360,15 +360,22 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
 
     protected void disableInput() {
 
-        topic_edit.setFocusable(false);
-        product_name_edit.setFocusable(false);
+        topic_edit.setEnabled(false);
+        topic_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+        product_name_edit.setEnabled(false);
+        product_name_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
         product_serach.setVisibility(View.GONE);
-        product_brand_edit.setFocusable(false);
+        product_brand_edit.setEnabled(false);
+        product_brand_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
         product_category.setOnClickListener(null);
-        product_num_edit.setFocusable(false);
-        product_unit_edit.setFocusable(false);
-        product_unit_price_edit.setFocusable(false);
-        product_comment_edit.setFocusable(false);
+        product_num_edit.setEnabled(false);
+        product_num_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+        product_unit_edit.setEnabled(false);
+        product_unit_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+        product_unit_price_edit.setEnabled(false);
+        product_unit_price_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+        product_comment_edit.setEnabled(false);
+        product_comment_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
         product_pic_add.setVisibility(View.GONE);
 
         tax.setOnClickListener(null);
@@ -376,8 +383,38 @@ public class CommonBiddingFragment extends Fragment implements View.OnClickListe
         payment.setOnClickListener(null);
         delivery.setOnClickListener(null);
 
-        certificate_edit.setFocusable(false);
-        other_edit.setFocusable(false);
+        certificate_edit.setEnabled(false);
+        certificate_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+        other_edit.setEnabled(false);
+        other_edit.setTextColor(getResources().getColor(R.color.BASE_TEXT_COLOR));
+
+    }
+
+    protected void enableInput() {
+
+        topic_edit.setEnabled(true);
+        product_name_edit.setEnabled(true);
+        product_serach.setVisibility(View.VISIBLE);
+        product_brand_edit.setEnabled(true);
+        product_category.setOnClickListener(this);
+        product_num_edit.setEnabled(true);
+        product_unit_edit.setEnabled(true);
+        product_unit_price_edit.setEnabled(true);
+        product_comment_edit.setEnabled(true);
+
+        if (imagePathList.size() < Constant.IMG_MAX_COUNT) {
+            product_pic_add.setVisibility(View.VISIBLE);
+        } else {
+            product_pic_add.setVisibility(View.GONE);
+        }
+
+        tax.setOnClickListener(this);
+        expdate.setOnClickListener(this);
+        payment.setOnClickListener(this);
+        delivery.setOnClickListener(this);
+
+        certificate_edit.setEnabled(true);
+        other_edit.setEnabled(true);
 
     }
 

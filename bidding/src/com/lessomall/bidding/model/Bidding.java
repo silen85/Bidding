@@ -35,6 +35,8 @@ public class Bidding {
     //备注说明2
     private String memo2;
 
+    private String returnState;
+
     //dto状态
     private String biddingStatus;
 
@@ -108,6 +110,7 @@ public class Bidding {
         bidding.setProductCode(trimValue((String) map.get("ProductCode")));
         bidding.setProductBigCategory(trimValue((String) map.get("ProductBigCategory")));
         bidding.setProductMiddleCategory(trimValue((String) map.get("ProductMiddleCategory")));
+        bidding.setReturnState(trimValue((String) map.get("ReturnState")));
 
         List<Map<String, String>> _data = (List<Map<String, String>>) (map.get("datalist"));
 
@@ -244,6 +247,14 @@ public class Bidding {
 
     public void setMemo2(String memo2) {
         this.memo2 = memo2;
+    }
+
+    public String getReturnState() {
+        return returnState;
+    }
+
+    public void setReturnState(String returnState) {
+        this.returnState = returnState;
     }
 
     public String getBiddingStatus() {

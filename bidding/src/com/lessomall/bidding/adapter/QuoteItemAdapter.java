@@ -23,15 +23,22 @@ public class QuoteItemAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private List<QuotePrice> list = new ArrayList();
 
+    private float commissionRate = 0;
+
     //0:竞价单；1：报价单
     private String orderType = "0";
 
 
-    public QuoteItemAdapter(Context context, List<QuotePrice> list, String orderType) {
+    public QuoteItemAdapter(Context context, List<QuotePrice> list, String orderType, String commissionRate) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(this.context);
         this.list = list;
         this.orderType = orderType;
+
+        try {
+            this.commissionRate = Float.parseFloat(commissionRate);
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -74,6 +81,7 @@ public class QuoteItemAdapter extends BaseAdapter {
 
         try {
             float _total = (Float.parseFloat(quotePrice.getActualSupplyTotalNumber()) * Float.parseFloat(quotePrice.getPrice()));
+            _total += _total * commissionRate / 100;
             total.setText(_total + "");
         } catch (Exception e) {
 

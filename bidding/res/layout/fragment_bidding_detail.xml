@@ -94,6 +94,40 @@
 
                 <include layout="@layout/common_bidding" />
 
+                <LinearLayout
+                    android:id="@+id/returnState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_C"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/pb_bidding_add"
+                    android:paddingLeft="@dimen/pl_bidding_add"
+                    android:paddingRight="@dimen/pr_bidding_add"
+                    android:paddingTop="@dimen/pt_bidding_add"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="退回说明："
+                        android:textColor="@color/MALL_C1"
+                        android:textSize="@dimen/txtsize_bidding_add"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/returnState_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        android:text=""
+                        android:textColor="@color/MALL_C1"
+                        android:textSize="@dimen/txtsize_bidding_add" />
+
+                </LinearLayout>
+
                 <ListView
                     android:id="@+id/quotepricelist"
                     android:layout_width="match_parent"

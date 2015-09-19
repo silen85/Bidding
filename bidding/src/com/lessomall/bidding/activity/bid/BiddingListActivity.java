@@ -25,8 +25,6 @@ public class BiddingListActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private BiddingListFragment fragment;
 
-    private int _type = 0;
-
     private RelativeLayout main_title;
     private TextView title_txt;
 
@@ -40,7 +38,7 @@ public class BiddingListActivity extends BaseActivity {
         if (getIntent().getExtras() != null) {
             String type = (String) getIntent().getExtras().get("type");
             try {
-                _type = Integer.parseInt(type);
+                setType(Integer.parseInt(type));
             } catch (Exception e) {
 
             }
@@ -64,7 +62,7 @@ public class BiddingListActivity extends BaseActivity {
 
         fragment = new BiddingListFragment();
 
-        fragment.setStatus(_type);
+        fragment.setStatus(getType());
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -80,7 +78,7 @@ public class BiddingListActivity extends BaseActivity {
         setTitleTxt();
 
         if (fragment != null) {
-            fragment.setStatus(_type);
+            fragment.setStatus(getType());
             fragment.initData();
         }
     }
@@ -141,7 +139,7 @@ public class BiddingListActivity extends BaseActivity {
 
     private void setTitleTxt() {
 
-        switch (_type) {
+        switch (getType()) {
             case Constant.APP_BIDDING_STATUS_1:
                 title_txt.setText("未提交");
                 break;
@@ -178,7 +176,4 @@ public class BiddingListActivity extends BaseActivity {
         }
     }
 
-    public void set_type(int _type) {
-        this._type = _type;
-    }
 }

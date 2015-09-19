@@ -39,6 +39,8 @@ import java.util.Map;
 
 public abstract class BaseActivity extends FragmentActivity {
 
+    private int type = 0;
+
     private String TAG = "com.lessomall.bidding.activity.BaseActivity";
 
     public interface CameraCallback {
@@ -458,5 +460,12 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected abstract void initData();
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 }
 

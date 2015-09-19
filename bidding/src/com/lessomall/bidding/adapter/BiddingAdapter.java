@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
 import com.lessomall.bidding.activity.ImagePagerActivity;
+import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.Tools;
 import com.lessomall.bidding.model.Bidding;
 import com.lessomall.bidding.model.QuotePrice;
@@ -84,6 +85,7 @@ public class BiddingAdapter extends BaseAdapter {
             TextView brand = (TextView) view.findViewById(R.id.brand);
             TextView num = (TextView) view.findViewById(R.id.num);
             TextView date = (TextView) view.findViewById(R.id.date);
+            LinearLayout returnState = (LinearLayout) view.findViewById(R.id.returnState);
 
             FrameLayout frame_picture = (FrameLayout) view.findViewById(R.id.frame_picture);
             ImageView pictures = (ImageView) view.findViewById(R.id.pictures);
@@ -96,6 +98,7 @@ public class BiddingAdapter extends BaseAdapter {
             viewHolder0.brand = brand;
             viewHolder0.num = num;
             viewHolder0.date = date;
+            viewHolder0.returnState = returnState;
             viewHolder0.frame_picture = frame_picture;
             viewHolder0.pictures = pictures;
             viewHolder0.bg_pictures = bg_pictures;
@@ -234,7 +237,14 @@ public class BiddingAdapter extends BaseAdapter {
         }
 
         viewHolder0.biddingid.setText(bidding.getBiddingCode());
-        viewHolder0.biddingstatus.setText(bidding.getBiddingStatusName());
+
+        if (bidding.getBiddingStatusId().equals(Constant.APP_BIDDING_STATUS_1 + "") && bidding.getReturnState() != null && !"".equals(bidding.getReturnState().trim())) {
+            viewHolder0.biddingstatus.setText("被退回");
+            ((TextView) viewHolder0.returnState.findViewById(R.id.returnState_txt)).setText(bidding.getReturnState());
+            viewHolder0.returnState.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder0.biddingstatus.setText(bidding.getBiddingStatusName());
+        }
         viewHolder0.topic.setText(bidding.getBiddingTitle());
         viewHolder0.brand.setText("".equals(bidding.getBrand()) ? "" : (bidding.getBrand() + " ") + bidding.getNameType());
         viewHolder0.num.setText("".equals(bidding.getRequiredQuantity()) ? "数量未定" : (bidding.getRequiredQuantity() + " " + bidding.getUnit()));
@@ -364,7 +374,7 @@ public class BiddingAdapter extends BaseAdapter {
 
                 _list.add(quotePrice);
 
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType());
+                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType(), "0");
 
                 viewHolder1.pricelist.setAdapter(quoteItemAdapter);
 
@@ -446,6 +456,7 @@ public class BiddingAdapter extends BaseAdapter {
         TextView brand;
         TextView num;
         TextView date;
+        LinearLayout returnState;
 
         FrameLayout frame_picture;
         ImageView pictures;

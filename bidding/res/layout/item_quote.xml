@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:text="待报价"
+                android:text=""
                 android:textColor="@color/BIDDING_TXT_COLOR"
                 android:textSize="@dimen/F3"
                 android:textStyle="bold" />
@@ -158,193 +158,200 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_rectangle_white"
-        android:gravity="left|center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/interval_C"
-        android:paddingLeft="@dimen/interval_A"
-        android:paddingRight="@dimen/interval_A"
-        android:paddingTop="@dimen/interval_C">
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/frame_picture"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:clickable="true">
+            android:background="@null"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/interval_C"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A"
+            android:paddingTop="@dimen/interval_C">
 
-            <ImageView
-                android:id="@+id/pictures"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+            <FrameLayout
+                android:id="@+id/frame_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/pictures"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY" />
+
+                <LinearLayout
+                    android:id="@+id/bg_pictures"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@mipmap/pic_num"
+                    android:gravity="bottom|right"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/num_pictures"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/MALL_C8"
+                        android:textSize="@dimen/F5" />
+
+                </LinearLayout>
+
+            </FrameLayout>
 
             <LinearLayout
-                android:id="@+id/bg_pictures"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:background="@mipmap/pic_num"
-                android:gravity="bottom|right"
-                android:orientation="vertical"
-                android:paddingBottom="4dp"
-                android:paddingRight="4dp"
-                android:visibility="gone">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/interval_A"
+                android:gravity="left|center_vertical"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/num_pictures"
+                    android:id="@+id/topic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="false"
                     android:text=""
-                    android:textColor="@color/MALL_C8"
-                    android:textSize="@dimen/F5" />
+                    android:textColor="@color/BASE_TEXT_COLOR"
+                    android:textSize="@dimen/F3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textColor="@color/BASE_TEXT_COLOR"
+                    android:textSize="@dimen/F3" />
+
+                <TextView
+                    android:id="@+id/num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/BASE_TEXT_COLOR"
+                    android:textSize="@dimen/F3" />
+
+                <TextView
+                    android:id="@+id/comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/interval_D"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textColor="@color/BASE_TEXT_COLOR"
+                    android:textSize="@dimen/F3" />
+
 
             </LinearLayout>
 
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/interval_A"
-            android:gravity="left|center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/topic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left|center_vertical"
-                android:singleLine="false"
-                android:text="要一批漏电开关"
-                android:textColor="@color/BASE_TEXT_COLOR"
-                android:textSize="@dimen/F3"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/interval_D"
-                android:gravity="left|center_vertical"
-                android:singleLine="false"
-                android:text="兰博基尼牌漏电开关"
-                android:textColor="@color/BASE_TEXT_COLOR"
-                android:textSize="@dimen/F3" />
-
-            <TextView
-                android:id="@+id/num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/interval_D"
-                android:ellipsize="end"
-                android:gravity="left|center_vertical"
-                android:singleLine="true"
-                android:text="99999 箱"
-                android:textColor="@color/BASE_TEXT_COLOR"
-                android:textSize="@dimen/F3" />
-
-            <TextView
-                android:id="@+id/comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/interval_D"
-                android:gravity="left|center_vertical"
-                android:singleLine="false"
-                android:text="说明：无"
-                android:textColor="@color/BASE_TEXT_COLOR"
-                android:textSize="@dimen/F3" />
-
-
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/list_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/MALL_C8"
-        android:gravity="left|center_vertical"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/interval_C"
-        android:paddingLeft="@dimen/interval_A"
-        android:paddingRight="@dimen/interval_A"
-        android:visibility="gone">
-
-        <ListView
-            android:id="@+id/pricelist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:cacheColorHint="@null"
-            android:divider="@null"
-            android:scrollbars="none" />
-
         <LinearLayout
-            android:id="@+id/foul_layout"
+            android:id="@+id/list_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/interval_C"
+            android:background="@null"
+            android:gravity="left|center_vertical"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/interval_C"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A"
             android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <ListView
+                android:id="@+id/pricelist"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left|center_vertical"
-                android:singleLine="true"
-                android:text="退回说明："
-                android:textColor="@color/MALL_C1"
-                android:textSize="@dimen/F3"
-                android:textStyle="bold" />
+                android:background="@android:color/white"
+                android:cacheColorHint="@null"
+                android:divider="@null"
+                android:scrollbars="none" />
+
+            <LinearLayout
+                android:id="@+id/foul_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/interval_C"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="true"
+                    android:text="退回说明："
+                    android:textColor="@color/MALL_C1"
+                    android:textSize="@dimen/F3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/foul_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textColor="@color/MALL_C1"
+                    android:textSize="@dimen/F3"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/interval_C"
+            android:paddingLeft="@dimen/interval_A"
+            android:paddingRight="@dimen/interval_A"
+            android:visibility="gone">
+
 
             <TextView
-                android:id="@+id/foul_txt"
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left|center_vertical"
-                android:singleLine="false"
-                android:text=""
-                android:textColor="@color/MALL_C1"
-                android:textSize="@dimen/F3"
-                android:textStyle="normal" />
-
+                android:background="@drawable/button_gray"
+                android:clickable="true"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:text="发布报价"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="@dimen/F3" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/button_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_rectangle_white"
-        android:gravity="right|center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/interval_C"
-        android:paddingLeft="@dimen/interval_A"
-        android:paddingRight="@dimen/interval_A"
-        android:visibility="gone">
-
-
-        <TextView
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_gray"
-            android:clickable="true"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:text="发布报价"
-            android:textColor="@color/BASE_TEXT_COLOR"
-            android:textSize="@dimen/F3" />
-
-    </LinearLayout>
-
 
 </LinearLayout>
 
