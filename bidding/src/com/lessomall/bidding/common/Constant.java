@@ -12,7 +12,7 @@ public class Constant {
     public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
     public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
-    public final static String BASE_URL = "http://10.10.7.159:8080/lots-web/app/";
+    public final static String BASE_URL = "http://www.lessomall.com/lots-web/app/";
     public final static String URL_LOGIN = BASE_URL + "login/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
     public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
