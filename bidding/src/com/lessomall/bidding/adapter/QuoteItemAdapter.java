@@ -37,7 +37,11 @@ public class QuoteItemAdapter extends BaseAdapter {
 
         try {
             this.commissionRate = Float.parseFloat(commissionRate);
+            if (this.commissionRate < 0) {
+                this.commissionRate = 0;
+            }
         } catch (Exception e) {
+            this.commissionRate = 0;
         }
     }
 
@@ -75,22 +79,25 @@ public class QuoteItemAdapter extends BaseAdapter {
         //    supplier_name.setText(quotePrice.getSupplierName());
 
         actual_num.setText(quotePrice.getActualSupplyTotalNumber());
-        supplier_price.setText(quotePrice.getPrice());
-
-        try {
-            float _total = (Float.parseFloat(quotePrice.getActualSupplyTotalNumber()) * Float.parseFloat(quotePrice.getPrice()));
-            _total += _total * commissionRate / 100;
-            total.setText(_total + "");
-        } catch (Exception e) {
-
-        }
-
 
         supplier_comment.setText(quotePrice.getMemo());
 
         if ("0".equals(orderType)) {
 
             supplier_name.setText("报价" + (position + 1));
+
+            try {
+
+                float price = Float.parseFloat(quotePrice.getPrice());
+                price += price * commissionRate / 100;
+                supplier_price.setText(price + "");
+
+                float _total = (Float.parseFloat(quotePrice.getActualSupplyTotalNumber()) * Float.parseFloat(quotePrice.getPrice()));
+                _total += _total * commissionRate / 100;
+                total.setText(_total + "");
+            } catch (Exception e) {
+
+            }
 
             if ("40".equals(quotePrice.getBiddingStatus()) ||
                     "50".equals(quotePrice.getBiddingStatus()) ||
@@ -103,9 +110,22 @@ public class QuoteItemAdapter extends BaseAdapter {
                 tick.setBackgroundResource(R.drawable.agree_x);
                 tick.setSelected(false);
             }
+
+
         } else {
 
             supplier_name.setText("我的报价");
+
+            try {
+
+                float price = Float.parseFloat(quotePrice.getPrice());
+                supplier_price.setText(price + "");
+
+                float _total = (Float.parseFloat(quotePrice.getActualSupplyTotalNumber()) * Float.parseFloat(quotePrice.getPrice()));
+                total.setText(_total + "");
+            } catch (Exception e) {
+
+            }
 
             if ("10".equals(quotePrice.getBiddingStatus())) {
                 tick.setBackgroundResource(R.mipmap.disagree_s);
