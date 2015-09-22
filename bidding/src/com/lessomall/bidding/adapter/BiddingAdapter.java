@@ -353,6 +353,7 @@ public class BiddingAdapter extends BaseAdapter {
         viewHolder1.brand.setText("".equals(bidding.getBrand()) ? "" : (bidding.getBrand() + " ") + bidding.getNameType());
         viewHolder1.num.setText("".equals(bidding.getRequiredQuantity()) ? "数量未定" : (bidding.getRequiredQuantity() + " " + bidding.getUnit()));
 
+        viewHolder1.comment.setText(bidding.getMemo2());
 
         String qid = "";
         List<QuotePrice> list = bidding.getQuotePriceList();

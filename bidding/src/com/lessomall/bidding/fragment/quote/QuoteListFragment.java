@@ -93,8 +93,6 @@ public class QuoteListFragment extends PullToRefreshListFragment {
 
         quotelist = mPullRefreshListView.getRefreshableView();
 
-        quotelist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
-
         quotelist.setDivider(null);
         quotelist.setDividerHeight(getResources().getDimensionPixelSize(R.dimen.interval_C));
 
@@ -149,6 +147,8 @@ public class QuoteListFragment extends PullToRefreshListFragment {
 
         if (list.size() > 0) {
             Toast.makeText(activity, getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+        } else {
+            quotelist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
         }
 
     }

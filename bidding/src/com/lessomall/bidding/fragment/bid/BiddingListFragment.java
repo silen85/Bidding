@@ -96,8 +96,6 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
         biddinglist = mPullRefreshListView.getRefreshableView();
 
-        biddinglist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
-
         biddinglist.setDivider(null);
         biddinglist.setDividerHeight(getResources().getDimensionPixelSize(R.dimen.interval_C));
 
@@ -163,6 +161,8 @@ public class BiddingListFragment extends PullToRefreshListFragment {
 
         if (list.size() > 0) {
             Toast.makeText(activity, getString(R.string.last_data_tips), Toast.LENGTH_SHORT).show();
+        } else {
+            biddinglist.setEmptyView(LayoutInflater.from(activity).inflate(R.layout.empty, null));
         }
 
     }
