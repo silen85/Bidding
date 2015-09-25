@@ -116,6 +116,7 @@ public class BiddingAdapter extends BaseAdapter {
                 viewHolder1 = (ViewHolder1) view.getTag();
             }
 
+            TextView biddingid = (TextView) view.findViewById(R.id.biddingid);
             TextView deadline = (TextView) view.findViewById(R.id.deadline);
             TextView delivery_date = (TextView) view.findViewById(R.id.delivery_date);
             TextView tax = (TextView) view.findViewById(R.id.tax);
@@ -141,6 +142,7 @@ public class BiddingAdapter extends BaseAdapter {
             LinearLayout button_layout = (LinearLayout) view.findViewById(R.id.button_layout);
             TextView button = (TextView) view.findViewById(R.id.button);
 
+            viewHolder1.biddingid = biddingid;
             viewHolder1.deadline = deadline;
             viewHolder1.delivery_date = delivery_date;
             viewHolder1.tax = tax;
@@ -319,13 +321,15 @@ public class BiddingAdapter extends BaseAdapter {
             //    viewHolder0.pictures.invalidate();
         }
 
+        viewHolder1.biddingid.setText(bidding.getBiddingCode());
+
         String outputStr = "";
 
         if (bidding.getBiddingDeadline() != null && !"".equals(bidding.getBiddingDeadline().trim())) {
 
             int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getBiddingDeadline(), "yyyy-MM-dd"));
             if (between > 0)
-                outputStr = bidding.getBiddingDeadline() + "【 还有" + between + "天 】";
+                outputStr = bidding.getBiddingDeadline() + " 【 还有" + between + "天 】";
             else {
                 outputStr = bidding.getBiddingDeadline();
             }
@@ -338,7 +342,7 @@ public class BiddingAdapter extends BaseAdapter {
 
             int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getExpectDeliveryDate(), "yyyy-MM-dd"));
             if (between > 0) {
-                outputStr = bidding.getExpectDeliveryDate() + "【 还有" + between + "天 】";
+                outputStr = bidding.getExpectDeliveryDate() + " 【 还有" + between + "天 】";
             } else {
                 outputStr = bidding.getExpectDeliveryDate();
             }
@@ -451,6 +455,7 @@ public class BiddingAdapter extends BaseAdapter {
     }
 
     static class ViewHolder0 {
+
         TextView biddingid;
         TextView biddingstatus;
         TextView topic;
@@ -468,6 +473,7 @@ public class BiddingAdapter extends BaseAdapter {
 
     static class ViewHolder1 {
 
+        TextView biddingid;
         TextView deadline;
         TextView delivery_date;
         TextView tax;
