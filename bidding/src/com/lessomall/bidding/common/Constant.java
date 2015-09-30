@@ -12,10 +12,10 @@ public class Constant {
     public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
     public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
-    public final static String BASE_URL = "http://www.lessomall.com/lots-web/app/";
-    public final static String URL_LOGIN = BASE_URL + "login/";
+    public final static String BASE_URL = "http://www.lessomall.com:8088/lots-app/bidding/";
+    public final static String URL_LOGIN = "http://www.lessomall.com:8088/lots-app/app/login/";
+    public final static String URL_FIRST_CATEGORY = "http://www.lessomall.com:8088/lots-app/app/findFirstCategory/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
-    public final static String URL_FIRST_CATEGORY = BASE_URL + "findFirstCategory/";
     public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";
     public final static String BIDDING_LIST = BASE_URL + "biddingList/";
     public final static String DEALER_CONFIRM_PRICE = BASE_URL + "dealerConfirmPrice/";
@@ -40,9 +40,9 @@ public class Constant {
 
     public static String[] CATEGORY_CACHE_LEVEL1;
 
-    public final static int APP_BIDDING_STATUS_1= 1,APP_BIDDING_STATUS_2= 2,APP_BIDDING_STATUS_3= 3,APP_BIDDING_STATUS_4= 4,APP_BIDDING_STATUS_5= 5,APP_BIDDING_STATUS_6= 6,APP_BIDDING_STATUS_7= 7;
+    public final static int APP_BIDDING_STATUS_1 = 1, APP_BIDDING_STATUS_2 = 2, APP_BIDDING_STATUS_3 = 3, APP_BIDDING_STATUS_4 = 4, APP_BIDDING_STATUS_5 = 5, APP_BIDDING_STATUS_6 = 6, APP_BIDDING_STATUS_7 = 7;
 
-    public final static int APP_QUOTE_STATUS_1 = 1,APP_QUOTE_STATUS_2 = 2,APP_QUOTE_STATUS_3 = 3,APP_QUOTE_STATUS_4 = 4,APP_QUOTE_STATUS_5 = 5,APP_QUOTE_STATUS_6 = 6;
+    public final static int APP_QUOTE_STATUS_1 = 1, APP_QUOTE_STATUS_2 = 2, APP_QUOTE_STATUS_3 = 3, APP_QUOTE_STATUS_4 = 4, APP_QUOTE_STATUS_5 = 5, APP_QUOTE_STATUS_6 = 6;
 
     //10:保存 20:保存并提交
     public final static String[] OPTERATION_TYPE = new String[]{"10", "20"};
