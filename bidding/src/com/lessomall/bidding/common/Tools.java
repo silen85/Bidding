@@ -1,8 +1,10 @@
 package com.lessomall.bidding.common;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,6 +21,27 @@ import java.util.List;
 import java.util.Map;
 
 public class Tools {
+
+    public static String getMetaValue(Context context, String metaKey) {
+        Bundle metaData = null;
+        if (context == null || metaKey == null) {
+            return null;
+        }
+        try {
+            ApplicationInfo ai = context.getPackageManager()
+                    .getApplicationInfo(context.getPackageName(),
+                            PackageManager.GET_META_DATA);
+            if (null != ai) {
+                metaData = ai.metaData;
+            }
+            if (null != metaData) {
+                metaKey = metaData.getString(metaKey);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        }
+        return metaKey;
+    }
 
     public static Map<String, String> generateRequestMap() {
 

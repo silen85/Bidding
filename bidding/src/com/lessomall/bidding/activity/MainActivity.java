@@ -22,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.bid.AddBiddingActivity;
 import com.lessomall.bidding.activity.bid.BiddingListActivity;
@@ -118,6 +120,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         IntentFilter finishFilter = new IntentFilter(Constant.FINISH_ACTION);
         registerReceiver(broadcastReceiver, finishFilter);
+
+        try {
+            PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, Tools.getMetaValue(this, "api_key"));
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
 
     }
 
@@ -524,6 +532,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void onRestart() {
         super.onRestart();
         initData();
+
     }
 
     @Override
@@ -544,5 +553,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             unregisterReceiver(broadcastReceiver);
         } catch (Exception e) {
         }
+
     }
 }

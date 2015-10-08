@@ -39,6 +39,8 @@ public class LessoApplication extends Application {
         //捕获程序的崩溃信息
 //		CrashHandler crashHandler = CrashHandler.getInstance();
 //		crashHandler.init(this);
+
+
     }
 
     /**
