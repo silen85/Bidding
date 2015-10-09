@@ -61,6 +61,7 @@ public class OtherActivity extends BaseActivity {
                 if (otherFragment.isVisible()) {
                     Intent intent = new Intent(OtherActivity.this, MainActivity.class);
                     startActivity(intent, true);
+                    finish();
                 } else {
                     backToList();
                 }
@@ -157,5 +158,15 @@ public class OtherActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         btn_back.performClick();
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+
+        if (logoutDialog != null) {
+            logoutDialog.dismiss();
+        }
     }
 }

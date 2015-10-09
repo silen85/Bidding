@@ -1,5 +1,6 @@
 package com.lessomall.bidding.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -105,7 +106,8 @@ public class OrderListActivity extends BaseActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(OrderListActivity.this, MainActivity.class);
+                startActivity(intent, true);
             }
         });
 
@@ -127,7 +129,8 @@ public class OrderListActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if (fragment.isVisible()) {
-            finish();
+            Intent intent = new Intent(OrderListActivity.this, MainActivity.class);
+            startActivity(intent, true);
         } else {
             backToList();
         }

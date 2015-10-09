@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.lessomall.bidding.LessoApplication;
 import com.lessomall.bidding.R;
+import com.lessomall.bidding.activity.bid.BiddingListActivity;
+import com.lessomall.bidding.activity.quote.QuoteListActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.common.MD5;
 import com.lessomall.bidding.common.Tools;
@@ -43,11 +45,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private Handler mHandler;
 
+    private boolean pushFlag = false;
+    private String pushKey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+        if (getIntent().getExtras() != null) {
+            pushFlag = getIntent().getExtras().getBoolean("pushFlag", false);
+            pushKey = getIntent().getExtras().getString("pushKey");
+        }
 
         initTitle();
 
@@ -276,11 +286,76 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             ((LessoApplication) getApplication()).setUser(loginUser);
 
-            startActivity(new Intent(LoginActivity.this, MainActivity.class), true);
+            if (pushFlag) {
+                handlePush(pushKey);
+            } else {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class), true);
+            }
 
         } else {
             Toast.makeText(this, getResources().getString(R.string.RECODE_FAILED_USER_LOGIN), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void handlePush(String pushKey) {
+
+        Intent intent;
+        switch (pushKey) {
+            case "1":
+                intent = new Intent(this, BiddingListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "4");
+                startActivity(intent);
+                break;
+            case "2":
+                intent = new Intent(this, BiddingListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "1");
+                startActivity(intent);
+                break;
+            case "3":
+                intent = new Intent(this, BiddingListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "3");
+                startActivity(intent);
+                break;
+            case "4":
+                intent = new Intent(this, BiddingListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "6");
+                startActivity(intent);
+                break;
+            case "5":
+                intent = new Intent(this, QuoteListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "1");
+                startActivity(intent);
+                break;
+            case "6":
+                intent = new Intent(this, QuoteListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "3");
+                startActivity(intent);
+                break;
+            case "7":
+                intent = new Intent(this, QuoteListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "4");
+                startActivity(intent);
+                break;
+            case "8":
+                intent = new Intent(this, QuoteListActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("type", "6");
+                startActivity(intent);
+                break;
+            default:
+                intent = new Intent(this, OtherActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+        }
+        finish();
     }
 
 

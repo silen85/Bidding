@@ -1,5 +1,6 @@
 package com.lessomall.bidding.activity.quote;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
+import com.lessomall.bidding.activity.MainActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.fragment.quote.QuoteListFragment;
 
@@ -82,7 +84,8 @@ public class QuoteListActivity extends BaseActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(QuoteListActivity.this, MainActivity.class);
+                startActivity(intent, true);
             }
         });
 
@@ -139,7 +142,8 @@ public class QuoteListActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent intent = new Intent(QuoteListActivity.this, MainActivity.class);
+        startActivity(intent, true);
     }
 
 }

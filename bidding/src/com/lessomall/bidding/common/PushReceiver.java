@@ -105,6 +105,9 @@ public class PushReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationClicked(Context context, String s, String s1, String s2) {
 
+        Map custom_content = Tools.json2Map(s2);
+        final String key = (String) custom_content.get("key");
+
         SharedPreferences sp = context.getSharedPreferences(
                 context.getString(R.string.app_name), Context.MODE_PRIVATE);
 
@@ -113,10 +116,6 @@ public class PushReceiver extends PushMessageReceiver {
 
         Intent intent;
         if (!"".equals(username) && !"".equals(password)) {
-
-            Map custom_content = Tools.json2Map(s2);
-
-            final String key = (String) custom_content.get("key");
 
             switch (key) {
                 case "1":
@@ -179,6 +178,8 @@ public class PushReceiver extends PushMessageReceiver {
             context.sendBroadcast(new Intent(Constant.FINISH_ACTION));
             intent = new Intent(context, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("pushFlag", true);
+            intent.putExtra("pushKey", key);
             context.getApplicationContext().startActivity(intent);
 
         }

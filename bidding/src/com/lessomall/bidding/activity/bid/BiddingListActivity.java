@@ -1,5 +1,6 @@
 package com.lessomall.bidding.activity.bid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.lessomall.bidding.R;
 import com.lessomall.bidding.activity.BaseActivity;
+import com.lessomall.bidding.activity.MainActivity;
 import com.lessomall.bidding.common.Constant;
 import com.lessomall.bidding.fragment.bid.BiddingDetailFragment;
 import com.lessomall.bidding.fragment.bid.BiddingListFragment;
@@ -116,7 +118,8 @@ public class BiddingListActivity extends BaseActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(BiddingListActivity.this, MainActivity.class);
+                startActivity(intent, true);
             }
         });
 
@@ -170,7 +173,8 @@ public class BiddingListActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if (fragment.isVisible()) {
-            finish();
+            Intent intent = new Intent(BiddingListActivity.this, MainActivity.class);
+            startActivity(intent, true);
         } else {
             backToList();
         }
