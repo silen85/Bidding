@@ -303,58 +303,42 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         switch (pushKey) {
             case "1":
                 intent = new Intent(this, BiddingListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "4");
-                startActivity(intent);
                 break;
             case "2":
                 intent = new Intent(this, BiddingListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "1");
-                startActivity(intent);
                 break;
             case "3":
                 intent = new Intent(this, BiddingListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "3");
-                startActivity(intent);
                 break;
             case "4":
                 intent = new Intent(this, BiddingListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "6");
-                startActivity(intent);
                 break;
             case "5":
                 intent = new Intent(this, QuoteListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "1");
-                startActivity(intent);
                 break;
             case "6":
                 intent = new Intent(this, QuoteListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "3");
-                startActivity(intent);
                 break;
             case "7":
                 intent = new Intent(this, QuoteListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "4");
-                startActivity(intent);
                 break;
             case "8":
                 intent = new Intent(this, QuoteListActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("type", "6");
-                startActivity(intent);
                 break;
             default:
                 intent = new Intent(this, OtherActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
                 break;
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         finish();
     }
 

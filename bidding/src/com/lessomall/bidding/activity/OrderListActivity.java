@@ -1,6 +1,9 @@
 package com.lessomall.bidding.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,6 +29,21 @@ public class OrderListActivity extends BaseActivity {
 
     private RelativeLayout main_title;
 
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            switch (intent.getAction()) {
+                case Constant.FINISH_ACTION_ORDERLIST:
+                    OrderListActivity.this.finish();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +62,9 @@ public class OrderListActivity extends BaseActivity {
         if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
             loadCategory();
         }
+
+        IntentFilter finishFilter = new IntentFilter(Constant.FINISH_ACTION_ORDERLIST);
+        registerReceiver(broadcastReceiver, finishFilter);
 
     }
 
@@ -134,5 +155,16 @@ public class OrderListActivity extends BaseActivity {
         } else {
             backToList();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+        }
+
     }
 }

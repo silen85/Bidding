@@ -1,6 +1,9 @@
 package com.lessomall.bidding.activity.quote;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -30,6 +33,21 @@ public class QuoteListActivity extends BaseActivity {
     private RelativeLayout main_title;
     private TextView title_txt;
 
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            switch (intent.getAction()) {
+                case Constant.FINISH_ACTION_QUOTELIST:
+                    QuoteListActivity.this.finish();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +75,9 @@ public class QuoteListActivity extends BaseActivity {
         if (Constant.CATEGORY_CACHE_LEVEL1 == null) {
             loadCategory();
         }
+
+        IntentFilter finishFilter = new IntentFilter(Constant.FINISH_ACTION_QUOTELIST);
+        registerReceiver(broadcastReceiver, finishFilter);
 
     }
 
@@ -146,4 +167,14 @@ public class QuoteListActivity extends BaseActivity {
         startActivity(intent, true);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+        }
+
+    }
 }

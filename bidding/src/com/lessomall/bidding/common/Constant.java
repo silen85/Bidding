@@ -65,6 +65,12 @@ public class Constant {
 
     public static final String FINISH_ACTION = "com.lessomall.bidding.FINISH_ACTION";
 
+    public static final String FINISH_ACTION_BIDDINGLIST = "com.lessomall.bidding.FINISH_ACTION_BIDDINGLIST";
+
+    public static final String FINISH_ACTION_QUOTELIST  = "com.lessomall.bidding.FINISH_ACTION_QUOTELIST";
+
+    public static final String FINISH_ACTION_ORDERLIST = "com.lessomall.bidding.FINISH_ACTION_ORDERLIST";
+
     static {
 
 

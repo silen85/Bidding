@@ -71,7 +71,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             switch (intent.getAction()) {
                 case Constant.FINISH_ACTION:
+
+                    context.sendBroadcast(new Intent(Constant.FINISH_ACTION_BIDDINGLIST));
+                    context.sendBroadcast(new Intent(Constant.FINISH_ACTION_QUOTELIST));
+                    context.sendBroadcast(new Intent(Constant.FINISH_ACTION_ORDERLIST));
+
                     MainActivity.this.finish();
+
                     break;
                 default:
                     break;
