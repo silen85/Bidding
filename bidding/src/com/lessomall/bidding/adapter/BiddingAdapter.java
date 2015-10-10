@@ -325,6 +325,7 @@ public class BiddingAdapter extends BaseAdapter {
 
         String outputStr = "";
 
+        boolean overTimeFlag = false;
         if (bidding.getBiddingDeadline() != null && !"".equals(bidding.getBiddingDeadline().trim())) {
 
             int between = Tools.daysBetween(new Date(), Tools.parseDate(bidding.getBiddingDeadline(), "yyyy-MM-dd"));
@@ -332,6 +333,7 @@ public class BiddingAdapter extends BaseAdapter {
                 outputStr = bidding.getBiddingDeadline() + " 【 还有" + between + "天 】";
             else {
                 outputStr = bidding.getBiddingDeadline();
+                overTimeFlag = true;
             }
         }
         viewHolder1.deadline.setText(outputStr);
@@ -371,19 +373,15 @@ public class BiddingAdapter extends BaseAdapter {
                 }
             }
 
-            if (quotePrice != null) {
+            List<QuotePrice> _list = new ArrayList();
 
-                List<QuotePrice> _list = new ArrayList();
+            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType(), "0");
+
+            if (quotePrice != null) {
 
                 qid = quotePrice.getId();
 
                 _list.add(quotePrice);
-
-                QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType(), "0");
-
-                viewHolder1.pricelist.setAdapter(quoteItemAdapter);
-
-                quoteItemAdapter.notifyDataSetChanged();
 
                 if ("10".equals(quotePrice.getBiddingStatus())) {
 
@@ -397,6 +395,10 @@ public class BiddingAdapter extends BaseAdapter {
                 viewHolder1.list_layout.setVisibility(View.VISIBLE);
 
             }
+
+            viewHolder1.pricelist.setAdapter(quoteItemAdapter);
+
+            quoteItemAdapter.notifyDataSetChanged();
         }
 
         viewHolder1.button.setTag(qid);
@@ -404,30 +406,41 @@ public class BiddingAdapter extends BaseAdapter {
         //报价单:1:待报价 2:已报价 3:被退回 4:竞价达成待发货 5:已发货 6:已确认收货
         switch (bidding.getBiddingStatusId()) {
             case STATUS_QUOTE_1:
-                viewHolder1.button.setText("发布报价");
-                viewHolder1.button_layout.setVisibility(View.VISIBLE);
-                viewHolder1.button.setClickable(true);
-                viewHolder1.button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
-                    }
-                });
+                if (!overTimeFlag) {
+                    viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                    viewHolder1.button.setText("发布报价");
+                    viewHolder1.button.setClickable(true);
+                    viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
+                        }
+                    });
+                } else {
+                    viewHolder1.button_layout.setVisibility(View.GONE);
+                    viewHolder1.biddingstatus.setText("已过期");
+                }
+
                 break;
             case STATUS_QUOTE_2:
                 viewHolder1.button_layout.setVisibility(View.GONE);
                 viewHolder1.button.setClickable(false);
                 break;
             case STATUS_QUOTE_3:
-                viewHolder1.button.setText("重新报价");
-                viewHolder1.button_layout.setVisibility(View.VISIBLE);
-                viewHolder1.button.setClickable(true);
-                viewHolder1.button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
-                    }
-                });
+                if (!overTimeFlag) {
+                    viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                    viewHolder1.button.setText("重新报价");
+                    viewHolder1.button.setClickable(true);
+                    viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
+                        }
+                    });
+                } else {
+                    viewHolder1.button_layout.setVisibility(View.GONE);
+                    viewHolder1.biddingstatus.setText("已过期");
+                }
                 break;
             case STATUS_QUOTE_4:
                 viewHolder1.button.setText("确认发货");

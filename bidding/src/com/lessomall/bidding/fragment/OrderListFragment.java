@@ -109,7 +109,9 @@ public class OrderListFragment extends PullToRefreshListFragment {
 
                 Bidding bidding = list.get(position - 1);
 
-                activity.goToDetail(bidding);
+                if ("0".equals(bidding.getOrderType())) {
+                    activity.goToDetail(bidding);
+                }
 
             }
         });
