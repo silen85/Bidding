@@ -361,8 +361,14 @@ public class BiddingAdapter extends BaseAdapter {
 
         viewHolder1.comment.setText(bidding.getMemo2());
 
+        viewHolder1.foul_txt.setText("");
+        viewHolder1.foul_layout.setVisibility(View.GONE);
+
         String qid = "";
         List<QuotePrice> list = bidding.getQuotePriceList();
+
+        List<QuotePrice> _list = new ArrayList();
+        QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType(), "0");
         if (list != null && list.size() > 0) {
 
             QuotePrice quotePrice = null;
@@ -373,10 +379,6 @@ public class BiddingAdapter extends BaseAdapter {
                 }
             }
 
-            List<QuotePrice> _list = new ArrayList();
-
-            QuoteItemAdapter quoteItemAdapter = new QuoteItemAdapter(context, _list, bidding.getOrderType(), "0");
-
             if (quotePrice != null) {
 
                 qid = quotePrice.getId();
@@ -384,22 +386,18 @@ public class BiddingAdapter extends BaseAdapter {
                 _list.add(quotePrice);
 
                 if ("10".equals(quotePrice.getBiddingStatus())) {
-
                     viewHolder1.foul_txt.setText(quotePrice.getReturnState());
-
                     viewHolder1.foul_layout.setVisibility(View.VISIBLE);
-                } else {
-                    viewHolder1.foul_layout.setVisibility(View.GONE);
                 }
 
                 viewHolder1.list_layout.setVisibility(View.VISIBLE);
 
             }
-
-            viewHolder1.pricelist.setAdapter(quoteItemAdapter);
-
-            quoteItemAdapter.notifyDataSetChanged();
         }
+
+        viewHolder1.pricelist.setAdapter(quoteItemAdapter);
+
+        quoteItemAdapter.notifyDataSetChanged();
 
         viewHolder1.button.setTag(qid);
 
@@ -420,7 +418,6 @@ public class BiddingAdapter extends BaseAdapter {
                     viewHolder1.button_layout.setVisibility(View.GONE);
                     viewHolder1.biddingstatus.setText("已过期");
                 }
-
                 break;
             case STATUS_QUOTE_2:
                 viewHolder1.button_layout.setVisibility(View.GONE);
@@ -428,15 +425,19 @@ public class BiddingAdapter extends BaseAdapter {
                 break;
             case STATUS_QUOTE_3:
                 if (!overTimeFlag) {
-                    viewHolder1.button_layout.setVisibility(View.VISIBLE);
-                    viewHolder1.button.setText("重新报价");
-                    viewHolder1.button.setClickable(true);
-                    viewHolder1.button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
-                        }
-                    });
+                    if ("30".equals(bidding.getBiddingStatus())) {
+                        viewHolder1.button_layout.setVisibility(View.VISIBLE);
+                        viewHolder1.button.setText("重新报价");
+                        viewHolder1.button.setClickable(true);
+                        viewHolder1.button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ((BaseActivity) context).showBaojiaDialog((String) v.getTag(), bidding.getId());
+                            }
+                        });
+                    } else {
+                        viewHolder1.button_layout.setVisibility(View.GONE);
+                    }
                 } else {
                     viewHolder1.button_layout.setVisibility(View.GONE);
                     viewHolder1.biddingstatus.setText("已过期");

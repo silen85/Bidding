@@ -546,16 +546,18 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
             }
         }
         params.put("taxBillType", tax_txt.getTag().toString());
-        if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {
+        params.put("paymentMode", payment_txt.getTag().toString());
+        /*if (!validateAndPutValue(params, "paymentMode", payment_txt.getTag().toString(), "请选择支付方式")) {
             return false;
-        }
+        }*/
         params.put("memo", other_edit.getText().toString());
         params.put("commissionRate", "");
         params.put("returnState", "");
         params.put("customerService", "");
-        if (!validateAndPutValue(params, "depositPaymentVouchers", certificate_edit.getText().toString(), "请输入保证金付款凭证")) {
+        params.put("depositPaymentVouchers", certificate_edit.getText().toString());
+        /*if (!validateAndPutValue(params, "depositPaymentVouchers", certificate_edit.getText().toString(), "请输入保证金付款凭证")) {
             return false;
-        }
+        }*/
         params.put("productCode", product_name_edit.getTag().toString());
         if (!validateAndPutValue(params, "nameType", product_name_edit.getText().toString(), "请输入名称型号")) {
             return false;

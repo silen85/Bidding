@@ -12,9 +12,9 @@ public class Constant {
     public static String LESSO_BIDDING_USERNAME = "LESSO_BIDDING_USERNAME";
     public static String LESSO_BIDDING_USERPASSWORD = "LESSO_BIDDING_USERPASSWORD";
 
-    public final static String BASE_URL = "http://10.10.7.159:8080/lots-web/bidding/";
-    public final static String URL_LOGIN = "http://10.10.7.159:8080/lots-web/app/login/";
-    public final static String URL_FIRST_CATEGORY = "http://10.10.7.159:8080/lots-web/app/findFirstCategory/";
+    public final static String BASE_URL = "http://10.10.7.155:8080/lots-web/bidding/";
+    public final static String URL_LOGIN = "http://10.10.7.155:8080/lots-web/app/login/";
+    public final static String URL_FIRST_CATEGORY = "http://10.10.7.155:8080/lots-web/app/findFirstCategory/";
     public final static String URL_PUSH_BIND = BASE_URL + "pushBind/";
     public final static String URL_UPDATE = BASE_URL + "androidversion/";
     public final static String URL_MAINCOUNT = BASE_URL + "mainCount/";

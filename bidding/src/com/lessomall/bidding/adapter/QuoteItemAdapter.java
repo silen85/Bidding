@@ -129,6 +129,8 @@ public class QuoteItemAdapter extends BaseAdapter {
 
             if ("10".equals(quotePrice.getBiddingStatus())) {
                 tick.setBackgroundResource(R.mipmap.disagree_s);
+            } else if ("20".equals(quotePrice.getBiddingStatus()) || "30".equals(quotePrice.getBiddingStatus())) {
+                tick.setVisibility(View.GONE);
             } else {
                 tick.setBackgroundResource(R.drawable.agree_x);
                 tick.setSelected(true);
