@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -70,11 +73,16 @@ public abstract class BaseActivity extends FragmentActivity {
     public LessoApplication.LoginUser loginUser;
 
     private InputMethodManager mSoftManager;
+    private LocationManager locationManager;
+
     private ProgressDialog loadingDialog;
 
     protected TimeChooserDialog timerDialog;
     protected int timeType = 1;
     protected String sBeginDate, sEndDate;
+
+    private double longitude = 0.0;//经度
+    private double latitude = 0.0;//维度
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +99,10 @@ public abstract class BaseActivity extends FragmentActivity {
 
         mSoftManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        initLocation();
+
     }
 
     @Override
@@ -100,6 +112,55 @@ public abstract class BaseActivity extends FragmentActivity {
         loginUser = ((LessoApplication) getApplication()).getUser();
         if ((loginUser == null || loginUser.getSessionid() == null || "".equals(loginUser.getSessionid().trim())) && !(this instanceof LoginActivity)) {
             doLogin();
+        }
+    }
+
+    private LocationListener locationListener = new LocationListener() {
+
+        // Provider的状态在可用、暂时不可用和无服务三个状态直接切换时触发此函数
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        // Provider被enable时触发此函数，比如GPS被打开
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        // Provider被disable时触发此函数，比如GPS被关闭
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+
+        //当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
+        @Override
+        public void onLocationChanged(Location location) {
+            if (location != null) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+            }
+        }
+    };
+
+    private void initLocation() {
+
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (location != null) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+            }
+        } else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (location != null) {
+                longitude = location.getLongitude(); //经度
+                latitude = location.getLatitude(); //纬度
+            }
         }
     }
 
@@ -454,6 +515,16 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (locationManager != null) {
+            locationManager.removeUpdates(locationListener);
+        }
+
+    }
+
     protected abstract void initTitle();
 
     protected abstract void initView();
@@ -466,6 +537,22 @@ public abstract class BaseActivity extends FragmentActivity {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }
 
