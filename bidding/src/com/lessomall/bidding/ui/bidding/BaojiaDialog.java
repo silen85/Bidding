@@ -176,6 +176,10 @@ public class BaojiaDialog extends Dialog {
         params.put("actualSupplyTotalNumber", baojia_number.getText().toString().trim());
         params.put("memo", baojia_comment.getText().toString().trim());
 
+        double[] location = Tools.getLocation(context);
+        params.put("longitude", location[0] + "");
+        params.put("latitude", location[1] + "");
+
         RequestParams requestParams = new RequestParams(params);
 
         AsyncHttpResponseHandler asyncHttpResponseHandler = new TextHttpResponseHandler() {

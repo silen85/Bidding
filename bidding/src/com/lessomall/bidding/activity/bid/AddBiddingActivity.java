@@ -585,6 +585,10 @@ public class AddBiddingActivity extends BaseActivity implements View.OnClickList
         }
         params.put("price", price + "");
 
+        double[] location = Tools.getLocation(this);
+        params.put("longitude", location[0] + "");
+        params.put("latitude", location[1] + "");
+
         return true;
     }
 

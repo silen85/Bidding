@@ -1064,6 +1064,10 @@ public class BiddingDetailFragment extends CommonBiddingFragment {
         }
         params.put("price", price + "");
 
+        double[] location = Tools.getLocation(getActivity());
+        params.put("longitude", location[0] + "");
+        params.put("latitude", location[1] + "");
+
         return true;
     }
 
