@@ -183,6 +183,11 @@ public class BiddingAdapter extends BaseAdapter {
                 @Override
                 public void onLoadingStarted(String s, View view) {
                     viewHolder0.pictures.setImageResource(R.mipmap.bg_gray);
+
+                    viewHolder0.bg_pictures.setVisibility(View.GONE);
+                    viewHolder0.num_pictures.setText("");
+
+                    viewHolder0.frame_picture.setOnClickListener(null);
                 }
 
                 @Override
@@ -190,6 +195,11 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder0.pictures.getTag())) {
                         viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
                         //   viewHolder0.pictures.invalidate();
+
+                        viewHolder0.bg_pictures.setVisibility(View.GONE);
+                        viewHolder0.num_pictures.setText("");
+
+                        viewHolder0.frame_picture.setOnClickListener(null);
                     }
                 }
 
@@ -198,6 +208,11 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder0.pictures.getTag())) {
                         if (bitmap == null) {
                             viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
+
+                            viewHolder0.bg_pictures.setVisibility(View.GONE);
+                            viewHolder0.num_pictures.setText("");
+
+                            viewHolder0.frame_picture.setOnClickListener(null);
                         } else {
                             viewHolder0.pictures.setImageBitmap(bitmap);
                             viewHolder0.bg_pictures.setVisibility(View.VISIBLE);
@@ -230,12 +245,23 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder0.pictures.getTag())) {
                         viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
                         //    viewHolder0.pictures.invalidate();
+
+                        viewHolder0.bg_pictures.setVisibility(View.GONE);
+                        viewHolder0.num_pictures.setText("");
+
+                        viewHolder0.frame_picture.setOnClickListener(null);
                     }
                 }
             });
         } else {
             viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
             //    viewHolder0.pictures.invalidate();
+
+            viewHolder0.bg_pictures.setVisibility(View.GONE);
+            viewHolder0.num_pictures.setText("");
+
+            viewHolder0.frame_picture.setOnClickListener(null);
+
         }
 
         viewHolder0.biddingid.setText(bidding.getBiddingCode());
@@ -266,6 +292,11 @@ public class BiddingAdapter extends BaseAdapter {
                 @Override
                 public void onLoadingStarted(String s, View view) {
                     viewHolder1.pictures.setImageResource(R.mipmap.bg_gray);
+
+                    viewHolder1.bg_pictures.setVisibility(View.GONE);
+                    viewHolder1.num_pictures.setText("");
+
+                    viewHolder1.frame_picture.setOnClickListener(null);
                 }
 
                 @Override
@@ -273,6 +304,11 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder1.pictures.getTag())) {
                         viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
                         //   viewHolder0.pictures.invalidate();
+
+                        viewHolder1.bg_pictures.setVisibility(View.GONE);
+                        viewHolder1.num_pictures.setText("");
+
+                        viewHolder1.frame_picture.setOnClickListener(null);
                     }
                 }
 
@@ -281,6 +317,11 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder1.pictures.getTag())) {
                         if (bitmap == null) {
                             viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
+
+                            viewHolder1.bg_pictures.setVisibility(View.GONE);
+                            viewHolder1.num_pictures.setText("");
+
+                            viewHolder1.frame_picture.setOnClickListener(null);
                         } else {
                             viewHolder1.pictures.setImageBitmap(bitmap);
                             viewHolder1.bg_pictures.setVisibility(View.VISIBLE);
@@ -313,12 +354,23 @@ public class BiddingAdapter extends BaseAdapter {
                     if (s.equals(viewHolder1.pictures.getTag())) {
                         viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
                         //    viewHolder0.pictures.invalidate();
+
+                        viewHolder1.bg_pictures.setVisibility(View.GONE);
+                        viewHolder1.num_pictures.setText("");
+
+                        viewHolder1.frame_picture.setOnClickListener(null);
                     }
                 }
             });
         } else {
             viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
             //    viewHolder0.pictures.invalidate();
+
+            viewHolder1.bg_pictures.setVisibility(View.GONE);
+            viewHolder1.num_pictures.setText("");
+
+            viewHolder1.frame_picture.setOnClickListener(null);
+
         }
 
         viewHolder1.biddingid.setText(bidding.getBiddingCode());
