@@ -189,11 +189,16 @@ public class BiddingAdapter extends BaseAdapter {
             ImageLoader.getInstance().loadImage(urls[0], imageSize, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
-                    viewHolder0.pictures.setImageResource(R.mipmap.bg_gray);
+                    if (s.equals(viewHolder0.pictures.getTag())) {
+                        viewHolder0.pictures.setImageResource(R.mipmap.bg_gray);
+                    }
                 }
 
                 @Override
                 public void onLoadingFailed(String s, View view, FailReason failReason) {
+                    if (s.equals(viewHolder0.pictures.getTag())) {
+                        viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
+                    }
                 }
 
                 @Override
@@ -221,12 +226,17 @@ public class BiddingAdapter extends BaseAdapter {
 
                                 }
                             });
+                        } else {
+                            viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
                         }
                     }
                 }
 
                 @Override
                 public void onLoadingCancelled(String s, View view) {
+                    if (s.equals(viewHolder0.pictures.getTag())) {
+                        viewHolder0.pictures.setImageResource(R.mipmap.pic_default);
+                    }
                 }
             });
         }
@@ -265,11 +275,16 @@ public class BiddingAdapter extends BaseAdapter {
             ImageLoader.getInstance().loadImage(urls[0], imageSize, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
-                    viewHolder1.pictures.setImageResource(R.mipmap.bg_gray);
+                    if (s.equals(viewHolder1.pictures.getTag())) {
+                        viewHolder1.pictures.setImageResource(R.mipmap.bg_gray);
+                    }
                 }
 
                 @Override
                 public void onLoadingFailed(String s, View view, FailReason failReason) {
+                    if (s.equals(viewHolder1.pictures.getTag())) {
+                        viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
+                    }
                 }
 
                 @Override
@@ -297,12 +312,17 @@ public class BiddingAdapter extends BaseAdapter {
 
                                 }
                             });
+                        } else {
+                            viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
                         }
                     }
                 }
 
                 @Override
                 public void onLoadingCancelled(String s, View view) {
+                    if (s.equals(viewHolder1.pictures.getTag())) {
+                        viewHolder1.pictures.setImageResource(R.mipmap.pic_default);
+                    }
                 }
             });
         }
